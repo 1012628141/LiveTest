@@ -12,9 +12,6 @@ import javax.annotation.Resource;
  */
 public class HuluSource extends Source {
 
-    @Resource(name = "cacheService")
-    private CacheService cacheService;
-
     public HuluSource(String sourceId) {
         super(sourceId);
     }

@@ -31,7 +31,7 @@ public class ChannelController {
     public String getChannel(HttpServletRequest request,
                              HttpServletResponse response) {
 
-        CacheUtil.get("aaa");
+        String s = HttpUtil.httpGet("http://www.cztv.com/qjtv/");
 
         try {
             List<Channel> channelInfoList = channelService

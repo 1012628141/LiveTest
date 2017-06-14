@@ -1,10 +1,10 @@
 package com.readyidu.source.local.zhejiang.ningbo;
 
-import com.readyidu.source.base.Channel;
-import com.readyidu.source.base.Source;
-import com.readyidu.source.local.zhejiang.ningbo.source.NbtvSource;
-import com.readyidu.source.protocol.SourceUri;
-import com.readyidu.util.NullUtil;
+        import com.readyidu.source.base.Channel;
+        import com.readyidu.source.base.Source;
+        import com.readyidu.source.local.zhejiang.ningbo.source.NbtvSource;
+        import com.readyidu.source.protocol.SourceUri;
+        import com.readyidu.util.NullUtil;
 
 /**
  * Created by yuzhang on 17/6/8.

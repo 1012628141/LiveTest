@@ -20,4 +20,9 @@ public class SourceConstants {
     public static final String SOURCE_NBTV_NBTV4 = "source_nbtv_nbtv4";
     public static final String SOURCE_NBTV_NBTV5 = "source_nbtv_nbtv5";
     public static final String SOURCE_NBTV_NBTV6 = "source_nbtv_nbtv6";
+
+    //绍兴sxtv.cn
+    public static final String SOURCE_SXTV_NBTV1 = "source_sxtv_sxtv1";
+    public static final String SOURCE_SXTV_NBTV2 = "source_sxtv_sxtv2";
+    public static final String SOURCE_SXTV_NBTV3 = "source_sxtv_sxtv3";
 }

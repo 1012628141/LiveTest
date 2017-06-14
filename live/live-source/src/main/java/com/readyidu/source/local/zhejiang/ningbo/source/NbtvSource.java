@@ -28,8 +28,8 @@ public class NbtvSource extends Source {
     @Override
     protected String source() {
         // 优先从缓存中取
-        String source = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(source)) {
+        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
+        if (NullUtil.isNullObject(cacheSource)) {
             String nbtvDom = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_NBTV_NBTV1:
@@ -55,12 +55,12 @@ public class NbtvSource extends Source {
             Pattern pattern = Pattern.compile("http://hls.nbtv.cn/[a-z0-9]+/[0-9a-z]+/live/nbtv[1-6]_md/playlist.m3u8");
             Matcher matcher = pattern.matcher(nbtvDom);
             if (matcher.find()) {
-                source = matcher.group(0);
-                CacheUtil.set(CACHE_NAME + sourceId, source, CHACHE_TIMEOUT);
-                return source;
+                cacheSource = matcher.group(0);
+                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
+                return cacheSource;
             }
         } else {
-            return source;
+            return cacheSource;
         }
         return null;
     }

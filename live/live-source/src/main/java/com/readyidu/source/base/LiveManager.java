@@ -2,6 +2,7 @@ package com.readyidu.source.base;
 
 import com.readyidu.source.local.zhejiang.hangzhou.HangzhouLocal;
 import com.readyidu.source.local.zhejiang.ningbo.NingboLocal;
+import com.readyidu.source.local.zhejiang.shaoxing.ShaoxingLocal;
 import com.readyidu.source.protocol.SourceUri;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,9 @@ public class LiveManager {
         //宁波
         Local ningbo = new NingboLocal();
         locals.put(ningbo.getId(), ningbo);
+        //绍兴
+        Local shaoxing = new ShaoxingLocal();
+        locals.put(shaoxing.getId(), shaoxing);
     }
 
     public String getChannelSource(String sourceUri) {
