@@ -22,12 +22,14 @@ public class HangzhouLocal extends Local {
         Channel channel4 = new HTV4Channel();
         Channel channel5 = new HTV5Channel();
         Channel channel6 = new HTV6Channel();
+        Channel channel7 = new XiaoshanChannel();
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);
         channels.put(channel3.getId(), channel3);
         channels.put(channel4.getId(), channel4);
         channels.put(channel5.getId(), channel5);
         channels.put(channel6.getId(), channel6);
+        channels.put(channel7.getId(), channel7);
     }
 
     @Override

@@ -30,9 +30,6 @@ public class ChannelController {
     @ResponseBody
     public String getChannel(HttpServletRequest request,
                              HttpServletResponse response) {
-
-        String s = HttpUtil.httpGet("http://www.cztv.com/qjtv/");
-
         try {
             List<Channel> channelInfoList = channelService
                     .getChannelList();

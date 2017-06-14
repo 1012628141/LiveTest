@@ -1,5 +1,6 @@
 package com.readyidu.source.base;
 
+import com.readyidu.source.local.zhejiang.ZhejiangLocal;
 import com.readyidu.source.local.zhejiang.hangzhou.HangzhouLocal;
 import com.readyidu.source.local.zhejiang.ningbo.NingboLocal;
 import com.readyidu.source.local.zhejiang.shaoxing.ShaoxingLocal;
@@ -18,6 +19,9 @@ public class LiveManager {
 
     public LiveManager() {
         locals = new HashMap<String, Local>();
+        //浙江
+        Local zhejiang = new ZhejiangLocal();
+        locals.put(zhejiang.getId(), zhejiang);
         //杭州
         Local hangzhou = new HangzhouLocal();
         locals.put(hangzhou.getId(), hangzhou);
