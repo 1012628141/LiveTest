@@ -21,40 +21,40 @@ public class CztvSource extends Source {
         String sourceData = null;
         switch (sourceId) {
             case SourceConstants.SOURCE_CZTV_1:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/101.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/101.json");
                 break;
             case SourceConstants.SOURCE_CZTV_2:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/102.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/102.json");
                 break;
             case SourceConstants.SOURCE_CZTV_3:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/103.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/103.json");
                 break;
             case SourceConstants.SOURCE_CZTV_4:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/104.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/104.json");
                 break;
             case SourceConstants.SOURCE_CZTV_5:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/105.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/105.json");
                 break;
             case SourceConstants.SOURCE_CZTV_6:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/106.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/106.json");
                 break;
             case SourceConstants.SOURCE_CZTV_7:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/107.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/107.json");
                 break;
             case SourceConstants.SOURCE_CZTV_8:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/108.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/108.json");
                 break;
             case SourceConstants.SOURCE_CZTV_9:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/109.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/109.json");
                 break;
             case SourceConstants.SOURCE_CZTV_10:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/110.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/110.json");
                 break;
             case SourceConstants.SOURCE_CZTV_11:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/111.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/111.json");
                 break;
             case SourceConstants.SOURCE_CZTV_12:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/112.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/112.json");
                 break;
             default:
                 break;
