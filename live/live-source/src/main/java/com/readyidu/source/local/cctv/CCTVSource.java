@@ -68,7 +68,7 @@ public class CCTVSource extends Source {
             URL url = new URL(value);
             String[] component = url.getPath().split("/");
             if ( !component[component.length - 1].contains(".") ) {
-                CacheUtil.set("source_cctv_vd_" + sourceId, value, 3600);
+                CacheUtil.set("source_cctv_vd_" + sourceId, value, 300);
                 log.debug(value);
                 return value;
             }
