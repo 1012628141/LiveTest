@@ -21,7 +21,7 @@ public class XianghuSource extends Source {
         String sourceData = null;
         switch (sourceId) {
             case SourceConstants.SOURCE_XIANGHU_XIAOSHAN:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/10901.json?rand=0.1754344659857452");
+                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/10901.json");
                 break;
             default:
                 break;
