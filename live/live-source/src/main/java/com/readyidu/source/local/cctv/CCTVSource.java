@@ -5,6 +5,9 @@ import com.readyidu.source.base.Source;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import org.apache.http.util.TextUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -14,6 +17,7 @@ import java.net.URL;
  * Home: http://www.devdylan.cn
  */
 public class CCTVSource extends Source {
+    private static final Logger log = LoggerFactory.getLogger(CCTVSource.class);
 
     public CCTVSource(String sourceId) {
         super(sourceId);
@@ -65,10 +69,11 @@ public class CCTVSource extends Source {
             String[] component = url.getPath().split("/");
             if ( !component[component.length - 1].contains(".") ) {
                 CacheUtil.set("source_cctv_vd_" + sourceId, value, 3600);
+                log.debug(value);
                 return value;
             }
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
