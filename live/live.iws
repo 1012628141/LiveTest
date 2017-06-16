@@ -13,300 +13,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Commander">
-    <leftPanel view="Project" />
-    <rightPanel view="Project" />
-    <splitter proportion="0.5" />
-  </component>
-  <component name="Cvs2Configuration">
-    <option name="ON_FILE_ADDING" value="0" />
-    <option name="ON_FILE_REMOVING" value="0" />
-    <option name="PRUNE_EMPTY_DIRECTORIES" value="true" />
-    <option name="SHOW_UPDATE_OPTIONS" value="true" />
-    <option name="SHOW_ADD_OPTIONS" value="true" />
-    <option name="SHOW_REMOVE_OPTIONS" value="true" />
-    <option name="MERGING_MODE" value="0" />
-    <option name="MERGE_WITH_BRANCH1_NAME" value="HEAD" />
-    <option name="MERGE_WITH_BRANCH2_NAME" value="HEAD" />
-    <option name="RESET_STICKY" value="false" />
-    <option name="CREATE_NEW_DIRECTORIES" value="true" />
-    <option name="DEFAULT_TEXT_FILE_SUBSTITUTION" value="kv" />
-    <option name="PROCESS_UNKNOWN_FILES" value="false" />
-    <option name="PROCESS_DELETED_FILES" value="false" />
-    <option name="SHOW_EDIT_DIALOG" value="true" />
-    <option name="RESERVED_EDIT" value="false" />
-    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <option name="SHOW_CHECKOUT_OPTIONS" value="true" />
-    <option name="CHECKOUT_DATE_OR_REVISION_SETTINGS">
-      <value>
-        <option name="BRANCH" value="" />
-        <option name="DATE" value="" />
-        <option name="USE_BRANCH" value="false" />
-        <option name="USE_DATE" value="false" />
-      </value>
-    </option>
-    <option name="UPDATE_DATE_OR_REVISION_SETTINGS">
-      <value>
-        <option name="BRANCH" value="" />
-        <option name="DATE" value="" />
-        <option name="USE_BRANCH" value="false" />
-        <option name="USE_DATE" value="false" />
-      </value>
-    </option>
-    <option name="SHOW_CHANGES_REVISION_SETTINGS">
-      <value>
-        <option name="BRANCH" value="" />
-        <option name="DATE" value="" />
-        <option name="USE_BRANCH" value="false" />
-        <option name="USE_DATE" value="false" />
-      </value>
-    </option>
-    <option name="SHOW_OUTPUT" value="false" />
-    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
-    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
-    <option name="ADD_WATCH_INDEX" value="0" />
-    <option name="REMOVE_WATCH_INDEX" value="0" />
-    <option name="UPDATE_KEYWORD_SUBSTITUTION" />
-    <option name="MAKE_NEW_FILES_READONLY" value="false" />
-    <option name="SHOW_CORRUPTED_PROJECT_FILES" value="0" />
-    <option name="TAG_AFTER_FILE_COMMIT" value="false" />
-    <option name="TAG_AFTER_FILE_COMMIT_NAME" value="" />
-    <option name="TAG_AFTER_PROJECT_COMMIT" value="false" />
-    <option name="TAG_AFTER_PROJECT_COMMIT_NAME" value="" />
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
-    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
-    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
-    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-  </component>
-  <component name="DebuggerManager">
-    <line_breakpoints converted="true" />
-    <exception_breakpoints converted="true">
-      <breakpoint_any>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="SUSPEND_VM" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CONDITION" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="LOG_MESSAGE" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INVERSE_CLASS_FILLTERS" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-      </breakpoint_any>
-    </exception_breakpoints>
-    <field_breakpoints converted="true" />
-    <method_breakpoints converted="true" />
-  </component>
-  <component name="DebuggerSettings">
-    <option name="TRACING_FILTERS_ENABLED" value="true" />
-    <option name="TOSTRING_CLASSES_ENABLED" value="false" />
-    <option name="VALUE_LOOKUP_DELAY" value="700" />
-    <option name="DEBUGGER_TRANSPORT" value="0" />
-    <option name="FORCE_CLASSIC_VM" value="true" />
-    <option name="HIDE_DEBUGGER_ON_PROCESS_TERMINATION" value="false" />
-    <option name="SKIP_SYNTHETIC_METHODS" value="true" />
-    <option name="SKIP_CONSTRUCTORS" value="false" />
-    <option name="STEP_THREAD_SUSPEND_POLICY" value="SuspendThread" />
-    <default_breakpoint_settings>
-      <option name="NOTIFY_CAUGHT" value="true" />
-      <option name="NOTIFY_UNCAUGHT" value="true" />
-      <option name="WATCH_MODIFICATION" value="true" />
-      <option name="WATCH_ACCESS" value="true" />
-      <option name="WATCH_ENTRY" value="true" />
-      <option name="WATCH_EXIT" value="true" />
-      <option name="ENABLED" value="true" />
-      <option name="SUSPEND_VM" value="true" />
-      <option name="COUNT_FILTER_ENABLED" value="false" />
-      <option name="COUNT_FILTER" value="0" />
-      <option name="CONDITION_ENABLED" value="false" />
-      <option name="CONDITION" />
-      <option name="LOG_ENABLED" value="false" />
-      <option name="LOG_EXPRESSION_ENABLED" value="false" />
-      <option name="LOG_MESSAGE" />
-      <option name="CLASS_FILTERS_ENABLED" value="false" />
-      <option name="INVERSE_CLASS_FILLTERS" value="false" />
-      <option name="SUSPEND_POLICY" value="SuspendAll" />
-    </default_breakpoint_settings>
-    <filter>
-      <option name="PATTERN" value="com.sun.*" />
-      <option name="ENABLED" value="true" />
-    </filter>
-    <filter>
-      <option name="PATTERN" value="java.*" />
-      <option name="ENABLED" value="true" />
-    </filter>
-    <filter>
-      <option name="PATTERN" value="javax.*" />
-      <option name="ENABLED" value="true" />
-    </filter>
-    <filter>
-      <option name="PATTERN" value="org.omg.*" />
-      <option name="ENABLED" value="true" />
-    </filter>
-    <filter>
-      <option name="PATTERN" value="sun.*" />
-      <option name="ENABLED" value="true" />
-    </filter>
-    <filter>
-      <option name="PATTERN" value="junit.*" />
-      <option name="ENABLED" value="true" />
-    </filter>
-  </component>
-  <component name="EjbViewSettings">
-    <EjbView showMembers="false" autoscrollToSource="false" />
-  </component>
-  <component name="ErrorTreeViewConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="HIDE_WARNINGS" value="false" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< HEAD
-      <file leaf-file-name="DashBoardController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DashBoardController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="43" />
-=======
-      <file leaf-file-name="CztvSource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/source/CztvSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="YINGXI1Channel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/YINGXI1Channel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeqingLocal.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/DeqingLocal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="YingxiSource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/source/YingxiSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LiveManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
+            <state relative-caret-position="391">
+              <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-=======
-      <file leaf-file-name="ChannelController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/ChannelController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="live-service-servlet.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="32" />
-=======
-      <file leaf-file-name="SourceController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/SourceController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-112">
-              <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="735" column="19" lean-forward="false" selection-start-line="735" selection-start-column="19" selection-end-line="735" selection-end-column="19" />
-              <folding>
-                <element signature="e#41460#41466#0" expanded="true" />
-              </folding>
-=======
-      <file leaf-file-name="Source.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Source.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SourceServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/service/impl/SourceServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HTV3Channel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/hangzhou/HTV3Channel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
             </state>
           </provider>
         </entry>
@@ -321,25 +38,16 @@
     </option>
   </component>
   <component name="FindInProjectRecents">
-<<<<<<< HEAD
     <findStrings>
       <find>../assets</find>
+      <find>&lt;&lt;&lt;</find>
+      <find>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 25836ddf9a8c4c70d8427d09041239c9d049ed12</find>
     </findStrings>
-=======
-    <dirStrings>
-      <dir>$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/source</dir>
-    </dirStrings>
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
-  </component>
-  <component name="HierarchyBrowserManager">
-    <option name="SHOW_PACKAGES" value="false" />
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="SORT_ALPHABETICALLY" value="false" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -347,62 +55,24 @@
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVLocal.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVChannels.java" />
+        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java" />
+        <option value="$PROJECT_DIR$/live-core/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTV.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVSource.java" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/live-source/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.html" />
-=======
-        <option value="$PROJECT_DIR$/live-core/src/main/resources/generatorConfig.xml" />
-        <option value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/SYBTV1Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/SYBTV2Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/SYBTV3Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/source/CztvSource.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/ShangyuLocal.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/XigoSource.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/XIGO2Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/XIGO1Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/PinghuLocal.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/YINGXI1Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/YINGXI2Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/source/YingxiSource.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/source/XigoSource.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/DeqingLocal.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/protocol/SourceConstants.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/hangzhou/source/CztvSource.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/source/SZTTKK1Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/SZTTKK1Channel.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/ShengzhouLocal.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/source/CztvSource.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
+        <option value="$PROJECT_DIR$/live.iws" />
+        <option value="$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java" />
       </list>
     </option>
-  </component>
-  <component name="InspectionManager">
-    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="SPLITTER_PROPORTION" value="0.5" />
-    <profile name="Default" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="LvcsProjectConfiguration">
-    <option name="ADD_LABEL_ON_PROJECT_OPEN" value="true" />
-    <option name="ADD_LABEL_ON_PROJECT_COMPILATION" value="true" />
-    <option name="ADD_LABEL_ON_FILE_PACKAGE_COMPILATION" value="true" />
-    <option name="ADD_LABEL_ON_PROJECT_MAKE" value="true" />
-    <option name="ADD_LABEL_ON_RUNNING" value="true" />
-    <option name="ADD_LABEL_ON_DEBUGGING" value="true" />
-    <option name="ADD_LABEL_ON_UNIT_TEST_PASSED" value="true" />
-    <option name="ADD_LABEL_ON_UNIT_TEST_FAILED" value="true" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -439,53 +109,10 @@
       </PATH>
     </treeState>
   </component>
-  <component name="PerforceConfiguration">
-    <option name="PORT" value="magic:1666" />
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="CLIENT" value="" />
-    <option name="TRACE" value="false" />
-    <option name="PERFORCE_STATUS" value="true" />
-    <option name="CHANGELIST_OPTION" value="false" />
-    <option name="SYSTEMROOT" value="" />
-    <option name="P4_EXECUTABLE" value="p4" />
-    <option name="SHOW_BRANCH_HISTORY" value="false" />
-    <option name="GENERATE_COMMENT" value="false" />
-    <option name="SYNC_OPTION" value="Sync" />
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
-    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
-    <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
-    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_FILE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="106" />
-    <option name="y" value="40" />
-    <option name="width" value="1453" />
-    <option name="height" value="956" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Android</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
+    <option name="y" value="23" />
+    <option name="width" value="1639" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -502,10 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
       <pane id="Scratches" />
-=======
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -593,10 +217,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protocol" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -689,25 +309,6 @@
               <option name="myItemId" value="readyidu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-<<<<<<< HEAD
-=======
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shengzhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -739,26 +340,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-<<<<<<< HEAD
               <option name="myItemId" value="controller" />
-=======
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shengzhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -772,7 +354,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
+              <option name="myItemId" value="live-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -791,22 +409,6 @@
               <option name="myItemId" value="readyidu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shangyu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -818,318 +420,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hangzhou" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hangzhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deqing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhejiang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deqing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-<<<<<<< HEAD
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-=======
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-service" />
+              <option name="myItemId" value="live-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1163,7 +454,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="live-service" />
+              <option name="myItemId" value="live-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1191,209 +482,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="readyidu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
+      <pane id="Scope" />
     </panes>
-  </component>
-  <component name="ProjectViewSettings">
-    <navigator currentView="ProjectPane" flattenPackages="false" showMembers="false" showStructure="false" autoscrollToSource="false" splitterProportion="0.5" />
-    <view id="ProjectPane">
-      <expanded_node type="directory" url="file://$PROJECT_DIR$" />
-    </view>
-    <view id="SourcepathPane" />
-    <view id="ClasspathPane" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-<<<<<<< HEAD
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF" />
       <recent name="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view" />
-=======
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.readyidu.source.local.zhejiang.shengzhou.source" />
-      <recent name="com.readyidu.source.local.zhejiang.shengzhou" />
-      <recent name="com.readyidu.source.local.zhejiang.deqing" />
-      <recent name="com.readyidu.source.local.zhejiang.deqing.source" />
-      <recent name="com.readyidu.source.local.zhejiang.pinghu" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     </key>
   </component>
   <component name="RunDashboard">
@@ -1408,7 +506,6 @@
       </list>
     </option>
   </component>
-<<<<<<< HEAD
   <component name="RunManager" selected="Maven.Unnamed">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
@@ -1421,9 +518,6 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
-=======
-  <component name="RunManager" selected="Maven.live">
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -1632,7 +726,6 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
-<<<<<<< HEAD
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="" />
       <working_directory value="$PROJECT_DIR$" />
@@ -1653,8 +746,6 @@
       <kind value="DIRECTORY" />
       <method />
     </configuration>
-=======
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -1795,7 +886,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-<<<<<<< HEAD
     <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1834,8 +924,6 @@
       <envs />
       <method />
     </configuration>
-=======
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1880,7 +968,6 @@
       <envs />
       <method />
     </configuration>
-<<<<<<< HEAD
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -1894,15 +981,12 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-=======
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-<<<<<<< HEAD
     <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1923,9 +1007,6 @@
       <method />
     </configuration>
     <configuration default="false" name="Unnamed" type="MavenRunConfiguration" factoryName="Maven">
-=======
-    <configuration default="false" name="live" type="MavenRunConfiguration" factoryName="Maven">
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -1936,6 +1017,8 @@
             </option>
             <option name="goals">
               <list>
+                <option value="clean" />
+                <option value="install" />
                 <option value="jetty:run" />
               </list>
             </option>
@@ -1950,7 +1033,7 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Maven.live" />
+      <item index="0" class="java.lang.String" itemvalue="Maven.Unnamed" />
     </list>
   </component>
   <component name="SbtLocalSettings">
@@ -1961,35 +1044,6 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="StarteamConfiguration">
-    <option name="SERVER" value="" />
-    <option name="PORT" value="49201" />
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="PROJECT" value="" />
-    <option name="VIEW" value="" />
-    <option name="ALTERNATIVE_WORKING_PATH" value="" />
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
-    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
-  </component>
-  <component name="StructureViewFactory">
-    <option name="SORT_MODE" value="0" />
-    <option name="GROUP_INHERITED" value="true" />
-    <option name="AUTOSCROLL_MODE" value="true" />
-    <option name="SHOW_FIELDS" value="true" />
-    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
-    <option name="GROUP_GETTERS_AND_SETTERS" value="true" />
-    <option name="SHOW_INHERITED" value="false" />
-    <option name="HIDE_NOT_PUBLIC" value="false" />
-  </component>
-  <component name="SvnConfiguration">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="AUTO_ADD_FILES" value="0" />
-    <option name="AUTO_DEL_FILES" value="0" />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d4c73e5b-9adf-4b15-9dcb-63545df765c8" name="Default" comment="" />
@@ -1999,51 +1053,23 @@
       <updated>1497495215756</updated>
       <workItem from="1497495218008" duration="2361000" />
       <workItem from="1497498638710" duration="3074000" />
-<<<<<<< HEAD
       <workItem from="1497502206843" duration="1275000" />
       <workItem from="1497583996067" duration="205000" />
-      <workItem from="1497604469298" duration="2412000" />
-=======
-      <workItem from="1497502206843" duration="773000" />
-      <workItem from="1497508129848" duration="13725000" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
+      <workItem from="1497604469298" duration="2856000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="9327000" />
-=======
-    <option name="totallyTimeSpent" value="19933000" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-  </component>
-  <component name="TodoView" selected-index="0">
-    <todo-panel id="selected-file">
-      <are-packages-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="9771000" />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
     <frame x="0" y="23" width="1639" height="1027" extended-state="6" />
-=======
-    <frame x="106" y="40" width="1453" height="956" extended-state="0" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18534753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18497519" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18534753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2051,28 +1077,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32291666" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-=======
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3275463" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24278075" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26236695" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904148" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28561303" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2083,6 +1099,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2092,141 +1109,9 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VssConfiguration">
-    <CheckoutOptions>
-      <option name="COMMENT" value="" />
-      <option name="DO_NOT_GET_LATEST_VERSION" value="false" />
-      <option name="REPLACE_WRITABLE" value="false" />
-      <option name="RECURSIVE" value="false" />
-    </CheckoutOptions>
-    <CheckinOptions>
-      <option name="COMMENT" value="" />
-      <option name="KEEP_CHECKED_OUT" value="false" />
-      <option name="RECURSIVE" value="false" />
-    </CheckinOptions>
-    <AddOptions>
-      <option name="COMMENT" value="" />
-      <option name="STORE_ONLY_LATEST_VERSION" value="false" />
-      <option name="CHECK_OUT_IMMEDIATELY" value="false" />
-      <option name="FILE_TYPE" value="0" />
-    </AddOptions>
-    <UndocheckoutOptions>
-      <option name="MAKE_WRITABLE" value="false" />
-      <option name="REPLACE_LOCAL_COPY" value="0" />
-      <option name="RECURSIVE" value="false" />
-    </UndocheckoutOptions>
-    <DiffOptions>
-      <option name="IGNORE_WHITE_SPACE" value="false" />
-      <option name="IGNORE_CASE" value="false" />
-    </DiffOptions>
-    <GetOptions>
-      <option name="REPLACE_WRITABLE" value="0" />
-      <option name="MAKE_WRITABLE" value="false" />
-      <option name="RECURSIVE" value="false" />
-    </GetOptions>
-    <option name="CLIENT_PATH" value="" />
-    <option name="SRCSAFEINI_PATH" value="" />
-    <option name="USER_NAME" value="" />
-    <option name="PWD" value="" />
-    <option name="SHOW_CHECKOUT_OPTIONS" value="true" />
-    <option name="SHOW_ADD_OPTIONS" value="true" />
-    <option name="SHOW_UNDOCHECKOUT_OPTIONS" value="true" />
-    <option name="SHOW_DIFF_OPTIONS" value="true" />
-    <option name="SHOW_GET_OPTIONS" value="true" />
-    <option name="USE_EXTERNAL_DIFF" value="false" />
-    <option name="EXTERNAL_DIFF_PATH" value="" />
-    <option name="REUSE_LAST_COMMENT" value="false" />
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
-    <option name="SHOW_CHECKIN_OPTIONS" value="true" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
-  </component>
-  <component name="WebViewSettings">
-    <webview flattenPackages="false" showMembers="false" autoscrollToSource="false" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java</url>
-          <line>53</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/service/impl/SourceServiceImpl.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Source.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ZhejiangLocal.java</url>
-          <line>48</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/source/XigoSource.java</url>
-          <line>17</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/source/YingxiSource.java</url>
-          <line>17</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/DeqingLocal.java</url>
-          <line>29</line>
-          <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/SZTTKK1Channel.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/source/CztvSource.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/SourceController.java</url>
-          <line>55</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2240,7 +1125,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2250,12 +1135,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2283,8 +1167,6 @@
         </state>
       </provider>
     </entry>
-=======
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/CZTV1Channel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -2292,7 +1174,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -2314,8 +1195,6 @@
         </state>
       </provider>
     </entry>
-=======
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
     <entry file="jar://$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar!/org/json/simple/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1635">
@@ -2323,7 +1202,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/String.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="2237" column="18" lean-forward="false" selection-start-line="2237" selection-start-column="18" selection-end-line="2237" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -2374,6 +1259,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="e#643#644#0" expanded="false" />
+            <element signature="e#671#672#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1633">
+          <caret line="78" column="59" lean-forward="false" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ningbo/source/NbtvSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -2381,138 +1284,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/live-core/src/main/resources/generatorConfig.xml">
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/SourceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="644">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/live-core/src/main/java/com/readyidu/service/impl/CacheServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/CZTV5Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/CZTV11Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/service/SourceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-237">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ZhejiangLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="66" column="13" lean-forward="false" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/ShangyuLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="49" lean-forward="false" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/hangzhou/source/HuluSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/SYBTV1Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="52" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/SYBTV2Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="644">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-=======
-        <state relative-caret-position="135">
-          <caret line="13" column="52" lean-forward="false" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-          <folding />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/SYBTV3Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="138">
           <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="86" />
         </state>
@@ -2530,25 +1310,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-=======
-        <state relative-caret-position="285">
-          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/XIGO2Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/assets/js/demo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -2563,166 +1328,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/YINGXI2Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/PinghuLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/XIGO1Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="51" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/pinghu/source/XigoSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/hangzhou/source/CztvSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shangyu/source/CztvSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/hangzhou/Xiaoshan1Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/protocol/SourceConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Local.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#343#344#0" expanded="true" />
-            <element signature="e#375#376#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/ShengzhouLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/SZTTKK1Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/shengzhou/source/CztvSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/YINGXI1Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/ChannelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
-=======
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/DeqingLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-=======
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Source.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -2733,136 +1352,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/live.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live.ipr">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live.iws">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1862">
+          <caret line="219" column="20" lean-forward="true" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="43" />
+        <state relative-caret-position="391">
+          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="32" />
-=======
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/deqing/source/YingxiSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/SourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/service/impl/SourceServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/hangzhou/HTV3Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-=======
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>live-service:war</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>live</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
->>>>>>> 25836ddf9a8c4c70d8427d09041239c9d049ed12
-  </component>
-  <component name="mavenExecuteGoalHistory">
-    <option value="" />
   </component>
 </project>

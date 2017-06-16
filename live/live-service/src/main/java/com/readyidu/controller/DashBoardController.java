@@ -15,7 +15,7 @@ public class DashBoardController {
 
     @RequestMapping
     public ModelAndView dashBoardIndex() {
-
+        
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
 
