@@ -15,7 +15,40 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DashBoardController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-206">
+              <caret line="75" column="23" lean-forward="false" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+              <folding>
+                <element signature="e#35688#35694#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="statistic.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/statistic.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,6 +63,7 @@
       <find>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 25836ddf9a8c4c70d8427d09041239c9d049ed12</find>
       <find>../../assets</find>
       <find>../assets</find>
+      <find>active</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -43,14 +77,11 @@
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVLocal.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVChannels.java" />
-        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTV.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVSource.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml" />
         <option value="$PROJECT_DIR$/live.iws" />
-        <option value="$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/calendar.html" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/charts.html" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/template.html" />
@@ -79,7 +110,15 @@
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/components/sweet-alert.html" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/components/typography.html" />
         <option value="$PROJECT_DIR$/live-core/src/main/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.html" />
+        <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/statistic.jsp" />
+        <option value="$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml" />
+        <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.jsp" />
+        <option value="$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java" />
+        <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/livingChannel.jsp" />
+        <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/checkChannel.jsp" />
+        <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/typeChannel.jsp" />
       </list>
     </option>
   </component>
@@ -125,6 +164,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1639" />
     <option name="height" value="1027" />
@@ -264,6 +304,82 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -361,10 +477,6 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -427,68 +539,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="live-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1082,26 +1132,26 @@
       <workItem from="1497583996067" duration="205000" />
       <workItem from="1497604469298" duration="3106000" />
       <workItem from="1497650092174" duration="510000" />
-      <workItem from="1497836393244" duration="3198000" />
+      <workItem from="1497836393244" duration="13860000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13729000" />
+    <option name="totallyTimeSpent" value="24391000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1639" height="1027" extended-state="6" />
+    <frame x="1" y="23" width="1639" height="1027" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18534753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18534753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24984346" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1110,10 +1160,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24278075" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24278075" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2686287" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2686287" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1146,194 +1196,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="448" column="0" lean-forward="false" selection-start-line="448" selection-start-column="0" selection-end-line="448" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.7.RELEASE/spring-webmvc-4.1.7.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.7.RELEASE/spring-web-4.1.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVChannels.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.28/fastjson-1.2.28.jar!/com/alibaba/fastjson/JSON.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15435">
-          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/source/CztvSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1633">
-          <caret line="78" column="59" lean-forward="false" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ningbo/source/NbtvSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/SourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-core/src/main/java/com/readyidu/service/impl/CacheServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live.ipr">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live.iws">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1862">
-          <caret line="219" column="20" lean-forward="true" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/calendar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9039">
-          <caret line="393" column="31" lean-forward="false" selection-start-line="393" selection-start-column="31" selection-end-line="393" selection-end-column="31" />
-          <folding>
-            <element signature="e#16761#16767#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/charts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10926">
-          <caret line="479" column="31" lean-forward="false" selection-start-line="479" selection-start-column="31" selection-end-line="479" selection-end-column="31" />
-          <folding>
-            <element signature="e#21768#21774#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5239">
-          <caret line="230" column="31" lean-forward="false" selection-start-line="230" selection-start-column="31" selection-end-line="230" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/widgets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17544">
-          <caret line="765" column="31" lean-forward="false" selection-start-line="765" selection-start-column="31" selection-end-line="765" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/tables/datatables.net.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20057">
-          <caret line="903" column="13" lean-forward="false" selection-start-line="903" selection-start-column="13" selection-end-line="903" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/tables/extended.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16768">
           <caret line="760" column="7" lean-forward="false" selection-start-line="760" selection-start-column="7" selection-end-line="760" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,6 +1208,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12904">
           <caret line="573" column="7" lean-forward="false" selection-start-line="573" selection-start-column="7" selection-end-line="573" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1348,6 +1216,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2600">
           <caret line="162" column="13" lean-forward="false" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1355,6 +1224,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4595">
           <caret line="202" column="13" lean-forward="false" selection-start-line="202" selection-start-column="13" selection-end-line="202" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1363,7 +1233,7 @@
         <state relative-caret-position="3750">
           <caret line="212" column="13" lean-forward="false" selection-start-line="212" selection-start-column="13" selection-end-line="212" selection-end-column="13" />
           <folding>
-            <element signature="e#8155#8161#0" expanded="false" />
+            <element signature="e#8152#8158#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1372,6 +1242,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4256">
           <caret line="234" column="13" lean-forward="false" selection-start-line="234" selection-start-column="13" selection-end-line="234" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1379,6 +1250,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10810">
           <caret line="470" column="7" lean-forward="false" selection-start-line="470" selection-start-column="7" selection-end-line="470" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1386,6 +1258,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11201">
           <caret line="487" column="7" lean-forward="false" selection-start-line="487" selection-start-column="7" selection-end-line="487" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1410,7 +1283,7 @@
         <state relative-caret-position="9039">
           <caret line="393" column="4" lean-forward="false" selection-start-line="393" selection-start-column="4" selection-end-line="393" selection-end-column="4" />
           <folding>
-            <element signature="e#16666#16672#0" expanded="false" />
+            <element signature="e#16665#16671#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1425,7 +1298,7 @@
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#34129#34135#0" expanded="false" />
+            <element signature="e#34128#34134#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1434,6 +1307,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15106">
           <caret line="659" column="7" lean-forward="false" selection-start-line="659" selection-start-column="7" selection-end-line="659" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1441,6 +1315,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13887">
           <caret line="606" column="13" lean-forward="false" selection-start-line="606" selection-start-column="13" selection-end-line="606" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1449,15 +1324,8 @@
         <state relative-caret-position="12530">
           <caret line="547" column="13" lean-forward="false" selection-start-line="547" selection-start-column="13" selection-end-line="547" selection-end-column="13" />
           <folding>
-            <element signature="e#29065#29071#0" expanded="false" />
+            <element signature="e#29064#29070#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/components/buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19729">
-          <caret line="860" column="7" lean-forward="false" selection-start-line="860" selection-start-column="7" selection-end-line="860" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1465,6 +1333,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13703">
           <caret line="598" column="7" lean-forward="false" selection-start-line="598" selection-start-column="7" selection-end-line="598" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1472,6 +1341,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9269">
           <caret line="403" column="7" lean-forward="false" selection-start-line="403" selection-start-column="7" selection-end-line="403" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1480,7 +1350,7 @@
         <state relative-caret-position="14145">
           <caret line="615" column="7" lean-forward="false" selection-start-line="615" selection-start-column="7" selection-end-line="615" selection-end-column="7" />
           <folding>
-            <element signature="e#35703#35709#0" expanded="false" />
+            <element signature="e#35702#35708#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1489,6 +1359,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15267">
           <caret line="666" column="7" lean-forward="false" selection-start-line="666" selection-start-column="7" selection-end-line="666" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1497,7 +1368,7 @@
         <state relative-caret-position="10442">
           <caret line="454" column="7" lean-forward="false" selection-start-line="454" selection-start-column="7" selection-end-line="454" selection-end-column="7" />
           <folding>
-            <element signature="e#20757#20763#0" expanded="false" />
+            <element signature="e#20756#20762#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1506,6 +1377,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10943">
           <caret line="478" column="7" lean-forward="false" selection-start-line="478" selection-start-column="7" selection-end-line="478" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1517,31 +1389,242 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/assets/css/demo.css">
+    <entry file="file://$PROJECT_DIR$/live-core/src/main/java/com/readyidu/service/impl/CacheServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="44">
+          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.html">
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/util/HttpUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        <state relative-caret-position="345">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/SourceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/ChannelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="65" column="5" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/protocol/SourceUri.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/LiveManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Local.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Source.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/base/Channel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ningbo/NingboLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ningbo/NBTV1Channel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/protocol/SourceConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="61" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/zhejiang/ningbo/source/NbtvSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVChannels.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#37954#37960#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="false" />
+            <element signature="e#387#388#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/cctv/CCTVSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="56" column="28" lean-forward="false" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1472">
+          <caret line="64" column="22" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="27" column="46" lean-forward="true" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/components/buttons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="111" column="49" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/assets/js/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="17" />
+        <state relative-caret-position="4416">
+          <caret line="192" column="75" lean-forward="false" selection-start-line="192" selection-start-column="69" selection-end-line="192" selection-end-column="75" />
           <folding>
             <marker date="1479398639000" expanded="true" signature="784:825" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/assets/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/livingChannel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/checkChannel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/typeChannel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/dashboard.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-206">
+          <caret line="75" column="23" lean-forward="false" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+          <folding>
+            <element signature="e#35688#35694#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/pages/statistic.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

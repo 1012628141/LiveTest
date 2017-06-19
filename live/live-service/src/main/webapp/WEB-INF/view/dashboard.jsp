@@ -1,3 +1,7 @@
+<%@page contentType="text/html; charset=utf-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!doctype html>
 <html lang="en">
 
@@ -57,77 +61,91 @@
                         </div>
                     </div>
                 </div>
-                <ul class="nav">
-                    <li class="active">
-                        <a href="./dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p>统计数据</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="collapse" href="#componentsExamples">
-                            <i class="material-icons">apps</i>
-                            <p>直播频道
-                                <b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse" id="componentsExamples">
-                            <ul class="nav">
-                                <li>
-                                    <a href="#">全部频道</a>
-                                </li>
-                                <li>
-                                    <a href="#">频道存活检测</a>
-                                </li>
-                                <li>
-                                    <a href="#">高清频道</a>
-                                </li>
-                                <li>
-                                    <a href="#">其他频道（未使用）</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a data-toggle="collapse" href="#">
-                            <i class="material-icons">grid_on</i>
-                            <p>频道分类
-                                <!--<b class="caret"></b>-->
-                            </p>
-                        </a>
-                        <!--<div class="collapse" id="tablesExamples">-->
-                            <!--<ul class="nav">-->
-                                <!--<li>-->
-                                    <!--<a href="#">数据统计/分析</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="#">用户数据</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="#">用户数据</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="#">商家管理</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="#">商品管理</a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="material-icons">gavel</i>
-                            <p>服务器状态</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="material-icons">timeline</i>
-                            <p>用户热图</p>
-                        </a>
-                    </li>
-                </ul>
+                <%--获得导航--%>
+                <c:if test="${not empty navItem}">
+                    <ul class="nav">
+                        <c:forEach var="listValue" items="${navItem}" varStatus="loop">
+                            <li class="${listValue.id == active ? "active": ""}">
+                                <a href="${listValue.href}">
+                                    <i class="material-icons">${listValue.icon}</i>
+                                    <p>${listValue.name}</p>
+                                </a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </c:if>
+
+                <%--<ul class="nav">--%>
+                    <%--<li class="active">--%>
+                        <%--<a href="dashboard.jsp">--%>
+                            <%--<i class="material-icons">dashboard</i>--%>
+                            <%--<p>统计数据</p>--%>
+                        <%--</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a data-toggle="collapse" href="#componentsExamples">--%>
+                            <%--<i class="material-icons">apps</i>--%>
+                            <%--<p>直播频道--%>
+                                <%--<b class="caret"></b>--%>
+                            <%--</p>--%>
+                        <%--</a>--%>
+                        <%--<div class="collapse" id="componentsExamples">--%>
+                            <%--<ul class="nav">--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">全部频道</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">频道存活检测</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">高清频道</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">其他频道（未使用）</a>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a data-toggle="collapse" href="#">--%>
+                            <%--<i class="material-icons">grid_on</i>--%>
+                            <%--<p>频道分类--%>
+                                <%--<!--<b class="caret"></b>-->--%>
+                            <%--</p>--%>
+                        <%--</a>--%>
+                        <%--<!--<div class="collapse" id="tablesExamples">-->--%>
+                            <%--<!--<ul class="nav">-->--%>
+                                <%--<!--<li>-->--%>
+                                    <%--<!--<a href="#">数据统计/分析</a>-->--%>
+                                <%--<!--</li>-->--%>
+                                <%--<!--<li>-->--%>
+                                    <%--<!--<a href="#">用户数据</a>-->--%>
+                                <%--<!--</li>-->--%>
+                                <%--<!--<li>-->--%>
+                                    <%--<!--<a href="#">用户数据</a>-->--%>
+                                <%--<!--</li>-->--%>
+                                <%--<!--<li>-->--%>
+                                    <%--<!--<a href="#">商家管理</a>-->--%>
+                                <%--<!--</li>-->--%>
+                                <%--<!--<li>-->--%>
+                                    <%--<!--<a href="#">商品管理</a>-->--%>
+                                <%--<!--</li>-->--%>
+                            <%--<!--</ul>-->--%>
+                        <%--<!--</div>-->--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="#">--%>
+                            <%--<i class="material-icons">gavel</i>--%>
+                            <%--<p>服务器状态</p>--%>
+                        <%--</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<a href="#">--%>
+                            <%--<i class="material-icons">timeline</i>--%>
+                            <%--<p>用户热图</p>--%>
+                        <%--</a>--%>
+                    <%--</li>--%>
+                <%--</ul>--%>
             </div>
         </div>
         <div class="main-panel">
@@ -197,74 +215,8 @@
             </nav>
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">weekend</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">直播源（个）</p>
-                                    <h3 class="card-title">184</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">查看全部直播源</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="rose">
-                                    <i class="material-icons">equalizer</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">实时用户活跃（万）</p>
-                                    <h3 class="card-title">7.521</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">local_offer</i> 使用YDTrack统计中
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="green">
-                                    <i class="material-icons">store</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">频道（个）</p>
-                                    <h3 class="card-title">107</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">date_range</i> 数据库拥有源的频道
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">本日新增用户（万）</p>
-                                    <h3 class="card-title">+0.245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> 实时更新
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <%--动态载入界面--%>
+                    <jsp:include page="${content}" flush="true" />
                     <!--<div class="row">-->
                         <!--<div class="col-md-4">-->
                             <!--<div class="card card-chart">-->
@@ -588,13 +540,8 @@
                     <nav class="pull-left">
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="/">
                                     管理后台主页
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    公司信息
                                 </a>
                             </li>
                             <li>
@@ -609,7 +556,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="http://www.devdylan.cn">Smart city .M</a>, 智慧城市管理后台
+                        <a href="/">Living city .admin</a>, 直播源管理系统
                     </p>
                 </div>
             </footer>

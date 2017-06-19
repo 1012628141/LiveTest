@@ -25,7 +25,7 @@
     <!-- 视图解析器，JSP-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>
-        <property name="suffix" value=".html"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
     <mvc:resources mapping="/img/**" location="/WEB-INF/assets/img/" cache-period="31556926"/>

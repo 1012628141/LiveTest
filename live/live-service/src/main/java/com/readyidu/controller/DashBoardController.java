@@ -1,8 +1,15 @@
 package com.readyidu.controller;
 
+import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 2017/6/16
@@ -14,11 +21,65 @@ import org.springframework.web.servlet.ModelAndView;
 public class DashBoardController {
 
     @RequestMapping
-    public ModelAndView dashBoardIndex() {
-
+    public ModelAndView dashBoardIndex(HttpServletRequest request) {
+        String item = request.getParameter("item");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
+        // 默认选中的选项卡与内容
+        modelAndView.addObject("navItem", getNavItemList());
+
+        if (TextUtils.isEmpty(item)) {
+            modelAndView.addObject("active", "statistic");
+            modelAndView.addObject("content", "pages/statistic.jsp");
+        } else {
+            modelAndView.addObject("active", item);
+            modelAndView.addObject("content", "pages/" + item + ".jsp");
+        }
 
         return modelAndView;
+    }
+
+    private List<Map<String, Object>> getNavItemList() {
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        // name: 功能，
+        // icon: 图标名
+        // items: 子选项
+        // isActive: 是否选中
+        // href: 链接
+        // id: Id
+        Map<String, Object> tMap = new HashMap<>();
+        tMap.put("name", "统计数据");
+        tMap.put("icon", "dashboard");
+        tMap.put("items", new ArrayList<>());
+        tMap.put("href", "/");
+        tMap.put("id", "statistic");
+        list.add(tMap);
+
+        Map<String, Object> zMap = new HashMap<>();
+        zMap.put("name", "直播频道");
+        zMap.put("icon", "apps");
+        zMap.put("items", new ArrayList<>());
+        zMap.put("href", "?item=livingChannel");
+        zMap.put("id", "livingChannel");
+        list.add(zMap);
+
+        Map<String, Object> aMap = new HashMap<>();
+        aMap.put("name", "频道检测");
+        aMap.put("icon", "done all");
+        aMap.put("href", "?item=checkChannel");
+        aMap.put("items", new ArrayList<>());
+        aMap.put("id", "checkChannel");
+        list.add(aMap);
+
+        Map<String, Object> pMap = new HashMap<>();
+        pMap.put("name", "频道分类");
+        pMap.put("icon", "grid_on");
+        pMap.put("items", new ArrayList<>());
+        pMap.put("href", "?item=typeChannel");
+        pMap.put("id", "typeChannel");
+        list.add(pMap);
+
+        return list;
     }
 }
