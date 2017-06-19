@@ -94,10 +94,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="live" target="1.7" />
-      <module name="live-core" target="1.7" />
-      <module name="live-service" target="1.7" />
-      <module name="live-source" target="1.7" />
+      <module name="live" target="1.8" />
+      <module name="live-core" target="1.8" />
+      <module name="live-service" target="1.8" />
+      <module name="live-source" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="Encoding">
@@ -286,9 +286,6 @@
         <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
       </item>
     </group>
-  </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="yuzhang" />
   </component>
   <component name="ProjectModuleManager">
     <modules>
