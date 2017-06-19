@@ -55,4 +55,19 @@ public class SourceConstants {
     //德清www.yingxi.tv
     public static final String SOURCE_YINGXI_YINGXITV1 = "source_yingxi_yingxitv1";
     public static final String SOURCE_YINGXI_YINGXITV2 = "source_yingxi_yingxitv2";
+
+    //无锡thmz.cn
+    public static final String SOURCE_THMZ_THMZ1 = "source_thmz_thmz1";
+    public static final String SOURCE_THMZ_THMZ2 = "source_thmz_thmz2";
+    public static final String SOURCE_THMZ_THMZ3 = "source_thmz_thmz3";
+    public static final String SOURCE_THMZ_THMZ4 = "source_thmz_thmz4";
+    public static final String SOURCE_THMZ_THMZ5 = "source_thmz_thmz5";
+    public static final String SOURCE_THMZ_THMZ6 = "source_thmz_thmz6";
+
+    //常州www.cztv.tv
+    public static final String SOURCE_CZTV_CZ1 = "source_cztv_cz1";
+    public static final String SOURCE_CZTV_CZ2 = "source_cztv_cz2";
+    public static final String SOURCE_CZTV_CZ3 = "source_cztv_cz3";
+    public static final String SOURCE_CZTV_CZ4 = "source_cztv_cz4";
+    public static final String SOURCE_CZTV_CZ5 = "source_cztv_cz5";
 }
