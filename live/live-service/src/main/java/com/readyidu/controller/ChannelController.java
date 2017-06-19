@@ -30,6 +30,8 @@ public class ChannelController {
     @ResponseBody
     public String getChannel(HttpServletRequest request,
                              HttpServletResponse response) {
+        String jx = HttpUtil.httpGet("http://www2.thmz.com/m2o/player/drmx.php?url=http://stream.thmz.com/wxtv1/sd/live.m3u8&time=1497769226765&refererurl=http://v2.thmz.com/&hash=0343feb9a32021871f92a8c794561d6f&playerVersion=4.03");
+
         try {
             List<Channel> channelInfoList = channelService
                     .getChannelList();

@@ -287,6 +287,9 @@
       </item>
     </group>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="yuzhang" />
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/live.iml" filepath="$PROJECT_DIR$/live.iml" />
@@ -295,11 +298,7 @@
       <module fileurl="file://$PROJECT_DIR$/live-source/live-source.iml" filepath="$PROJECT_DIR$/live-source/live-source.iml" />
     </modules>
   </component>
-<<<<<<< HEAD
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK" />
-=======
-  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" />
->>>>>>> 340bc0d94b2b8314a47928f2f6188ec8c33453e8
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK" />
   <component name="libraryTable">
     <library name="Maven: aopalliance:aopalliance:1.0">
       <CLASSES>
