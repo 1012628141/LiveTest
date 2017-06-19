@@ -70,4 +70,15 @@ public class SourceConstants {
     public static final String SOURCE_CZTV_CZ3 = "source_cztv_cz3";
     public static final String SOURCE_CZTV_CZ4 = "source_cztv_cz4";
     public static final String SOURCE_CZTV_CZ5 = "source_cztv_cz5";
+
+    //盐城http://www.0515yc.cn/
+    public static final String SOURCE_0515_YC1 = "source_0515_yc1";
+    public static final String SOURCE_0515_YC2 = "source_0515_yc2";
+    public static final String SOURCE_0515_YC3 = "source_0515_yc3";
+    public static final String SOURCE_0515_YC4 = "source_0515_yc4";
+
+    //泰州http://www.mytaizhou.net/
+    public static final String SOURCE_MY_TAIZHOU1 = "source_my_taizhou1";
+    public static final String SOURCE_MY_TAIZHOU2 = "source_my_taizhou2";
+    public static final String SOURCE_MY_TAIZHOU3 = "source_my_taizhou3";
 }

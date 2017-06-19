@@ -2,6 +2,8 @@ package com.readyidu.source.base;
 
 import com.readyidu.source.local.cctv.CCTVLocal;
 import com.readyidu.source.local.jiangsu.changzhou.ChangzhouLocal;
+import com.readyidu.source.local.jiangsu.taizhou.TaizhouLocal;
+import com.readyidu.source.local.jiangsu.yancheng.YanchengLocal;
 import com.readyidu.source.local.zhejiang.ZhejiangLocal;
 import com.readyidu.source.local.zhejiang.deqing.DeqingLocal;
 import com.readyidu.source.local.zhejiang.hangzhou.HangzhouLocal;
@@ -56,13 +58,19 @@ public class LiveManager {
         //常州
         Local changzhou = new ChangzhouLocal();
         locals.put(changzhou.getId(), changzhou);
+        //盐城
+        YanchengLocal yancheng = new YanchengLocal();
+        locals.put(yancheng.getId(), yancheng);
+        //泰州
+        TaizhouLocal taizhou = new TaizhouLocal();
+        locals.put(taizhou.getId(), taizhou);
     }
 
     public String getChannelSource(String sourceUri) {
         if (SourceUri.isSourceUri(sourceUri)) {
             SourceUri uri = new SourceUri(sourceUri);
             Local local = locals.get(uri.getLocal());
-            return StringUtils.chomp(local.getSource(uri));
+            return local.getSource(uri).replaceAll("\r|\n", "");
         } else {
             return null;
         }
