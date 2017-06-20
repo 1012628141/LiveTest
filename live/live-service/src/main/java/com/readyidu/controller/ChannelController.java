@@ -30,7 +30,7 @@ public class ChannelController {
     @ResponseBody
     public String getChannel(HttpServletRequest request,
                              HttpServletResponse response) {
-        String jx = HttpUtil.httpGet("http://www2.thmz.com/m2o/player/drmx.php?url=http://stream.thmz.com/wxtv1/sd/live.m3u8&time=1497769226765&refererurl=http://v2.thmz.com/&hash=0343feb9a32021871f92a8c794561d6f&playerVersion=4.03");
+//        String jx  = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv1","Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1",null,"Hm_lpvt_1bb06592fde65998bca187014e8f64d1=1497942184; Hm_lvt_1bb06592fde65998bca187014e8f64d1=1497942004; JSESSIONID=6E4E94385089EF0588C072A4008D8404");
 
         try {
             List<Channel> channelInfoList = channelService
