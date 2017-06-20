@@ -200,16 +200,6 @@
                             <!--</li>-->
                             <li class="separator hidden-lg hidden-md"></li>
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group form-search is-empty">
-                                <input type="text" class="form-control" placeholder="搜索频道">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </nav>
@@ -564,6 +554,7 @@
     </div>
 </body>
 <!--   Core JS Files   -->
+<!--   Core JS Files   -->
 <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="/js/bootstrap.min.js" type="text/javascript"></script>
@@ -603,6 +594,62 @@
 <script src="/js/material-dashboard.js"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="/js/demo.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatables').DataTable({
+            pageLength: 50,
+            lengthChange: false,
+            info: false,
+            ordering: false,
+            searching: false,
+            autoWidth: false,
+            "language": {
+                "paginate": {
+                    "previous": "上一页",
+                    "last": "最后一页",
+                    "next": "下一页"
+                }
+            },
+            "columns": [
+                null,
+                { "width": "70%" },
+                null,
+                null,
+                null
+            ]
+        });
+
+        var table = $('#datatables').DataTable();
+
+        // Refresh record
+        table.on('click', '.refresh', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('刷新内容');
+        });
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('编辑内容');
+        });
+
+        // Remove record
+        table.on('click', '.remove', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('删除内容');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
 <script type="text/javascript">
     $(document).ready(function() {
 

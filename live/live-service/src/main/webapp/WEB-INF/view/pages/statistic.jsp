@@ -3,12 +3,28 @@
 <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
+            <div class="card-header" data-background-color="green">
+                <i class="material-icons">store</i>
+            </div>
+            <div class="card-content">
+                <p class="category">频道</p>
+                <h3 class="card-title">${channelCount}（个）</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> 数据库拥有源的频道
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
             <div class="card-header" data-background-color="orange">
                 <i class="material-icons">weekend</i>
             </div>
             <div class="card-content">
-                <p class="category">直播源（个）</p>
-                <h3 class="card-title">184</h3>
+                <p class="category">直播源</p>
+                <h3 class="card-title">${sourceCount}（个）</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -24,8 +40,8 @@
                 <i class="material-icons">equalizer</i>
             </div>
             <div class="card-content">
-                <p class="category">实时用户活跃（万）</p>
-                <h3 class="card-title">7.521</h3>
+                <p class="category">实时用户活跃</p>
+                <h3 class="card-title">0（万）</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -36,28 +52,12 @@
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
-            <div class="card-header" data-background-color="green">
-                <i class="material-icons">store</i>
-            </div>
-            <div class="card-content">
-                <p class="category">频道（个）</p>
-                <h3 class="card-title">107</h3>
-            </div>
-            <div class="card-footer">
-                <div class="stats">
-                    <i class="material-icons">date_range</i> 数据库拥有源的频道
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
             <div class="card-header" data-background-color="blue">
                 <i class="fa fa-twitter"></i>
             </div>
             <div class="card-content">
-                <p class="category">本日新增用户（万）</p>
-                <h3 class="card-title">+0.245</h3>
+                <p class="category">本日新增用户</p>
+                <h3 class="card-title">+0（万）</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">

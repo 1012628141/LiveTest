@@ -1,10 +1,13 @@
 package com.readyidu.controller;
 
+import com.readyidu.model.Channel;
+import com.readyidu.service.ChannelService;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,12 +23,15 @@ import java.util.Map;
 @RequestMapping(value = "/")
 public class DashBoardController {
 
+    @Resource(name = "channelService")
+    private ChannelService channelService;
+
     @RequestMapping
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
         String item = request.getParameter("item");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
-        // 默认选中的选项卡与内容
+        // The default and selected menu items
         modelAndView.addObject("navItem", getNavItemList());
 
         if (TextUtils.isEmpty(item)) {
@@ -36,18 +42,25 @@ public class DashBoardController {
             modelAndView.addObject("content", "pages/" + item + ".jsp");
         }
 
+        // Get living, channel data
+        List<Channel> list = channelService.getChannelList();
+        modelAndView.addObject("channelList", list);
+        modelAndView.addObject("channelCount", list.size());
+
+        int sourceCount = 0;
+        for (Channel channel: list) {
+            if (!TextUtils.isEmpty(channel.getSource())) {
+                String[] s = channel.getSource().split("\\|");
+                sourceCount += s.length;
+            }
+        }
+        modelAndView.addObject("sourceCount", sourceCount);
+
         return modelAndView;
     }
-
     private List<Map<String, Object>> getNavItemList() {
         List<Map<String, Object>> list = new ArrayList<>();
 
-        // name: 功能，
-        // icon: 图标名
-        // items: 子选项
-        // isActive: 是否选中
-        // href: 链接
-        // id: Id
         Map<String, Object> tMap = new HashMap<>();
         tMap.put("name", "统计数据");
         tMap.put("icon", "dashboard");
