@@ -49,8 +49,8 @@
       <file leaf-file-name="live.iws" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/live.iws">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25537">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="377">
+              <caret line="1709" column="20" lean-forward="false" selection-start-line="1709" selection-start-column="20" selection-end-line="1709" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -152,7 +152,6 @@
       <list>
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/live-service/src/main/resources/spring/live-service-servlet.xml" />
-        <option value="$PROJECT_DIR$/live.iws" />
         <option value="$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/DashBoardController.java" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/calendar.html" />
         <option value="$PROJECT_DIR$/live-service/src/main/webapp/WEB-INF/view/charts.html" />
@@ -201,6 +200,7 @@
         <option value="$PROJECT_DIR$/live-core/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/out/production/live-core/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/live-service/src/main/java/com/readyidu/controller/ChannelController.java" />
+        <option value="$PROJECT_DIR$/live.iws" />
       </list>
     </option>
   </component>
@@ -1148,16 +1148,15 @@
       <workItem from="1497650092174" duration="510000" />
       <workItem from="1497836393244" duration="3198000" />
       <workItem from="1497863475792" duration="6277000" />
-      <workItem from="1497930460145" duration="7648000" />
+      <workItem from="1497930460145" duration="7688000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27654000" />
+    <option name="totallyTimeSpent" value="27694000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="103" y="33" width="1453" height="902" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1170,14 +1169,14 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24197531" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24197531" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.275691" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1644,8 +1643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/live.iws">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25537">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="377">
+          <caret line="1709" column="20" lean-forward="false" selection-start-line="1709" selection-start-column="20" selection-end-line="1709" selection-end-column="20" />
           <folding />
         </state>
       </provider>
