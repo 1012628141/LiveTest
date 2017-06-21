@@ -41,7 +41,7 @@
             </div>
             <div class="card-content">
                 <p class="category">实时用户活跃</p>
-                <h3 class="card-title">7.521（万）</h3>
+                <h3 class="card-title">0（万）</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -56,8 +56,8 @@
                 <i class="fa fa-twitter"></i>
             </div>
             <div class="card-content">
-                <p class="category">本日新增用户（万）</p>
-                <h3 class="card-title">+0.245</h3>
+                <p class="category">本日新增用户</p>
+                <h3 class="card-title">+0（万）</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">

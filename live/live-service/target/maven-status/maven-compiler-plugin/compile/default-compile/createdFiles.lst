@@ -1,7 +1,9 @@
 com/readyidu/service/SourceService.class
 com/readyidu/service/impl/ChannelServiceImpl.class
 com/readyidu/service/impl/SourceServiceImpl.class
+com/readyidu/controller/WebChannelController.class
 com/readyidu/controller/ChannelController.class
+com/readyidu/controller/WebChannelController$ChannelRequest.class
 com/readyidu/constants/NetworkCode.class
 com/readyidu/controller/DashBoardController.class
 com/readyidu/controller/SourceController.class

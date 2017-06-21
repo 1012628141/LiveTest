@@ -4,6 +4,7 @@ import com.readyidu.model.Channel;
 import com.readyidu.service.ChannelService;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,19 +30,38 @@ public class DashBoardController {
     @RequestMapping
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
         String item = request.getParameter("item");
+        String editId = request.getParameter("eid");
+        String removeId = request.getParameter("did");
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
-        // The default and selected menu items
         modelAndView.addObject("navItem", getNavItemList());
 
-        if (TextUtils.isEmpty(item)) {
-            modelAndView.addObject("active", "statistic");
-            modelAndView.addObject("content", "pages/statistic.jsp");
-        } else {
+        // Items selected
+        if (!TextUtils.isEmpty(item)) {
             modelAndView.addObject("active", item);
             modelAndView.addObject("content", "pages/" + item + ".jsp");
+            appendChannelList(modelAndView);
+            return modelAndView;
         }
 
+        // Edit item
+        if (!TextUtils.isEmpty(editId)) {
+            modelAndView.setViewName("pages/editChannel");
+
+            // Get channel data
+            modelAndView.addObject("channel", channelService.getChannel(Integer.valueOf(editId)));
+            return modelAndView;
+        }
+
+        // Default back main page
+        modelAndView.addObject("active", "statistic");
+        modelAndView.addObject("content", "pages/statistic.jsp");
+        appendChannelList(modelAndView);
+        return modelAndView;
+    }
+
+    private void appendChannelList(ModelAndView modelAndView) {
         // Get living, channel data
         List<Channel> list = channelService.getChannelList();
         modelAndView.addObject("channelList", list);
@@ -55,9 +75,8 @@ public class DashBoardController {
             }
         }
         modelAndView.addObject("sourceCount", sourceCount);
-
-        return modelAndView;
     }
+
     private List<Map<String, Object>> getNavItemList() {
         List<Map<String, Object>> list = new ArrayList<>();
 

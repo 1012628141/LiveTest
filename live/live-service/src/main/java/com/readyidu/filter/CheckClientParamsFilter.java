@@ -26,6 +26,7 @@ public class CheckClientParamsFilter implements Filter {
     @Override
     public void init(FilterConfig config) throws ServletException {
         this.excludes = new HashSet<String>();
+        this.excludes.add("/webChannel/addSource.do");
         String excludes = config.getInitParameter("excludedPages");
         Collections.addAll(this.excludes, excludes.split(","));
     }
