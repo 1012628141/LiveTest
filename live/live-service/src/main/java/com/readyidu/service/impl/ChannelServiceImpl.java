@@ -102,11 +102,14 @@ public class ChannelServiceImpl extends BaseService implements
                     || source.startsWith("rtmp")
                     || source.startsWith("sourceUri")) {
                 StringBuilder builder = new StringBuilder();
-                builder.append(source);
                 if (!TextUtils.isEmpty(originSource)) {
-                    builder.append("|");
                     builder.append(originSource);
+                    builder.append("|");
+                    builder.append(source);
+                } else {
+                    builder.append(source);
                 }
+
                 channel.setSource(builder.toString());
                 return channelMapper.updateByPrimaryKey(channel);
             }
