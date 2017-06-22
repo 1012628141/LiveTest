@@ -10,6 +10,7 @@ import com.readyidu.model.ChannelType;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
+import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -74,5 +75,88 @@ public class ChannelServiceImpl extends BaseService implements
                     CacheService.CACHE_TIMEOUT);
         }
         return channelType;
+    }
+
+    @Override
+    public int addChannel(String name) {
+        Channel channel = new Channel();
+        channel.setChannel(name);
+        channel.setTypeid("62");
+        return channelMapper.insert(channel);
+    }
+
+    @Override
+    public Channel getChannel(Integer id) {
+        return channelMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateSource(Integer channelId, String source) {
+
+        Channel channel = channelMapper.selectByPrimaryKey(channelId);
+        if (channel != null) {
+            String originSource = channel.getSource();
+
+            if (source.startsWith("http")
+                    || source.startsWith("https")
+                    || source.startsWith("rtmp")
+                    || source.startsWith("sourceUri")) {
+                StringBuilder builder = new StringBuilder();
+                if (!TextUtils.isEmpty(originSource)) {
+                    builder.append(originSource);
+                    builder.append("|");
+                    builder.append(source);
+                } else {
+                    builder.append(source);
+                }
+
+                channel.setSource(builder.toString());
+                return channelMapper.updateByPrimaryKey(channel);
+            }
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int removeSource(Integer channelId, Integer sourceId) {
+        Channel channel = channelMapper.selectByPrimaryKey(channelId);
+
+        if (channel != null) {
+            String originSource = channel.getSource();
+
+            if (!TextUtils.isEmpty(originSource)) {
+                String[] sources = originSource.split("\\|");
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < sources.length; i++) {
+                    if (i == sourceId) {
+                        continue;
+                    }
+                    builder.append(sources[i]);
+                    builder.append("|");
+                }
+                channel.setSource(builder.toString());
+                return channelMapper.updateByPrimaryKey(channel);
+            }
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int changeType(Integer channelId, String typeId) {
+
+        Channel channel = channelMapper.selectByPrimaryKey(channelId);
+        if (channel != null) {
+            channel.setTypeid(typeId);
+            return channelMapper.updateByPrimaryKey(channel);
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int removeChannel(Integer channelId) {
+        return channelMapper.deleteByPrimaryKey(channelId);
     }
 }

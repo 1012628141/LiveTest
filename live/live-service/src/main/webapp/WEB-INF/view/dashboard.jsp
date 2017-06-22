@@ -17,8 +17,6 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
     <link href="/css/material-dashboard.css" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
@@ -200,16 +198,6 @@
                             <!--</li>-->
                             <li class="separator hidden-lg hidden-md"></li>
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group form-search is-empty">
-                                <input type="text" class="form-control" placeholder="搜索频道">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </nav>
@@ -217,322 +205,6 @@
                 <div class="container-fluid">
                     <%--动态载入界面--%>
                     <jsp:include page="${content}" flush="true" />
-                    <!--<div class="row">-->
-                        <!--<div class="col-md-4">-->
-                            <!--<div class="card card-chart">-->
-                                <!--<div class="card-header" data-background-color="rose" data-header-animation="true">-->
-                                    <!--<div class="ct-chart" id="websiteViewsChart"></div>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<div class="card-actions">-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple fix-broken-card">-->
-                                            <!--<i class="material-icons">build</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">-->
-                                            <!--<i class="material-icons">refresh</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="Change Date">-->
-                                            <!--<i class="material-icons">edit</i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                    <!--<h4 class="card-title">用户日活</h4>-->
-                                    <!--<p class="category">当前周每天用户在线人数</p>-->
-                                <!--</div>-->
-                                <!--<div class="card-footer">-->
-                                    <!--<div class="stats">-->
-                                        <!--<i class="material-icons">access_time</i> 2分钟前更新-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="col-md-4">-->
-                            <!--<div class="card card-chart">-->
-                                <!--<div class="card-header" data-background-color="green" data-header-animation="true">-->
-                                    <!--<div class="ct-chart" id="dailySalesChart"></div>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<div class="card-actions">-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple fix-broken-card">-->
-                                            <!--<i class="material-icons">build</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">-->
-                                            <!--<i class="material-icons">refresh</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="Change Date">-->
-                                            <!--<i class="material-icons">edit</i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                    <!--<h4 class="card-title">商城销量</h4>-->
-                                    <!--<p class="category">-->
-                                        <!--<span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> 增幅</p>-->
-                                <!--</div>-->
-                                <!--<div class="card-footer">-->
-                                    <!--<div class="stats">-->
-                                        <!--<i class="material-icons">access_time</i> 刚刚更新-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="col-md-4">-->
-                            <!--<div class="card card-chart">-->
-                                <!--<div class="card-header" data-background-color="blue" data-header-animation="true">-->
-                                    <!--<div class="ct-chart" id="completedTasksChart"></div>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<div class="card-actions">-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple fix-broken-card">-->
-                                            <!--<i class="material-icons">build</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">-->
-                                            <!--<i class="material-icons">refresh</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="Change Date">-->
-                                            <!--<i class="material-icons">edit</i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                    <!--<h4 class="card-title">服务器访问次数（万次）</h4>-->
-                                    <!--<p class="category">当前周每日服务器承载量</p>-->
-                                <!--</div>-->
-                                <!--<div class="card-footer">-->
-                                    <!--<div class="stats">-->
-                                        <!--<i class="material-icons">access_time</i> 1分钟前更新-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="row">-->
-                        <!--<div class="col-md-12">-->
-                            <!--<div class="card">-->
-                                <!--<div class="card-header card-header-icon" data-background-color="green">-->
-                                    <!--<i class="material-icons">language</i>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<h4 class="card-title">智慧城市用户分布图</h4>-->
-                                    <!--<div class="row">-->
-                                        <!--<div class="col-md-5">-->
-                                            <!--<div class="table-responsive table-sales">-->
-                                                <!--<table class="table">-->
-                                                    <!--<tbody>-->
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                                <!--<div class="flag">-->
-                                                                    <!--<img src="/img/flags/US.png">-->
-                                                                <!--</div>-->
-                                                            <!--</td>-->
-                                                            <!--<td>美国</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--2.920-->
-                                                            <!--</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--53.23%-->
-                                                            <!--</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                                <!--<div class="flag">-->
-                                                                    <!--<img src="/img/flags/DE.png">-->
-                                                                <!--</div>-->
-                                                            <!--</td>-->
-                                                            <!--<td>德国</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--1.300-->
-                                                            <!--</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--20.43%-->
-                                                            <!--</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                                <!--<div class="flag">-->
-                                                                    <!--<img src="/img/flags/AU.png">-->
-                                                                <!--</div>-->
-                                                            <!--</td>-->
-                                                            <!--<td>澳大利亚</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--760-->
-                                                            <!--</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--10.35%-->
-                                                            <!--</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                                <!--<div class="flag">-->
-                                                                    <!--<img src="/img/flags/GB.png">-->
-                                                                <!--</div>-->
-                                                            <!--</td>-->
-                                                            <!--<td>英国</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--690-->
-                                                            <!--</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--7.87%-->
-                                                            <!--</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                                <!--<div class="flag">-->
-                                                                    <!--<img src="/img/flags/RO.png">-->
-                                                                <!--</div>-->
-                                                            <!--</td>-->
-                                                            <!--<td>罗马</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--600-->
-                                                            <!--</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--5.94%-->
-                                                            <!--</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                                <!--<div class="flag">-->
-                                                                    <!--<img src="/img/flags/BR.png">-->
-                                                                <!--</div>-->
-                                                            <!--</td>-->
-                                                            <!--<td>以色列</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--550-->
-                                                            <!--</td>-->
-                                                            <!--<td class="text-right">-->
-                                                                <!--4.34%-->
-                                                            <!--</td>-->
-                                                        <!--</tr>-->
-                                                    <!--</tbody>-->
-                                                <!--</table>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="col-md-6 col-md-offset-1">-->
-                                            <!--<div id="worldMap" class="map"></div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<h3>最热商品/服务</h3>-->
-                    <!--<br>-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-md-4">-->
-                            <!--<div class="card card-product">-->
-                                <!--<div class="card-image" data-header-animation="true">-->
-                                    <!--<a href="#pablo">-->
-                                        <!--<img class="img" src="/img/card-2.jpeg">-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<div class="card-actions">-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple fix-broken-card">-->
-                                            <!--<i class="material-icons">build</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">-->
-                                            <!--<i class="material-icons">art_track</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">-->
-                                            <!--<i class="material-icons">edit</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">-->
-                                            <!--<i class="material-icons">close</i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                    <!--<h4 class="card-title">-->
-                                        <!--<a href="#pablo">Cozy 5 Stars Apartment</a>-->
-                                    <!--</h4>-->
-                                    <!--<div class="card-description">-->
-                                        <!--The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="card-footer">-->
-                                    <!--<div class="price">-->
-                                        <!--<h4>$899/night</h4>-->
-                                    <!--</div>-->
-                                    <!--<div class="stats pull-right">-->
-                                        <!--<p class="category"><i class="material-icons">place</i> Barcelona, Spain</p>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="col-md-4">-->
-                            <!--<div class="card card-product">-->
-                                <!--<div class="card-image" data-header-animation="true">-->
-                                    <!--<a href="#pablo">-->
-                                        <!--<img class="img" src="/img/card-3.jpeg">-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<div class="card-actions">-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple fix-broken-card">-->
-                                            <!--<i class="material-icons">build</i> Fix Header!-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">-->
-                                            <!--<i class="material-icons">art_track</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">-->
-                                            <!--<i class="material-icons">edit</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">-->
-                                            <!--<i class="material-icons">close</i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                    <!--<h4 class="card-title">-->
-                                        <!--<a href="#pablo">Office Studio</a>-->
-                                    <!--</h4>-->
-                                    <!--<div class="card-description">-->
-                                        <!--The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the night life in London, UK.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="card-footer">-->
-                                    <!--<div class="price">-->
-                                        <!--<h4>$1.119/night</h4>-->
-                                    <!--</div>-->
-                                    <!--<div class="stats pull-right">-->
-                                        <!--<p class="category"><i class="material-icons">place</i> London, UK</p>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="col-md-4">-->
-                            <!--<div class="card card-product">-->
-                                <!--<div class="card-image" data-header-animation="true">-->
-                                    <!--<a href="#pablo">-->
-                                        <!--<img class="img" src="/img/card-1.jpeg">-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                                <!--<div class="card-content">-->
-                                    <!--<div class="card-actions">-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple fix-broken-card">-->
-                                            <!--<i class="material-icons">build</i> Fix Header!-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">-->
-                                            <!--<i class="material-icons">art_track</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">-->
-                                            <!--<i class="material-icons">edit</i>-->
-                                        <!--</button>-->
-                                        <!--<button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">-->
-                                            <!--<i class="material-icons">close</i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                    <!--<h4 class="card-title">-->
-                                        <!--<a href="#pablo">Beautiful Castle</a>-->
-                                    <!--</h4>-->
-                                    <!--<div class="card-description">-->
-                                        <!--The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Milan.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="card-footer">-->
-                                    <!--<div class="price">-->
-                                        <!--<h4>$459/night</h4>-->
-                                    <!--</div>-->
-                                    <!--<div class="stats pull-right">-->
-                                        <!--<p class="category"><i class="material-icons">place</i> Milan, Italy</p>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
                 </div>
             </div>
             <footer class="footer">
@@ -563,6 +235,7 @@
         </div>
     </div>
 </body>
+<!--   Core JS Files   -->
 <!--   Core JS Files   -->
 <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
@@ -601,16 +274,79 @@
 <script src="/js/jquery.tagsinput.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="/js/material-dashboard.js"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="/js/demo.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#datatables').DataTable({
+            pageLength: 20,
+            lengthChange: false,
+            info: false,
+            ordering: false,
+            autoWidth: true,
+            "language": {
+                "paginate": {
+                    "previous": "上一页",
+                    "last": "最后一页",
+                    "next": "下一页"
+                },
+                "search": "检索频道："
+            },
+            "search": {
+                "caseInsensitive": false
+            }
+        });
 
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
+        var table = $('#datatables').DataTable();
 
-        demo.initVectorMap();
+        $('.card .material-datatables label').addClass('form-group');
+
+        // Add channel
+        $('.btn-add-channel').on('click', function () {
+            // Add new channel
+            swal.queue([{
+                title: '请输入频道名称',
+                html:
+                '<div class="form-group">' +
+                '<input id="input-field" type="text" class="form-control" />' +
+                '</div>',
+                confirmButtonClass: 'btn btn-success',
+                confirmButtonText: '确认添加',
+                buttonsStyling: false,
+                showLoaderOnConfirm: true,
+                preConfirm: function () {
+                    return new Promise(function (resolve) {
+                        var value = $('#input-field').val();
+                        if (value && value.trim()) {
+                            $.ajax(
+                                {
+                                    type: "POST",
+                                    url: "/webChannel/addChannel/" + value,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        var result = JSON.parse(data);
+                                        if (result.code === 200) {
+                                            swal.insertQueueStep("添加成功 !");
+                                            window.location.reload();
+                                        } else {
+                                            swal.insertQueueStep("添加失败！");
+                                        }
+                                        resolve()
+                                    },
+                                    error: function () {
+                                        swal.insertQueueStep("添加失败！");
+                                        resolve()
+                                    }
+                                }
+                            );
+                        } else {
+                            swal.insertQueueStep("不能添加空字符串！");
+                            resolve()
+                        }
+                    });
+                }
+            }])
+        });
     });
 </script>
-
 </html>
