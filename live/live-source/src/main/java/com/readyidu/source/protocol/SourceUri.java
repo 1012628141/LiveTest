@@ -10,10 +10,16 @@ public class SourceUri {
     private String local;
     private String channel;
     private String source;
+    private int sourceIndex;
 
     public SourceUri(String uri) {
         if (SourceUri.isSourceUri(uri)) {
             uri = uri.replace(SOURCE_SCHEME, "");
+            String[] portSplit = uri.split(":");
+            if (portSplit.length == 2) {
+                sourceIndex = Integer.parseInt(portSplit[1]);
+                uri = portSplit[0];
+            }
             String[] uriSplit = uri.split("/");
             local = uriSplit[0];
             channel = uriSplit[1];
@@ -45,8 +51,16 @@ public class SourceUri {
         this.source = source;
     }
 
+    public int getSourceIndex() {
+        return sourceIndex;
+    }
+
+    public void setSourceIndex(int sourceIndex) {
+        this.sourceIndex = sourceIndex;
+    }
+
     public static boolean isSourceUri(String uri) {
-        if(!uri.startsWith(SOURCE_SCHEME)){
+        if (!uri.startsWith(SOURCE_SCHEME)) {
             return false;
         }
         String uriContent = uri.replace(SOURCE_SCHEME, "");
@@ -60,6 +74,7 @@ public class SourceUri {
                 "local='" + local + '\'' +
                 ", channel='" + channel + '\'' +
                 ", source='" + source + '\'' +
+                ", sourceIndex=" + sourceIndex +
                 '}';
     }
 }

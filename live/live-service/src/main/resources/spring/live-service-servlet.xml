@@ -29,7 +29,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
 
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
     <!-- 视图解析器，JSP-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
