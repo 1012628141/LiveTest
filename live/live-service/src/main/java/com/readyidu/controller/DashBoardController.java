@@ -31,7 +31,6 @@ public class DashBoardController {
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
         String item = request.getParameter("item");
         String editId = request.getParameter("eid");
-        String removeId = request.getParameter("did");
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
