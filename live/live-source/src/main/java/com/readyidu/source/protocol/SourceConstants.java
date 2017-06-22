@@ -9,6 +9,22 @@ public class SourceConstants {
     public static final String SOURCE_GDTV_STV = "source_gdtv_stv";
     //东方卫视
     public static final String SOURCE_STV_STV = "source_stv_stv";
+    //天津卫视
+    public static final String SOURCE_SHITING_TIANJIN_STV = "source_shiting_tianjin_stv";
+    //河南卫视
+    public static final String SOURCE_SHITING_HENAN_STV = "source_shiting_henan_stv";
+    //贵州卫视
+    public static final String SOURCE_SHITING_GUIZHOU_STV = "source_shiting_guizhou_stv";
+    //凤凰卫视
+    public static final String SOURCE_SHITING_FENGHUANG_STV = "source_shiting_fenghuang_stv";
+    //北京卫视
+    public static final String SOURCE_SHITING_BEIJING_STV = "source_shiting_beijing_stv";
+    //重庆卫视
+    public static final String SOURCE_SHITING_CHONGQING_STV = "source_shiting_chongqing_stv";
+    //湖南卫视
+    public static final String SOURCE_SHITING_HUNAN_STV = "source_shiting_hunan_stv";
+    //浙江卫视
+    public static final String SOURCE_SHITING_ZHEJIANG_STV = "source_shiting_zhejiang_stv";
 
     //浙江cztv.cn
     public static final String SOURCE_CZTV_1 = "source_cztv_1";
@@ -115,4 +131,20 @@ public class SourceConstants {
     public static final String SOURCE_STV_STV6 = "source_stv_stv6";
     public static final String SOURCE_STV_STV7 = "source_stv_stv7";
     public static final String SOURCE_STV_STV8 = "source_stv_stv8";
+
+    //湖南
+    public static final String SOURCE_HN_HNTV1  = "source_hn_hntv1";
+    public static final String SOURCE_HN_HNTV2  = "source_hn_hntv2";
+    public static final String SOURCE_HN_HNTV3  = "source_hn_hntv3";
+    public static final String SOURCE_HN_HNTV4  = "source_hn_hntv4";
+    public static final String SOURCE_HN_HNTV5  = "source_hn_hntv5";
+    public static final String SOURCE_HN_HNTV6  = "source_hn_hntv6";
+    public static final String SOURCE_HN_HNTV7  = "source_hn_hntv7";
+    public static final String SOURCE_HN_HNTV8  = "source_hn_hntv8";
+    public static final String SOURCE_HN_HNTV9  = "source_hn_hntv9";
+    public static final String SOURCE_HN_HNTV10  = "source_hn_hntv10";
+
+    //株洲
+    public static final String SOURCE_HN_ZZTV1  = "source_hn_zztv1";
+    public static final String SOURCE_HN_ZZTV2  = "source_hn_zztv2";
 }

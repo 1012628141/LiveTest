@@ -9,9 +9,15 @@ abstract public class Source {
 
     protected String sourceId;
     protected String source;
+    protected int index;
 
     public Source(String sourceId) {
         this.sourceId = sourceId;
+    }
+
+    public Source(String sourceId, int index) {
+        this.sourceId = sourceId;
+        this.index = index;
     }
 
     abstract protected String source();
