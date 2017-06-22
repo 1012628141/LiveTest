@@ -15,6 +15,7 @@
             <element id="module-output" name="live-service" />
           </element>
           <element id="directory" name="lib">
+            <element id="library" level="project" name="Maven: com.iheartradio.m3u8:open-m3u8:0.2.6" />
             <element id="archive" name="live-core-1.0.0.jar">
               <element id="module-output" name="live-core" />
             </element>
@@ -383,6 +384,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.iheartradio.m3u8:open-m3u8:0.2.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/iheartradio/m3u8/open-m3u8/0.2.6/open-m3u8-0.2.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/iheartradio/m3u8/open-m3u8/0.2.6/open-m3u8-0.2.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/iheartradio/m3u8/open-m3u8/0.2.6/open-m3u8-0.2.6-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-beanutils:commons-beanutils:1.9.2">

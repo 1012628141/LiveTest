@@ -276,77 +276,111 @@
 <script src="/js/material-dashboard.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#datatables').DataTable({
-            pageLength: 20,
-            lengthChange: false,
-            info: false,
-            ordering: false,
-            autoWidth: true,
-            "language": {
-                "paginate": {
-                    "previous": "上一页",
-                    "last": "最后一页",
-                    "next": "下一页"
-                },
-                "search": "检索频道："
+    var i = 0;
+
+    function check() {
+        var source = $($('.source-list')[i]).data("url");
+        $.ajax({
+            type: "GET",
+            url: "webChannel/checkSource.do?sourceUri=" + source,
+            success: function (data) {
+                var result = JSON.parse(data);
+                console.log(result);
+                if (result.code === 200) {
+                    $("td[link='" + result.data + "']").html("有效");
+                } else {
+                    $("td[link='" + result.data + "']").html("失效");
+                }
+                i ++;
+                check();
             },
-            "search": {
-                "caseInsensitive": false
+            error: function () {
+                i ++;
+                $("td[link='" + source + "']").html("检测失败");
+                check();
             }
         });
+    }
+    
+    $(document).ready(function() {
 
-        var table = $('#datatables').DataTable();
+        var page = "${content}";
+        if ( page === 'pages/checkChannel.jsp') {
+            check();
+        }
 
-        $('.card .material-datatables label').addClass('form-group');
-
-        // Add channel
-        $('.btn-add-channel').on('click', function () {
-            // Add new channel
-            swal.queue([{
-                title: '请输入频道名称',
-                html:
-                '<div class="form-group">' +
-                '<input id="input-field" type="text" class="form-control" />' +
-                '</div>',
-                confirmButtonClass: 'btn btn-success',
-                confirmButtonText: '确认添加',
-                buttonsStyling: false,
-                showLoaderOnConfirm: true,
-                preConfirm: function () {
-                    return new Promise(function (resolve) {
-                        var value = $('#input-field').val();
-                        if (value && value.trim()) {
-                            $.ajax(
-                                {
-                                    type: "POST",
-                                    url: "/webChannel/addChannel/" + value,
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (data) {
-                                        var result = JSON.parse(data);
-                                        if (result.code === 200) {
-                                            swal.insertQueueStep("添加成功 !");
-                                            window.location.reload();
-                                        } else {
-                                            swal.insertQueueStep("添加失败！");
-                                        }
-                                        resolve()
-                                    },
-                                    error: function () {
-                                        swal.insertQueueStep("添加失败！");
-                                        resolve()
-                                    }
-                                }
-                            );
-                        } else {
-                            swal.insertQueueStep("不能添加空字符串！");
-                            resolve()
-                        }
-                    });
+        if ( page === 'pages/livingChannel.jsp' ) {
+            $('#datatables').DataTable({
+                pageLength: 20,
+                lengthChange: false,
+                info: false,
+                ordering: false,
+                autoWidth: true,
+                "language": {
+                    "paginate": {
+                        "previous": "上一页",
+                        "last": "最后一页",
+                        "next": "下一页"
+                    },
+                    "search": "检索频道："
+                },
+                "search": {
+                    "caseInsensitive": false
                 }
-            }])
-        });
+            });
+
+            var table = $('#datatables').DataTable();
+
+            $('.card .material-datatables label').addClass('form-group');
+
+            // Add channel
+            $('.btn-add-channel').on('click', function () {
+                // Add new channel
+                swal.queue([{
+                    title: '请输入频道名称',
+                    html:
+                    '<div class="form-group">' +
+                    '<input id="input-field" type="text" class="form-control" />' +
+                    '</div>',
+                    confirmButtonClass: 'btn btn-success',
+                    confirmButtonText: '确认添加',
+                    buttonsStyling: false,
+                    showLoaderOnConfirm: true,
+                    preConfirm: function () {
+                        return new Promise(function (resolve) {
+                            var value = $('#input-field').val();
+                            if (value && value.trim()) {
+                                $.ajax(
+                                    {
+                                        type: "POST",
+                                        url: "/webChannel/addChannel/" + value,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function (data) {
+                                            var result = JSON.parse(data);
+                                            if (result.code === 200) {
+                                                swal.insertQueueStep("添加成功 !");
+                                                window.location.reload();
+                                            } else {
+                                                swal.insertQueueStep("添加失败！");
+                                            }
+                                            resolve()
+                                        },
+                                        error: function () {
+                                            swal.insertQueueStep("添加失败！");
+                                            resolve()
+                                        }
+                                    }
+                                );
+                            } else {
+                                swal.insertQueueStep("不能添加空字符串！");
+                                resolve()
+                            }
+                        });
+                    }
+                }])
+            });
+        }
     });
 </script>
 </html>

@@ -1,16 +1,26 @@
 package com.readyidu.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
+import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
+import org.apache.http.util.TextUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.HashMap;
+import java.util.Map;
+
+import static java.lang.Thread.sleep;
 
 /**
  * 2017/6/20
@@ -20,6 +30,7 @@ import java.util.HashMap;
 @Controller
 @RequestMapping(value = "/webChannel")
 public class WebChannelController {
+    private static final Logger logger = LoggerFactory.getLogger(WebChannelController.class);
 
     @Resource(name = "channelService")
     private ChannelService channelService;
@@ -71,6 +82,71 @@ public class WebChannelController {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @RequestMapping(value = "/checkSource.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public synchronized String checkChannel(HttpServletRequest request) {
+        String sourceUri = request.getParameter("sourceUri");
+        if (TextUtils.isEmpty(sourceUri)) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+
+        if (sourceUri.toLowerCase().startsWith("sourceuri")) {
+            // Request
+            Map<String, String> params = new HashMap<>();
+            params.put("sourceUri", sourceUri);
+            try {
+                String result = WebHttpTool.sendPost("http://localhost:6262/source/source.do", params);
+                Response response = JSON.parseObject(result, Response.class);
+                if (response.getCode() == 200) {
+                    return checkSource(response.getData().get("source"));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            checkSource(sourceUri);
+        }
+        return JsonResult.toString(NetworkCode.CODE_FAIL, sourceUri);
+    }
+
+    private String checkSource(String sourceUri) {
+        if (!TextUtils.isEmpty(sourceUri)) {
+            URI uri = URI.create(sourceUri);
+            if (uri.getPath().startsWith("rtmp")) {
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, sourceUri);
+            } else {
+                try {
+                    return JsonResult.toString(NetworkCode.CODE_SUCCESS, sourceUri);
+//                    InputStream liveStream = uri.toURL().openStream();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return JsonResult.toString(NetworkCode.CODE_FAIL, sourceUri);
+    }
+
+    public static class Response {
+        private Integer code;
+        private HashMap<String, String> data;
+
+        public HashMap<String, String> getData() {
+            return data;
+        }
+
+        public void setData(HashMap<String, String> data) {
+            this.data = data;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
         }
     }
 
