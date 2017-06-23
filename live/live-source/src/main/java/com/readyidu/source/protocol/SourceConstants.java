@@ -9,6 +9,10 @@ public class SourceConstants {
     public static final String SOURCE_GDTV_STV = "source_gdtv_stv";
     //东方卫视
     public static final String SOURCE_STV_STV = "source_stv_stv";
+
+    //视听网www.shiting5.com
+    //广东卫视
+    public static final String SOURCE_SHITING_GUANGDONG_STV = "source_shiting_guangdong_stv";
     //天津卫视
     public static final String SOURCE_SHITING_TIANJIN_STV = "source_shiting_tianjin_stv";
     //河南卫视
@@ -25,6 +29,46 @@ public class SourceConstants {
     public static final String SOURCE_SHITING_HUNAN_STV = "source_shiting_hunan_stv";
     //浙江卫视
     public static final String SOURCE_SHITING_ZHEJIANG_STV = "source_shiting_zhejiang_stv";
+    //江苏卫视
+    public static final String SOURCE_SHITING_JIANGSU_STV = "source_shiting_jiangsu_stv";
+    //安微卫视
+    public static final String SOURCE_SHITING_ANHUI_STV = "source_shiting_anhui_stv";
+    //旅游卫视
+    public static final String SOURCE_SHITING_LVYOU_STV = "source_shiting_lvyou_stv";
+    //广西卫视
+    public static final String SOURCE_SHITING_GUANGXI_STV = "source_shiting_guangxi_stv";
+    //湖北卫视
+    public static final String SOURCE_SHITING_HUBEI_STV = "source_shiting_hubei_stv";
+    //江西卫视
+    public static final String SOURCE_SHITING_JIANGXI_STV = "source_shiting_jiangxi_stv";
+    //山东卫视
+    public static final String SOURCE_SHITING_SHANDONG_STV = "source_shiting_shandong_stv";
+    //四川卫视
+    public static final String SOURCE_SHITING_SICHUAN_STV = "source_shiting_sichuan_stv";
+    //深圳卫视
+    public static final String SOURCE_SHITING_SHENZHEN_STV = "source_shiting_shenzhen_stv";
+    //河北卫视
+    public static final String SOURCE_SHITING_HEBEI_STV = "source_shiting_hebei_stv";
+    //山西卫视
+    public static final String SOURCE_SHITING_SHANXI_STV = "source_shiting_shanxi_stv";
+    //辽宁卫视
+    public static final String SOURCE_SHITING_LIAONING_STV = "source_shiting_liaoning_stv";
+    //吉林卫视
+    public static final String SOURCE_SHITING_JILIN_STV = "source_shiting_jilin_stv";
+    //云南卫视
+    public static final String SOURCE_SHITING_YUNNAN_STV = "source_shiting_yunnan_stv";
+    //黑龙江卫视
+    public static final String SOURCE_SHITING_HEILONGJIANG_STV = "source_shiting_heilongjiang_stv";
+    //甘肃卫视
+    public static final String SOURCE_SHITING_GANSU_STV = "source_shiting_gansu_stv";
+    //新疆卫视
+    public static final String SOURCE_SHITING_XINJIANG_STV = "source_shiting_xinjiang_stv";
+    //内蒙卫视
+    public static final String SOURCE_SHITING_NEIMENG_STV = "source_shiting_neimeng_stv";
+    //西藏卫视
+    public static final String SOURCE_SHITING_XIZANG_STV = "source_shiting_xizang_stv";
+    //宁夏卫视
+    public static final String SOURCE_SHITING_NINGXIA_STV = "source_shiting_ningxia_stv";
 
     //浙江cztv.cn
     public static final String SOURCE_CZTV_1 = "source_cztv_1";
