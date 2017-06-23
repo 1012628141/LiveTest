@@ -58,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HttpUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/util/HttpUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
@@ -67,6 +67,16 @@
                 <element signature="e#424#425#0" expanded="true" />
                 <element signature="e#478#479#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="live.iws" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/live.iws">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7487">
+              <caret line="1142" column="19" lean-forward="true" selection-start-line="1142" selection-start-column="19" selection-end-line="1142" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,16 +96,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FJTV6Channel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/fujian/FJTV6Channel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="13" column="51" lean-forward="false" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -189,6 +189,7 @@
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/fujian/FujianLocal.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/fujian/source/FjtvSource.java" />
         <option value="$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/stv/source/FjtvSource.java" />
+        <option value="$PROJECT_DIR$/live.iws" />
       </list>
     </option>
   </component>
@@ -1160,12 +1161,12 @@
       <option name="presentableId" value="Default" />
       <updated>1498132151929</updated>
       <workItem from="1498132156144" duration="40000" />
-      <workItem from="1498132420608" duration="27291000" />
+      <workItem from="1498132420608" duration="27383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27331000" />
+    <option name="totallyTimeSpent" value="27423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-21" y="23" width="1550" height="902" extended-state="0" />
@@ -1236,14 +1237,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/stv/AnhuiStvChannel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/live-source/src/main/java/com/readyidu/source/local/stv/GuangdongStvChannel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1667,6 +1660,14 @@
             <element signature="e#424#425#0" expanded="true" />
             <element signature="e#478#479#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live.iws">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7487">
+          <caret line="1142" column="19" lean-forward="true" selection-start-line="1142" selection-start-column="19" selection-end-line="1142" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
