@@ -12,10 +12,12 @@ public interface ChannelMapper {
     int insertSelective(Channel record);
 
     Channel selectByPrimaryKey(Integer id);
+    Channel selectByPrimaryKey(String source);
 
     int updateByPrimaryKeySelective(Channel record);
 
     int updateByPrimaryKey(Channel record);
 
     List<Channel> selectAll();
+    List<Channel> selectBySource(String source);
 }

@@ -57,6 +57,11 @@ public class ChannelServiceImpl extends BaseService implements
     }
 
     @Override
+    public List<Channel> getChannelListWithDeathSource(String source) {
+        return channelMapper.selectBySource(source);
+    }
+
+    @Override
     public List<ChannelType> getChannelType() {
         // TODO Auto-generated method stub
         // 拼装缓存key值

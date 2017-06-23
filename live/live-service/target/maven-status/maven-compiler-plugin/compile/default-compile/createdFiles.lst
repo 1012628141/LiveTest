@@ -1,12 +1,17 @@
+com/readyidu/controller/DashBoardController$CheckableChannel.class
 com/readyidu/controller/WebChannelController$Response.class
 com/readyidu/service/SourceService.class
+com/readyidu/controller/DashBoardController$1.class
 com/readyidu/service/impl/ChannelServiceImpl.class
 com/readyidu/service/impl/SourceServiceImpl.class
 com/readyidu/controller/WebChannelController.class
+com/readyidu/service/impl/DeathChannelServiceImpl.class
 com/readyidu/controller/ChannelController.class
+com/readyidu/service/DeathChannelService.class
 com/readyidu/controller/WebChannelController$ChannelRequest.class
 com/readyidu/tools/WebHttpTool.class
 com/readyidu/constants/NetworkCode.class
+com/readyidu/controller/DeathChannelController.class
 com/readyidu/controller/DashBoardController.class
 com/readyidu/controller/SourceController.class
 com/readyidu/service/ChannelService.class

@@ -276,33 +276,37 @@
 <script src="/js/material-dashboard.js"></script>
 
 <script type="text/javascript">
+//    var i = 0;
+//
+//    function check() {
+//        var source = $($('.source-list')[i]).data("url");
+//        $.ajax({
+//            type: "GET",
+//            url: "webChannel/checkSource.do?sourceUri=" + source,
+//            success: function (data) {
+//                var result = JSON.parse(data);
+//                console.log(result);
+//                if (result.code === 200) {
+//                    $("td[link='" + result.data + "']").html("有效");
+//                } else {
+//                    $("td[link='" + result.data + "']").html("失效");
+//                }
+//                i ++;
+//                check();
+//            },
+//            error: function () {
+//                i ++;
+//                $("td[link='" + source + "']").html("检测失败");
+//                check();
+//            }
+//        });
+//    }
+    
     $(document).ready(function() {
 
         var page = "${content}";
         if ( page === 'pages/checkChannel.jsp') {
-            // Start Check sources.
-            var list = "${channelList}";
-            
-            $('.source-list').each(function (idx, object) {
-                var source = $(object).data("url");
-                $.ajax({
-                    type: "GET",
-                    url: "webChannel/checkSource.do?sourceUri=" + source,
-                    success: function (data) {
-                        console.log(data);
-                        var result = JSON.parse(data);
-                        if (result.code === 200) {
-                            $(object).html("有效");
-                        } else {
-                            $(object).html("失效");
-                        }
-                    },
-                    error: function () {
-                        console.log('错误');
-                        $(object).html("检测错误");
-                    }
-                });
-            })
+            // 毛都不用干
         }
 
         if ( page === 'pages/livingChannel.jsp' ) {
@@ -351,9 +355,8 @@
                                         type: "POST",
                                         url: "/webChannel/addChannel/" + value,
                                         contentType: "application/json; charset=utf-8",
-                                        dataType: "json",
                                         success: function (data) {
-                                            var result = JSON.parse(data);
+                                            var result = data;
                                             if (result.code === 200) {
                                                 swal.insertQueueStep("添加成功 !");
                                                 window.location.reload();

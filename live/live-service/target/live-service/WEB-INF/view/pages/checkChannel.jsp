@@ -32,7 +32,7 @@
                                                         ${ s }
                                                 </a>
                                             </td>
-                                            <td class="text-right source-list" id="source-${channel.id}-${loop.index}" data-url="${ s }">
+                                            <td class="text-right source-list" data-url="${ s }" link="${ s }">
                                                 检测中...
                                             </td>
                                             <td class="td-actions text-right">

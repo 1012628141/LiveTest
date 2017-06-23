@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ChannelService {
     public List<Channel> getChannelList();
+    public List<Channel> getChannelListWithDeathSource(String source);
     public List<ChannelType> getChannelType();
 
     public int addChannel(String name);

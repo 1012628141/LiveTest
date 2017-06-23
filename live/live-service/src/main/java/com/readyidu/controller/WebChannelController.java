@@ -37,7 +37,8 @@ public class WebChannelController {
 
     @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.POST)
     @ResponseBody
-    public String addChannel(@PathVariable String channelName) {
+    public String addChannel(HttpServletRequest request) {
+        String channelName = request.getParameter("channelName");
         if (channelService.addChannel(channelName) != 0) {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
@@ -45,40 +46,41 @@ public class WebChannelController {
         }
     }
 
-    @RequestMapping(value = "/addSource.do", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/addSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String addSource(@RequestBody ChannelRequest channelRequest) {
-        if (channelService.updateSource(channelRequest.getChannelId(), channelRequest.getSourceUri()) != 0) {
+    public String addSource(HttpServletRequest request) {
+
+        if (channelService.updateSource(Integer.valueOf(request.getParameter("channelId")), request.getParameter("sourceUri")) != 0) {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
-    @RequestMapping(value = "/removeSource.do", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/removeSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String removeSource(@RequestBody ChannelRequest channelRequest) {
-        if (channelService.removeSource(channelRequest.getChannelId(), channelRequest.getSourceId()) != 0) {
+    public String removeSource(HttpServletRequest request) {
+        if (channelService.removeSource(Integer.valueOf(request.getParameter("channelId")), Integer.valueOf(request.getParameter("sourceId"))) != 0) {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
-    @RequestMapping(value = "/changeType.do", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/changeType.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String changeType(@RequestBody ChannelRequest channelRequest) {
-        if (channelService.changeType(channelRequest.getChannelId(), channelRequest.getTypeId()) != 0) {
+    public String changeType(HttpServletRequest request) {
+        if (channelService.changeType(Integer.valueOf(request.getParameter("channelId")), request.getParameter("typeId")) != 0) {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
-    @RequestMapping(value = "/removeChannel.do", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/removeChannel.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String removeChannel(@RequestBody ChannelRequest channelRequest) {
-        if (channelService.removeChannel(channelRequest.getChannelId()) != 0) {
+    public String removeChannel(HttpServletRequest request) {
+        if (channelService.removeChannel(Integer.valueOf(request.getParameter("channelId"))) != 0) {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
