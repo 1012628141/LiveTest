@@ -1,25 +1,25 @@
-package com.readyidu.source.local.cctv;
+package com.readyidu.source.local.fujian;
 
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Source;
-import com.readyidu.source.local.cctv.source.CCTVSource;
+import com.readyidu.source.local.fujian.source.FjtvSource;
 import com.readyidu.source.protocol.SourceUri;
 import com.readyidu.util.NullUtil;
 
 /**
- * 2017/6/15
- * Created by dylan.
- * Home: http://www.devdylan.cn
+ * Created by yuzhang on 17/6/8.
  */
-public class CCTVChannels extends Channel {
+public class FJTV8Channel extends Channel {
 
-    public CCTVChannels() {
-        channelId = "cctv_vd";
+    private static final String CHANNEL_ID = "fjtv8";
+
+    public FJTV8Channel() {
+        channelId = CHANNEL_ID;
     }
 
     @Override
     public Source getSource(SourceUri uri) {
-        Source source = new CCTVSource(uri.getSource());
+        Source source = new FjtvSource(uri.getSource());
         if (NullUtil.isNullObject(source.toString())) {
             return null;
         }

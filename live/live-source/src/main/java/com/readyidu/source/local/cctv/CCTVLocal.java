@@ -16,10 +16,12 @@ public class CCTVLocal extends Local {
     public CCTVLocal() {
         managerId = "cctv";
 
-        Channel channel = new CCTVChannels();
+        Channel channel1 = new CCTVChannels();
+        Channel channel2 = new CCTVShitingChannels();
 
         channels = new HashMap<>();
-        channels.put(channel.getId(), channel);
+        channels.put(channel1.getId(), channel1);
+        channels.put(channel2.getId(), channel2);
     }
 
     @Override

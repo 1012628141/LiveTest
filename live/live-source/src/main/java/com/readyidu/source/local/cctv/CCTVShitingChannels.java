@@ -11,10 +11,10 @@ import com.readyidu.util.NullUtil;
  * Created by dylan.
  * Home: http://www.devdylan.cn
  */
-public class CCTVChannels extends Channel {
+public class CCTVShitingChannels extends Channel {
 
-    public CCTVChannels() {
-        channelId = "cctv_vd";
+    public CCTVShitingChannels() {
+        channelId = "cctv_shiting";
     }
 
     @Override

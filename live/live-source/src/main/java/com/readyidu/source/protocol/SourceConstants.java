@@ -10,7 +10,54 @@ public class SourceConstants {
     //东方卫视
     public static final String SOURCE_STV_STV = "source_stv_stv";
 
+    //福建http://www.fjtv.net/
+    //海峡卫视
+    public static final String SOURCE_FJTV_HAIXIA_STV = "source_fjtv_haixia_stv";
+    //东南卫视
+    public static final String SOURCE_FJTV_DONGNAN_STV = "source_fjtv_dongnan_stv";
+    //福建
+    public static final String SOURCE_FJTV_1 = "source_fjtv_1";
+    public static final String SOURCE_FJTV_2 = "source_fjtv_2";
+    public static final String SOURCE_FJTV_3 = "source_fjtv_3";
+    public static final String SOURCE_FJTV_4 = "source_fjtv_4";
+    public static final String SOURCE_FJTV_5 = "source_fjtv_5";
+    public static final String SOURCE_FJTV_6 = "source_fjtv_6";
+    public static final String SOURCE_FJTV_7 = "source_fjtv_7";
+    public static final String SOURCE_FJTV_8 = "source_fjtv_8";
+
+
     //视听网www.shiting5.com
+    //CCTV1
+    public static final String SOURCE_SHITING_CCTV1 = "source_shiting_cctv1";
+    //CCTV2
+    public static final String SOURCE_SHITING_CCTV2 = "source_shiting_cctv2";
+    //CCTV3
+    public static final String SOURCE_SHITING_CCTV3 = "source_shiting_cctv3";
+    //CCTV4
+    public static final String SOURCE_SHITING_CCTV4 = "source_shiting_cctv4";
+    //CCTV5
+    public static final String SOURCE_SHITING_CCTV5 = "source_shiting_cctv5";
+    //CCTV6
+    public static final String SOURCE_SHITING_CCTV6 = "source_shiting_cctv6";
+    //CCTV7
+    public static final String SOURCE_SHITING_CCTV7 = "source_shiting_cctv7";
+    //CCTV8
+    public static final String SOURCE_SHITING_CCTV8 = "source_shiting_cctv8";
+    //CCTV9
+    public static final String SOURCE_SHITING_CCTV9 = "source_shiting_cctv9";
+    //CCTV10
+    public static final String SOURCE_SHITING_CCTV10 = "source_shiting_cctv10";
+    //CCTV11
+    public static final String SOURCE_SHITING_CCTV11 = "source_shiting_cctv11";
+    //CCTV12
+    public static final String SOURCE_SHITING_CCTV12 = "source_shiting_cctv12";
+    //CCTV13
+    public static final String SOURCE_SHITING_CCTV13 = "source_shiting_cctv13";
+    //CCTV14
+    public static final String SOURCE_SHITING_CCTV14 = "source_shiting_cctv14";
+    //CCTV15
+    public static final String SOURCE_SHITING_CCTV15 = "source_shiting_cctv15";
+
     //广东卫视
     public static final String SOURCE_SHITING_GUANGDONG_STV = "source_shiting_guangdong_stv";
     //天津卫视

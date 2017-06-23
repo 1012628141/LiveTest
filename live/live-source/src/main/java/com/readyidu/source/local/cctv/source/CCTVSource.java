@@ -1,7 +1,8 @@
-package com.readyidu.source.local.cctv;
+package com.readyidu.source.local.cctv.source;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.source.base.Source;
+import com.readyidu.source.local.cctv.CCTV;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import org.apache.http.util.TextUtils;
@@ -32,29 +33,29 @@ public class CCTVSource extends Source {
         }
 
         String cacheResult = CacheUtil.get("source_cctv_vd_" + sourceId);
-        if ( cacheResult != null ) {
+        if (cacheResult != null) {
             return cacheResult;
         }
 
         // Sources url: http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv2&client=html5
-        String javascript = "http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv" + source +"&client=html5";
+        String javascript = "http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv" + source + "&client=html5";
         String scriptResult = HttpUtil.httpGet(javascript);
         scriptResult = scriptResult.replace("var html5VideoData='", "");
         scriptResult = scriptResult.replace("';getHtml5VideoData(html5VideoData);", "");
 
         CCTV cctv = JSON.parseObject(scriptResult, CCTV.class);
 
-        if ( cctv.getAck().equals("yes") ) {
-            for (String value: cctv.getFlv_url().values()) {
+        if (cctv.getAck().equals("yes")) {
+            for (String value : cctv.getFlv_url().values()) {
                 String result = parseURL(value);
-                if ( result != null ) {
+                if (result != null) {
                     return result;
                 }
             }
 
-            for (String value: cctv.getHds_url().values()) {
+            for (String value : cctv.getHds_url().values()) {
                 String result = parseURL(value);
-                if ( result != null ) {
+                if (result != null) {
                     return result;
                 }
             }
@@ -67,7 +68,7 @@ public class CCTVSource extends Source {
         try {
             URL url = new URL(value);
             String[] component = url.getPath().split("/");
-            if ( !component[component.length - 1].contains(".") ) {
+            if (!component[component.length - 1].contains(".")) {
                 CacheUtil.set("source_cctv_vd_" + sourceId, value, 300);
                 log.debug(value);
                 return value;
