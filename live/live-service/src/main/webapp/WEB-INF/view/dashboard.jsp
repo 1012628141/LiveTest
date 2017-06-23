@@ -18,8 +18,8 @@
     <!--  Material Dashboard CSS    -->
     <link href="/css/material-dashboard.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link href="/css/mont.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/gont.css" />
 </head>
 
 <body>
@@ -247,7 +247,7 @@
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
 <script src="/js/moment.min.js"></script>
 <!--  Charts Plugin -->
-<script src="/js/chartist.min.js"></script>
+<%--<script src="/js/chartist.min.js"></script>--%>
 <!--  Plugin for the Wizard -->
 <script src="/js/jquery.bootstrap-wizard.js"></script>
 <!--  Notifications Plugin    -->
@@ -259,7 +259,7 @@
 <!-- Sliders Plugin -->
 <script src="/js/nouislider.min.js"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<%--<script src="https://maps.googleapis.com/maps/api/js"></script>--%>
 <!-- Select Plugin -->
 <script src="/js/jquery.select-bootstrap.js"></script>
 <!--  DataTables.net Plugin    -->
