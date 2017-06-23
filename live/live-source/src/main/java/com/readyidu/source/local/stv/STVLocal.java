@@ -27,6 +27,27 @@ public class STVLocal extends Local {
         Channel chongqingStvChannel = new ChongqingStvChannel();
         Channel hunanStvChannel = new HunanStvChannel();
         Channel zhejiangStvChannel = new ZhejiangStvChannel();
+        Channel jiangsuStvChannel = new JiangsuStvChannel();
+        Channel anhuiStvChannel = new AnhuiStvChannel();
+        Channel lvyouStvChannel = new LvyouStvChannel();
+        Channel guangxiStvChannel = new GuangxiStvChannel();
+        Channel hubeiStvChannel = new HubeiStvChannel();
+        Channel jiangxiStvChannel = new JiangxiStvChannel();
+        Channel shandongStvChannel = new ShandongStvChannel();
+        Channel sichuanStvChannel = new SichuanStvChannel();
+        Channel shenzhenStvChannel = new ShenzhenStvChannel();
+        Channel hebeiStvChannel = new HebeiStvChannel();
+        Channel shanxiStvChannel = new ShanxiStvChannel();
+        Channel liaoningStvChannel = new LiaoningStvChannel();
+        Channel jilinStvChannel = new JilinStvChannel();
+        Channel yunnanStvChannel = new YunnanStvChannel();
+        Channel heilongjiangStvChannel = new HeilongjiangStvChannel();
+        Channel gansuStvChannel = new GansuStvChannel();
+        Channel xinjiangStvChannel = new XinjiangStvChannel();
+        Channel neimengStvChannel = new NeimengStvChannel();
+        Channel bintuanStvChannel = new BintuanStvChannel();
+        Channel xizangStvChannel = new XizangStvChannel();
+        Channel ningxiaStvChannel = new NingxiaStvChannel();
 
         channels.put(guangdongChannel.getId(), guangdongChannel);
         channels.put(dongfangChannel.getId(), dongfangChannel);
@@ -38,6 +59,27 @@ public class STVLocal extends Local {
         channels.put(chongqingStvChannel.getId(), chongqingStvChannel);
         channels.put(hunanStvChannel.getId(), hunanStvChannel);
         channels.put(zhejiangStvChannel.getId(), zhejiangStvChannel);
+        channels.put(jiangsuStvChannel.getId(), jiangsuStvChannel);
+        channels.put(anhuiStvChannel.getId(), anhuiStvChannel);
+        channels.put(lvyouStvChannel.getId(), lvyouStvChannel);
+        channels.put(guangxiStvChannel.getId(), guangxiStvChannel);
+        channels.put(hubeiStvChannel.getId(), hubeiStvChannel);
+        channels.put(jiangxiStvChannel.getId(), jiangxiStvChannel);
+        channels.put(shandongStvChannel.getId(), shandongStvChannel);
+        channels.put(sichuanStvChannel.getId(), sichuanStvChannel);
+        channels.put(shenzhenStvChannel.getId(), shenzhenStvChannel);
+        channels.put(hebeiStvChannel.getId(), hebeiStvChannel);
+        channels.put(shanxiStvChannel.getId(), shanxiStvChannel);
+        channels.put(liaoningStvChannel.getId(), liaoningStvChannel);
+        channels.put(jilinStvChannel.getId(), jilinStvChannel);
+        channels.put(yunnanStvChannel.getId(), yunnanStvChannel);
+        channels.put(heilongjiangStvChannel.getId(), heilongjiangStvChannel);
+        channels.put(gansuStvChannel.getId(), gansuStvChannel);
+        channels.put(xinjiangStvChannel.getId(), xinjiangStvChannel);
+        channels.put(neimengStvChannel.getId(), neimengStvChannel);
+        channels.put(bintuanStvChannel.getId(), bintuanStvChannel);
+        channels.put(xizangStvChannel.getId(), xizangStvChannel);
+        channels.put(ningxiaStvChannel.getId(), ningxiaStvChannel);
     }
 
     @Override

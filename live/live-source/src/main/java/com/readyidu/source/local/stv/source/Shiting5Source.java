@@ -45,6 +45,69 @@ public class Shiting5Source extends Source {
             case SourceConstants.SOURCE_SHITING_ZHEJIANG_STV:
                 shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/zhejiangweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
                 break;
+            case SourceConstants.SOURCE_SHITING_JIANGSU_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/jiangsuweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_ANHUI_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/anhuiweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_GUANGDONG_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/guangdongweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_LVYOU_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/lvyouweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_GUANGXI_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/guangxiweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_HUBEI_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/hubeiweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_JIANGXI_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/jiangxiweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_SHANDONG_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/shandongweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_SICHUAN_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/sichuanweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_SHENZHEN_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/shenzhenweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_HEBEI_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/hebeiweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_SHANXI_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/sanxiweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_LIAONING_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/liaoningweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_JILIN_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/jilinweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_YUNNAN_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/yunnanweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_HEILONGJIANG_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/heilongjiangweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_GANSU_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/gansuweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_XINJIANG_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/xinjiangweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_NEIMENG_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/neimengguweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_XIZANG_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/xizangweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            case SourceConstants.SOURCE_SHITING_NINGXIA_STV:
+                shiting5Stv = HttpUtil.httpGet("http://m.shiting5.com/tv/ningxiaweishi.html", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
             default:
                 break;
         }
