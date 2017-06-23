@@ -1,6 +1,7 @@
 package com.readyidu.source.base;
 
 import com.readyidu.source.local.cctv.CCTVLocal;
+import com.readyidu.source.local.fujian.FujianLocal;
 import com.readyidu.source.local.guangdong.GuangdongLocal;
 import com.readyidu.source.local.jiangsu.changzhou.ChangzhouLocal;
 import com.readyidu.source.local.jiangsu.taizhou.TaizhouLocal;
@@ -76,6 +77,9 @@ public class LiveManager {
         //上海
         ShanghaiLocal shanghai = new ShanghaiLocal();
         locals.put(shanghai.getId(), shanghai);
+        //福建
+        FujianLocal fujian = new FujianLocal();
+        locals.put(fujian.getId(), fujian);
     }
 
     public String getChannelSource(String sourceUri) {
