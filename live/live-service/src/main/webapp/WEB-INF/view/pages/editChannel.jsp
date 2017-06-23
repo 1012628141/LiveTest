@@ -223,6 +223,7 @@
                                     url: "/webChannel/addSource.do",
                                     data: {"channelId": id, "sourceUri": value},
                                     success: function (data) {
+                                        console.log(data);
                                         var result = data;
                                         if (result.code === 200) {
                                             swal.insertQueueStep("添加成功 !");
@@ -232,7 +233,8 @@
                                         }
                                         resolve()
                                     },
-                                    error: function () {
+                                    error: function (data) {
+                                        console.log(data);
                                         swal.insertQueueStep("添加失败！");
                                         resolve()
                                     }

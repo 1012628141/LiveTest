@@ -352,12 +352,10 @@
                             if (value && value.trim()) {
                                 $.ajax(
                                     {
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/webChannel/addChannel/" + value,
-                                        contentType: "application/json; charset=utf-8",
                                         success: function (data) {
-                                            var result = data;
-                                            if (result.code === 200) {
+                                            if (data.code === 200) {
                                                 swal.insertQueueStep("添加成功 !");
                                                 window.location.reload();
                                             } else {
