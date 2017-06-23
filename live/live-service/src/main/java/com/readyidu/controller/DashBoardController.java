@@ -1,7 +1,9 @@
 package com.readyidu.controller;
 
 import com.readyidu.model.Channel;
+import com.readyidu.model.ChannelDeath;
 import com.readyidu.service.ChannelService;
+import com.readyidu.service.DeathChannelService;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 2017/6/16
@@ -26,6 +25,9 @@ public class DashBoardController {
 
     @Resource(name = "channelService")
     private ChannelService channelService;
+
+    @Resource(name = "deathChannelService")
+    DeathChannelService deathChannelService;
 
     @RequestMapping
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
@@ -74,6 +76,28 @@ public class DashBoardController {
             }
         }
         modelAndView.addObject("sourceCount", sourceCount);
+
+        List<ChannelDeath> dList = deathChannelService.getAll();
+
+        List<CheckableChannel> checkableChannels = new ArrayList<>();
+        for (ChannelDeath death: dList) {
+            String source = death.getSource();
+            List<Channel> deathChannel = channelService.getChannelListWithDeathSource(source);
+            if (deathChannel != null && deathChannel.size() != 0) {
+                for (Channel c: deathChannel) {
+                    CheckableChannel checkableChannel = new CheckableChannel();
+                    checkableChannel.setChannelId(c.getId());
+                    checkableChannel.setChannelName(c.getChannel());
+                    checkableChannel.setChannelSource(c.getSource());
+                    checkableChannel.setDeathSourceId(death.getId());
+                    checkableChannel.setDeathSource(death.getSource());
+                    checkableChannel.setCreatedAt(death.getCreatedat());
+                    checkableChannels.add(checkableChannel);
+                }
+            }
+        }
+
+        modelAndView.addObject("deathList", checkableChannels);
     }
 
     private List<Map<String, Object>> getNavItemList() {
@@ -112,5 +136,62 @@ public class DashBoardController {
         list.add(pMap);
 
         return list;
+    }
+
+    private static class CheckableChannel {
+        private Integer channelId;
+        private String channelName;
+        private String channelSource;
+        private Integer deathSourceId;
+        private String deathSource;
+        private Date createdAt;
+
+        public Integer getChannelId() {
+            return channelId;
+        }
+
+        public void setChannelId(Integer channelId) {
+            this.channelId = channelId;
+        }
+
+        public String getChannelName() {
+            return channelName;
+        }
+
+        public void setChannelName(String channelName) {
+            this.channelName = channelName;
+        }
+
+        public String getChannelSource() {
+            return channelSource;
+        }
+
+        public void setChannelSource(String channelSource) {
+            this.channelSource = channelSource;
+        }
+
+        public Integer getDeathSourceId() {
+            return deathSourceId;
+        }
+
+        public void setDeathSourceId(Integer deathSourceId) {
+            this.deathSourceId = deathSourceId;
+        }
+
+        public String getDeathSource() {
+            return deathSource;
+        }
+
+        public void setDeathSource(String deathSource) {
+            this.deathSource = deathSource;
+        }
+
+        public Date getCreatedAt() {
+            return createdAt;
+        }
+
+        public void setCreatedAt(Date createdAt) {
+            this.createdAt = createdAt;
+        }
     }
 }

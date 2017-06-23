@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
-    <classPathEntry location="/Users/yuzhang/Desktop/workspace/live/live/mysql-connector-java-5.1.23.jar"/>
+    <classPathEntry location="/Users/root1/Desktop/IJWorkspace/live/live/mysql-connector-java-5.1.23.jar"/>
     <context id="testTables" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -47,11 +47,14 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="t_channel_type" enableCountByExample="false" enableUpdateByExample="false"
+        <table schema="" tableName="t_channel_type" domainObjectName="ChannelType" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table schema="" tableName="t_channel" enableCountByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table schema="" tableName="t_channel" domainObjectName="Channel" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"></table>
+               enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table schema="" tableName="t_channel_death" domainObjectName="ChannelDeath" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" />
     </context>
 </generatorConfiguration>
