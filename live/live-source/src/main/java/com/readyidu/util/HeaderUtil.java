@@ -11,12 +11,14 @@ import java.util.Map;
  */
 public class HeaderUtil {
 
+    private static final String HEADER_TAG = "#";
+
     public static String addHeader(String url, Map<String, String> header) {
         if (!NullUtil.isNullObject(url)) {
             if (header == null || header.size() == 0) {
                 return url;
             }
-            return url + "#" + JSON.toJSONString(header);
+            return url + HEADER_TAG + JSON.toJSONString(header);
         }
         return null;
     }

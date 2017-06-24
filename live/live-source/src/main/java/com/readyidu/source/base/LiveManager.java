@@ -3,6 +3,15 @@ package com.readyidu.source.base;
 import com.readyidu.source.local.cctv.CCTVLocal;
 import com.readyidu.source.local.fujian.FujianLocal;
 import com.readyidu.source.local.guangdong.GuangdongLocal;
+import com.readyidu.source.local.guangdong.dongguan.DongguanLocal;
+import com.readyidu.source.local.guangdong.foshan.FoshanLocal;
+import com.readyidu.source.local.guangdong.heyuan.HeyuanLocal;
+import com.readyidu.source.local.guangdong.jieyang.JieyangLocal;
+import com.readyidu.source.local.guangdong.meizhou.MeizhouLocal;
+import com.readyidu.source.local.guangdong.qingyuan.QingyuanLocal;
+import com.readyidu.source.local.guangdong.shanwei.ShanweiLocal;
+import com.readyidu.source.local.guangdong.yunfu.YunfuLocal;
+import com.readyidu.source.local.guangdong.zhanjiang.ZhanjiangLocal;
 import com.readyidu.source.local.jiangsu.changzhou.ChangzhouLocal;
 import com.readyidu.source.local.jiangsu.taizhou.TaizhouLocal;
 import com.readyidu.source.local.jiangsu.yancheng.YanchengLocal;
@@ -62,6 +71,8 @@ public class LiveManager {
         //嵊州
         Local shengzhou = new ShengzhouLocal();
         locals.put(shengzhou.getId(), shengzhou);
+
+        //江苏
         //常州
         Local changzhou = new ChangzhouLocal();
         locals.put(changzhou.getId(), changzhou);
@@ -71,15 +82,42 @@ public class LiveManager {
         //泰州
         TaizhouLocal taizhou = new TaizhouLocal();
         locals.put(taizhou.getId(), taizhou);
-        //广东
-        GuangdongLocal guangdong = new GuangdongLocal();
-        locals.put(guangdong.getId(), guangdong);
         //上海
         ShanghaiLocal shanghai = new ShanghaiLocal();
         locals.put(shanghai.getId(), shanghai);
         //福建
         FujianLocal fujian = new FujianLocal();
         locals.put(fujian.getId(), fujian);
+        //广东
+        GuangdongLocal guangdong = new GuangdongLocal();
+        locals.put(guangdong.getId(), guangdong);
+        //湛江
+        ZhanjiangLocal zhanjiang = new ZhanjiangLocal();
+        locals.put(zhanjiang.getId(), zhanjiang);
+        //汕尾
+        ShanweiLocal shanweiLocal = new ShanweiLocal();
+        locals.put(shanweiLocal.getId(), shanweiLocal);
+        //清远
+        QingyuanLocal qingyuanLocal = new QingyuanLocal();
+        locals.put(qingyuanLocal.getId(), qingyuanLocal);
+        //揭阳
+        JieyangLocal jieyangLocal = new JieyangLocal();
+        locals.put(jieyangLocal.getId(), jieyangLocal);
+        //梅州
+        MeizhouLocal meizhouLocal = new MeizhouLocal();
+        locals.put(meizhouLocal.getId(), meizhouLocal);
+        //河源
+        HeyuanLocal heyuanLocal = new HeyuanLocal();
+        locals.put(heyuanLocal.getId(), heyuanLocal);
+        //云浮
+        YunfuLocal yunfuLocal = new YunfuLocal();
+        locals.put(yunfuLocal.getId(), yunfuLocal);
+        //东莞
+        DongguanLocal dongguanLocal = new DongguanLocal();
+        locals.put(dongguanLocal.getId(), dongguanLocal);
+        //佛山
+        FoshanLocal foshanLocal = new FoshanLocal();
+        locals.put(foshanLocal.getId(), foshanLocal);
     }
 
     public String getChannelSource(String sourceUri) {

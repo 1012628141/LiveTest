@@ -212,6 +212,26 @@ public class SourceConstants {
     public static final String SOURCE_GDTV_TVS3 = "source_gdtv_tvs3";
     public static final String SOURCE_GDTV_TVS4 = "source_gdtv_tvs4";
     public static final String SOURCE_GDTV_TVS5 = "source_gdtv_tvs5";
+    //湛江
+    public static final String SOURCE_GDTV_ZHANJIANG1 = "source_gdtv_zhanjiang1";
+    //汕尾
+    public static final String SOURCE_GDTV_SHANWEI1 = "source_gdtv_shanwei1";
+    //清远
+    public static final String SOURCE_GDTV_QINGYUAN1 = "source_gdtv_qingyuan1";
+    public static final String SOURCE_GDTV_QINGYUAN2 = "source_gdtv_qingyuan2";
+    //揭阳
+    public static final String SOURCE_GDTV_JIEYANG1 = "source_gdtv_jieyang1";
+    //梅州
+    public static final String SOURCE_GDTV_MEIZHOU1 = "source_gdtv_meizhou1";
+    //河源
+    public static final String SOURCE_GDTV_HEYUAN1 = "source_gdtv_heyuan1";
+    //云浮
+    public static final String SOURCE_GDTV_YUNFU1 = "source_gdtv_yunfu1";
+    //东莞
+    public static final String SOURCE_GDTV_DONGGUAN1 = "source_gdtv_dongguan1";
+    public static final String SOURCE_GDTV_DONGGUAN2 = "source_gdtv_dongguan2";
+    //佛山
+    public static final String SOURCE_GDTV_FOSHAN = "source_gdtv_foshan";
 
     //上海kankanews.com
     public static final String SOURCE_STV_STV1 = "source_stv_stv1";
@@ -238,4 +258,18 @@ public class SourceConstants {
     //株洲
     public static final String SOURCE_HN_ZZTV1  = "source_hn_zztv1";
     public static final String SOURCE_HN_ZZTV2  = "source_hn_zztv2";
+
+    //重庆 http://www.cbg.cn/
+    public static final String SOURCE_CQ_CQTV1 = "source_cq_cqtv1";//新闻
+    public static final String SOURCE_CQ_CQTV2 = "source_cq_cqtv2";//影视
+    public static final String SOURCE_CQ_CQTV3 = "source_cq_cqtv3";//都市
+    public static final String SOURCE_CQ_CQTV4 = "source_cq_cqtv4";//时尚
+    public static final String SOURCE_CQ_CQTV5 = "source_cq_cqtv5";//娱乐
+    public static final String SOURCE_CQ_CQTV6 = "source_cq_cqtv6";//公共农村
+    public static final String SOURCE_CQ_CQTV7 = "source_cq_cqtv7";//少儿
+    public static final String SOURCE_CQ_CQTV8 = "source_cq_cqtv8";//科教
+    public static final String SOURCE_CQ_CQTV9 = "source_cq_cqtv9";//生活
+    public static final String SOURCE_CQ_CQTV10 = "source_cq_cqtv10";//移动
+    public static final String SOURCE_CQ_CQTV11 = "source_cq_cqtv11";//手持电视
+    public static final String SOURCE_CQ_CQTV12 = "source_cq_cqtv12";//汽摩
 }
