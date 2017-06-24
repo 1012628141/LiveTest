@@ -35,10 +35,9 @@ public class WebChannelController {
     @Resource(name = "channelService")
     private ChannelService channelService;
 
-    @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.GET)
     @ResponseBody
-    public String addChannel(HttpServletRequest request) {
-        String channelName = request.getParameter("channelName");
+    public String addChannel(@PathVariable String channelName) {
         if (channelService.addChannel(channelName) != 0) {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {

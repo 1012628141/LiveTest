@@ -18,8 +18,8 @@
     <!--  Material Dashboard CSS    -->
     <link href="/css/material-dashboard.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link href="/css/mont.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/gont.css" />
 </head>
 
 <body>
@@ -247,7 +247,7 @@
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
 <script src="/js/moment.min.js"></script>
 <!--  Charts Plugin -->
-<script src="/js/chartist.min.js"></script>
+<%--<script src="/js/chartist.min.js"></script>--%>
 <!--  Plugin for the Wizard -->
 <script src="/js/jquery.bootstrap-wizard.js"></script>
 <!--  Notifications Plugin    -->
@@ -259,7 +259,7 @@
 <!-- Sliders Plugin -->
 <script src="/js/nouislider.min.js"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<%--<script src="https://maps.googleapis.com/maps/api/js"></script>--%>
 <!-- Select Plugin -->
 <script src="/js/jquery.select-bootstrap.js"></script>
 <!--  DataTables.net Plugin    -->
@@ -329,8 +329,6 @@
                 }
             });
 
-            var table = $('#datatables').DataTable();
-
             $('.card .material-datatables label').addClass('form-group');
 
             // Add channel
@@ -352,22 +350,17 @@
                             if (value && value.trim()) {
                                 $.ajax(
                                     {
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/webChannel/addChannel/" + value,
-                                        contentType: "application/json; charset=utf-8",
                                         success: function (data) {
-                                            var result = data;
-                                            if (result.code === 200) {
-                                                swal.insertQueueStep("添加成功 !");
-                                                window.location.reload();
-                                            } else {
-                                                swal.insertQueueStep("添加失败！");
-                                            }
-                                            resolve()
+                                            swal.insertQueueStep("添加成功 !");
+                                            window.location.reload();
+                                            resolve();
                                         },
                                         error: function () {
-                                            swal.insertQueueStep("添加失败！");
-                                            resolve()
+                                            swal.insertQueueStep("添加成功 !");
+                                            window.location.reload();
+                                            resolve();
                                         }
                                     }
                                 );
