@@ -23,9 +23,6 @@ public class GdtvSource extends Source {
     protected String source() {
         String gdtv = null;
         switch (sourceId) {
-            case SourceConstants.SOURCE_GDTV_QINGYUAN1:
-                gdtv = HttpUtil.httpGet("http://www.gdtv.cn/m2o/channel/channel_info.php?id=82");
-                break;
             case SourceConstants.SOURCE_GDTV_QINGYUAN2:
                 gdtv = HttpUtil.httpGet("http://www.gdtv.cn/m2o/channel/channel_info.php?id=82");
                 break;

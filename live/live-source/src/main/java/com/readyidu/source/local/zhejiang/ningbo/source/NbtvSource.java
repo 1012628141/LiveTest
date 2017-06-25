@@ -52,12 +52,15 @@ public class NbtvSource extends Source {
                 default:
                     break;
             }
-            Pattern pattern = Pattern.compile("http://hls.nbtv.cn/[a-z0-9]+/[0-9a-z]+/live/nbtv[1-6]_md/playlist.m3u8");
-            Matcher matcher = pattern.matcher(nbtvDom);
-            if (matcher.find()) {
-                cacheSource = matcher.group(0);
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
+
+            if(!NullUtil.isNullObject(nbtvDom)){
+                Pattern pattern = Pattern.compile("http://hls.nbtv.cn/[a-z0-9]+/[0-9a-z]+/live/nbtv[1-6]_md/playlist.m3u8");
+                Matcher matcher = pattern.matcher(nbtvDom);
+                if (matcher.find()) {
+                    cacheSource = matcher.group(0);
+                    CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
+                    return cacheSource;
+                }
             }
         } else {
             return cacheSource;

@@ -2,6 +2,7 @@ package com.readyidu.source.local.stv;
 
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Local;
+import com.readyidu.source.local.fujian.xiamen.XiamenLocal;
 import com.readyidu.source.protocol.SourceUri;
 
 import java.util.HashMap;
@@ -50,6 +51,7 @@ public class STVLocal extends Local {
         Channel ningxiaStvChannel = new NingxiaStvChannel();
         Channel haixiaStvChannel = new HaixiaStvChannel();
         Channel dongnanStvChannel = new DongnanStvChannel();
+        Channel xiamenStvChannel = new XiamenStvChannel();
 
         channels.put(guangdongChannel.getId(), guangdongChannel);
         channels.put(dongfangChannel.getId(), dongfangChannel);
@@ -84,6 +86,7 @@ public class STVLocal extends Local {
         channels.put(ningxiaStvChannel.getId(), ningxiaStvChannel);
         channels.put(haixiaStvChannel.getId(), haixiaStvChannel);
         channels.put(dongnanStvChannel.getId(), dongnanStvChannel);
+        channels.put(xiamenStvChannel.getId(), xiamenStvChannel);
     }
 
     @Override

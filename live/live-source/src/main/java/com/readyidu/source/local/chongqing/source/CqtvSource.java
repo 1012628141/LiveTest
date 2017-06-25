@@ -67,13 +67,16 @@ public class CqtvSource extends Source {
                 default:
                     break;
             }
-            Pattern pattern = Pattern.compile("http.*.m3u8");
-            Matcher matcher = pattern.matcher(cqtvDom);
-            if (matcher.find()) {
-                cacheSource = matcher.group(0);
-                cacheSource = cacheSource.replace("\\","");
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
+
+            if (!NullUtil.isNullObject(cqtvDom)) {
+                Pattern pattern = Pattern.compile("http.*.m3u8");
+                Matcher matcher = pattern.matcher(cqtvDom);
+                if (matcher.find()) {
+                    cacheSource = matcher.group(0);
+                    cacheSource = cacheSource.replace("\\", "");
+                    CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
+                    return cacheSource;
+                }
             }
         } else {
             return cacheSource;

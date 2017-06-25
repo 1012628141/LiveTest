@@ -3,6 +3,7 @@ package com.readyidu.source.local.guangdong.qingyuan;
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.local.guangdong.qingyuan.source.GdtvSource;
+import com.readyidu.source.local.guangdong.qingyuan.source.Qingyuan0763FSource;
 import com.readyidu.source.protocol.SourceUri;
 import com.readyidu.util.NullUtil;
 
@@ -20,9 +21,13 @@ public class Qingyuan2Channel extends Channel {
     @Override
     public Source getSource(SourceUri uri) {
         Source source = new GdtvSource(uri.getSource());
-        if (NullUtil.isNullObject(source.toString())) {
-            return null;
+        if (!NullUtil.isNullObject(source.toString())) {
+            return source;
         }
-        return source;
+        source = new Qingyuan0763FSource(uri.getSource());
+        if (!NullUtil.isNullObject(source.toString())) {
+            return source;
+        }
+        return null;
     }
 }

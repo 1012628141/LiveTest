@@ -111,12 +111,14 @@ public class Shiting5Source extends Source {
             default:
                 break;
         }
-        Pattern pattern = Pattern.compile("src=\"http://[a-z0-9A-Z-./_:]+.m3u8");
-        Matcher matcher = pattern.matcher(shiting5Stv);
-        if (matcher.find()) {
-            String src = matcher.group(0);
-            if (!NullUtil.isNullObject(src)) {
-                return src.replace("src=\"", "");
+        if(!NullUtil.isNullObject(shiting5Stv)){
+            Pattern pattern = Pattern.compile("src=\"http://[a-z0-9A-Z-./_:]+.m3u8");
+            Matcher matcher = pattern.matcher(shiting5Stv);
+            if (matcher.find()) {
+                String src = matcher.group(0);
+                if (!NullUtil.isNullObject(src)) {
+                    return src.replace("src=\"", "");
+                }
             }
         }
         return null;

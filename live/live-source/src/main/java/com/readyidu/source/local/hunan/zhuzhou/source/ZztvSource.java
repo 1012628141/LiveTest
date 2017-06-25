@@ -42,12 +42,15 @@ public class ZztvSource extends Source {
                 default:
                     break;
             }
-            Pattern pattern = Pattern.compile("2017.*.flv");
-            Matcher matcher = pattern.matcher(zztvDom);
-            if (matcher.find()) {
-                cacheSource = url+matcher.group(0);
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
+
+            if(!NullUtil.isNullObject(zztvDom)){
+                Pattern pattern = Pattern.compile("2017.*.flv");
+                Matcher matcher = pattern.matcher(zztvDom);
+                if (matcher.find()) {
+                    cacheSource = url+matcher.group(0);
+                    CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
+                    return cacheSource;
+                }
             }
         } else {
             return cacheSource;
@@ -55,13 +58,13 @@ public class ZztvSource extends Source {
         return null;
     }
 
-    public  static void main(String[] args) {
-       String hntvDom = HttpUtil.httpGet("http://live.zzbtv.com/live/live122/800K/live122_index.flv");
-        Pattern pattern = Pattern.compile("2017.*.flv");
-        Matcher matcher = pattern.matcher(hntvDom);
-        if (matcher.find()) {
-            String url = matcher.group(0);
-            System.out.print(url);
-        }
-    }
+//    public  static void main(String[] args) {
+//       String hntvDom = HttpUtil.httpGet("http://live.zzbtv.com/live/live122/800K/live122_index.flv");
+//        Pattern pattern = Pattern.compile("2017.*.flv");
+//        Matcher matcher = pattern.matcher(hntvDom);
+//        if (matcher.find()) {
+//            String url = matcher.group(0);
+//            System.out.print(url);
+//        }
+//    }
 }

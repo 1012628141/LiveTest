@@ -22,9 +22,9 @@ public class GrtnSource extends Source {
     @Override
     protected String source() {
         switch (sourceId) {
-            case SourceConstants.SOURCE_GDTV_DONGGUAN1:
+            case SourceConstants.SOURCE_GRTN_DONGGUAN1:
                 return HttpUtil.httpGet("http://live.grtn.cn/drm.php?url=http%3A%2F%2Fdslive%2Egrtn%2Ecn%2Fdgzh%2Fsd%2Flive%2Em3u8&refererurl=http%3A%2F%2Fwww%2Egrtn%2Ecn%2Flive%2Fdgzh%2F&hash=596736987d6996218048c0424fe9c106&playerVersion=4%2E03");
-            case SourceConstants.SOURCE_GDTV_DONGGUAN2:
+            case SourceConstants.SOURCE_GRTN_DONGGUAN2:
             default:
                 return null;
         }

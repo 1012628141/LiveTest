@@ -18,18 +18,18 @@ public class ChongqinLocal extends Local {
         managerId = MANAGER_ID;
         channels = new HashMap<String, Channel>();
 
-        Channel channel1 = new Changzhou1Channel();
-        Channel channel2 = new Changzhou2Channel();
-        Channel channel3 = new Changzhou3Channel();
-        Channel channel4 = new Changzhou4Channel();
-        Channel channel5 = new Changzhou5Channel();
-        Channel channel6 = new Changzhou5Channel();
-        Channel channel7 = new Changzhou5Channel();
-        Channel channel8 = new Changzhou5Channel();
-        Channel channel9 = new Changzhou5Channel();
-        Channel channel10 = new Changzhou5Channel();
-        Channel channel11 = new Changzhou5Channel();
-        Channel channel12 = new Changzhou5Channel();
+        Channel channel1 = new Chongqing1Channel();
+        Channel channel2 = new Chongqing2Channel();
+        Channel channel3 = new Chongqing3Channel();
+        Channel channel4 = new Chongqing4Channel();
+        Channel channel5 = new Chongqing5Channel();
+        Channel channel6 = new Chongqing6Channel();
+        Channel channel7 = new Chongqing7Channel();
+        Channel channel8 = new Chongqing8Channel();
+        Channel channel9 = new Chongqing9Channel();
+        Channel channel10 = new Chongqing10Channel();
+        Channel channel11 = new Chongqing11Channel();
+        Channel channel12 = new Chongqing12Channel();
 
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);

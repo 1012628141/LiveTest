@@ -2,7 +2,7 @@ package com.readyidu.source.local.cctv;
 
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Source;
-import com.readyidu.source.local.cctv.source.CCTVSource;
+import com.readyidu.source.local.cctv.source.CNTVSource;
 import com.readyidu.source.protocol.SourceUri;
 import com.readyidu.util.NullUtil;
 
@@ -19,7 +19,7 @@ public class CCTVShitingChannels extends Channel {
 
     @Override
     public Source getSource(SourceUri uri) {
-        Source source = new CCTVSource(uri.getSource());
+        Source source = new CNTVSource(uri.getSource());
         if (NullUtil.isNullObject(source.toString())) {
             return null;
         }

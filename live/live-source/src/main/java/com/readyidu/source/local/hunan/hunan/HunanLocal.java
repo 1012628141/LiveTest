@@ -18,16 +18,16 @@ public class HunanLocal extends Local {
         managerId = MANAGER_ID;
         channels = new HashMap<String, Channel>();
 
-        Channel channel1 = new Changzhou1Channel();
-        Channel channel2 = new Changzhou2Channel();
-        Channel channel3 = new Changzhou3Channel();
-        Channel channel4 = new Changzhou4Channel();
-        Channel channel5 = new Changzhou5Channel();
-        Channel channel6 = new Changzhou5Channel();
-        Channel channel7 = new Changzhou5Channel();
-        Channel channel8 = new Changzhou5Channel();
-        Channel channel9 = new Changzhou5Channel();
-        Channel channel10 = new Changzhou5Channel();
+        Channel channel1 = new Hunan1Channel();
+        Channel channel2 = new Hunan2Channel();
+        Channel channel3 = new Hunan3Channel();
+        Channel channel4 = new Hunan4Channel();
+        Channel channel5 = new Hunan5Channel();
+        Channel channel6 = new Hunan6Channel();
+        Channel channel7 = new Hunan7Channel();
+        Channel channel8 = new Hunan8Channel();
+        Channel channel9 = new Hunan9Channel();
+        Channel channel10 = new Hunan10Channel();
 
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);

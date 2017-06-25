@@ -1,19 +1,15 @@
-package com.readyidu.source.local.cctv;
+package com.readyidu.source.model;
 
 import java.util.HashMap;
 
-/**
- * 2017/6/15
- * Created by dylan.
- * Home: http://www.devdylan.cn
- */
-public class CCTV {
+public class CNTV {
     private String ack;
     private HashMap<String, String> lc;
     private String client_sid;
     private HashMap<String, String> flv_cdn_info;
     private HashMap<String, String> flv_url;
     private HashMap<String, String> hds_url;
+    private HashMap<String, String> hls_url;
 
     public String getAck() {
         return ack;
@@ -61,5 +57,13 @@ public class CCTV {
 
     public void setHds_url(HashMap<String, String> hds_url) {
         this.hds_url = hds_url;
+    }
+
+    public HashMap<String, String> getHls_url() {
+        return hls_url;
+    }
+
+    public void setHls_url(HashMap<String, String> hls_url) {
+        this.hls_url = hls_url;
     }
 }

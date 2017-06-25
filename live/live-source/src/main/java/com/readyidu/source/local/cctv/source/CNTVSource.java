@@ -2,7 +2,7 @@ package com.readyidu.source.local.cctv.source;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.source.base.Source;
-import com.readyidu.source.local.cctv.CCTV;
+import com.readyidu.source.model.CNTV;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import org.apache.http.util.TextUtils;
@@ -17,10 +17,10 @@ import java.net.URL;
  * Created by dylan.
  * Home: http://www.devdylan.cn
  */
-public class CCTVSource extends Source {
-    private static final Logger log = LoggerFactory.getLogger(CCTVSource.class);
+public class CNTVSource extends Source {
+    private static final Logger log = LoggerFactory.getLogger(CNTVSource.class);
 
-    public CCTVSource(String sourceId) {
+    public CNTVSource(String sourceId) {
         super(sourceId);
     }
 
@@ -43,7 +43,7 @@ public class CCTVSource extends Source {
         scriptResult = scriptResult.replace("var html5VideoData='", "");
         scriptResult = scriptResult.replace("';getHtml5VideoData(html5VideoData);", "");
 
-        CCTV cctv = JSON.parseObject(scriptResult, CCTV.class);
+        CNTV cctv = JSON.parseObject(scriptResult, CNTV.class);
 
         if (cctv.getAck().equals("yes")) {
             for (String value : cctv.getFlv_url().values()) {
