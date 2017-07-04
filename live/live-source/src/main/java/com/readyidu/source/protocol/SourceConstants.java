@@ -14,17 +14,23 @@ public class SourceConstants {
     //stv.com
     //东方卫视
     public static final String SOURCE_STV_STV = "source_stv_stv";
+    //江苏卫视
+    public static final String SOURCE_JS_STV="source_jstv_stv";
     //山东卫视http://v.iqilu.com
     public static final String SOURCE_IQILU_STV = "source_iqilu_stv";
     //河南卫视www.hntv
     public static final String SOURCE_HNTV_STV = "source_hntv_stv";
-
-
+    //重庆卫视http://www.cbg.cn/
+    public static final String SOURCE_CQTV_STV="source_cqtv_stv";
+    //湖南卫视http://www.mgtv.com/
+    public static final String SOURCE_MGTV_STV="source_mgtv_stv";
     //福建http://www.fjtv.net/
     //海峡卫视
     public static final String SOURCE_FJTV_HAIXIA_STV = "source_fjtv_haixia_stv";
     //东南卫视
     public static final String SOURCE_FJTV_DONGNAN_STV = "source_fjtv_dongnan_stv";
+    //江西卫视http://www.jxntv.cn
+    public static final String SOURCE_JX_JXSTV = "source_jx_jxstv";
     //福建
     public static final String SOURCE_FJTV_1 = "source_fjtv_1";
     public static final String SOURCE_FJTV_2 = "source_fjtv_2";
@@ -128,7 +134,6 @@ public class SourceConstants {
     public static final String SOURCE_SHITING_NINGXIA_STV = "source_shiting_ningxia_stv";
 
     //浙江cztv.cn
-    public static final String SOURCE_CZTV_1 = "source_cztv_1";
     public static final String SOURCE_CZTV_2 = "source_cztv_2";
     public static final String SOURCE_CZTV_3 = "source_cztv_3";
     public static final String SOURCE_CZTV_4 = "source_cztv_4";
@@ -312,19 +317,19 @@ public class SourceConstants {
     public static final String SOURCE_IJATV_2 = "source_ijatv_2";
 
     //河南www.hntv
-    public static final String SOURCE_HNTV_STV1 = "source_hntv_hntv1";
-    public static final String SOURCE_HNTV_STV2 = "source_hntv_hntv2";
-    public static final String SOURCE_HNTV_STV3 = "source_hntv_hntv3";
-    public static final String SOURCE_HNTV_STV4 = "source_hntv_hntv4";
-    public static final String SOURCE_HNTV_STV5 = "source_hntv_hntv5";
-    public static final String SOURCE_HNTV_STV6 = "source_hntv_hntv6";
-    public static final String SOURCE_HNTV_STV7 = "source_hntv_hntv7";
-    public static final String SOURCE_HNTV_STV8 = "source_hntv_hntv8";
-    public static final String SOURCE_HNTV_STV9 = "source_hntv_hntv9";
-    public static final String SOURCE_HNTV_STV10 = "source_hntv_hntv10";
-    public static final String SOURCE_HNTV_STV11 = "source_hntv_hntv11";
-    public static final String SOURCE_HNTV_STV12 = "source_hntv_hntv12";
-    public static final String SOURCE_HNTV_STV13 = "source_hntv_hntv13";
+    public static final String SOURCE_HNTV_1 = "source_hntv_hntv1";
+    public static final String SOURCE_HNTV_2 = "source_hntv_hntv2";
+    public static final String SOURCE_HNTV_3 = "source_hntv_hntv3";
+    public static final String SOURCE_HNTV_4 = "source_hntv_hntv4";
+    public static final String SOURCE_HNTV_5 = "source_hntv_hntv5";
+    public static final String SOURCE_HNTV_6 = "source_hntv_hntv6";
+    public static final String SOURCE_HNTV_7 = "source_hntv_hntv7";
+    public static final String SOURCE_HNTV_8 = "source_hntv_hntv8";
+    public static final String SOURCE_HNTV_9 = "source_hntv_hntv9";
+    public static final String SOURCE_HNTV_10 = "source_hntv_hntv10";
+    public static final String SOURCE_HNTV_11 = "source_hntv_hntv11";
+    public static final String SOURCE_HNTV_12 = "source_hntv_hntv12";
+    public static final String SOURCE_HNTV_13 = "source_hntv_hntv13";
 
     //cntv
     //厦门
@@ -332,4 +337,104 @@ public class SourceConstants {
     public static final String SOURCE_CNTV_XMTV2 = "source_cntv_xmtv2";
     public static final String SOURCE_CNTV_XMTV3 = "source_cntv_xmtv3";
     public static final String SOURCE_CNTV_XMTV4 = "source_cntv_xmtv4";
+
+    //四川
+    //成都http://www.cditv.cn
+    public static final String SOURCE_CDITV_1 = "source_cditv_1";
+    public static final String SOURCE_CDITV_2 = "source_cditv_2";
+    public static final String SOURCE_CDITV_3 = "source_cditv_3";
+    public static final String SOURCE_CDITV_4 = "source_cditv_4";
+    public static final String SOURCE_CDITV_5 = "source_cditv_5";
+    public static final String SOURCE_CDITV_6 = "source_cditv_6";
+    public static final String SOURCE_CDITV_7 = "source_cditv_7";
+    public static final String SOURCE_CDITV_8 = "source_cditv_8";
+    public static final String SOURCE_CDITV_9 = "source_cditv_9";
+    public static final String SOURCE_CDITV_10 = "source_cditv_10";
+    public static final String SOURCE_CDITV_11 = "source_cditv_11";
+    public static final String SOURCE_CDITV_12 = "source_cditv_12";
+    public static final String SOURCE_CDITV_13 = "source_cditv_13";
+    public static final String SOURCE_CDITV_14 = "source_cditv_14";
+    //双流sltv.net
+    public static final String SOURCE_SLTV_1 = "source_sltv_1";
+    //绵阳http://www.myntv.cn/
+    public static final String SOURCE_MYNTV_1 = "source_myntv_1";
+    public static final String SOURCE_MYNTV_2 = "source_myntv_2";
+    public static final String SOURCE_MYNTV_3 = "source_myntv_3";
+    public static final String SOURCE_MYNTV_4 = "source_myntv_4";
+    public static final String SOURCE_MYNTV_5 = "source_myntv_5";
+    public static final String SOURCE_MYNTV_6 = "source_myntv_6";
+    public static final String SOURCE_MYNTV_7 = "source_myntv_7";
+    public static final String SOURCE_MYNTV_8 = "source_myntv_8";
+    public static final String SOURCE_MYNTV_9 = "source_myntv_9";
+    //泸州http://www.weblz.com.cn/
+    public static final String SOURCE_WEBLZ_1 = "source_weblz1";
+    public static final String SOURCE_WEBLZ_2 = "source_weblz2";
+    public static final String SOURCE_WEBLZ_3 = "source_weblz3";
+    public static final String SOURCE_WEBLZ_4 = "source_weblz4";
+
+    //武汉http://www.whtv.com.cn/
+    public static final String SOURCE_HBTV_WHTV1 = "source_hbtv_whtv1";
+    public static final String SOURCE_HBTV_WHTV2 = "source_hbtv_whtv2";
+    public static final String SOURCE_HBTV_WHTV3 = "source_hbtv_whtv3";
+    public static final String SOURCE_HBTV_WHTV4 = "source_hbtv_whtv4";
+    public static final String SOURCE_HBTV_WHTV5 = "source_hbtv_whtv5";
+    public static final String SOURCE_HBTV_WHTV6 = "source_hbtv_whtv6";
+    public static final String SOURCE_HBTV_WHTV7 = "source_hbtv_whtv7";
+    public static final String SOURCE_HBTV_WHTV8 = "source_hbtv_whtv8";
+    public static final String SOURCE_HBTV_WHTV9 = "source_hbtv_whtv9";
+    //荆门http://www.jmtv.com.cn/
+    public static final String SOURCE_HBTV_JMTV1 = "source_hbtv_jmtv1";
+    public static final String SOURCE_HBTV_JMTV2 = "source_hbtv_jmtv2";
+    //宜昌http://www.3xgd.com/
+    public static final String SOURCE_HBTV_YCTV1 = "source_hbtv_yctv1";
+    public static final String SOURCE_HBTV_YCTV2 = "source_hbtv_yctv2";
+    public static final String SOURCE_HBTV_YCTV3 = "source_hbtv_yctv3";
+
+    //哈尔滨http://www.hrbtv.net/
+    public static final String SOURCE_HLJTV_HEBTV1 = "source_hljtv_hebtv1";
+    public static final String SOURCE_HLJTV_HEBTV2 = "source_hljtv_hebtv2";
+    public static final String SOURCE_HLJTV_HEBTV3 = "source_hljtv_hebtv3";
+    public static final String SOURCE_HLJTV_HEBTV4 = "source_hljtv_hebtv4";
+    public static final String SOURCE_HLJTV_HEBTV5 = "source_hljtv_hebtv5";
+
+    //吉林http://www.jilintv.cn/
+    public static final String SOURCE_JLTV_JLTV1 = "source_jltv_jltv1";
+    public static final String SOURCE_JLTV_JLTV2 = "source_jltv_jltv2";
+    public static final String SOURCE_JLTV_JLTV3 = "source_jltv_jltv3";
+    public static final String SOURCE_JLTV_JLTV4 = "source_jltv_jltv4";
+    public static final String SOURCE_JLTV_JLTV5 = "source_jltv_jltv5";
+    public static final String SOURCE_JLTV_JLTV6 = "source_jltv_jltv6";
+    public static final String SOURCE_JLTV_JLTV7 = "source_jltv_jltv7";
+    public static final String SOURCE_JLTV_JLTV8 = "source_jltv_jltv8";
+    public static final String SOURCE_JLTV_JLTV9 = "source_jltv_jltv9";
+    //安徽 http://www.haoqu.net/
+    public static final String SOURCE_AH_AHTV1 = "source_ah_ahtv1";
+    public static final String SOURCE_AH_AHTV2 = "source_ah_ahtv2";
+    public static final String SOURCE_AH_AHTV3 = "source_ah_ahtv3";
+    public static final String SOURCE_AH_AHTV4 = "source_ah_ahtv4";
+    public static final String SOURCE_AH_AHTV5 = "source_ah_ahtv5";
+    public static final String SOURCE_AH_AHTV6 = "source_ah_ahtv6";
+
+    //济南http://jntv.ijntv.cn/
+    public static final String SOURCE_SDTV_JNTV1 = "source_sdtv_jntv1";
+    public static final String SOURCE_SDTV_JNTV2 = "source_sdtv_jntv2";
+    public static final String SOURCE_SDTV_JNTV3 = "source_sdtv_jntv3";
+    public static final String SOURCE_SDTV_JNTV4 = "source_sdtv_jntv4";
+    public static final String SOURCE_SDTV_JNTV5 = "source_sdtv_jntv5";
+    public static final String SOURCE_SDTV_JNTV6 = "source_sdtv_jntv6";
+    public static final String SOURCE_SDTV_JNTV7 = "source_sdtv_jntv7";
+
+    //日照http://www.rzw.com.cn/live/index.shtml?id=1
+    public static final String SOURCE_SDTV_RZTV1 = "source_sdtv_rztv1";
+    public static final String SOURCE_SDTV_RZTV2 = "source_sdtv_rztv2";
+    public static final String SOURCE_SDTV_RZTV3 = "source_sdtv_rztv3";
+    public static final String SOURCE_SDTV_RZTV4 = "source_sdtv_rztv4";
+
+
+    //陕西
+    //渭南http://live.hshan.com/
+    public static final String SOURCE_HSNAN_1 = "source_hsnan_1";
+    public static final String SOURCE_HSNAN_2 = "source_hsnan_2";
+    public static final String SOURCE_HSNAN_3 = "source_hsnan_3";
+    public static final String SOURCE_HSNAN_4 = "source_hsnan_4";
 }

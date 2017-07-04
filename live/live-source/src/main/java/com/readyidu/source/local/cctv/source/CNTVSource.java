@@ -60,7 +60,6 @@ public class CNTVSource extends Source {
                 }
             }
         }
-
         return null;
     }
 

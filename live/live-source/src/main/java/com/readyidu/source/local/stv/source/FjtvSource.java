@@ -4,6 +4,7 @@ import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.HeaderUtil;
 import com.readyidu.util.HttpUtil;
+import com.readyidu.util.PlayerEngineUtil;
 
 import java.util.HashMap;
 
@@ -32,6 +33,6 @@ public class FjtvSource extends Source {
         HashMap<String, String> header = new HashMap<String, String>();
         header.put("Referer", "http://www.setv.com.cn/live/");
         header.put("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36");
-        return HeaderUtil.addHeader(fjtvStv, header);
+        return PlayerEngineUtil.addEngine(HeaderUtil.addHeader(fjtvStv, header), PlayerEngineUtil.Engine.ENGINE_EXO);
     }
 }

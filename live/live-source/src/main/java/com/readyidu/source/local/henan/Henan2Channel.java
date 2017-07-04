@@ -20,7 +20,7 @@ public class Henan2Channel extends Channel {
     @Override
     public Source getSource(SourceUri uri) {
         Source source = new HntvSource(uri.getSource());
-        if (NullUtil.isNullObject(source.toString())) {
+        if (!NullUtil.isNullObject(source.toString())) {
             return source;
         }
         return null;
