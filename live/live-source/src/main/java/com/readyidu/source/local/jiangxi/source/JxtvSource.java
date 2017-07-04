@@ -49,7 +49,7 @@ public class JxtvSource extends Source {
             default:
                 break;
         }
-        Pattern pattern = Pattern.compile("http.*.Live02.jxtvcn.com.cn.*.m3u8");
+        Pattern pattern = Pattern.compile("http://[Ll]ive02.*.m3u8");
         Matcher matcher = pattern.matcher(jxtv);
         String url=null;
         if (matcher.find()) {
@@ -57,4 +57,14 @@ public class JxtvSource extends Source {
         }
         return url;
     }
+//    public  static void main(String[] args) {
+//       String hntvDom = HttpUtil.httpGet("http://www.jxntv.cn/live/jxtv5.shtml");
+//        Pattern pattern = Pattern.compile("http://[Ll]ive02.*.m3u8");
+//        Matcher matcher = pattern.matcher(hntvDom);
+//        String url=null;
+//        if (matcher.find()) {
+//            url = matcher.group(0);
+//            System.out.print(url);
+//        }
+//    }
 }

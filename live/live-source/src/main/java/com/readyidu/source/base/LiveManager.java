@@ -1,5 +1,6 @@
 package com.readyidu.source.base;
 
+import com.readyidu.source.local.anhui.AnhuiLocal;
 import com.readyidu.source.local.cctv.CCTVLocal;
 import com.readyidu.source.local.chongqing.ChongqinLocal;
 import com.readyidu.source.local.fujian.FujianLocal;
@@ -16,7 +17,11 @@ import com.readyidu.source.local.guangdong.shanwei.ShanweiLocal;
 import com.readyidu.source.local.guangdong.yunfu.YunfuLocal;
 import com.readyidu.source.local.guangdong.zhanjiang.ZhanjiangLocal;
 import com.readyidu.source.local.guangdong.zhaoqing.ZhaoqingLocal;
+import com.readyidu.source.local.heilongjiang.haerbin.HaerbinLocal;
 import com.readyidu.source.local.henan.HenanLocal;
+import com.readyidu.source.local.hubei.jingmen.JingmenLocal;
+import com.readyidu.source.local.hubei.wuhan.WuhanLocal;
+import com.readyidu.source.local.hubei.yichang.YichangLocal;
 import com.readyidu.source.local.hunan.hunan.HunanLocal;
 import com.readyidu.source.local.hunan.zhuzhou.ZhuzhouLocal;
 import com.readyidu.source.local.jiangsu.changzhou.ChangzhouLocal;
@@ -26,7 +31,15 @@ import com.readyidu.source.local.jiangsu.yancheng.YanchengLocal;
 import com.readyidu.source.local.jiangxi.JiangxiLocal;
 import com.readyidu.source.local.jiangxi.jian.JianLocal;
 import com.readyidu.source.local.jiangxi.shangrao.ShangraoLocal;
+import com.readyidu.source.local.shan3xi.weinan.WeinanLocal;
+import com.readyidu.source.local.jilin.jilin.JilinLocal;
+import com.readyidu.source.local.shandong.jinan.JinanLocal;
+import com.readyidu.source.local.shandong.rizhao.RizhaoLocal;
 import com.readyidu.source.local.shanghai.ShanghaiLocal;
+import com.readyidu.source.local.sichuan.chengdu.ChengduLocal;
+import com.readyidu.source.local.sichuan.lvzhou.LuzhouLocal;
+import com.readyidu.source.local.sichuan.mianyang.MianyangLocal;
+import com.readyidu.source.local.sichuan.shuangliu.ShuangliuLocal;
 import com.readyidu.source.local.stv.STVLocal;
 import com.readyidu.source.local.zhejiang.ZhejiangLocal;
 import com.readyidu.source.local.zhejiang.deqing.DeqingLocal;
@@ -37,7 +50,6 @@ import com.readyidu.source.local.zhejiang.shangyu.ShangyuLocal;
 import com.readyidu.source.local.zhejiang.shaoxing.ShaoxingLocal;
 import com.readyidu.source.local.zhejiang.shengzhou.ShengzhouLocal;
 import com.readyidu.source.protocol.SourceUri;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -169,6 +181,57 @@ public class LiveManager {
         //河南
         HenanLocal henanLocal = new HenanLocal();
         locals.put(henanLocal.getId(), henanLocal);
+        //安徽
+        AnhuiLocal anhuiLocal=new AnhuiLocal();
+        locals.put(anhuiLocal.getId(),anhuiLocal);
+
+        //四川
+        //成都
+        ChengduLocal chengduLocal = new ChengduLocal();
+        locals.put(chengduLocal.getId(), chengduLocal);
+        //双流
+        ShuangliuLocal shuangliuLocal = new ShuangliuLocal();
+        locals.put(shuangliuLocal.getId(), shuangliuLocal);
+        //绵阳
+        MianyangLocal mianyangLocal = new MianyangLocal();
+        locals.put(mianyangLocal.getId(), mianyangLocal);
+        //泸州
+        LuzhouLocal luzhouLocal = new LuzhouLocal();
+        locals.put(luzhouLocal.getId(), luzhouLocal);
+
+        //湖北
+        //武汉
+        WuhanLocal wuhanLocal = new WuhanLocal();
+        locals.put(wuhanLocal.getId(),wuhanLocal);
+        //荆门
+        JingmenLocal jingmenLocal = new JingmenLocal();
+        locals.put(jingmenLocal.getId(),jingmenLocal);
+        //宜昌
+        YichangLocal yichangLocal = new YichangLocal();
+        locals.put(yichangLocal.getId(),yichangLocal);
+
+        //黑龙江
+        //哈尔滨
+        HaerbinLocal haerbinLocal = new HaerbinLocal();
+        locals.put(haerbinLocal.getId(),haerbinLocal);
+
+        //山东
+        //济南
+        JinanLocal jinanLocal = new JinanLocal();
+        locals.put(jinanLocal.getId(),jinanLocal);
+        //日照
+        RizhaoLocal rizhaoLocal = new RizhaoLocal();
+        locals.put(rizhaoLocal.getId(),rizhaoLocal);
+
+        //吉林
+        JilinLocal jilinLocal = new JilinLocal();
+        locals.put(jilinLocal.getId(),jilinLocal);
+
+
+        //陕西
+        //渭南
+        WeinanLocal weinanLocal = new WeinanLocal();
+        locals.put(weinanLocal.getId(),weinanLocal);
 
     }
 

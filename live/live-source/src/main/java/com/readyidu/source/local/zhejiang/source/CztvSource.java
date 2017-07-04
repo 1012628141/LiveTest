@@ -20,9 +20,6 @@ public class CztvSource extends Source {
     protected String source() {
         String sourceData = null;
         switch (sourceId) {
-            case SourceConstants.SOURCE_CZTV_1:
-                sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/101.json");
-                break;
             case SourceConstants.SOURCE_CZTV_2:
                 sourceData = HttpUtil.httpGet("http://d.cztvcloud.com/config/live/102.json");
                 break;
