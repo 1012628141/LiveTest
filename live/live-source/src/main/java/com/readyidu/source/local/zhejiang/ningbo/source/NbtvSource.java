@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 public class NbtvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 480;
+    private static final int CHACHE_TIMEOUT = 1800;
 
     public NbtvSource(String sourceId) {
         super(sourceId);

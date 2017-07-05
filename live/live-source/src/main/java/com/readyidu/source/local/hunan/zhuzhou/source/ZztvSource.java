@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class ZztvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 480;
+    private static final int CHACHE_TIMEOUT = 1800;
 
     public ZztvSource(String sourceId) {
         super(sourceId);
