@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class MyntvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 300;
+    private static final int CHACHE_TIMEOUT = 1800;
 
     public MyntvSource(String sourceId) {
         super(sourceId);

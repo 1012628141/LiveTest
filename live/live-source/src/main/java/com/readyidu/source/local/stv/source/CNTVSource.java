@@ -53,28 +53,28 @@ public class CNTVSource extends Source {
                 case 1:
                     for (String value : cntv.getHls_url().values()) {
                         if (!NullUtil.isNullObject(value)) {
-                            CacheUtil.set(CACHE_NAME + sourceId, value, 300);
+                            CacheUtil.set(CACHE_NAME + sourceId, value, 1800);
                             return value;
                         }
                     }
                 case 2:
                     for (String value : cntv.getFlv_url().values()) {
                         if (!NullUtil.isNullObject(value)) {
-                            CacheUtil.set(CACHE_NAME + sourceId, value, 300);
+                            CacheUtil.set(CACHE_NAME + sourceId, value, 1800);
                             return value;
                         }
                     }
                 case 3:
                     for (String value : cntv.getHds_url().values()) {
                         if (!NullUtil.isNullObject(value)) {
-                            CacheUtil.set(CACHE_NAME + sourceId, value, 300);
+                            CacheUtil.set(CACHE_NAME + sourceId, value, 1800);
                             return value;
                         }
                     }
                 default:
                     for (String value : cntv.getHls_url().values()) {
                         if (!NullUtil.isNullObject(value)) {
-                            CacheUtil.set(CACHE_NAME + sourceId, value, 300);
+                            CacheUtil.set(CACHE_NAME + sourceId, value, 1800);
                             return value;
                         }
                     }

@@ -14,7 +14,7 @@ import com.readyidu.util.NullUtil;
 public class HntvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 480;
+    private static final int CHACHE_TIMEOUT = 1800;
 
     public HntvSource(String sourceId) {
         super(sourceId);

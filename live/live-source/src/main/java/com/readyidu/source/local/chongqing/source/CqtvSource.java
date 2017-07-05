@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class CqtvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 480;
+    private static final int CHACHE_TIMEOUT = 1800;
 
     public CqtvSource(String sourceId) {
         super(sourceId);
@@ -75,13 +75,12 @@ public class CqtvSource extends Source {
                     cacheSource = matcher.group(0);
                     cacheSource = cacheSource.replace("\\", "");
                     CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                    return cacheSource;
                 }
             }
+            return cacheSource;
         } else {
             return cacheSource;
         }
-        return null;
     }
 
 //    public  static void main(String[] args) {
