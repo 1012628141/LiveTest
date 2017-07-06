@@ -231,7 +231,7 @@
                                         var result = data;
                                         if (result.code === 200) {
                                             var rd = result.data;
-                                            swal.insertQueueStep('结果' + rd);
+                                            swal.insertQueueStep('结果' + rd.join(', '));
                                         } else {
                                             swal.insertQueueStep("新增失败！");
                                         }
