@@ -305,8 +305,69 @@
     $(document).ready(function() {
 
         var page = "${content}";
-        if ( page === 'pages/checkChannel.jsp') {
-            // 毛都不用干
+        if ( page === 'pages/typeChannel.jsp') {
+            // 频道对应列表
+            $('#datatables').DataTable({
+                pageLength: 20,
+                lengthChange: false,
+                info: false,
+                ordering: false,
+                autoWidth: true,
+                "language": {
+                    "paginate": {
+                        "previous": "上一页",
+                        "last": "最后一页",
+                        "next": "下一页"
+                    },
+                    "search": "检索："
+                },
+                "search": {
+                    "caseInsensitive": false
+                }
+            });
+
+            $('.card .material-datatables label').addClass('form-group');
+            
+            $('.btn-remove-mapping').on('click', function () {
+                // 删除 Mapper
+                var id = $(this).data("id");
+
+                swal.queue([{
+                    title: '确认删除此映射 ？',
+                    confirmButtonClass: 'btn btn-warning',
+                    confirmButtonText: '确认',
+                    buttonsStyling: false,
+                    showLoaderOnConfirm: true,
+                    cancelButtonText: '取消',
+                    cancelButtonClass: 'btn btn-default',
+                    showCancelButton: true,
+                    allowOutsideClick: false,
+                    preConfirm: function () {
+                        return new Promise(function (resolve) {
+                            $.ajax(
+                                {
+                                    type: "POST",
+                                    url: "/router/channel/removeMapper.do",
+                                    data: {"id": id},
+                                    success: function (data) {
+                                        var result = data;
+                                        if (result.code === 200) {
+                                            window.location.reload();
+                                        } else {
+                                            swal.insertQueueStep("删除失败！");
+                                        }
+                                        resolve();
+                                    },
+                                    error: function () {
+                                        swal.insertQueueStep("删除失败！");
+                                        resolve()
+                                    }
+                                }
+                            );
+                        });
+                    }
+                }])
+            });
         }
 
         if ( page === 'pages/livingChannel.jsp' ) {
@@ -330,6 +391,10 @@
             });
 
             $('.card .material-datatables label').addClass('form-group');
+
+            $('.btn-add-channel').on('click', function () {
+                alert("choose file update");
+            });
 
             // Add channel
             $('.btn-add-channel').on('click', function () {

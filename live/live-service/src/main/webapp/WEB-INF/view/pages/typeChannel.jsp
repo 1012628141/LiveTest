@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:useBean id="myDate" class="java.util.Date"/>
 
 <div class="row">
     <div class="col-md-12">
@@ -29,11 +30,11 @@
                                     <td style="text-align: center">${channel.id}</td>
                                     <td style="text-align: center">${channel.key}</td>
                                     <td style="text-align: center">${channel.value}</td>
-                                    <td style="text-align: center">未设置</td>
-                                    <td style="text-align: center">
-                                        <a class="btn btn-simple btn-warning btn-icon edit">
-                                            <i class="material-icons">edit</i>
-                                        </a>
+                                    <td style="text-align: center"><fmt:formatDate value="${channel.createdat}" type="both"/></td>
+                                    <td style="text-align: center" class="td-actions text-right">
+                                        <button data-id="${channel.id}" type="button" rel="tooltip" class="btn btn-danger btn-remove-mapping">
+                                            <i class="material-icons">close</i>
+                                        </button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -44,7 +45,7 @@
             </div>
             <!-- end content-->
             <div class="card-footer">
-                <button class="btn btn-info btn-add-channel">新增Map</button>
+                <a href="/router/channel/add.do" class="btn btn-info btn-add-channel">新增Map</a>
             </div>
         </div>
         <!--  end card  -->

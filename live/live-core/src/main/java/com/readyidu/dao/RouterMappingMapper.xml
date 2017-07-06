@@ -37,9 +37,9 @@
 
     <!--int insert(RouterMapping record);-->
     <insert id="insert" parameterType="com.readyidu.model.RouterMapping">
-        insert into t_channel_mapping (id, createdAt, `key`, `value`
+        insert into t_channel_mapping (`key`, `value`
         )
-        values (#{id,jdbcType=INTEGER}, #{createdat,jdbcType=TIMESTAMP}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}
+        values (#{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}
         )
     </insert>
     <!--int update(RouterMapping record);-->
