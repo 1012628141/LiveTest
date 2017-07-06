@@ -38,6 +38,28 @@ public class RouterMapController {
     @ResponseBody
     public String getAllChannelMap() {
         List<RouterMapping> routerMappings = routerService.selectAll();
+
+        ArrayList<String> strings = new ArrayList<>();
+        ArrayList<RouterMapping> mappers = new ArrayList<>();
+        for (RouterMapping mapping: routerMappings) {
+            if (mapping.getKey().endsWith("电视台")) {
+                strings.add(mapping.getKey().substring(0, mapping.getKey().length() - "电视台".length()));
+            }
+        }
+
+        for (RouterMapping mapping: routerMappings) {
+            for (String prefix: strings) {
+                if (mapping.getKey().startsWith(prefix)) {
+                    RouterMapping routerMapping = new RouterMapping();
+                    routerMapping.setKey(prefix + "电视台");
+                    routerMapping.setValue(mapping.getValue());
+                    mappers.add(routerMapping);
+                }
+            }
+        }
+
+        routerMappings.addAll(mappers);
+
         return JsonResult.toString(NetworkCode.CODE_SUCCESS, routerMappings);
     }
 
