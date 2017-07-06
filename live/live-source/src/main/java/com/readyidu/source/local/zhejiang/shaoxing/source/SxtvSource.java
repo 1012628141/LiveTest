@@ -40,7 +40,6 @@ public class SxtvSource extends Source {
                 default:
                     break;
             }
-
             JSONArray sourceJsonArray = JSON.parseArray(sourceData);
             if (sourceJsonArray.size() >= 1) {
                 JSONObject sourceJson = sourceJsonArray.getJSONObject(0);
