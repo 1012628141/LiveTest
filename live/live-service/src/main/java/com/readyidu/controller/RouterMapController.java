@@ -5,6 +5,7 @@ import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.RouterMapping;
 import com.readyidu.service.RouterService;
 import com.readyidu.util.JsonResult;
+import org.apache.commons.collections.MultiMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,5 +41,44 @@ public class RouterMapController {
         return JsonResult.toString(NetworkCode.CODE_SUCCESS, routerMappings);
     }
 
-    //
+    @RequestMapping(value = "removeMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String removeMapper(HttpServletRequest request) {
+        if (routerService.deleteById(Integer.valueOf(request.getParameter("id"))) != 0) {
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+        }
+        return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+    }
+
+    @RequestMapping(value = "add.do")
+    public String addMapper() {
+        return "pages/addMapper";
+    }
+
+    @RequestMapping(value = "addMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String addMapper(HttpServletRequest request) {
+        // 批量添加
+        String newers = request.getParameter("content");
+
+        if (newers != null && newers.length() > 0) {
+            String[] nList = newers.split("\\|");
+
+            ArrayList<Integer> resultList = new ArrayList<>();
+            for (String s: nList) {
+                String[] content = s.split(",");
+                if (content.length == 2) {
+                    RouterMapping routerMapping = new RouterMapping();
+                    routerMapping.setKey(content[0]);
+                    routerMapping.setValue(content[1]);
+                    resultList.add(routerService.insert(routerMapping));
+                }
+            }
+
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, resultList);
+        }
+
+        return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+    }
+
 }

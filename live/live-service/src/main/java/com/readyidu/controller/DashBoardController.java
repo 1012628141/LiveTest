@@ -140,7 +140,7 @@ public class DashBoardController {
         list.add(aMap);
 
         Map<String, Object> pMap = new HashMap<>();
-        pMap.put("name", "频道分类");
+        pMap.put("name", "对照表");
         pMap.put("icon", "grid_on");
         pMap.put("items", new ArrayList<>());
         pMap.put("href", "?item=typeChannel");
