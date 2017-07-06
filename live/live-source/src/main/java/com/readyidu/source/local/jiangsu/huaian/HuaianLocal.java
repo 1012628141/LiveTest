@@ -18,9 +18,9 @@ public class HuaianLocal extends Local {
         managerId = MANAGER_ID;
         channels = new HashMap<String, Channel>();
 
-        Channel channel1 = new Changzhou1Channel();
-        Channel channel2 = new Changzhou2Channel();
-        Channel channel3 = new Changzhou3Channel();
+        Channel channel1 = new Huaian1Channel();
+        Channel channel2 = new Huaian2Channel();
+        Channel channel3 = new Huaian3Channel();
 
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);

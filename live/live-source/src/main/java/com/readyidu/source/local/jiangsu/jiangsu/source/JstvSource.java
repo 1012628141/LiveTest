@@ -1,4 +1,4 @@
-package com.readyidu.source.local.stv.source;
+package com.readyidu.source.local.jiangsu.jiangsu.source;
 
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
@@ -12,9 +12,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,15 +24,14 @@ public class JstvSource extends Source {
     private static final String CACHE_NAME = "source_";
     private static final int CHACHE_TIMEOUT = 1800;
 
-    public JstvSource(String sourceId, int index) {
-        super(sourceId, index);
+    public JstvSource(String sourceId) {
+        super(sourceId);
     }
-    private String channelURL = "http://ws.live.jstv.com/play";
     private static String hexStr = "0123456789abcdef";
 
-    public String getMd5(int timeStamp) throws NoSuchAlgorithmException {
+    public String getMd5(int timeStamp,String url) throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
-        return BinaryToHexString(md5.digest(("!@#jsTvL1ve"+channelURL+"/62"+timeStamp).getBytes()));
+        return BinaryToHexString(md5.digest(("!@#jsTvL1ve"+url+timeStamp).getBytes()));
     }
     private int transformInt(int param1) throws IOException {
         ByteArrayOutputStream boutput = new ByteArrayOutputStream();
@@ -51,20 +48,19 @@ public class JstvSource extends Source {
         return _loc5_.getInt();
     }
 
-    public String getUrl() {
-        String URL = channelURL + "/62";
-        int timeStamp = (int) (new Date().getTime() / 1000);
+    public String getUrl(String url) {
+        int timeStamp = (int)(new Date().getTime()/1000);
         String hash = null;
         int key=0;
         try {
-            hash = getMd5(timeStamp);
+            hash = getMd5(timeStamp,url);
             key = transformInt(timeStamp);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return URL+"?val="+hash+"&tt="+key+"&rand="+Math.random();
+        return url+"?val="+hash+"&tt="+key+"&rand="+Math.random();
     }
 
 
@@ -85,18 +81,49 @@ public class JstvSource extends Source {
         if (NullUtil.isNullObject(cacheSource)) {
             String result = null;
             switch (sourceId) {
-                case SourceConstants.SOURCE_JS_STV:
-                    result = getUrl();
+                case SourceConstants.SOURCE_JSTV_JS1:
+                    result = getUrl("http://ws.live.jstv.com/play/5");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS2:
+                    result = getUrl("http://ws.live.jstv.com/play/2");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS3:
+                    result = getUrl("http://ws.live.jstv.com/play/9");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS4:
+                    result = getUrl("http://ws.live.jstv.com/play/8");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS5:
+                    result = getUrl("http://ws.live.jstv.com/play/7");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS6:
+                    result = getUrl("http://ws.live.jstv.com/play/29");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS7:
+                    result = getUrl("http://ws.live.jstv.com/play/91");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS8:
+                    result = getUrl("http://ws.live.jstv.com/play/6");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS9:
+                    result = getUrl("http://ws.live.jstv.com/play/28");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS10:
+                    result = getUrl("http://ws.live.jstv.com/play/27");
+                    break;
+                case SourceConstants.SOURCE_JSTV_JS11:
+                    result = getUrl("http://ws.live.jstv.com/play/10");
+                    break;
             }
             String jsonReturn = HttpUtil.httpGet(result);
-            Pattern pattern = Pattern.compile("rtmp://[a-zA-z0-9./?=&~%-]*");
+            Pattern pattern = Pattern.compile("rtmp://[a-zA-Z0-9./?=&~%-]*");
             Matcher matcher = pattern.matcher(jsonReturn);
-            List<String> urlList = new ArrayList();
-            while (matcher.find()) {
-                urlList.add(matcher.group());
+            result = matcher.group();
+            if (matcher.find()) {
+                result = matcher.group();
+                CacheUtil.set(CACHE_NAME + sourceId, result, CHACHE_TIMEOUT);
             }
-            CacheUtil.set(CACHE_NAME + sourceId, urlList.get(index - 1), CHACHE_TIMEOUT);
-            return urlList.get(index - 1);
+            return result;
         } else {
             return cacheSource;
         }

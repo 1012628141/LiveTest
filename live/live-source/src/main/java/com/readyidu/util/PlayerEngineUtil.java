@@ -17,7 +17,7 @@ public class PlayerEngineUtil {
     }
 
     public enum Engine {
-        ENGINE_PL(0), ENGINE_EXO(1);
+        ENGINE_PL(0), ENGINE_EXO(1),ENGINE_VLC(2),ENGINE_VITAMIO(3);
 
         private int engineTag = 0;
 
