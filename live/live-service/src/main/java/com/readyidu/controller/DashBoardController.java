@@ -5,6 +5,7 @@ import com.readyidu.model.ChannelDeath;
 import com.readyidu.model.CheckableChannel;
 import com.readyidu.service.ChannelService;
 import com.readyidu.service.DeathChannelService;
+import com.readyidu.service.RouterService;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,9 @@ public class DashBoardController {
     @Resource(name = "deathChannelService")
     DeathChannelService deathChannelService;
 
+    @Resource(name = "routerService")
+    RouterService routerService;
+
     @RequestMapping
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
         String item = request.getParameter("item");
@@ -37,6 +41,14 @@ public class DashBoardController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
         modelAndView.addObject("navItem", getNavItemList());
+
+        // 打开了客户端的Mapping处理
+        if (!TextUtils.isEmpty(item) && item.equals("typeChannel")) {
+            modelAndView.addObject("active", item);
+            modelAndView.addObject("content", "pages/" + item + ".jsp");
+            modelAndView.addObject("routerMaps", routerService.selectAll());
+            return modelAndView;
+        }
 
         // Items selected
         if (!TextUtils.isEmpty(item)) {

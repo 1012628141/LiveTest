@@ -98,10 +98,11 @@
       <module name="live-source" target="1.7" />
     </bytecodeTargetLevel>
   </component>
-  <component name="Encoding">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/live-core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/live-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/live-source" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="ExportToHTMLSettings">
     <option name="PRINT_LINE_NUMBERS" value="false" />
@@ -293,7 +294,7 @@
       <module fileurl="file://$PROJECT_DIR$/live-source/live-source.iml" filepath="$PROJECT_DIR$/live-source/live-source.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
   <component name="libraryTable">
     <library name="Maven: aopalliance:aopalliance:1.0">
       <CLASSES>
