@@ -26,6 +26,7 @@ import com.readyidu.source.local.hunan.hunan.HunanLocal;
 import com.readyidu.source.local.hunan.zhuzhou.ZhuzhouLocal;
 import com.readyidu.source.local.jiangsu.changzhou.ChangzhouLocal;
 import com.readyidu.source.local.jiangsu.huaian.HuaianLocal;
+import com.readyidu.source.local.jiangsu.jiangsu.JiangsuLocal;
 import com.readyidu.source.local.jiangsu.taizhou.TaizhouLocal;
 import com.readyidu.source.local.jiangsu.yancheng.YanchengLocal;
 import com.readyidu.source.local.jiangxi.JiangxiLocal;
@@ -108,6 +109,10 @@ public class LiveManager {
         //泰州
         TaizhouLocal taizhou = new TaizhouLocal();
         locals.put(taizhou.getId(), taizhou);
+        //江苏省台
+        JiangsuLocal jiangsuLocal = new JiangsuLocal();
+        locals.put(jiangsuLocal.getId(),jiangsuLocal);
+
         //上海
         ShanghaiLocal shanghai = new ShanghaiLocal();
         locals.put(shanghai.getId(), shanghai);

@@ -5,6 +5,7 @@ import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
+import com.readyidu.util.PlayerEngineUtil;
 
 /**
  * Created by yuzhang on 17/6/9.
@@ -35,7 +36,7 @@ public class YingxiSource extends Source {
             if (NullUtil.isNullObject(cacheSource)) {
                 return null;
             } else {
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
+                CacheUtil.set(CACHE_NAME + sourceId, PlayerEngineUtil.addEngine(cacheSource, PlayerEngineUtil.Engine.ENGINE_EXO), CHACHE_TIMEOUT);
                 return cacheSource;
             }
         } else {
