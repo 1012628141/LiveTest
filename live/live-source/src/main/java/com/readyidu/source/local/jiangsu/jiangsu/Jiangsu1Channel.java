@@ -3,7 +3,6 @@ package com.readyidu.source.local.jiangsu.jiangsu;
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.local.jiangsu.jiangsu.source.JstvSource;
-import com.readyidu.source.local.jiangsu.taizhou.source.MytaizhouSource;
 import com.readyidu.source.protocol.SourceUri;
 import com.readyidu.util.NullUtil;
 

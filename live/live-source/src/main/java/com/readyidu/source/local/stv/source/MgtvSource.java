@@ -1,5 +1,6 @@
 package com.readyidu.source.local.stv.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
@@ -7,6 +8,7 @@ import com.readyidu.util.HttpUtil;
 import org.apache.http.util.TextUtils;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 
+import javax.annotation.Resource;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;

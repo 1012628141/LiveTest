@@ -1,10 +1,13 @@
 package com.readyidu.source.local.shandong.rizhao.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Administrator on 2017/6/27.

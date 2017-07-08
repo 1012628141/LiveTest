@@ -3,11 +3,14 @@ package com.readyidu.source.local.zhejiang.hangzhou.source;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
+
+import javax.annotation.Resource;
 
 /**
  * Created by yuzhang on 17/6/9.

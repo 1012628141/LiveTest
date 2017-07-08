@@ -1,10 +1,15 @@
 package com.readyidu.source.local.jilin.jilin.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
+import com.readyidu.util.HeaderUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * Created by Administrator on 2017/6/27.
@@ -56,8 +61,10 @@ public class JltvSource extends Source {
             if (NullUtil.isNullObject(cacheSource)) {
                 return null;
             } else {
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
+                HashMap<String, String> header = new HashMap<String, String>();
+                header.put("Referer", "http://player.hoge.cn/player.swf");
+                CacheUtil.set(CACHE_NAME + sourceId, HeaderUtil.addHeader(cacheSource, header), CHACHE_TIMEOUT);
+                return HeaderUtil.addHeader(cacheSource, header);
             }
         } else {
             return cacheSource;

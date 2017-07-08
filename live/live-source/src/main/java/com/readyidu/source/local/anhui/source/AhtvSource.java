@@ -1,10 +1,14 @@
 package com.readyidu.source.local.anhui.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * Created by chenyihao on 2017/6/27.

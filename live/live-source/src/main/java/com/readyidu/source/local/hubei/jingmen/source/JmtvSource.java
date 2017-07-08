@@ -1,5 +1,6 @@
 package com.readyidu.source.local.hubei.jingmen.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
