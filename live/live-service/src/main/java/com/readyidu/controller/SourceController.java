@@ -6,6 +6,7 @@ import com.readyidu.service.SourceService;
 import com.readyidu.model.Source;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import java.util.HashMap;
  */
 
 @Controller
+@Scope("prototype")
 @RequestMapping(value = "/source")
 public class SourceController {
 

@@ -1,9 +1,11 @@
 package com.readyidu.source.local.fujian.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.*;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 
 /**

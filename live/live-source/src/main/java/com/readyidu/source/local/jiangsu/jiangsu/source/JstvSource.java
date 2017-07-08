@@ -1,11 +1,13 @@
 package com.readyidu.source.local.jiangsu.jiangsu.source;
 
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
 
+import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -114,16 +116,17 @@ public class JstvSource extends Source {
                 case SourceConstants.SOURCE_JSTV_JS11:
                     result = getUrl("http://ws.live.jstv.com/play/10");
                     break;
+                default:
+                    break;
             }
             String jsonReturn = HttpUtil.httpGet(result);
             Pattern pattern = Pattern.compile("rtmp://[a-zA-Z0-9./?=&~%-]*");
             Matcher matcher = pattern.matcher(jsonReturn);
-            result = matcher.group();
             if (matcher.find()) {
                 result = matcher.group();
                 CacheUtil.set(CACHE_NAME + sourceId, result, CHACHE_TIMEOUT);
             }
-            return result;
+            return  result;
         } else {
             return cacheSource;
         }

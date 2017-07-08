@@ -1,6 +1,7 @@
 package com.readyidu.source.local.fujian.xiamen.source;
 
 import com.alibaba.fastjson.JSON;
+import com.readyidu.service.CacheService;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.model.CNTV;
 import com.readyidu.source.protocol.SourceConstants;
@@ -11,6 +12,7 @@ import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Resource;
 import java.net.MalformedURLException;
 import java.net.URL;
 

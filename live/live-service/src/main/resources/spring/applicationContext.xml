@@ -21,12 +21,12 @@
     <context:property-placeholder location="classpath*:properties/**.properties"/>
 
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-    <property name="maxIdle" value="300"/>
-    <!-- 最大能够保持idel状态的对象数  -->
-    <property name="maxTotal" value="60000"/>
-    <!-- 最大分配的对象数 -->
-    <property name="testOnBorrow" value="true"/>
-    <!-- 当调用borrow Object方法时，是否进行有效性检查 -->
+        <property name="maxIdle" value="300"/>
+        <!-- 最大能够保持idel状态的对象数  -->
+        <property name="maxTotal" value="60000"/>
+        <!-- 最大分配的对象数 -->
+        <property name="testOnBorrow" value="true"/>
+        <!-- 当调用borrow Object方法时，是否进行有效性检查 -->
     </bean>
     <bean id="cachePool" class="redis.clients.jedis.JedisPool">
     <constructor-arg index="0" ref="jedisPoolConfig"/>

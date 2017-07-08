@@ -27,7 +27,7 @@ public class CacheUtil {
         config.setMaxIdle(300);
         config.setTestOnBorrow(true);
         jedisPool = new JedisPool(config, ConfigSettings.getProperty("redis_host", "localhost"), NumberUtils.toInt(
-                ConfigSettings.getProperty("redis_port"), 6379), NumberUtils.toInt(ConfigSettings.getProperty("redis_timeout"), 3000), ConfigSettings.getProperty("redis_pwd", ""));
+                ConfigSettings.getProperty("redis_port"), 6379), NumberUtils.toInt(ConfigSettings.getProperty("redis_timeout"), 100000), ConfigSettings.getProperty("redis_pwd", ""));
     }
 
     /**
