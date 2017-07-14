@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class HebtvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 1800;
+    private static final int CHACHE_TIMEOUT = 1200;
 
     public HebtvSource(String sourceId) {
         super(sourceId);

@@ -69,4 +69,9 @@ public class RouterServiceImpl implements RouterService {
         }
         return mappingList;
     }
+
+    @Override
+    public List<RouterMapping> selectByPageNo(Integer pageNo) {
+        return routerMappingMapper.selectByPageNo(pageNo);
+    }
 }

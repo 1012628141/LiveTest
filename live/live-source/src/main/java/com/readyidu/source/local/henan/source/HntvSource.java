@@ -59,13 +59,13 @@ public class HntvSource extends Source {
                 case SourceConstants.SOURCE_HNTV_10:
                     hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=145");
                     break;
-                case SourceConstants.SOURCE_HNTV_11:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=146");
+                case SourceConstants.SOURCE_HNTV_11://文物宝库
+                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=149");
                     break;
-                case SourceConstants.SOURCE_HNTV_12:
+                case SourceConstants.SOURCE_HNTV_12://武术世界
                     hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=147");
                     break;
-                case SourceConstants.SOURCE_HNTV_13:
+                case SourceConstants.SOURCE_HNTV_13://梨园
                     hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=148");
                     break;
                 default:

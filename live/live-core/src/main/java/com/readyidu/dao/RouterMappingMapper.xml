@@ -57,4 +57,13 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
 
+    <select id="selectByPageNo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_channel_mapping
+        <if test="pageNo >= 0">
+            limit #{pageNo*20},20
+        </if>
+    </select>
+
 </mapper>

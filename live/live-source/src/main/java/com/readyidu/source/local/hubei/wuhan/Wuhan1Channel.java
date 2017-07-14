@@ -25,4 +25,8 @@ public class Wuhan1Channel extends Channel {
         }
         return source;
     }
+    public static void main(String[] args){
+        Source source = new WhtvSource("source_hb_wh1");
+        System.out.print(source.toString());
+    }
 }

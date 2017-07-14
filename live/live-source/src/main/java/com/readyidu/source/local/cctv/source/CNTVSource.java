@@ -38,7 +38,7 @@ public class CNTVSource extends Source {
         }
 
         // Sources url: http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv2&client=html5
-        String javascript = "http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv" + source + "&client=html5";
+            String javascript = "http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv" + source + "&client=html5";
         String scriptResult = HttpUtil.httpGet(javascript);
         scriptResult = scriptResult.replace("var html5VideoData='", "");
         scriptResult = scriptResult.replace("';getHtml5VideoData(html5VideoData);", "");

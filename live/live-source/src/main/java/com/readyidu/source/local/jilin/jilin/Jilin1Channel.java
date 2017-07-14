@@ -25,4 +25,9 @@ public class Jilin1Channel extends Channel {
         }
         return source;
     }
+    public static void main(String[] args) {
+        Source source = new JltvSource("source_jl_jl1");
+        source.toString();
+        System.out.print(source.toString());
+    }
 }
