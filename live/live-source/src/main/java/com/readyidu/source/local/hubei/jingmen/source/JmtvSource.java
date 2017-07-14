@@ -13,7 +13,7 @@ import com.readyidu.util.NullUtil;
 public class JmtvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 1800;
+    private static final int CHACHE_TIMEOUT = 1200;
 
     public JmtvSource(String sourceId) {
         super(sourceId);
@@ -43,20 +43,4 @@ public class JmtvSource extends Source {
             return cacheSource;
         }
     }
-
-//    public static void main(String[] args) {
-//        String sourceId = "source_hbtv_jmtv1";
-//        String Dom = null;
-//        switch (sourceId) {
-//            case SourceConstants.SOURCE_HBTV_JMTV1:
-//                Dom = HttpUtil.httpGet("http://www.jmtv.com.cn/m2o/player/drm.php?url=http%3A%2F%2Flive%2Ejmtv%2Ecom%2Ecn%2Fxwzh%2Fsd%2Flive%2Em3u8");
-//                break;
-//            case SourceConstants.SOURCE_HBTV_JMTV2:
-//                Dom = HttpUtil.httpGet("http://www.jmtv.com.cn/m2o/player/drm.php?url=http%3A%2F%2Flive%2Ejmtv%2Ecom%2Ecn%2Fngpd%2Fsd%2Flive%2Em3u8");
-//                break;
-//            default:
-//                break;
-//        }
-//        System.out.print(Dom);
-//    }
 }

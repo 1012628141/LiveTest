@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class JxtvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 1800;
+    private static final int CHACHE_TIMEOUT = 1200;
 
     public JxtvSource(String sourceId) {
         super(sourceId);
@@ -71,14 +71,4 @@ public class JxtvSource extends Source {
             return cacheSource;
         }
     }
-//    public  static void main(String[] args) {
-//       String hntvDom = HttpUtil.httpGet("http://www.jxntv.cn/live/jxtv5.shtml");
-//        Pattern pattern = Pattern.compile("http://[Ll]ive02.*.m3u8");
-//        Matcher matcher = pattern.matcher(hntvDom);
-//        String url=null;
-//        if (matcher.find()) {
-//            url = matcher.group(0);
-//            System.out.print(url);
-//        }
-//    }
 }

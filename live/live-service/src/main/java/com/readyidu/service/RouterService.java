@@ -17,4 +17,5 @@ public interface RouterService {
     RouterMapping selectById(Integer id);
     List<RouterMapping> selectByValue(String value);
     List<RouterMapping> selectAll();
+    List<RouterMapping> selectByPageNo(Integer pageNo);
 }
