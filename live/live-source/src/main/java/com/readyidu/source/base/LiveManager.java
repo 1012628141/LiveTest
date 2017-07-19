@@ -36,6 +36,7 @@ import com.readyidu.source.local.shan3xi.weinan.WeinanLocal;
 import com.readyidu.source.local.jilin.jilin.JilinLocal;
 import com.readyidu.source.local.shandong.jinan.JinanLocal;
 import com.readyidu.source.local.shandong.rizhao.RizhaoLocal;
+import com.readyidu.source.local.shandong.shandong.ShandongLocal;
 import com.readyidu.source.local.shanghai.ShanghaiLocal;
 import com.readyidu.source.local.sichuan.chengdu.ChengduLocal;
 import com.readyidu.source.local.sichuan.lvzhou.LuzhouLocal;
@@ -69,7 +70,7 @@ public class LiveManager {
         Local cctv = new CCTVLocal();
         locals.put(cctv.getId(), cctv);
         //卫视
-        STVLocal stv = new STVLocal();
+            STVLocal stv = new STVLocal();
         locals.put(stv.getId(), stv);
         //浙江
         Local zhejiang = new ZhejiangLocal();
@@ -227,6 +228,9 @@ public class LiveManager {
         //日照
         RizhaoLocal rizhaoLocal = new RizhaoLocal();
         locals.put(rizhaoLocal.getId(),rizhaoLocal);
+        //山东省台
+        ShandongLocal shandongLocal = new ShandongLocal();
+        locals.put(shandongLocal.getId(),shandongLocal);
 
         //吉林
         JilinLocal jilinLocal = new JilinLocal();
