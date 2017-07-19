@@ -450,4 +450,16 @@ public class SourceConstants {
     public static final String SOURCE_JSTV_JS9 = "source_jstv_js9";
     public static final String SOURCE_JSTV_JS10 = "source_jstv_js10";
     public static final String SOURCE_JSTV_JS11 = "source_jstv_js11";
+
+    //山东
+    public static final String SOURCE_SDTV_SD1 = "source_sdtv_sd1";//山东卫视
+    public static final String SOURCE_SDTV_SD2 = "source_sdtv_sd2";//齐鲁频道
+    public static final String SOURCE_SDTV_SD3 = "source_sdtv_sd3";//体育
+    public static final String SOURCE_SDTV_SD4 = "source_sdtv_sd4";//生活
+    public static final String SOURCE_SDTV_SD5 = "source_sdtv_sd5";//公共
+    public static final String SOURCE_SDTV_SD6 = "source_sdtv_sd6";//综艺
+    public static final String SOURCE_SDTV_SD7 = "source_sdtv_sd7";//影视
+    public static final String SOURCE_SDTV_SD8 = "source_sdtv_sd8";//农科
+    public static final String SOURCE_SDTV_SD9 = "source_sdtv_sd9";//少儿
+    public static final String SOURCE_SDTV_SD10 = "source_sdtv_sd10";//国际
 }
