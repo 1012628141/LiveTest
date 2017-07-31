@@ -44,7 +44,7 @@ public class ChannelServiceImpl extends BaseService implements
         List<Channel> channelList = null;
         // 优先从缓存中取
         String cacheObj = cacheService.get(cacheKey);
-        if (!NullUtil.isNullObject(cacheObj) && false) {
+        if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
@@ -58,7 +58,21 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> getChannelListWithDeathSource(String source) {
-        return channelMapper.selectBySource(source);
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "deathChannelList"+source;
+        List<Channel> deathChannelList=null;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            deathChannelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            deathChannelList = channelMapper.selectBySource(source);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(deathChannelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        System.out.println(deathChannelList.toString());
+        return deathChannelList;
+//        return channelMapper.selectBySource(source);
     }
 
     @Override

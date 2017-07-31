@@ -1,6 +1,7 @@
 package com.readyidu.service;
 
 import com.readyidu.model.ChannelDeath;
+import com.readyidu.model.CheckableChannel;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface DeathChannelService {
     public int insert(ChannelDeath record);
     public int update(ChannelDeath record);
     public int remove(Integer id);
+    public List<CheckableChannel> checkDeathChannel();
 }

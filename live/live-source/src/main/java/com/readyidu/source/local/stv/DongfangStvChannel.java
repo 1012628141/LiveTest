@@ -20,6 +20,7 @@ public class DongfangStvChannel extends Channel {
 
     @Override
     public Source getSource(SourceUri uri) {
+        System.out.println(uri.getSource());
         Source source = new StvSource(uri.getSource());
         if (NullUtil.isNullObject(source.toString())) {
             return null;

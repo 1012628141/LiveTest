@@ -34,28 +34,28 @@ public class StvSource extends Source {
             String date = dateFormat.format(new Date());
             switch (sourceId) {
                 case SourceConstants.SOURCE_STV_STV1:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=084_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=084_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV2:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=089_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=089_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV3:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=090_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=090_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV4:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=454_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=454_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV5:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=453_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=453_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV6:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=092_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=092_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV7:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=091_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=091_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 case SourceConstants.SOURCE_STV_STV8:
-                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=460_" + date);
+                    stv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=460_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     break;
                 default:
                     break;

@@ -20,6 +20,8 @@
     <!--     Fonts and icons     -->
     <link href="/css/mont.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/gont.css" />
+    <script src="/js/paginator.js"></script>
+    <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -162,7 +164,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> 管理后台 </a>
+                        <a class="navbar-brand" href="#">  </管理后台a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -237,7 +239,6 @@
 </body>
 <!--   Core JS Files   -->
 <!--   Core JS Files   -->
-<script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/js/material.min.js" type="text/javascript"></script>
@@ -371,24 +372,24 @@
         }
 
         if ( page === 'pages/livingChannel.jsp' ) {
-            $('#datatables').DataTable({
-                pageLength: 20,
-                lengthChange: false,
-                info: false,
-                ordering: false,
-                autoWidth: true,
-                "language": {
-                    "paginate": {
-                        "previous": "上一页",
-                        "last": "最后一页",
-                        "next": "下一页"
-                    },
-                    "search": "检索频道："
-                },
-                "search": {
-                    "caseInsensitive": false
-                }
-            });
+       /** $('#datatables').DataTable({
+                        pageLength: 20,
+                        lengthChange: false,
+                        info: false,
+                        ordering: false,
+                        autoWidth: true,
+                        "language": {
+                            "paginate": {
+                                "previous": "上一页",
+                                "last": "最后一页",
+                                "next": "下一页"
+                            },
+                            "search": "检索频道："
+                        },
+                        "search": {
+                            "caseInsensitive": false
+                        }
+                    });*/
 
             $('.card .material-datatables label').addClass('form-group');
 

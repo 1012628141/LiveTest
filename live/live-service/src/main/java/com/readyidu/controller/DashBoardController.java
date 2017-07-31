@@ -1,14 +1,19 @@
 package com.readyidu.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.mysql.jdbc.StringUtils;
+import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelDeath;
+import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
-import com.readyidu.service.ChannelService;
-import com.readyidu.service.DeathChannelService;
-import com.readyidu.service.RouterService;
+import com.readyidu.service.*;
+import com.readyidu.util.JsonResult;
+import com.readyidu.util.PageUtil;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -33,11 +38,22 @@ public class DashBoardController {
     @Resource(name = "routerService")
     RouterService routerService;
 
+    @Resource(name = "cacheService")
+    CacheService cacheService;
+    @Resource(name = "channelSourceService")
+    ChannelSourceService channelSourceService;
+
+    private String channelCacheName="channel_list_";
+
+    @RequestMapping("check")
+    public  ModelAndView chick(){
+        return new ModelAndView("streamMedia");
+    }
+
     @RequestMapping
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
         String item = request.getParameter("item");
         String editId = request.getParameter("eid");
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
         modelAndView.addObject("navItem", getNavItemList());
@@ -54,7 +70,7 @@ public class DashBoardController {
         if (!TextUtils.isEmpty(item)) {
             modelAndView.addObject("active", item);
             modelAndView.addObject("content", "pages/" + item + ".jsp");
-            appendChannelList(modelAndView);
+            appendChannelList(modelAndView,request);
             return modelAndView;
         }
 
@@ -70,16 +86,58 @@ public class DashBoardController {
         // Default back main page
         modelAndView.addObject("active", "statistic");
         modelAndView.addObject("content", "pages/statistic.jsp");
-        appendChannelList(modelAndView);
+        appendChannelList(modelAndView,request);
         return modelAndView;
     }
-
-    private void appendChannelList(ModelAndView modelAndView) {
+    @ResponseBody
+    @RequestMapping(value = "pageLoad", produces = "application/json; charset=utf-8")
+    public String pageLoad(HttpServletRequest request){
+        String pageNo=request.getParameter("pageno");
+        if(pageNo==null||"".equals(pageNo)){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,null);
+        }
+        List<Channel> list=new ArrayList<>();
+        list = channelService.getChannelList();
+        PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
+        List<Channel> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
+        pageUtil.setChannelList(resultList);
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
+    }
+    @ResponseBody
+    @RequestMapping("importData")
+    public boolean importData(){
+        List<Channel> list=channelService.getChannelList();
+        if (list.size()==0) {
+            return false;
+        }
+        int c=0;
+        System.out.println(list.size());
+        for (Channel channel:list) {
+            System.out.println(channel.getSource());
+            String[] sourceList = channel.getSource().split("\\|");
+            c+=sourceList.length;
+            for (String source:
+                 sourceList) {
+                System.out.println(source);
+                ChannelSource channelSource = new ChannelSource();
+                channelSource.setParentid(channel.getId());
+                channelSource.setSource(source);
+                channelSourceService.importData(channelSource);
+            }
+        }
+        System.out.println(c);
+        return true;
+    }
+    private void appendChannelList(ModelAndView modelAndView,HttpServletRequest request) {
         // Get living, channel data
         List<Channel> list = channelService.getChannelList();
-        modelAndView.addObject("channelList", list);
+        PageUtil pageUtil = new PageUtil(1,list.size());
+//        pageUtil.setPageNo((pageNo    ==null)?1:Integer.parseInt(pageNo));
+        List<Channel> resultList = list.subList(0, 20);
+        modelAndView.addObject("channelList", resultList);
         modelAndView.addObject("channelCount", list.size());
-
+        modelAndView.addObject("pageNo",pageUtil.getPageNo());
+        modelAndView.addObject("pageCount",pageUtil.getPageCount());
         int sourceCount = 0;
         for (Channel channel: list) {
             if (!TextUtils.isEmpty(channel.getSource())) {
@@ -88,26 +146,7 @@ public class DashBoardController {
             }
         }
         modelAndView.addObject("sourceCount", sourceCount);
-
-        List<ChannelDeath> dList = deathChannelService.getAll();
-
-        List<CheckableChannel> checkableChannels = new ArrayList<>();
-        for (ChannelDeath death: dList) {
-            String source = death.getSource();
-            List<Channel> deathChannel = channelService.getChannelListWithDeathSource(source);
-            if (deathChannel != null && deathChannel.size() != 0) {
-                for (Channel c: deathChannel) {
-                    CheckableChannel checkableChannel = new CheckableChannel();
-                    checkableChannel.setChannelId(c.getId());
-                    checkableChannel.setChannelName(c.getChannel());
-                    checkableChannel.setChannelSource(c.getSource());
-                    checkableChannel.setDeathSourceId(death.getId());
-                    checkableChannel.setDeathSource(death.getSource());
-                    checkableChannel.setCreatedAt(death.getCreatedat());
-                    checkableChannels.add(checkableChannel);
-                }
-            }
-        }
+        List<CheckableChannel> checkableChannels = deathChannelService.checkDeathChannel();
 
         modelAndView.addObject("deathList", checkableChannels);
     }

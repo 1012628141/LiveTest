@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 /**
  * Created by 123 on 2017/6/28.
  */
-public class MgtvSource extends Source {
+public class    MgtvSource extends Source {
     private static final String CACHE_NAME = "source_";
 
 

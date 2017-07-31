@@ -39,6 +39,7 @@ public class FjtvSource extends Source {
             header.put("Referer", "http://www.setv.com.cn/live/");
             header.put("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36");
             CacheUtil.set(CACHE_NAME + sourceId, PlayerEngineUtil.addEngine(HeaderUtil.addHeader(fjtvStv, header), PlayerEngineUtil.Engine.ENGINE_EXO), CHACHE_TIMEOUT);
+            System.out.println(PlayerEngineUtil.addEngine(HeaderUtil.addHeader(fjtvStv, header), PlayerEngineUtil.Engine.ENGINE_EXO));
             return PlayerEngineUtil.addEngine(HeaderUtil.addHeader(fjtvStv, header), PlayerEngineUtil.Engine.ENGINE_EXO);
         } else {
             return cacheSource;
