@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.readyidu.mapper.ChannelSourceMapper" >
+  <sql id="Base_Column_List">
+    id,parentid,source
+  </sql>
   <insert id="importData" parameterType="com.readyidu.model.ChannelSource">
-    insert into t_channel_source(parentid,source,create_time,modifty_time) values(#{parentid},#{source},now(),now())
+    insert into t_channel_source
+    (parentid
+    ,source
+    ,create_time
+    ,modifty_time)
+    values(#{parentid},#{source},now(),now())
   </insert>
+  <select id="selectSourceByParentId" parameterType="java.lang.Integer" resultType="com.readyidu.model.ChannelSource">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    t_channel_source
+    where parentid=#{id}
+  </select>
+  <delete id="delectSourceByid" parameterType="java.lang.Integer">
+    update  t_channel_source set is_delete=1 where id=#{id}
+  </delete>
 </mapper>

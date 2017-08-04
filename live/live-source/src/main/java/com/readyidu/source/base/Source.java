@@ -24,9 +24,15 @@ abstract public class Source {
 
     @Override
     public String toString() {
-        String source = source();
+        String source=null;
+        try {
+            source = source();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         if (NullUtil.isNullObject(source)) {
-            return this.source;
+            return null;
         }
         this.source = source;
         return source;

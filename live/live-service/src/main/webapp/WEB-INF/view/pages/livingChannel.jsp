@@ -29,7 +29,10 @@
                                 <tr role="row" class="${loop.index % 2 == 0 ? "odd": "even"}">
                                     <td style="text-align: center">${channel.id}</td>
                                     <td style="text-align: center">${channel.channel}</td>
+                                    <!--<c:set value="0" var="sources" />-->
+                                    <c:if test="${channel.source!=null }">
                                     <c:set value="${ fn:split(channel.source, '|') }" var="sources" />
+                                    </c:if>
                                     <td style="text-align: center">
                                         <c:set value="${ 0 }" var="count" />
                                         <c:forEach var="s" items="${sources}" varStatus="loop">
@@ -84,6 +87,7 @@
          var pageCount=${pageCount};
          init(pageNo,pageCount);
     	 });
+
     </script>
     <!-- end col-md-12 -->
 </div>

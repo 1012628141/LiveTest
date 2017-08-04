@@ -4,6 +4,7 @@ import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.local.stv.source.GdtvSource;
 import com.readyidu.source.local.stv.source.StvSource;
+import com.readyidu.source.local.stv.source.TvCatSource;
 import com.readyidu.source.protocol.SourceUri;
 import com.readyidu.util.NullUtil;
 
@@ -20,11 +21,14 @@ public class DongfangStvChannel extends Channel {
 
     @Override
     public Source getSource(SourceUri uri) {
-        System.out.println(uri.getSource());
         Source source = new StvSource(uri.getSource());
-        if (NullUtil.isNullObject(source.toString())) {
-            return null;
+        if (!NullUtil.isNullObject(source.toString())) {
+            return source;
         }
-        return source;
+        source =new TvCatSource(uri.getSource());
+        if (!NullUtil.isNullObject(source.toString())) {
+            return source;
+        }
+        return null;
     }
 }

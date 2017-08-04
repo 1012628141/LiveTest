@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface CacheService {
 
-    int CACHE_TIMEOUT = 60;
+    int CACHE_TIMEOUT = 300;
     int CACHE_LONG_TIMEOUT = 3600;
 
     long zadd(String key, long score, String value);

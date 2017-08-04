@@ -2,6 +2,7 @@ package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelService;
 import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
@@ -35,10 +36,13 @@ public class WebChannelController {
     @Resource(name = "channelService")
     private ChannelService channelService;
 
+    @Resource(name = "cacheService")
+    private CacheService cacheService;
     @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.GET)
     @ResponseBody
     public String addChannel(@PathVariable String channelName) {
         if (channelService.addChannel(channelName) != 0) {
+            cacheService.del("LIVE_SERVICE_channel_channelList");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -48,8 +52,10 @@ public class WebChannelController {
     @RequestMapping(value = "/addSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String addSource(HttpServletRequest request) {
-
+        System.out.println(Integer.valueOf(request.getParameter("channelId")));
+        System.out.println(request.getParameter("sourceUri"));
         if (channelService.updateSource(Integer.valueOf(request.getParameter("channelId")), request.getParameter("sourceUri")) != 0) {
+            cacheService.del("LIVE_SERVICE_channel_channelList");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -60,6 +66,7 @@ public class WebChannelController {
     @ResponseBody
     public String removeSource(HttpServletRequest request) {
         if (channelService.removeSource(Integer.valueOf(request.getParameter("channelId")), Integer.valueOf(request.getParameter("sourceId"))) != 0) {
+            cacheService.del("LIVE_SERVICE_channel_channelList");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -80,6 +87,7 @@ public class WebChannelController {
     @ResponseBody
     public String removeChannel(HttpServletRequest request) {
         if (channelService.removeChannel(Integer.valueOf(request.getParameter("channelId"))) != 0) {
+            cacheService.del("LIVE_SERVICE_channel_channelList");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");

@@ -65,7 +65,13 @@ public class DashBoardController {
             modelAndView.addObject("routerMaps", routerService.selectAll());
             return modelAndView;
         }
-
+//        //Show alarm
+//        if(!TextUtils.isEmpty(item) && item.equals("alarmChannel")){
+//            modelAndView.addObject("active", item);
+//            modelAndView.addObject("content", "pages/" + item + ".jsp");
+//            modelAndView.addObject("","");
+//            return modelAndView;,
+//        }
         // Items selected
         if (!TextUtils.isEmpty(item)) {
             modelAndView.addObject("active", item);
@@ -117,7 +123,7 @@ public class DashBoardController {
             String[] sourceList = channel.getSource().split("\\|");
             c+=sourceList.length;
             for (String source:
-                 sourceList) {
+                    sourceList) {
                 System.out.println(source);
                 ChannelSource channelSource = new ChannelSource();
                 channelSource.setParentid(channel.getId());

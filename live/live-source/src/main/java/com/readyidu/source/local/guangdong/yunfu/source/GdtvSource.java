@@ -33,12 +33,11 @@ public class GdtvSource extends Source {
             String gdtv = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_GDTV_ZHANJIANG1:
-                    gdtv = HttpUtil.httpGet("http://www.gdtv.cn/m2o/channel/channel_info.php?id=85");
+                    gdtv = HttpUtil.httpGet("http://www.gdtv.cn/m2o/channel/channel_info.php?id=85", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1","http://star.gdtv.cn/");
                     break;
                 default:
                     break;
-            }
-
+            };
             JSONArray gdtvArray = JSON.parseArray(gdtv);
             if (gdtvArray != null && gdtvArray.size() > 0) {
                 JSONObject gdtvObject = gdtvArray.getJSONObject(0);

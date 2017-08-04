@@ -46,9 +46,9 @@
   </delete>
   <insert id="insert" parameterType="com.readyidu.model.ChannelDeath">
     insert into t_channel_death (id, createdAt, source
-      )
+    )
     values (#{id,jdbcType=INTEGER}, #{createdat,jdbcType=TIMESTAMP}, #{source,jdbcType=LONGVARCHAR}
-      )
+    )
   </insert>
   <insert id="insertSelective" parameterType="com.readyidu.model.ChannelDeath">
     insert into t_channel_death

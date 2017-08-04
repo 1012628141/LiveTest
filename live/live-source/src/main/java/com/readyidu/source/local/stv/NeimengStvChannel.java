@@ -11,7 +11,7 @@ import com.readyidu.util.NullUtil;
  */
 public class NeimengStvChannel extends Channel {
 
-    private static final String CHANNEL_ID = "neimemgstv";
+    private static final String CHANNEL_ID = "neimengstv";
 
     public NeimengStvChannel() {
         channelId = CHANNEL_ID;

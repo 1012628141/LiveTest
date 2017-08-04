@@ -36,8 +36,18 @@ public class SltvSource extends Source {
                 default:
                     break;
             }
-
-            JSONArray sltvArray = JSON.parseArray(sltv);
+            sltv = sltv.replace("channels_jsonpCallback(", "");
+            sltv = sltv.substring(0,sltv.length()-1);
+            JSONArray sltvArray=null;
+            System.out.println(sltv);
+            try {
+                sltvArray = JSON.parseArray(sltv);
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
+            System.out.println("*********json**********");
+            System.out.println(sltvArray);
             if (sltvArray != null && sltvArray.size() > 0) {
                 JSONObject sltvObj = sltvArray.getJSONObject(0);
                 if (!NullUtil.isNullObject(sltvObj)) {

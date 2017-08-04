@@ -133,6 +133,56 @@ public class SourceConstants {
     //宁夏卫视
     public static final String SOURCE_SHITING_NINGXIA_STV = "source_shiting_ningxia_stv";
 
+    //电视猫
+    //央视
+    //CCTV1
+    public static final String SOURCE_TVCAT_CCTV1 = "source_tvcat_cctv1";
+    //CCTV2
+    public static final String SOURCE_TVCAT_CCTV2 = "source_tvcat_cctv2";
+    //CCTV3
+    public static final String SOURCE_TVCAT_CCTV3 = "source_tvcat_cctv3";
+    //CCTV4
+    public static final String SOURCE_TVCAT_CCTV4 = "source_tvcat_cctv4";
+    //CCTV5
+    public static final String SOURCE_TVCAT_CCTV5 = "source_tvcat_cctv5";
+    //CCTV6
+    public static final String SOURCE_TVCAT_CCTV6 = "source_tvcat_cctv6";
+    //CCTV8
+    public static final String SOURCE_TVCAT_CCTV8 = "source_tvcat_cctv8";
+    //CCTV9
+    public static final String SOURCE_TVCAT_CCTV9 = "source_tvcat_cctv9";
+    //CCTV13
+    public static final String SOURCE_TVCAT_CCTV13 = "source_tvcat_cctv13";
+
+
+
+
+    //卫视
+    //湖南卫视
+    public static final String SOURCE_TVCAT_HUNAN_STV = "source_tvcat_hunan_stv";
+    //浙江卫视
+    public static final String SOURCE_TVCAT_ZHEJIANG_STV = "source_tvcat_zhejiang_stv";
+    //江苏卫视
+    public static final String SOURCE_TVCAT_JIANGSU_STV = "source_tvcat_jiangsu_stv";
+    //东方卫视
+    public static final String SOURCE_TVCAT_DONGFANG_STV = "source_tvcat_dongfang_stv";
+    //安徽卫视
+    public static final String SOURCE_TVCAT_ANHUI_STV = "source_tvcat_anhui_stv";
+    //北京卫视
+    public static final String SOURCE_TVCAT_BEIJING_STV = "source_tvcat_beijing_stv";
+    //重庆卫视
+    public static final String SOURCE_TVCAT_CHONGQING_STV = "source_tvcat_chongqing_stv";
+    //天津卫视
+    public static final String SOURCE_TVCAT_TIANJIN_STV = "source_tvcat_tianjin_stv";
+    //广东卫视
+    public static final String SOURCE_TVCAT_GUANGDONG_STV = "source_tvcat_guangdong_stv";
+    //山东卫视
+    public static final String SOURCE_TVCAT_SHANDONG_STV = "source_tvcat_shandong_stv";
+    //深圳卫视
+    public static final String SOURCE_TVCAT_SHENZHEN_STV = "source_tvcat_shenzhen_stv";
+//    //湖北卫视
+//    public static final String SOURCE_TVCAT_HUBEI_STV = "source_tvcat_hubei_stv";
+
     //浙江cztv.cn
     public static final String SOURCE_CZTV_2 = "source_cztv_2";
     public static final String SOURCE_CZTV_3 = "source_cztv_3";

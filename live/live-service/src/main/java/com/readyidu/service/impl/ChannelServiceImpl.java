@@ -2,6 +2,8 @@ package com.readyidu.service.impl;
 
 import java.util.List;
 
+import com.readyidu.mapper.ChannelSourceMapper;
+import com.readyidu.model.ChannelSource;
 import com.readyidu.service.ChannelService;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.mapper.ChannelTypeMapper;
@@ -32,7 +34,8 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "cacheService")
     private CacheService cacheService;
-
+    @Resource(name = "channelSourceMapper")
+    private ChannelSourceMapper channelSourceMapper;
     private static final String CACHE_NAME = "channel_";
 
     @Override
@@ -111,55 +114,69 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public int updateSource(Integer channelId, String source) {
-
-        Channel channel = channelMapper.selectByPrimaryKey(channelId);
-        if (channel != null) {
-            String originSource = channel.getSource();
-
-            if (source.startsWith("http")
-                    || source.startsWith("https")
-                    || source.startsWith("rtmp")
-                    || source.startsWith("sourceUri")) {
-                StringBuilder builder = new StringBuilder();
-                if (!TextUtils.isEmpty(originSource)) {
-                    builder.append(originSource);
-                    builder.append("|");
-                    builder.append(source);
-                } else {
-                    builder.append(source);
-                }
-
-                channel.setSource(builder.toString());
-                return channelMapper.updateByPrimaryKey(channel);
-            }
-        }
-
-        return 0;
+        ChannelSource channelSource = new ChannelSource();
+        channelSource.setSource(source);
+        channelSource.setParentid(channelId);
+        return channelSourceMapper.importData(channelSource);
+//        Channel channel = channelMapper.selectByPrimaryKey(channelId);
+//        if (channel != null) {
+//            String originSource = channel.getSource();
+//
+//            if (source.startsWith("http")
+//                    || source.startsWith("https")
+//                    || source.startsWith("rtmp")
+//                    || source.startsWith("sourceUri")) {
+//                StringBuilder builder = new StringBuilder();
+//                if (!TextUtils.isEmpty(originSource)) {
+//                    builder.append(originSource);
+//                    builder.append("|");
+//                    builder.append(source);
+//                } else {
+//                    builder.append(source);
+//                }
+//
+//                channel.setSource(builder.toString());
+//                return channelMapper.updateByPrimaryKey(channel);
+//            }
+//        }
     }
 
     @Override
     public int removeSource(Integer channelId, Integer sourceId) {
-        Channel channel = channelMapper.selectByPrimaryKey(channelId);
-
-        if (channel != null) {
-            String originSource = channel.getSource();
-
-            if (!TextUtils.isEmpty(originSource)) {
-                String[] sources = originSource.split("\\|");
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < sources.length; i++) {
-                    if (i == sourceId) {
-                        continue;
+//        Channel channel = channelMapper.selectByPrimaryKey(channelId);
+        List<ChannelSource> channleList = channelSourceMapper.selectSourceByParentId(channelId);
+        int deleteId=0;
+        if (sourceId<channleList.size()){
+            if (channleList.size()!=0){
+                for (int i = 0; i < channleList.size(); i++) {
+                    if (i==sourceId){
+                        deleteId=channleList.get(i).getId();
                     }
-                    builder.append(sources[i]);
-                    builder.append("|");
                 }
-                channel.setSource(builder.toString());
-                return channelMapper.updateByPrimaryKey(channel);
             }
+            return  channelSourceMapper.delectSourceByid(deleteId);
         }
-
         return 0;
+//
+//        if (channel != null) {
+//            String originSource = channel.getSource();
+//
+//            if (!TextUtils.isEmpty(originSource)) {
+//                String[] sources = originSource.split("\\|");
+//                StringBuilder builder = new StringBuilder();
+//                for (int i = 0; i < sources.length; i++) {
+//                    if (i == sourceId) {
+//                        continue;
+//                    }
+//                    builder.append(sources[i]);
+//                    builder.append("|");
+//                }
+//                channel.setSource(builder.toString());
+//                return channelMapper.updateByPrimaryKey(channel);
+//            }
+//        }
+//
+//        return 0;
     }
 
     @Override

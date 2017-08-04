@@ -254,7 +254,7 @@
             var id = $(this).data("id");
             // Add new source
             swal.queue([{
-                title: '请输入新的分类ID',
+                title: '请输入修改后的分类ID',
                 html:
                 '<div class="form-group">' +
                 '<input id="input-field" type="text" class="form-control" />' +
@@ -329,7 +329,7 @@
                                     } else {
                                         swal.insertQueueStep("删除失败！");
                                     }
-                                    resolve();
+                                    $(window).attr('location','/');
                                 },
                                 error: function () {
                                     swal.insertQueueStep("删除失败！");

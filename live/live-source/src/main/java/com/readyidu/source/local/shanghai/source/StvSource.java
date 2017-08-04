@@ -60,6 +60,7 @@ public class StvSource extends Source {
                 default:
                     break;
             }
+            System.out.println(stv);
             JSONObject stvObject = JSON.parseObject(stv);
             String url = stvObject.getString("live");
             String paras = stvObject.getString("paras");

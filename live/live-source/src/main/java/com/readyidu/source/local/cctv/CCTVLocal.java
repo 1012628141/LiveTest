@@ -18,10 +18,11 @@ public class CCTVLocal extends Local {
 
         Channel channel1 = new CCTVChannels();
         Channel channel2 = new CCTVShitingChannels();
-
+        Channel channel3 = new CCTVTvCatChannels();
         channels = new HashMap<>();
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);
+        channels.put(channel3.getId(), channel3);
     }
 
     @Override

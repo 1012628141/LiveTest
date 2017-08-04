@@ -4,7 +4,9 @@
 
 <!doctype html>
 <html lang="en">
-
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png" />
@@ -164,7 +166,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">  </管理后台a>
+                        <a class="navbar-brand" href="#"></a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -393,9 +395,9 @@
 
             $('.card .material-datatables label').addClass('form-group');
 
-            $('.btn-add-channel').on('click', function () {
+            /**$('.btn-add-channel').on('click', function () {
                 alert("choose file update");
-            });
+            });*/
 
             // Add channel
             $('.btn-add-channel').on('click', function () {

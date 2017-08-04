@@ -30,7 +30,7 @@ public class Channel {
     }
 
     public void setSource(String source) {
-        this.source = source == null ? null : source.trim().replace(",","\\|");
+        this.source = source == null ? null : source.trim().replace(",","|");
     }
 
     public String getTypeid() {

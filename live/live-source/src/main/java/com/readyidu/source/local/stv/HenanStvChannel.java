@@ -20,10 +20,12 @@ public class HenanStvChannel extends Channel {
 
     @Override
     public Source getSource(SourceUri uri) {
+        System.out.println("**********henanshiting");
         Source source = new HntvSource(uri.getSource());
         if (!NullUtil.isNullObject(source.toString())) {
             return source;
         }
+        System.out.println("**********henanshiting");
         source = new Shiting5Source(uri.getSource());
         if (!NullUtil.isNullObject(source.toString())) {
             return source;
