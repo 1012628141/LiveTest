@@ -3,10 +3,7 @@ package com.readyidu.controller;
 import com.alibaba.fastjson.JSON;
 import com.mysql.jdbc.StringUtils;
 import com.readyidu.constants.NetworkCode;
-import com.readyidu.model.Channel;
-import com.readyidu.model.ChannelDeath;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.model.CheckableChannel;
+import com.readyidu.model.*;
 import com.readyidu.service.*;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.PageUtil;
@@ -60,9 +57,13 @@ public class DashBoardController {
 
         // 打开了客户端的Mapping处理
         if (!TextUtils.isEmpty(item) && item.equals("typeChannel")) {
+            List<RouterMapping> list = routerService.selectAll();
+            PageUtil pageUtil = new PageUtil(1,list.size());
             modelAndView.addObject("active", item);
+            modelAndView.addObject("pageNo",pageUtil.getPageNo());
+            modelAndView.addObject("pageCount",pageUtil.getPageCount());
             modelAndView.addObject("content", "pages/" + item + ".jsp");
-            modelAndView.addObject("routerMaps", routerService.selectAll());
+            modelAndView.addObject("routerMaps", list.subList(0, 20));
             return modelAndView;
         }
 //        //Show alarm
@@ -96,7 +97,7 @@ public class DashBoardController {
         return modelAndView;
     }
     @ResponseBody
-    @RequestMapping(value = "pageLoad", produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "pageLoad.do", produces = "application/json; charset=utf-8")
     public String pageLoad(HttpServletRequest request){
         String pageNo=request.getParameter("pageno");
         if(pageNo==null||"".equals(pageNo)){
@@ -107,6 +108,35 @@ public class DashBoardController {
         PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
         List<Channel> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
         pageUtil.setChannelList(resultList);
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
+    }
+    @ResponseBody
+    @RequestMapping(value = "pageDeathLoad.do", produces = "application/json; charset=utf-8")
+    public String pageDeathLoad(HttpServletRequest request){
+        String pageNo=request.getParameter("pageno");
+        if(pageNo==null||"".equals(pageNo)){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,null);
+        }
+        List<CheckableChannel> list=new ArrayList<>();
+        list = (List<CheckableChannel>) request.getSession().getAttribute("checkableChannels");
+        if (list==null||list.size()==0){
+            return JsonResult.toString(NetworkCode.CODE_TIME_OUT,null);
+        }
+        PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
+        List<CheckableChannel> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
+    }
+    @ResponseBody
+    @RequestMapping(value = "pageMapLoad.do", produces = "application/json; charset=utf-8")
+    public String pageMapLoad(HttpServletRequest request){
+        String pageNo=request.getParameter("pageno");
+        if(pageNo==null||"".equals(pageNo)){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,null);
+        }
+        List<RouterMapping> list=new ArrayList<>();
+        list = routerService.selectAll();
+        PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
+        List<RouterMapping> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
     }
     @ResponseBody
@@ -153,8 +183,8 @@ public class DashBoardController {
         }
         modelAndView.addObject("sourceCount", sourceCount);
         List<CheckableChannel> checkableChannels = deathChannelService.checkDeathChannel();
-
-        modelAndView.addObject("deathList", checkableChannels);
+        request.getSession().setAttribute("checkableChannels",checkableChannels);
+        modelAndView.addObject("deathList", checkableChannels.subList(0, 20));
     }
 
     private List<Map<String, Object>> getNavItemList() {

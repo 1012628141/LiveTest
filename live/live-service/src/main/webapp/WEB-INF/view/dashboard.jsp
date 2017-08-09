@@ -47,17 +47,21 @@
             <div class="sidebar-wrapper">
                 <div class="user">
                     <div class="photo">
-                        <img src="/img/faces/avatar.jpg" />
+                    <img src="${loginInfo.photo}" />
+                        <!-- <img src="/img/faces/avatar.jpg" /> -->
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                            dylan（管理员）
+                            ${loginInfo.nickName}（管理员）
                             <b class="caret"></b>
                         </a>
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
                                 <li>
                                     <a href="#">安全设置</a>
+                                </li>
+                                <li>
+                                    <a href="/user/loginOut.do">注销</a>
                                 </li>
                             </ul>
                         </div>
@@ -306,11 +310,10 @@
 //    }
     
     $(document).ready(function() {
-
         var page = "${content}";
         if ( page === 'pages/typeChannel.jsp') {
             // 频道对应列表
-            $('#datatables').DataTable({
+            /**$('#datatables').DataTable({
                 pageLength: 20,
                 lengthChange: false,
                 info: false,
@@ -327,50 +330,11 @@
                 "search": {
                     "caseInsensitive": false
                 }
-            });
+            });**/
 
             $('.card .material-datatables label').addClass('form-group');
             
-            $('.btn-remove-mapping').on('click', function () {
-                // 删除 Mapper
-                var id = $(this).data("id");
 
-                swal.queue([{
-                    title: '确认删除此映射 ？',
-                    confirmButtonClass: 'btn btn-warning',
-                    confirmButtonText: '确认',
-                    buttonsStyling: false,
-                    showLoaderOnConfirm: true,
-                    cancelButtonText: '取消',
-                    cancelButtonClass: 'btn btn-default',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    preConfirm: function () {
-                        return new Promise(function (resolve) {
-                            $.ajax(
-                                {
-                                    type: "POST",
-                                    url: "/router/channel/removeMapper.do",
-                                    data: {"id": id},
-                                    success: function (data) {
-                                        var result = data;
-                                        if (result.code === 200) {
-                                            window.location.reload();
-                                        } else {
-                                            swal.insertQueueStep("删除失败！");
-                                        }
-                                        resolve();
-                                    },
-                                    error: function () {
-                                        swal.insertQueueStep("删除失败！");
-                                        resolve()
-                                    }
-                                }
-                            );
-                        });
-                    }
-                }])
-            });
         }
 
         if ( page === 'pages/livingChannel.jsp' ) {

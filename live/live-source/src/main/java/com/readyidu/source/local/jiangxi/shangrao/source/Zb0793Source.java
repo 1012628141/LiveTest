@@ -18,16 +18,12 @@ import java.util.regex.Pattern;
 public class Zb0793Source extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 1800;
-
     public Zb0793Source(String sourceId, int index) {
         super(sourceId, index);
     }
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             String zb = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_ZB0793_1:
@@ -52,10 +48,8 @@ public class Zb0793Source extends Source {
                 if (!NullUtil.isNullObject(newsJson)) {
                     switch (index) {
                         case 1:
-                            CacheUtil.set(CACHE_NAME + sourceId, newsJson.getString("pckey"), CHACHE_TIMEOUT);
                             return newsJson.getString("pckey");
                         case 2:
-                            CacheUtil.set(CACHE_NAME + sourceId, newsJson.getString("app"), CHACHE_TIMEOUT);
                             return newsJson.getString("app");
                         default:
                             break;
@@ -63,8 +57,5 @@ public class Zb0793Source extends Source {
                 }
             }
             return null;
-        } else  {
-            return cacheSource;
-        }
     }
 }

@@ -52,8 +52,6 @@ public class WebChannelController {
     @RequestMapping(value = "/addSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String addSource(HttpServletRequest request) {
-        System.out.println(Integer.valueOf(request.getParameter("channelId")));
-        System.out.println(request.getParameter("sourceUri"));
         if (channelService.updateSource(Integer.valueOf(request.getParameter("channelId")), request.getParameter("sourceUri")) != 0) {
             cacheService.del("LIVE_SERVICE_channel_channelList");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");

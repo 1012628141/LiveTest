@@ -23,8 +23,7 @@ public class HuluSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
+        String cacheSource=null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_HULU_HTV1:
                     cacheSource = HttpUtil.httpGet("http://www.hoolo.tv/m2o/player/drmh.php?playerVersion=4%2E03&refererurl=&hash=79123d0a0d03325c489ebeb42b06b2f4&url=http%3A%2F%2Fstream%2Ehoolo%2Etv%2Fhztv1%2Fsd%2Flive%2Em3u8&time=1496647751605");
@@ -50,11 +49,7 @@ public class HuluSource extends Source {
             if (NullUtil.isNullObject(cacheSource)) {
                 return null;
             } else {
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
+                return cacheSource+"$1";
             }
-        } else {
-            return  cacheSource;
-        }
     }
 }

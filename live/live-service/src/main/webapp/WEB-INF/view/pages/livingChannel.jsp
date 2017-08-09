@@ -85,7 +85,9 @@
                              });
          var pageNo=${pageNo};
          var pageCount=${pageCount};
-         init(pageNo,pageCount);
+         var page='${content}'
+         init(pageCount,page);
+         changeButton(1)
     	 });
 
     </script>

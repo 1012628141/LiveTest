@@ -50,5 +50,33 @@
         </div>
         <!--  end card  -->
     </div>
+      <script>
+         $(function(){
+             $('#datatables').DataTable({
+                                     pageLength: 20,
+                                     lengthChange: false,
+                                     info: false,
+                                     ordering: false,
+                                     autoWidth: true,
+                                     "language": {
+                                         "paginate": {
+                                             "previous": "上一页",
+                                             "last": "最后一页",
+                                             "next": "下一页"
+                                         },
+                                         "search": "检索频道："
+                                     },
+                                     "search": {
+                                         "caseInsensitive": false
+                                     }
+                                 });
+             var pageNo=${pageNo};
+             var pageCount=${pageCount};
+             var page='${content}'
+             init(pageCount,page);
+             changeButton(1)
+        	 });
+
+        </script>
     <!-- end col-md-12 -->
 </div>

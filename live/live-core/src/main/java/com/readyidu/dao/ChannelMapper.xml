@@ -32,7 +32,7 @@
     parentid
     ,group_concat(source) as source
     from  t_channel_source
-    where is_delete=0
+    where is_delete != 1
     group by parentid
     ) t2
     on t1.id=t2.parentid
@@ -62,7 +62,7 @@
       parentid
       ,group_concat(source) as source
       from  t_channel_source
-      where parentid=#{id} and is_delete=0
+      where parentid=#{id} and is_delete!=1
       group by parentid ) t2
       on t1.id=t2.parentid
       having t1.id =#{id}

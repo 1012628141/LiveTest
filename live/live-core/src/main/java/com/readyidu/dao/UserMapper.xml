@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readyidu.mapper.UserMapper">
+    <sql id="Base_Column_List">
+        t.id as id,
+        t.nick_name as nickName,
+        t.sex as sex,
+        t.photo as photo,
+        t.mobile as mobile
+    </sql>
+    <select id="selectUserByLoginInfo" parameterType="com.readyidu.model.User" resultType="com.readyidu.model.User">
+        select
+        <include refid="Base_Column_List"/>
+        from t_channel_user t
+        where t.email = #{email}
+        and t.password = #{password}
+    </select>
+</mapper>

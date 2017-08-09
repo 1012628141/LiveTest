@@ -1,6 +1,7 @@
+<!-- <%@page contentType="text/html; charset=utf-8" %>
+
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png" />
@@ -30,23 +31,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../dashboard.jsp ">Material Dashboard Pro</a>
+                <a class="navbar-brand" href="../dashboard.jsp ">LIVE-直播源管理系统</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="../dashboard.jsp">
-                            <i class="material-icons">dashboard</i> Dashboard
+                            <i class="material-icons">dashboard</i> 导航
                         </a>
                     </li>
                     <li class="">
                         <a href="register.html">
-                            <i class="material-icons">person_add</i> Register
+                            <i class="material-icons">person_add</i> 注册
                         </a>
                     </li>
                     <li class=" active ">
                         <a href="login.html">
-                            <i class="material-icons">fingerprint</i> Login
+                            <i class="material-icons">fingerprint</i> 登陆
                         </a>
                     </li>
                     <li class="">
@@ -65,10 +66,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="#" action="#">
+                            <form method="post" action="login.do">
                                 <div class="card card-login card-hidden">
                                     <div class="card-header text-center" data-background-color="rose">
-                                        <h4 class="card-title">Login</h4>
+                                        <h4 class="card-title">登陆</h4>
                                         <div class="social-line">
                                             <a href="#btn" class="btn btn-just-icon btn-simple">
                                                 <i class="fa fa-facebook-square"></i>
@@ -85,7 +86,7 @@
                                         Or Be Classical
                                     </p>
                                     <div class="card-content">
-                                        <div class="input-group">
+                                        <!-- <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">face</i>
                                             </span>
@@ -93,14 +94,14 @@
                                                 <label class="control-label">First Name</label>
                                                 <input type="text" class="form-control">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
                                             </span>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Email address</label>
-                                                <input type="email" class="form-control">
+                                                <label class="control-label">用户邮箱</label>
+                                                <input type="email" name="email" class="form-control">
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -108,8 +109,8 @@
                                                 <i class="material-icons">lock_outline</i>
                                             </span>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Password</label>
-                                                <input type="password" class="form-control">
+                                                <label class="control-label">请输入密码</label>
+                                                <input type="password" name=password class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -128,22 +129,22 @@
                         <ul>
                             <li>
                                 <a href="#">
-                                    Home
+                                    主页
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    Company
+                                    公司
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    Portfolio
+                                    产品
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    Blog
+                                    博客
                                 </a>
                             </li>
                         </ul>
@@ -183,7 +184,7 @@
 <!-- Sliders Plugin -->
 <script src="/js/nouislider.min.js"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="/js/googleapis.maps.js"></script>
 <!-- Select Plugin -->
 <script src="/js/jquery.select-bootstrap.js"></script>
 <!--  DataTables.net Plugin    -->
@@ -202,13 +203,24 @@
 <script src="/js/demo.js"></script>
 <script type="text/javascript">
     $().ready(function() {
+        var loginMsg='${msg}'
         demo.checkFullPageBackgroundImage();
 
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
             $('.card').removeClass('card-hidden');
         }, 700)
-    });
+        if(loginMsg!="")
+        {
+        // alert(loginMsg)
+        swal({ 
+            title:"worry!",
+            text: loginMsg,
+            type: "error",
+            buttonsStyling: true,
+            confirmButtonClass: "btn btn-info"})
+    }
+});
 </script>
 
-</html>
+</html> -->

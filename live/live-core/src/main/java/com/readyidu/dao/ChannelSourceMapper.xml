@@ -19,7 +19,31 @@
     t_channel_source
     where parentid=#{id}
   </select>
+  <select id="selectDeathSource" resultType="com.readyidu.model.CheckableChannel">
+    select
+    t1.id as deathSourceId,
+    t2.channel as channelName,
+    t1.source as deathSource
+    from
+    t_channel_source t1
+    left join
+    t_channel t2
+    on t1.parentid=t2.id
+    where t1.is_delete =2
+  </select>
   <delete id="delectSourceByid" parameterType="java.lang.Integer">
-    update  t_channel_source set is_delete=1 where id=#{id}
+    update  t_channel_source set is_delete=1 where id=#{id} and is_delete=2
   </delete>
+  <delete id="reductionSourceByid" parameterType="java.lang.Integer">
+    update  t_channel_source set is_delete=0 where id=#{id} and is_delete=2
+  </delete>
+  <update id="updateIsDelete" parameterType="java.lang.String">
+    update t_channel_source set is_delete=2,modifty_time=now() where source=#{source}
+  </update>
+  <select id="getDeathBySource" parameterType="java.lang.String" resultType="com.readyidu.model.ChannelSource">
+    select
+    <include refid="Base_Column_List"/>
+    from t_channel_source
+    where source=#{source} and is_delete =0
+  </select>
 </mapper>

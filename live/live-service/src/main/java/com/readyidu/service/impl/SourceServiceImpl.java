@@ -21,6 +21,6 @@ public class SourceServiceImpl implements SourceService {
         if (sourceUri == null) {
             return null;
         }
-        return liveManager.getChannelSource(sourceUri);
+        return  liveManager.getChannelSource(sourceUri);
     }
 }

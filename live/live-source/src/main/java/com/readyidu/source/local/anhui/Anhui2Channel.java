@@ -19,7 +19,7 @@ public class Anhui2Channel extends Channel{
     @Override
     public Source getSource(SourceUri uri) {
         Source source = new AhtvSource(uri.getSource());
-        if (NullUtil.isNullObject(source.toString())) {
+        if (NullUtil.isNullObject(new AhtvSource(uri.getSource()).toString())) {
             return null;
         }
         return source;

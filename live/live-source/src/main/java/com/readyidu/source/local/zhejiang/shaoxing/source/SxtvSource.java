@@ -27,8 +27,6 @@ public class SxtvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             String sourceData = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_SXTV_NBTV1:
@@ -47,13 +45,9 @@ public class SxtvSource extends Source {
             if (sourceJsonArray.size() >= 1) {
                 JSONObject sourceJson = sourceJsonArray.getJSONObject(0);
                 if (sourceJson != null) {
-                    CacheUtil.set(CACHE_NAME + sourceId, sourceJson.getString("m3u8"), CHACHE_TIMEOUT);
-                    return sourceJson.getString("m3u8");
+                    return sourceJson.getString("m3u8")+"$1";
                 }
             }
             return null;
-        } else {
-            return cacheSource;
-        }
     }
 }

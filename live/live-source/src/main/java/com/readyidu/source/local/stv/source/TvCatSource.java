@@ -64,7 +64,6 @@ public class TvCatSource extends Source {
                 default:
                     break;
             }
-            System.out.println(tvCatStv);
             if (tvCatStv!=null&&!"".equals(tvCatStv)){
                 Pattern pattern = Pattern.compile("http://[A-Za-z0-9?=&.:/_-]*");
                 Matcher mather = pattern.matcher(tvCatStv);
