@@ -25,8 +25,6 @@ public class JxtvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             String jxtv = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_JX_JXTV1:
@@ -64,11 +62,7 @@ public class JxtvSource extends Source {
             String url = null;
             if (matcher.find()) {
                 url = matcher.group(0);
-                CacheUtil.set(CACHE_NAME + sourceId, url, CHACHE_TIMEOUT);
             }
             return url;
-        } else {
-            return cacheSource;
-        }
     }
 }

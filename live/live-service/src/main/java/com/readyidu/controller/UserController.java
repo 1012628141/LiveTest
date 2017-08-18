@@ -2,6 +2,7 @@ package com.readyidu.controller;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.User;
+import com.readyidu.service.CacheService;
 import com.readyidu.service.UserService;
 import com.readyidu.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by 123 on 2017/8/9.
@@ -22,10 +25,11 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private CacheService cacheService;
     @RequestMapping(value = "login.do",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
-    public ModelAndView login( HttpServletRequest request,RedirectAttributes model){
+    public ModelAndView login(HttpServletRequest request, RedirectAttributes model, HttpServletResponse response){
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("login.do");
         int code = userService.login(request);
         switch (code){
             case NetworkCode.ERROR_CODE_400:
@@ -37,6 +41,11 @@ public class UserController {
                 modelAndView.setViewName("redirect:loginInit.do");
                 break;
             case NetworkCode.CODE_SUCCESS:
+                model.addFlashAttribute("token",request.getSession().getId()+"loginInfo");
+                Cookie cookie = new Cookie("token", request.getSession().getId() + "loginInfo");
+                cookie.setMaxAge(1800);
+                cookie.setPath("/");
+                response.addCookie(cookie);
                 modelAndView.setViewName("redirect:/");
         }
         return modelAndView;
@@ -50,7 +59,7 @@ public class UserController {
     }
     @RequestMapping(value = "loginOut.do",method = RequestMethod.GET,produces =  "application/json; charset=utf-8")
     public ModelAndView loginOut(HttpServletRequest request){
-        request.getSession().removeAttribute("loginInfo");
+        cacheService.del(request.getSession().getId()+"loginInfo");
         return new ModelAndView("redirect:loginInit.do");
     }
 }

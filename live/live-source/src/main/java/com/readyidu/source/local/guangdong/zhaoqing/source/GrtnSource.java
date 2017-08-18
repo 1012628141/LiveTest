@@ -23,21 +23,16 @@ public class GrtnSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
+        String cacheSource = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_GRTN_ZHAOQING1:
+                cacheSource = HttpUtil.httpGet("http://live.grtn.cn/drm.php?refererurl=http%3A%2F%2Fwww%2Egrtn%2Ecn%2Flive%2Fzhaoqing%2F&hash=e60ed245aa8145167a99a6c09de4e9b9&url=http%3A%2F%2Fdslive%2Egrtn%2Ecn%2Fzqzh%2Fsd%2Flive%2Em3u8&playerVersion=4%2E03");
+                break;
+            default:
+                break;
+        }
         if (NullUtil.isNullObject(cacheSource)) {
-            switch (sourceId) {
-                case SourceConstants.SOURCE_GRTN_ZHAOQING1:
-                    cacheSource = HttpUtil.httpGet("http://live.grtn.cn/drm.php?refererurl=http%3A%2F%2Fwww%2Egrtn%2Ecn%2Flive%2Fzhaoqing%2F&hash=e60ed245aa8145167a99a6c09de4e9b9&url=http%3A%2F%2Fdslive%2Egrtn%2Ecn%2Fzqzh%2Fsd%2Flive%2Em3u8&playerVersion=4%2E03");
-                    break;
-                default:
-                    break;
-            }
-            if (NullUtil.isNullObject(cacheSource)) {
-                return null;
-            } else {
-                CacheUtil.set(CACHE_NAME + sourceId,cacheSource , CHACHE_TIMEOUT);
-                return cacheSource;
-            }
+            return null;
         } else {
             return cacheSource;
         }

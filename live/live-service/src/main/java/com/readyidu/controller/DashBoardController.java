@@ -42,19 +42,17 @@ public class DashBoardController {
 
     private String channelCacheName="channel_list_";
 
-    @RequestMapping("check")
-    public  ModelAndView chick(){
-        return new ModelAndView("streamMedia");
-    }
-
     @RequestMapping
     public ModelAndView dashBoardIndex(HttpServletRequest request) {
+        String session = request.getSession().getId();
         String item = request.getParameter("item");
         String editId = request.getParameter("eid");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("dashboard");
         modelAndView.addObject("navItem", getNavItemList());
-
+        String loginInfo = cacheService.get(session + "loginInfo");
+        User userInfo = JSON.parseObject(loginInfo, User.class);
+        request.setAttribute("loginInfo",userInfo);
         // 打开了客户端的Mapping处理
         if (!TextUtils.isEmpty(item) && item.equals("typeChannel")) {
             List<RouterMapping> list = routerService.selectAll();
@@ -87,6 +85,7 @@ public class DashBoardController {
 
             // Get channel data
             modelAndView.addObject("channel", channelService.getChannel(Integer.valueOf(editId)));
+            modelAndView.addObject("sources",channelSourceService.selectSourceByParentId(Integer.valueOf(editId)));
             return modelAndView;
         }
 
@@ -107,6 +106,7 @@ public class DashBoardController {
         list = channelService.getChannelList();
         PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
         List<Channel> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
+        list = null;
         pageUtil.setChannelList(resultList);
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
     }
@@ -117,13 +117,13 @@ public class DashBoardController {
         if(pageNo==null||"".equals(pageNo)){
             return JsonResult.toString(NetworkCode.CODE_FAIL,null);
         }
-        List<CheckableChannel> list=new ArrayList<>();
-        list = (List<CheckableChannel>) request.getSession().getAttribute("checkableChannels");
+        List<CheckableChannel> list=deathChannelService.checkDeathChannel();
         if (list==null||list.size()==0){
             return JsonResult.toString(NetworkCode.CODE_TIME_OUT,null);
         }
         PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
         List<CheckableChannel> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
+        list = null;
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
     }
     @ResponseBody
@@ -137,32 +137,8 @@ public class DashBoardController {
         list = routerService.selectAll();
         PageUtil pageUtil = new PageUtil(Integer.parseInt(pageNo),list.size());
         List<RouterMapping> resultList = list.subList(pageUtil.getPageMin(), pageUtil.getPageMax());
+        list = null;
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
-    }
-    @ResponseBody
-    @RequestMapping("importData")
-    public boolean importData(){
-        List<Channel> list=channelService.getChannelList();
-        if (list.size()==0) {
-            return false;
-        }
-        int c=0;
-        System.out.println(list.size());
-        for (Channel channel:list) {
-            System.out.println(channel.getSource());
-            String[] sourceList = channel.getSource().split("\\|");
-            c+=sourceList.length;
-            for (String source:
-                    sourceList) {
-                System.out.println(source);
-                ChannelSource channelSource = new ChannelSource();
-                channelSource.setParentid(channel.getId());
-                channelSource.setSource(source);
-                channelSourceService.importData(channelSource);
-            }
-        }
-        System.out.println(c);
-        return true;
     }
     private void appendChannelList(ModelAndView modelAndView,HttpServletRequest request) {
         // Get living, channel data
@@ -183,8 +159,12 @@ public class DashBoardController {
         }
         modelAndView.addObject("sourceCount", sourceCount);
         List<CheckableChannel> checkableChannels = deathChannelService.checkDeathChannel();
-        request.getSession().setAttribute("checkableChannels",checkableChannels);
-        modelAndView.addObject("deathList", checkableChannels.subList(0, 20));
+        if (checkableChannels.size()>=20){
+        modelAndView.addObject("deathList", checkableChannels.subList(0, 20));}
+        else {
+            modelAndView.addObject("deathList", checkableChannels.subList(0, checkableChannels.size()));
+        }
+        checkableChannels = null;
     }
 
     private List<Map<String, Object>> getNavItemList() {

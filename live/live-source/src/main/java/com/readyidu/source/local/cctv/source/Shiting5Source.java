@@ -70,7 +70,7 @@ public class Shiting5Source extends Source {
                 break;
         }
 
-        if(!NullUtil.isNullObject(shiting5Stv)){
+        if (!NullUtil.isNullObject(shiting5Stv)) {
             Pattern pattern = Pattern.compile("src=\"http://[a-z0-9A-Z-./_:]+.m3u8");
             Matcher matcher = pattern.matcher(shiting5Stv);
             if (matcher.find()) {

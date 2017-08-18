@@ -32,13 +32,9 @@ public class CNTVSource extends Source {
             return null;
         }
 
-        String cacheResult = CacheUtil.get("source_cctv_vd_" + sourceId);
-        if (cacheResult != null) {
-            return cacheResult;
-        }
 
         // Sources url: http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv2&client=html5
-            String javascript = "http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv" + source + "&client=html5";
+        String javascript = "http://vdn.live.cntv.cn/api2/liveHtml5.do?channel=pa://cctv_p2p_hdcctv" + source + "&client=html5";
         String scriptResult = HttpUtil.httpGet(javascript);
         scriptResult = scriptResult.replace("var html5VideoData='", "");
         scriptResult = scriptResult.replace("';getHtml5VideoData(html5VideoData);", "");
@@ -68,7 +64,6 @@ public class CNTVSource extends Source {
             URL url = new URL(value);
             String[] component = url.getPath().split("/");
             if (!component[component.length - 1].contains(".")) {
-                CacheUtil.set("source_cctv_vd_" + sourceId, value, 300);
                 log.debug(value);
                 return value;
             }

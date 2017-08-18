@@ -32,60 +32,50 @@ public class HebtvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String Dom;
-            Dom = HttpUtil.httpGet("http://medias.hrbtv.net//hrbwltv/liveChannel/PC/videoAll.jsonp");
-            Pattern pattern = Pattern.compile("http://streamings.hrbtv.net/live/[a-z0-9]+\\?fmt=h264_400k_flv");
-            Matcher matcher = pattern.matcher(Dom);
-            ArrayList<String> tempList = new ArrayList<>();
-            while (matcher.find()) {
-                tempList.add(matcher.group());
-            }
-            String[] res = new String[tempList.size()];
-            int i = 0;
-            for (String temp : tempList) {
-                res[i] = temp;
-                i++;
-            }
-            switch (sourceId) {
-                case SourceConstants.SOURCE_HLJTV_HEBTV1:
-                    if (!res[0].isEmpty()) {
-                        CacheUtil.set(CACHE_NAME + sourceId, res[0], CHACHE_TIMEOUT);
-                        return res[0];
-                    }
-                    break;
-                case SourceConstants.SOURCE_HLJTV_HEBTV2:
-                    if (!res[1].isEmpty()) {
-                        CacheUtil.set(CACHE_NAME + sourceId, res[1], CHACHE_TIMEOUT);
-                        return res[1];
-                    }
-                    break;
-                case SourceConstants.SOURCE_HLJTV_HEBTV3:
-                    if (!res[2].isEmpty()) {
-                        CacheUtil.set(CACHE_NAME + sourceId, res[2], CHACHE_TIMEOUT);
-                        return res[2];
-                    }
-                    break;
-                case SourceConstants.SOURCE_HLJTV_HEBTV4:
-                    if (!res[3].isEmpty()) {
-                        CacheUtil.set(CACHE_NAME + sourceId, res[3], CHACHE_TIMEOUT);
-                        return res[3];
-                    }
-                    break;
-                case SourceConstants.SOURCE_HLJTV_HEBTV5:
-                    if (!res[4].isEmpty()) {
-                        CacheUtil.set(CACHE_NAME + sourceId, res[4], CHACHE_TIMEOUT);
-                        return res[4];
-                    }
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            return  cacheSource;
+        String Dom = null;
+        Dom = HttpUtil.httpGet("http://medias.hrbtv.net//hrbwltv/liveChannel/PC/videoAll.jsonp");
+        Pattern pattern = Pattern.compile("http://streamings.hrbtv.net/live/[a-z0-9]+\\?fmt=h264_400k_flv");
+        Matcher matcher = pattern.matcher(Dom);
+        ArrayList<String> tempList = new ArrayList<>();
+        while (matcher.find()) {
+            tempList.add(matcher.group());
         }
-        return  null;
+        String[] res = new String[tempList.size()];
+        int i = 0;
+        for (String temp : tempList) {
+            res[i] = temp;
+            i++;
+        }
+        switch (sourceId) {
+            case SourceConstants.SOURCE_HLJTV_HEBTV1:
+                if (!res[0].isEmpty()) {
+                    return res[0];
+                }
+                break;
+            case SourceConstants.SOURCE_HLJTV_HEBTV2:
+                if (!res[1].isEmpty()) {
+                    return res[1];
+                }
+                break;
+            case SourceConstants.SOURCE_HLJTV_HEBTV3:
+                if (!res[2].isEmpty()) {
+                    return res[2];
+                }
+                break;
+            case SourceConstants.SOURCE_HLJTV_HEBTV4:
+                if (!res[3].isEmpty()) {
+                    return res[3];
+                }
+                break;
+            case SourceConstants.SOURCE_HLJTV_HEBTV5:
+                if (!res[4].isEmpty()) {
+                    return res[4];
+                }
+                break;
+            default:
+                break;
+        }
+        return null;
     }
 
 //    public static void main(String[] args) {

@@ -2,8 +2,11 @@ package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.model.Channel;
+import com.readyidu.model.ChannelSource;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelService;
+import com.readyidu.service.ChannelSourceService;
 import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import org.apache.http.util.TextUtils;
@@ -19,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.lang.Thread.sleep;
@@ -38,6 +42,10 @@ public class WebChannelController {
 
     @Resource(name = "cacheService")
     private CacheService cacheService;
+
+    @Resource(name = "channelSourceService")
+    private ChannelSourceService channelSourceService;
+
     @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.GET)
     @ResponseBody
     public String addChannel(@PathVariable String channelName) {
@@ -117,6 +125,28 @@ public class WebChannelController {
             checkSource(sourceUri);
         }
         return JsonResult.toString(NetworkCode.CODE_FAIL, sourceUri);
+    }
+
+    @RequestMapping(value = "/sortChange.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String sortChange(@RequestParam(value = "sourceList[]") int[] sourceList, int channelId, HttpServletRequest request) {
+        List<ChannelSource> sources = channelSourceService.selectSourceByParentId(channelId);
+        try {
+
+            for (int index = 0; index < sources.size(); index++) {
+//            System.out.println("source:"+sources[sourceList[index]]);
+//            System.out.println(" ,sort:"+(index+1));
+                if (sources.get(index).getSort() != sources.get(sourceList[index]).getSort()) {
+//                System.out.print("changeAfter:"+sources.get(index).getSort());
+//                System.out.println(",changeBefore:"+sources.get(sourceList[index]).getSort());
+                    channelSourceService.updateSort(new ChannelSource(sources.get(index).getSort(), sources.get(sourceList[index]).getSource()));
+                }
+            }
+        }catch (Exception e){
+            return  JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
     }
 
     private String checkSource(String sourceUri) {

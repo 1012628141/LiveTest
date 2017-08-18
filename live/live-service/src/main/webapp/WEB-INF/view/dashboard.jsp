@@ -32,8 +32,7 @@
             <!--
         Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
         Tip 2: you can also add an image using data-image tag
-        Tip 3: you can change the color of the sidebar with data-background-color="white | black"
-    -->
+        Tip 3: you can change the color of the sidebar with data-background-color="white | black"-->
             <div class="logo">
                 <a href="/" class="simple-text">
                     Live-直播源管理系统
@@ -283,31 +282,31 @@
 <script src="/js/material-dashboard.js"></script>
 
 <script type="text/javascript">
-//    var i = 0;
-//
-//    function check() {
-//        var source = $($('.source-list')[i]).data("url");
-//        $.ajax({
-//            type: "GET",
-//            url: "webChannel/checkSource.do?sourceUri=" + source,
-//            success: function (data) {
-//                var result = JSON.parse(data);
-//                console.log(result);
-//                if (result.code === 200) {
-//                    $("td[link='" + result.data + "']").html("有效");
-//                } else {
-//                    $("td[link='" + result.data + "']").html("失效");
-//                }
-//                i ++;
-//                check();
-//            },
-//            error: function () {
-//                i ++;
-//                $("td[link='" + source + "']").html("检测失败");
-//                check();
-//            }
-//        });
-//    }
+   var i = 0;
+
+   // function check() {
+   //     var source = $($('.source-list')[i]).data("url");
+   //     $.ajax({
+   //         type: "GET",
+   //         url: "webChannel/checkSource.do?sourceUri=" + source,
+   //         success: function (data) {
+   //             var result = JSON.parse(data);
+   //             console.log(result);
+   //             if (result.code === 200) {
+   //                 $("td[link='" + result.data + "']").html("有效");
+   //             } else {
+   //                 $("td[link='" + result.data + "']").html("失效");
+   //             }
+   //             i ++;
+   //             check();
+   //         },
+   //         error: function () {
+   //             i ++;
+   //             $("td[link='" + source + "']").html("检测失败");
+   //             check();
+   //         }
+   //     });
+   // }
     
     $(document).ready(function() {
         var page = "${content}";

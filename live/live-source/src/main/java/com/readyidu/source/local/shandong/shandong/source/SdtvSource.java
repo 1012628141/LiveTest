@@ -27,54 +27,48 @@ public class SdtvSource extends Source {
 
     @Override
     protected String source() {
-//        String cacheSource =null;
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            switch (sourceId) {
-                case SourceConstants.SOURCE_SDTV_SD1:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=57&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD2:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=69&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD3:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=73&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD4:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=61&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD5:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=71&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD6:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=65&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD7:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=63&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD8:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=75&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD9:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=77&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                case SourceConstants.SOURCE_SDTV_SD10:
-                    cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=67&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
-                    break;
-                default:
-                    break;
-            }
-            Pattern pattern = Pattern.compile("http://zb.allook.cn:80/live.*.m3u8[a-zA-Z0-9./?]*");
-            Matcher matcher = pattern.matcher(cacheSource);
-            if (matcher.find()) {
-                cacheSource = matcher.group(0);
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
-            } else {
-                return null;
-            }
-        } else {
+        String cacheSource = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_SDTV_SD1:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=57&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD2:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=69&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD3:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=73&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD4:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=61&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD5:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=71&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD6:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=65&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD7:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=63&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD8:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=75&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD9:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=77&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            case SourceConstants.SOURCE_SDTV_SD10:
+                cacheSource = HttpUtil.httpGet("http://mbp.allook.cn/ajax/MbpRequest.do?cls=CustomerVisit_add02&prevLoad=0&definition=sd&visitValue=67&os_type=ios&product=1&customerId=-1&version=ios-v4.2&virtualId=1e97998113663c4b63b8108f5e4d12546d86&viewLength=0&terminal=1&visitType=liveVideo&channel=AppStore");
+                break;
+            default:
+                break;
+        }
+        Pattern pattern = Pattern.compile("http://zb.allook.cn:80/live.*.m3u8[a-zA-Z0-9./?]*");
+        Matcher matcher = pattern.matcher(cacheSource);
+        if (matcher.find()) {
+            cacheSource = matcher.group(0);
             return cacheSource;
+        } else {
+            return null;
         }
     }
 

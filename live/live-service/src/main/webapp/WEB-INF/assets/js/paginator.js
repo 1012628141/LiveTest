@@ -76,7 +76,8 @@ Date.prototype.Format = function(fmt)
      }
      function loadMore(){
      pageno+=1
-      $.get('http://localhost:6262/pageDeathLoad.do?pageno='+pageno,
+//      $.get('http://112.35.30.146:19090/pageDeathLoad.do?pageno='+pageno,
+        $.get('http://192.168.4.99:6262/pageDeathLoad.do?pageno='+pageno,
         function(resultBean, status, xhRequest){
           console.log(resultBean)
           var tableElement=$(".table tbody")
@@ -95,7 +96,8 @@ Date.prototype.Format = function(fmt)
     }
     function skipPage(pageIndex){
       if(content === "pages/livingChannel.jsp"){
-        $.get("http://localhost:6262/pageLoad.do?pageno="+pageIndex,
+//        $.get("http://112.35.30.146:19090/pageLoad.do?pageno="+pageIndex,
+          $.get("http://192.168.4.99:6262/pageLoad.do?pageno="+pageIndex,
           function(resultBean, status, xhRequest){
            if (resultBean.data != undefined) {
              resultList=resultBean.data
@@ -119,7 +121,8 @@ Date.prototype.Format = function(fmt)
          "json"
          );    }
         if(content === "pages/typeChannel.jsp"){
-          $.get("http://localhost:6262/pageMapLoad.do?pageno="+pageIndex,
+//          $.get("http://112.35.30.146:19090/pageMapLoad.do?pageno="+pageIndex,
+          $.get("http://192.168.4.99:6262/pageMapLoad.do?pageno="+pageIndex,
             function(resultBean, status, xhRequest){
               if (resultBean.data != undefined) {
                resultList=resultBean.data

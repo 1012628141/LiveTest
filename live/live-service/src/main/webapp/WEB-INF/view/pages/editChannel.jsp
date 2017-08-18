@@ -23,99 +23,109 @@
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="main-panel" style="width: 100%; float: none;">
-        <nav class="navbar navbar-transparent navbar-absolute">
-            <div class="navbar-minimize">
-                <button class="btn btn-round btn-white btn-fill btn-just-icon">
-                    <i class="material-icons visible-on-sidebar-regular">more_vert</i>
-                    <i class="material-icons visible-on-sidebar-mini">view_list</i>
-                </button>
-            </div>
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"> 编辑频道信息 </a>
-            </div>
-        </nav>
-        <div class="content" style="margin-top: 45px;">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-text" data-background-color="rose">
-                                <h4 class="card-title">TYPE: ${channel.typeid} - ${channel.channel} ( ID: ${channel.id} )</h4>
-                            </div>
-                            <div class="card-content">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th class="text-center">#</th>
-                                            <th>源地址</th>
-                                            <th class="text-right">状态</th>
-                                            <th class="text-right">操作</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:if test="${channel.source != null}">
-                                            <c:set value="${ fn:split(channel.source, '|') }" var="sources" />
-                                            <c:forEach items="${ sources }" var="s" varStatus="loop">
-                                                <c:if test="${not empty s}">
-                                                    <tr data-sid="${loop.index}" data-id="${channel.id}">
-                                                        <td class="text-center">${loop.index + 1}</td>
-                                                        <td>
-                                                            <a href="${fn:toLowerCase(s)}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
-                                                                    ${fn:toLowerCase(s)}
-                                                            </a>
-                                                        </td>
-                                                        <td class="text-right">
-                                                            未知
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </c:if>
-                                            </c:forEach>
-                                        </c:if>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div style="float: right; padding-bottom: 10px;">
-                                    <button class="btn btn-primary btn-add-source" data-id="${channel.id}">新增频道源</button>
-                                    <button class="btn btn-warning btn-change-type" data-id="${channel.id}">修改频道分类</button>
-                                    <button class="btn btn-danger btn-remove-channel" data-id="${channel.id}">删除频道</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="wrapper">
+        <div class="main-panel" style="width: 100%; float: none;">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="navbar-minimize">
+                    <button class="btn btn-round btn-white btn-fill btn-just-icon">
+                        <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                        <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                    </button>
                 </div>
-            </div>
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"> 编辑频道信息 </a>
+                </div>
+            </nav>
+            <div class="content" style="margin-top: 45px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-text" data-background-color="rose">
+                                    <h4 class="card-title">TYPE: ${channel.typeid} - ${channel.channel} ( ID: ${channel.id} )</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">#</th>
+                                                    <th>源地址</th>
+                                                    <th class="text-right">状态</th>
+                                                    <th class="text-right">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:if test="${sources != null}">
+                                                <c:forEach items="${ sources }" var="s" varStatus="loop">
+                                                <c:if test="${not empty s}">
+                                                <tr data-sid="${loop.index}" data-id="${channel.id}">
+                                                    <td class="text-center">${loop.index + 1}</td>
+                                                    <td>
+                                                        <a href="${fn:toLowerCase(s)}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
+                                                            ${fn:toLowerCase(s.source)}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <c:choose>
+                                                        <c:when test="${s.isDelete == 0}">
+                                                        正常
+                                                    </c:when>
+                                                    <c:when test="${s.isDelete == 1}">
+                                                    已删除
+                                                </c:when>
+                                                <c:when test="${s.isDelete == 2}">
+                                                待审核
+                                            </c:when>
+                                        </c:choose>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                </tbody>
+            </table>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="/">
-                                管理后台主页
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>
-                    <a href="/">Living city .admin</a>, 直播源管理系统
-                </p>
-            </div>
-        </footer>
     </div>
+    <div class="card-footer">
+        <div style="float: right; padding-bottom: 10px;">
+            <button class ="btn btn-info btn-chang-sort" data-id="${channel.id}"> 提交排序修改 </button>
+            <button class="btn btn-primary btn-add-source" data-id="${channel.id}">新增频道源</button>
+            <button class="btn btn-warning btn-change-type" data-id="${channel.id}">修改频道分类</button>
+            <button class="btn btn-danger btn-remove-channel" data-id="${channel.id}">删除频道</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+    <div class="container-fluid">
+        <nav class="pull-left">
+            <ul>
+                <li>
+                    <a href="/">
+                        管理后台主页
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p class="copyright pull-right">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script>
+            <a href="/">Living city .admin</a>, 直播源管理系统
+        </p>
+    </div>
+</footer>
+</div>
 </div>
 </body>
 <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
@@ -149,7 +159,7 @@
 <script src="/js/material-dashboard.js"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="/js/demo.js"></script>
-
+<script src="/js/sort-source.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         // Bind actions
@@ -170,25 +180,26 @@
                 preConfirm: function () {
                     return new Promise(function (resolve) {
                         $.ajax(
-                            {
-                                type: "POST",
-                                url: "/webChannel/removeSource.do",
-                                data: {"channelId": id, "sourceId": sid},
-                                success: function (data) {
-                                    var result = data;
-                                    if (result.code === 200) {
-                                        swal.insertQueueStep("删除成功 !");
-                                        window.location.reload();
-                                    } else {
-                                        swal.insertQueueStep("删除失败！");
-                                    }
-                                    resolve()
-                                },
-                                error: function () {
+                        {
+                            type: "POST",
+                            url: "/webChannel/removeSource.do",
+                            data: {"channelId": id, "sourceId": sid},
+                            success: function (data) {
+                                var result = data;
+                                console.log(data)
+                                if (result.code === 200) {
+                                    swal.insertQueueStep("删除成功 !");
+                                    window.location.reload();
+                                } else {
                                     swal.insertQueueStep("删除失败！");
-                                    resolve()
                                 }
+                                resolve()
+                            },
+                            error: function () {
+                                swal.insertQueueStep("删除失败！");
+                                resolve()
                             }
+                        }
                         );
                     });
                 }
@@ -203,7 +214,7 @@
                 title: '请输入源地址，通常以m3u8或flv结尾',
                 html:
                 '<div class="form-group">' +
-                    '<input id="input-field" type="text" class="form-control" />' +
+                '<input id="input-field" type="text" class="form-control" />' +
                 '</div>',
                 confirmButtonClass: 'btn btn-warning',
                 cancelButtonClass: 'btn btn-default',
@@ -218,27 +229,27 @@
                         var value = $('#input-field').val();
                         if (value && value.trim()) {
                             $.ajax(
-                                {
-                                    type: "POST",
-                                    url: "/webChannel/addSource.do",
-                                    data: {"channelId": id, "sourceUri": value},
-                                    success: function (data) {
-                                        console.log(data);
-                                        var result = data;
-                                        if (result.code === 200) {
-                                            swal.insertQueueStep("添加成功 !");
-                                            window.location.reload();
-                                        } else {
-                                            swal.insertQueueStep("添加失败！");
-                                        }
-                                        resolve()
-                                    },
-                                    error: function (data) {
-                                        console.log(data);
+                            {
+                                type: "POST",
+                                url: "/webChannel/addSource.do",
+                                data: {"channelId": id, "sourceUri": value},
+                                success: function (data) {
+                                    console.log(data);
+                                    var result = data;
+                                    if (result.code === 200) {
+                                        swal.insertQueueStep("添加成功 !");
+                                        window.location.reload();
+                                    } else {
                                         swal.insertQueueStep("添加失败！");
-                                        resolve()
                                     }
+                                    resolve()
+                                },
+                                error: function (data) {
+                                    console.log(data);
+                                    swal.insertQueueStep("添加失败！");
+                                    resolve()
                                 }
+                            }
                             );
                         } else {
                             swal.insertQueueStep("不能新增空字符串！");
@@ -272,25 +283,25 @@
                         var value = $('#input-field').val();
                         if (value && value.trim()) {
                             $.ajax(
-                                {
-                                    type: "POST",
-                                    url: "/webChannel/changeType.do",
-                                    data: {"channelId": id, "typeId": value},
-                                    success: function (data) {
-                                        var result = data;
-                                        if (result.code === 200) {
-                                            swal.insertQueueStep("修改成功 !");
-                                            window.location.reload();
-                                        } else {
-                                            swal.insertQueueStep("修改失败！");
-                                        }
-                                        resolve()
-                                    },
-                                    error: function () {
+                            {
+                                type: "POST",
+                                url: "/webChannel/changeType.do",
+                                data: {"channelId": id, "typeId": value},
+                                success: function (data) {
+                                    var result = data
+                                    if (result.code === 200) {
+                                        swal.insertQueueStep("修改成功 !");
+                                        window.location.reload();
+                                    } else {
                                         swal.insertQueueStep("修改失败！");
-                                        resolve()
                                     }
+                                    resolve()
+                                },
+                                error: function () {
+                                    swal.insertQueueStep("修改失败！");
+                                    resolve()
                                 }
+                            }
                             );
                         } else {
                             swal.insertQueueStep("不能新增空字符串！");
@@ -300,10 +311,56 @@
                 }
             }])
         });
-
+        $('.btn-chang-sort').on('click',function(){
+           var id = $(this).data("id");
+           $list=$('.table > tbody')
+           var sourcelist=new Array()
+           $list.children('tr').each(function(){
+            sourcelist.push($(this).data('sid'))
+        })
+            // sourcelist=sourcelist.join(",")
+            console.log(sourcelist)
+            $.ajax({
+                type : "POST",
+                url: "/webChannel/sortChange.do",
+                data:{"sourceList":sourcelist,
+                "channelId":id
+            },
+            success:function(data){
+                console.log(data.code)
+                var result = data
+                if (result.code === 200) {
+                   swal({ 
+                    title:"success!",
+                    text: "修改成功",
+                    type: "success",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-info"})
+               } else {
+                swal({ 
+                    title:"error!",
+                    text: "修改失败！",
+                    type: "error",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-info"})
+            }
+            setTimeout(window.location.reload(),3000);
+            // setTimeout(resolve(),3000)
+        },
+        error: function () {
+            swal({ 
+                    title:"error!",
+                    text: "修改失败！",
+                    type: "error",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-info"})
+            resolve()
+        }
+    })
+        });
         // Delete channel
         $('.btn-remove-channel').on('click', function () {
-            var id = $(this).data("id");
+            var id = $(this).data("id");s
 
             swal.queue([{
                 title: '确认删除此频道？',
@@ -318,24 +375,24 @@
                 preConfirm: function () {
                     return new Promise(function (resolve) {
                         $.ajax(
-                            {
-                                type: "POST",
-                                url: "/webChannel/removeChannel.do",
-                                data: {"channelId": id},
-                                success: function (data) {
-                                    var result = data;
-                                    if (result.code === 200) {
-                                        swal.insertQueueStep("删除成功 !，请关闭该窗口！");
-                                    } else {
-                                        swal.insertQueueStep("删除失败！");
-                                    }
-                                    $(window).attr('location','/');
-                                },
-                                error: function () {
+                        {
+                            type: "POST",
+                            url: "/webChannel/removeChannel.do",
+                            data: {"channelId": id},
+                            success: function (data) {
+                                var result = data;
+                                if (result.code === 200) {
+                                    swal.insertQueueStep("删除成功 !，请关闭该窗口！");
+                                } else {
                                     swal.insertQueueStep("删除失败！");
-                                    resolve()
                                 }
+                                $(window).attr('location','/');
+                            },
+                            error: function () {
+                                swal.insertQueueStep("删除失败！");
+                                resolve()
                             }
+                        }
                         );
                     });
                 }

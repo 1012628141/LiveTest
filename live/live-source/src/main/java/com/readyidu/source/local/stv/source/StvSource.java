@@ -29,15 +29,12 @@ public class StvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             switch (sourceId) {
                 case SourceConstants.SOURCE_STV_STV:
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     String date = dateFormat.format(new Date());
                     String stvStv = HttpUtil.httpGet("http://m.kankanews.com/web/fakeESI?module=catchUP&info=081_" + date,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36","http://live.kankanews.com/huikan/");
                     JSONObject stvObject = JSON.parseObject(stvStv);
-                    CacheUtil.set(CACHE_NAME + sourceId, stvObject.getString("live"), CHACHE_TIMEOUT);
                     Map<String,String> header=new HashMap<>();
                     header.put("Referer","");
                     header.put("User-Agent","");
@@ -45,8 +42,5 @@ public class StvSource extends Source {
                 default:
                     return null;
             }
-        } else {
-            return cacheSource;
-        }
     }
 }

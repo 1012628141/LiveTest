@@ -63,7 +63,7 @@ public class RouterMapController {
         return JsonResult.toString(NetworkCode.CODE_SUCCESS, routerMappings);
     }
 
-    @RequestMapping(value = "removeMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+        @RequestMapping(value = "removeMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String removeMapper(HttpServletRequest request) {
         if (routerService.deleteById(Integer.valueOf(request.getParameter("id"))) != 0) {

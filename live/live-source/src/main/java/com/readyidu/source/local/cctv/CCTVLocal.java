@@ -14,15 +14,17 @@ import java.util.HashMap;
 public class CCTVLocal extends Local {
 
     public CCTVLocal() {
-        managerId = "cctv";
+            managerId = "cctv";
 
         Channel channel1 = new CCTVChannels();
         Channel channel2 = new CCTVShitingChannels();
         Channel channel3 = new CCTVTvCatChannels();
+        Channel channel4 = new CCTVMIguChannels();
         channels = new HashMap<>();
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);
         channels.put(channel3.getId(), channel3);
+        channels.put(channel4.getId(), channel4);
     }
 
     @Override

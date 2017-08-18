@@ -24,8 +24,6 @@ public class TvCatSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             String tvCatStv = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_TVCAT_HUNAN_STV:
@@ -72,8 +70,5 @@ public class TvCatSource extends Source {
                 }
             }
             return null;
-        } else {
-            return cacheSource;
-        }
     }
 }

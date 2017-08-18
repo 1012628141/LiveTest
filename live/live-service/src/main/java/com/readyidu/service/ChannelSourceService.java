@@ -2,6 +2,7 @@ package com.readyidu.service;
 
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
+import com.readyidu.model.Source;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface ChannelSourceService {
     int updateIsDelete(String source);
     int reductionSourceByid(Integer id);
     ChannelSource getDeathBySource(String source);
+    int updateSort(ChannelSource source);
+    List<ChannelSource> selectSourceByParentId(Integer id);
 }

@@ -1,8 +1,10 @@
 package com.readyidu.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.UserMapper;
 import com.readyidu.model.User;
+import com.readyidu.service.CacheService;
 import com.readyidu.service.UserService;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private CacheService cacheService;
     @Override
     public int login(HttpServletRequest request) {
         String email = request.getParameter("email");
@@ -32,8 +36,7 @@ public class UserServiceImpl implements UserService {
         if (NullUtil.isNullObject(loginInfo))
         {
             return NetworkCode.ERROR_CODE_412;
-        }
-        request.getSession().setAttribute("loginInfo",loginInfo);
+        };
         return NetworkCode.CODE_SUCCESS;
     }
 }

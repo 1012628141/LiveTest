@@ -25,63 +25,58 @@ public class HntvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String hntvStv = null;
-            switch (sourceId) {
-                case SourceConstants.SOURCE_HNTV_1:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=136");
-                    break;
-                case SourceConstants.SOURCE_HNTV_2:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=137");
-                    break;
-                case SourceConstants.SOURCE_HNTV_3:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=138");
-                    break;
-                case SourceConstants.SOURCE_HNTV_4:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=139");
-                    break;
-                case SourceConstants.SOURCE_HNTV_5:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=140");
-                    break;
-                case SourceConstants.SOURCE_HNTV_6:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=141");
-                    break;
-                case SourceConstants.SOURCE_HNTV_7:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=142");
-                    break;
-                case SourceConstants.SOURCE_HNTV_8:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=143");
-                    break;
-                case SourceConstants.SOURCE_HNTV_9:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=144");
-                    break;
-                case SourceConstants.SOURCE_HNTV_10:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=145");
-                    break;
-                case SourceConstants.SOURCE_HNTV_11://文物宝库
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=149");
-                    break;
-                case SourceConstants.SOURCE_HNTV_12://武术世界
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=147");
-                    break;
-                case SourceConstants.SOURCE_HNTV_13://梨园
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=148");
-                    break;
-                default:
-                    break;
-            }
+        String cacheSource = null;
+        String hntvStv = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_HNTV_1:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=136");
+                break;
+            case SourceConstants.SOURCE_HNTV_2:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=137");
+                break;
+            case SourceConstants.SOURCE_HNTV_3:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=138");
+                break;
+            case SourceConstants.SOURCE_HNTV_4:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=139");
+                break;
+            case SourceConstants.SOURCE_HNTV_5:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=140");
+                break;
+            case SourceConstants.SOURCE_HNTV_6:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=141");
+                break;
+            case SourceConstants.SOURCE_HNTV_7:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=142");
+                break;
+            case SourceConstants.SOURCE_HNTV_8:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=143");
+                break;
+            case SourceConstants.SOURCE_HNTV_9:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=144");
+                break;
+            case SourceConstants.SOURCE_HNTV_10:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=145");
+                break;
+            case SourceConstants.SOURCE_HNTV_11://文物宝库
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=149");
+                break;
+            case SourceConstants.SOURCE_HNTV_12://武术世界
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=147");
+                break;
+            case SourceConstants.SOURCE_HNTV_13://梨园
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=148");
+                break;
+            default:
+                break;
+        }
 
-            Pattern pattern = Pattern.compile("http://live.hntv.tv:\\d+/live/live\\d+/500k/tzwj_video.m3u8\\?KEY1=[a-z0-9]+&KEY2=[a-z0-9]+");
-            Matcher matcher = pattern.matcher(hntvStv);
-            if (matcher.find()) {
-                cacheSource = matcher.group(0);
-                CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                return cacheSource;
-            }
-            return null;
-        } else {
+        Pattern pattern = Pattern.compile("http://live.hntv.tv:\\d+/live/live\\d+/500k/tzwj_video.m3u8\\?KEY1=[a-z0-9]+&KEY2=[a-z0-9]+");
+        Matcher matcher = pattern.matcher(hntvStv);
+        if (matcher.find()) {
+            cacheSource = matcher.group(0);
             return cacheSource;
         }
+        return null;
     }
 }

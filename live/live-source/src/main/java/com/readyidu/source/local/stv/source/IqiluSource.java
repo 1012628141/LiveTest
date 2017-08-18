@@ -27,30 +27,24 @@ public class IqiluSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String iqiluStv = null;
-            switch (sourceId) {
-                case SourceConstants.SOURCE_IQILU_STV:
-                    iqiluStv = HttpUtil.httpGet("http://v.iqilu.com/live/sdtv/", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
-                    break;
-                default:
-                    break;
-            }
-            Pattern pattern = Pattern.compile("http://hlsgs.iqilu.com/live/sdtv/index.m3u8\\?sign=[a-z0-9]+&t=[a-z0-9]+");
-            Matcher matcher = pattern.matcher(iqiluStv);
-            if (matcher.find()) {
-                String src = matcher.group(0);
-                if (!NullUtil.isNullObject(src)) {
-                    HashMap<String, String> header = new HashMap<String, String>();
-                    header.put("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1");
-                    CacheUtil.set(CACHE_NAME + sourceId, HeaderUtil.addHeader(src, header), CHACHE_TIMEOUT);
-                    return HeaderUtil.addHeader(src, header);
-                }
-            }
-            return null;
-        } else {
-            return cacheSource;
+        String iqiluStv = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_IQILU_STV:
+                iqiluStv = HttpUtil.httpGet("http://v.iqilu.com/live/sdtv/", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                break;
+            default:
+                break;
         }
+        Pattern pattern = Pattern.compile("http://hlsgs.iqilu.com/live/sdtv/index.m3u8\\?sign=[a-z0-9]+&t=[a-z0-9]+");
+        Matcher matcher = pattern.matcher(iqiluStv);
+        if (matcher.find()) {
+            String src = matcher.group(0);
+            if (!NullUtil.isNullObject(src)) {
+                HashMap<String, String> header = new HashMap<String, String>();
+                header.put("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1");
+                return HeaderUtil.addHeader(src, header);
+            }
+        }
+        return null;
     }
 }

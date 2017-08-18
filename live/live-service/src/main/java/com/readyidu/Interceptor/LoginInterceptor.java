@@ -14,7 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String[] notFilter=new String[]{"/user/loginInit.do","/user/login.do","/channel/chanenel.do","/source/source.do"};
+        String[] notFilter=new String[]{
+                "/user/loginInit.do"
+                ,"/user/login.do",
+                "/channel/chanenel.do",
+                "/source/source.do",
+                "/router/channel/getMapper.do",
+                "/channel/channelType.do"};
         String url =request.getRequestURI();
         boolean doInterceptor=true;
         for (String s : notFilter) {

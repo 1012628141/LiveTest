@@ -25,25 +25,19 @@ public class HntvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String hntvStv = null;
-            switch (sourceId) {
-                case SourceConstants.SOURCE_HNTV_STV:
-                    hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=135");
-                    break;
-                default:
-                    break;
-            }
-            Pattern pattern = Pattern.compile("http://live.hntv.tv:9600/live/live1/500k/tzwj_video.m3u8\\?KEY1=[a-z0-9]+&KEY2=[a-z0-9]+");
-            Matcher matcher = pattern.matcher(hntvStv);
-            if (matcher.find()) {
-                CacheUtil.set(CACHE_NAME + sourceId, matcher.group(0), CHACHE_TIMEOUT);
-                return matcher.group(0);
-            }
-            return null;
-        } else {
-            return cacheSource;
+        String hntvStv = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_HNTV_STV:
+                hntvStv = HttpUtil.httpGet("http://www.hntv.tv/soms4/web/jwzt/player/live_ipad_player.jsp?channelId=135");
+                break;
+            default:
+                break;
         }
+        Pattern pattern = Pattern.compile("http://live.hntv.tv:9600/live/live1/500k/tzwj_video.m3u8\\?KEY1=[a-z0-9]+&KEY2=[a-z0-9]+");
+        Matcher matcher = pattern.matcher(hntvStv);
+        if (matcher.find()) {
+            return matcher.group(0);
+        }
+        return null;
     }
 }

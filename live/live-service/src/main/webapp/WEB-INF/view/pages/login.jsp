@@ -1,4 +1,4 @@
-<!-- <%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" %>
 
 <!doctype html>
 <html lang="en">
@@ -222,5 +222,4 @@
     }
 });
 </script>
-
-</html> -->
+</html>

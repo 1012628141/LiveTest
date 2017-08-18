@@ -31,14 +31,14 @@
     <mvc:resources mapping="/js/**" location="/WEB-INF/assets/js/" cache-period="31556926"/>
     <mvc:resources mapping="/css/**" location="/WEB-INF/assets/css/" cache-period="31556926"/>
 
-    <mvc:interceptors>
-        <!--登陆拦截-->
-        <mvc:interceptor>
-            <mvc:mapping path="/" />
-            <mvc:mapping path="/user/**" />
-            <bean class="com.readyidu.Interceptor.LoginInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--&lt;!&ndash;登陆拦截&ndash;&gt;-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/" />-->
+            <!--<mvc:mapping path="*.do " />-->
+            <!--<bean class="com.readyidu.Interceptor.LoginInterceptor"></bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"></property>

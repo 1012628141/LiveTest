@@ -29,21 +29,23 @@ public class JstvSource extends Source {
     public JstvSource(String sourceId) {
         super(sourceId);
     }
+
     private static String hexStr = "0123456789abcdef";
 
-    public String getMd5(int timeStamp,String url) throws NoSuchAlgorithmException {
+    public String getMd5(int timeStamp, String url) throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
-        return BinaryToHexString(md5.digest(("!@#jsTvL1ve"+url+timeStamp).getBytes()));
+        return BinaryToHexString(md5.digest(("!@#jsTvL1ve" + url + timeStamp).getBytes()));
     }
+
     private int transformInt(int param1) throws IOException {
         ByteArrayOutputStream boutput = new ByteArrayOutputStream();
         DataOutputStream doutput = new DataOutputStream(boutput);
         doutput.writeInt(param1);
         byte[] _loc2_ = boutput.toByteArray();
-        byte[] _loc3_=new byte[4];
+        byte[] _loc3_ = new byte[4];
         int _loc4_ = 0;
         while (_loc4_ < 4) {
-            _loc3_[4-_loc4_-1]=(byte)((_loc2_[_loc4_] & 240 ^ 240 | (_loc2_[_loc4_] & 15) + 1 & 15));
+            _loc3_[4 - _loc4_ - 1] = (byte) ((_loc2_[_loc4_] & 240 ^ 240 | (_loc2_[_loc4_] & 15) + 1 & 15));
             _loc4_++;
         }
         ByteBuffer _loc5_ = ByteBuffer.wrap(_loc3_);
@@ -51,18 +53,18 @@ public class JstvSource extends Source {
     }
 
     public String getUrl(String url) {
-        int timeStamp = (int)(new Date().getTime()/1000);
+        int timeStamp = (int) (new Date().getTime() / 1000);
         String hash = null;
-        int key=0;
+        int key = 0;
         try {
-            hash = getMd5(timeStamp,url);
+            hash = getMd5(timeStamp, url);
             key = transformInt(timeStamp);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return url+"?val="+hash+"&tt="+key+"&rand="+Math.random();
+        return url + "?val=" + hash + "&tt=" + key + "&rand=" + Math.random();
     }
 
 
@@ -77,58 +79,53 @@ public class JstvSource extends Source {
         }
         return result;
     }
+
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String result = null;
-            switch (sourceId) {
-                case SourceConstants.SOURCE_JSTV_JS1:
-                    result = getUrl("http://ws.live.jstv.com/play/5");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS2:
-                    result = getUrl("http://ws.live.jstv.com/play/2");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS3:
-                    result = getUrl("http://ws.live.jstv.com/play/9");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS4:
-                    result = getUrl("http://ws.live.jstv.com/play/8");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS5:
-                    result = getUrl("http://ws.live.jstv.com/play/7");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS6:
-                    result = getUrl("http://ws.live.jstv.com/play/29");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS7:
-                    result = getUrl("http://ws.live.jstv.com/play/91");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS8:
-                    result = getUrl("http://ws.live.jstv.com/play/6");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS9:
-                    result = getUrl("http://ws.live.jstv.com/play/28");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS10:
-                    result = getUrl("http://ws.live.jstv.com/play/27");
-                    break;
-                case SourceConstants.SOURCE_JSTV_JS11:
-                    result = getUrl("http://ws.live.jstv.com/play/10");
-                    break;
-                default:
-                    break;
-            }
-            String jsonReturn = HttpUtil.httpGet(result);
-            Pattern pattern = Pattern.compile("rtmp://[a-zA-Z0-9./?=&~%-]*");
-            Matcher matcher = pattern.matcher(jsonReturn);
-            if (matcher.find()) {
-                result = matcher.group();
-                CacheUtil.set(CACHE_NAME + sourceId, result, CHACHE_TIMEOUT);
-            }
-            return  result;
-        } else {
-            return cacheSource;
+        String result = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_JSTV_JS1:
+                result = getUrl("http://ws.live.jstv.com/play/5");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS2:
+                result = getUrl("http://ws.live.jstv.com/play/2");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS3:
+                result = getUrl("http://ws.live.jstv.com/play/9");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS4:
+                result = getUrl("http://ws.live.jstv.com/play/8");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS5:
+                result = getUrl("http://ws.live.jstv.com/play/7");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS6:
+                result = getUrl("http://ws.live.jstv.com/play/29");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS7:
+                result = getUrl("http://ws.live.jstv.com/play/91");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS8:
+                result = getUrl("http://ws.live.jstv.com/play/6");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS9:
+                result = getUrl("http://ws.live.jstv.com/play/28");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS10:
+                result = getUrl("http://ws.live.jstv.com/play/27");
+                break;
+            case SourceConstants.SOURCE_JSTV_JS11:
+                result = getUrl("http://ws.live.jstv.com/play/10");
+                break;
+            default:
+                break;
         }
+        String jsonReturn = HttpUtil.httpGet(result);
+        Pattern pattern = Pattern.compile("rtmp://[a-zA-Z0-9./?=&~%-]*");
+        Matcher matcher = pattern.matcher(jsonReturn);
+        if (matcher.find()) {
+            result = matcher.group();
+        }
+        return result;
     }
 }

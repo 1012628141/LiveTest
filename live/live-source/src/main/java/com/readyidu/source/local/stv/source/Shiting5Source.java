@@ -25,8 +25,6 @@ public class Shiting5Source extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             String shiting5Stv = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_SHITING_TIANJIN_STV:
@@ -126,14 +124,10 @@ public class Shiting5Source extends Source {
                     String src = matcher.group(0);
                     if (!NullUtil.isNullObject(src)) {
                         src = src.replace("src=\"", "");
-                        CacheUtil.set(CACHE_NAME + sourceId, src, CHACHE_TIMEOUT);
                         return src;
                     }
                 }
             }
             return null;
-        } else {
-            return cacheSource;
-        }
     }
 }

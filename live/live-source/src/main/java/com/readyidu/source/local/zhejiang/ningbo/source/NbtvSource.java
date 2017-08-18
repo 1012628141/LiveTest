@@ -27,43 +27,37 @@ public class NbtvSource extends Source {
 
     @Override
     protected String source() {
-        // 优先从缓存中取
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String nbtvDom = null;
-            switch (sourceId) {
-                case SourceConstants.SOURCE_NBTV_NBTV1:
-                    nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv1");
-                    break;
-                case SourceConstants.SOURCE_NBTV_NBTV2:
-                    nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv2");
-                    break;
-                case SourceConstants.SOURCE_NBTV_NBTV3:
-                    nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv3");
-                    break;
-                case SourceConstants.SOURCE_NBTV_NBTV4:
-                    nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv4");
-                    break;
-                case SourceConstants.SOURCE_NBTV_NBTV5:
-                    nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv5");
-                    break;
-                case SourceConstants.SOURCE_NBTV_NBTV6:
-                    nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv6");
-                default:
-                    break;
-            }
+        String cacheSource = null;
+        String nbtvDom = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_NBTV_NBTV1:
+                nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv1");
+                break;
+            case SourceConstants.SOURCE_NBTV_NBTV2:
+                nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv2");
+                break;
+            case SourceConstants.SOURCE_NBTV_NBTV3:
+                nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv3");
+                break;
+            case SourceConstants.SOURCE_NBTV_NBTV4:
+                nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv4");
+                break;
+            case SourceConstants.SOURCE_NBTV_NBTV5:
+                nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv5");
+                break;
+            case SourceConstants.SOURCE_NBTV_NBTV6:
+                nbtvDom = HttpUtil.httpGet("http://m.nbtv.cn/mob/live/index.html?videoPath=nbtv6");
+            default:
+                break;
+        }
 
-            if(!NullUtil.isNullObject(nbtvDom)){
-                Pattern pattern = Pattern.compile("http://hls.nbtv.cn/[a-z0-9]+/[0-9a-z]+/live/nbtv[1-6]_md/playlist.m3u8");
-                Matcher matcher = pattern.matcher(nbtvDom);
-                if (matcher.find()) {
-                    cacheSource = matcher.group(0);
-                    CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                    return cacheSource;
-                }
+        if (!NullUtil.isNullObject(nbtvDom)) {
+            Pattern pattern = Pattern.compile("http://hls.nbtv.cn/[a-z0-9]+/[0-9a-z]+/live/nbtv[1-6]_md/playlist.m3u8");
+            Matcher matcher = pattern.matcher(nbtvDom);
+            if (matcher.find()) {
+                cacheSource = matcher.group(0);
+                return cacheSource;
             }
-        } else {
-            return cacheSource;
         }
         return null;
     }

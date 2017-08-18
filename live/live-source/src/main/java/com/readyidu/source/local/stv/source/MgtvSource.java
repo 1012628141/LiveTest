@@ -34,10 +34,6 @@ public class  MgtvSource extends Source {
             return null;
         }
 
-        String cacheResult = CacheUtil.get(CACHE_NAME + sourceId+":"+index);
-        if (cacheResult != null) {
-            return cacheResult;
-        }
 
         String mgapi=null;
         List<String> sourceList=new ArrayList();
@@ -83,7 +79,6 @@ public class  MgtvSource extends Source {
             String resultStr=HttpUtil.httpGet(resultUrl);
             Matcher matcher5=pattern5.matcher(resultStr);
             if (matcher5.find()){
-                CacheUtil.set(CACHE_NAME + sourceId+":"+index, matcher5.group(), 300);
                 return  matcher5.group();
             }
         }

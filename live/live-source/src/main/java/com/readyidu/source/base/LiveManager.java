@@ -1,5 +1,6 @@
 package com.readyidu.source.base;
 
+import com.readyidu.source.local.carousel.CarouselLocal;
 import com.readyidu.source.local.anhui.AnhuiLocal;
 import com.readyidu.source.local.cctv.CCTVLocal;
 import com.readyidu.source.local.chongqing.ChongqinLocal;
@@ -241,6 +242,10 @@ public class LiveManager {
         //渭南
         WeinanLocal weinanLocal = new WeinanLocal();
         locals.put(weinanLocal.getId(),weinanLocal);
+
+        //轮播
+        CarouselLocal carouselLocal =new CarouselLocal();
+        locals.put(carouselLocal.getId(),carouselLocal);
 
     }
 

@@ -26,65 +26,51 @@ public class WhtvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String Dom;
-            Dom = HttpUtil.httpGet("http://115.231.22.25/player.whtv.com.cn/hhtv/liveChannel/PC/videoAll.jsonp","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0","http://www.whtv.com.cn/tv/1/online/");
-            Pattern pattern = Pattern.compile("http://live.whtv.com.cn/live/[a-z0-9]+\\?fmt=h264_700k_flv");
-            Matcher matcher = pattern.matcher(Dom);
-            ArrayList<String> tempList = new ArrayList<>();
-            while (matcher.find()) {
-                tempList.add(matcher.group());
-            }
-            String[] res = new String[tempList.size()];
-            int i = 0;
-            for (String temp : tempList) {
-                res[i] = temp;
-                i++;
-            }
-            switch (sourceId) {
-                case SourceConstants.SOURCE_HBTV_WHTV1:
-                    if (!res[1].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[1], CHACHE_TIMEOUT);
-                    return res[1];
-                case SourceConstants.SOURCE_HBTV_WHTV2:
-                    if (!res[3].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[3], CHACHE_TIMEOUT);
-                    return res[3];
-                case SourceConstants.SOURCE_HBTV_WHTV3:
-                    if (!res[5].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[5], CHACHE_TIMEOUT);
-                    return res[5];
-                case SourceConstants.SOURCE_HBTV_WHTV4:
-                    if (!res[7].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[7], CHACHE_TIMEOUT);
-                    return res[7];
-                case SourceConstants.SOURCE_HBTV_WHTV5:
-                    if (!res[9].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[9], CHACHE_TIMEOUT);
-                    return res[9];
-                case SourceConstants.SOURCE_HBTV_WHTV6:
-                    if (!res[11].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[11], CHACHE_TIMEOUT);
-                    return res[11];
-                case SourceConstants.SOURCE_HBTV_WHTV7:
-                    if (!res[13].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[13], CHACHE_TIMEOUT);
-                    return res[13];
-                case SourceConstants.SOURCE_HBTV_WHTV8:
-                    if (!res[15].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[15], CHACHE_TIMEOUT);
-                    return res[15];
-                case SourceConstants.SOURCE_HBTV_WHTV9:
-                    if (!res[16].isEmpty())
-                        CacheUtil.set(CACHE_NAME + sourceId, res[16], CHACHE_TIMEOUT);
-                    return res[16];
-                default:
-                    break;
-            }
-            return null;
-        } else {
-            return cacheSource;
+        String Dom;
+        Dom = HttpUtil.httpGet("http://115.231.22.25/player.whtv.com.cn/hhtv/liveChannel/PC/videoAll.jsonp", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0", "http://www.whtv.com.cn/tv/1/online/");
+        Pattern pattern = Pattern.compile("http://live.whtv.com.cn/live/[a-z0-9]+\\?fmt=h264_700k_flv");
+        Matcher matcher = pattern.matcher(Dom);
+        ArrayList<String> tempList = new ArrayList<>();
+        while (matcher.find()) {
+            tempList.add(matcher.group());
         }
+        String[] res = new String[tempList.size()];
+        int i = 0;
+        for (String temp : tempList) {
+            res[i] = temp;
+            i++;
+        }
+        switch (sourceId) {
+            case SourceConstants.SOURCE_HBTV_WHTV1:
+                if (!res[1].isEmpty())
+                    return res[1];
+            case SourceConstants.SOURCE_HBTV_WHTV2:
+                if (!res[3].isEmpty())
+                    return res[3];
+            case SourceConstants.SOURCE_HBTV_WHTV3:
+                if (!res[5].isEmpty())
+                    return res[5];
+            case SourceConstants.SOURCE_HBTV_WHTV4:
+                if (!res[7].isEmpty())
+                    return res[7];
+            case SourceConstants.SOURCE_HBTV_WHTV5:
+                if (!res[9].isEmpty())
+                    return res[9];
+            case SourceConstants.SOURCE_HBTV_WHTV6:
+                if (!res[11].isEmpty())
+                    return res[11];
+            case SourceConstants.SOURCE_HBTV_WHTV7:
+                if (!res[13].isEmpty())
+                    return res[13];
+            case SourceConstants.SOURCE_HBTV_WHTV8:
+                if (!res[15].isEmpty())
+                    return res[15];
+            case SourceConstants.SOURCE_HBTV_WHTV9:
+                if (!res[16].isEmpty())
+                    return res[16];
+            default:
+                break;
+        }
+        return null;
     }
 }

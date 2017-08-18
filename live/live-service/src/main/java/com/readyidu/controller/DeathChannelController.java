@@ -63,6 +63,7 @@ public class DeathChannelController {
             cacheService.del(cacheKey);
             if (status){
                 if (channelSourceService.delectSourceByid(sourceid)!=0){
+                    cacheService.del("LIVE_SERVICE_channel_channelList");
                     return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
                 }
             }

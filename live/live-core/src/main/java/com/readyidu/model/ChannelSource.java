@@ -6,7 +6,16 @@ package com.readyidu.model;
 public class ChannelSource {
     private Integer id;
     private Integer parentid;
-    private String Source;
+    private String source;
+    private int sort;
+    private int isDelete;
+    public ChannelSource(){
+        super();
+    }
+    public ChannelSource(int sort, String source) {
+        this.sort=sort;
+        this.source=source;
+    }
 
     public Integer getId() {
         return id;
@@ -25,10 +34,26 @@ public class ChannelSource {
     }
 
     public String getSource() {
-        return Source;
+        return source;
     }
 
     public void setSource(String source) {
-        Source = source;
+        this.source = source;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
+
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
     }
 }

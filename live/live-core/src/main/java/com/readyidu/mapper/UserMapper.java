@@ -1,5 +1,6 @@
 package com.readyidu.mapper;
 
+import com.readyidu.model.Source;
 import com.readyidu.model.User;
 
 /**

@@ -3,6 +3,7 @@ package com.readyidu.service.impl;
 import com.readyidu.mapper.ChannelSourceMapper;
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
+import com.readyidu.model.Source;
 import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelSourceService;
@@ -19,6 +20,9 @@ import java.util.List;
 public class ChannelSourceServiceImpl extends BaseService implements ChannelSourceService {
     @Autowired
     private ChannelSourceMapper channelSourceMapper;
+
+    @Autowired
+    private CacheService cacheService;
     @Override
     public void importData(ChannelSource channelSource) {
         channelSourceMapper.importData(channelSource);
@@ -48,4 +52,12 @@ public class ChannelSourceServiceImpl extends BaseService implements ChannelSour
     public ChannelSource getDeathBySource(String source) {
         return channelSourceMapper.getDeathBySource(source);
     }
+
+    @Override
+    public int updateSort(ChannelSource source) { return channelSourceMapper.updateSort(source);}
+
+    @Override
+    public List<ChannelSource> selectSourceByParentId(Integer id) {
+        cacheService.del(SERVICE_RBK + "channel_" + "channelList");
+        return channelSourceMapper.selectSourceByParentId(id);}
 }

@@ -16,7 +16,6 @@ import javax.annotation.Resource;
 public class AhtvSource extends Source {
 
     private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 1800;
 
     public AhtvSource(String sourceId) {
         super(sourceId);
@@ -24,8 +23,6 @@ public class AhtvSource extends Source {
 
     @Override
     protected String source() {
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
             String ahtv = null;
             switch (sourceId) {
                 case SourceConstants.SOURCE_AH_AHTV1:
@@ -52,11 +49,7 @@ public class AhtvSource extends Source {
             if (NullUtil.isNullObject(ahtv)) {
                 return null;
             } else {
-                CacheUtil.set(CACHE_NAME + sourceId, ahtv, CHACHE_TIMEOUT);
                 return ahtv;
             }
-        }else {
-            return  cacheSource;
-        }
     }
 }

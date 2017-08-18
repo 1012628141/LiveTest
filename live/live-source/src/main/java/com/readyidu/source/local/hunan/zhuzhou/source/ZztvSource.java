@@ -27,35 +27,29 @@ public class ZztvSource extends Source {
 
     @Override
     protected String source() {
-        // 优先从缓存中取
-        String cacheSource = CacheUtil.get(CACHE_NAME + sourceId);
-        if (NullUtil.isNullObject(cacheSource)) {
-            String zztvDom = null;
-            String url = null;
-            switch (sourceId) {
-                case SourceConstants.SOURCE_HN_ZZTV1:
-                    zztvDom = HttpUtil.httpGet("http://live.zzbtv.com/live/live122/800K/live122_index.flv");
-                    url = "http://live.zzbtv.com/live/live122/800K/";
-                    break;
-                case SourceConstants.SOURCE_HN_ZZTV2:
-                    zztvDom = HttpUtil.httpGet("http://live.zzbtv.com/live/live124/800K/live124_index.flv");
-                    url = "http://live.zzbtv.com/live/live124/800K/";
-                    break;
-                default:
-                    break;
-            }
+        String cacheSource = null;
+        String zztvDom = null;
+        String url = null;
+        switch (sourceId) {
+            case SourceConstants.SOURCE_HN_ZZTV1:
+                zztvDom = HttpUtil.httpGet("http://live.zzbtv.com/live/live122/800K/live122_index.flv");
+                url = "http://live.zzbtv.com/live/live122/800K/";
+                break;
+            case SourceConstants.SOURCE_HN_ZZTV2:
+                zztvDom = HttpUtil.httpGet("http://live.zzbtv.com/live/live124/800K/live124_index.flv");
+                url = "http://live.zzbtv.com/live/live124/800K/";
+                break;
+            default:
+                break;
+        }
 
-            if(!NullUtil.isNullObject(zztvDom)){
-                Pattern pattern = Pattern.compile("2017.*.flv");
-                Matcher matcher = pattern.matcher(zztvDom);
-                if (matcher.find()) {
-                    cacheSource = url+matcher.group(0);
-                    CacheUtil.set(CACHE_NAME + sourceId, cacheSource, CHACHE_TIMEOUT);
-                    return cacheSource;
-                }
+        if (!NullUtil.isNullObject(zztvDom)) {
+            Pattern pattern = Pattern.compile("2017.*.flv");
+            Matcher matcher = pattern.matcher(zztvDom);
+            if (matcher.find()) {
+                cacheSource = url + matcher.group(0);
+                return cacheSource;
             }
-        } else {
-            return cacheSource;
         }
         return null;
     }
