@@ -35,14 +35,16 @@ public class IqiluSource extends Source {
             default:
                 break;
         }
-        Pattern pattern = Pattern.compile("http://hlsgs.iqilu.com/live/sdtv/index.m3u8\\?sign=[a-z0-9]+&t=[a-z0-9]+");
-        Matcher matcher = pattern.matcher(iqiluStv);
-        if (matcher.find()) {
-            String src = matcher.group(0);
-            if (!NullUtil.isNullObject(src)) {
-                HashMap<String, String> header = new HashMap<String, String>();
-                header.put("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1");
-                return HeaderUtil.addHeader(src, header);
+        if (!NullUtil.isNullObject(iqiluStv)){
+            Pattern pattern = Pattern.compile("http://hlsgs.iqilu.com/live/sdtv/index.m3u8\\?sign=[a-z0-9]+&t=[a-z0-9]+");
+            Matcher matcher = pattern.matcher(iqiluStv);
+            if (matcher.find()) {
+                String src = matcher.group(0);
+                if (!NullUtil.isNullObject(src)) {
+                    HashMap<String, String> header = new HashMap<String, String>();
+                    header.put("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1");
+                    return HeaderUtil.addHeader(src, header);
+                }
             }
         }
         return null;

@@ -1,8 +1,8 @@
 package com.readyidu.service;
 
+import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
-import com.readyidu.model.Source;
 
 import java.util.List;
 
@@ -17,5 +17,6 @@ public interface ChannelSourceService {
     int reductionSourceByid(Integer id);
     ChannelSource getDeathBySource(String source);
     int updateSort(ChannelSource source);
+    int modifySource(ChannelSource source);
     List<ChannelSource> selectSourceByParentId(Integer id);
 }

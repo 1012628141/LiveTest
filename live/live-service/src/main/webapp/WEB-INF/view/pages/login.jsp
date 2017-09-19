@@ -183,7 +183,7 @@
 <script src="/js/jquery-jvectormap.js"></script>
 <!-- Sliders Plugin -->
 <script src="/js/nouislider.min.js"></script>
-<!--  Google Maps Plugin    -->
+<!--  Google Maps   Plugin    -->
 <script src="/js/googleapis.maps.js"></script>
 <!-- Select Plugin -->
 <script src="/js/jquery.select-bootstrap.js"></script>

@@ -67,7 +67,21 @@ public class WebChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-
+    @RequestMapping(value = "/modifySource.do",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
+    public String modifySource(HttpServletRequest request){
+        String channelId = request.getParameter("channelId");
+        String source = request.getParameter("source");
+        String sourceId = request.getParameter("sourceId");
+        System.out.println(source);
+        if(channelSourceService.modifySource(new ChannelSource(
+                Integer.valueOf(channelId),
+                Integer.valueOf(sourceId),
+                source))!=0){
+            cacheService.del("LIVE_SERVICE_channel_channelList");
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        }
+        return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+    }
     @RequestMapping(value = "/removeSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String removeSource(HttpServletRequest request) {
@@ -126,7 +140,6 @@ public class WebChannelController {
         }
         return JsonResult.toString(NetworkCode.CODE_FAIL, sourceUri);
     }
-
     @RequestMapping(value = "/sortChange.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String sortChange(@RequestParam(value = "sourceList[]") int[] sourceList, int channelId, HttpServletRequest request) {
@@ -184,45 +197,6 @@ public class WebChannelController {
 
         public void setCode(Integer code) {
             this.code = code;
-        }
-    }
-
-    public static class ChannelRequest {
-        private Integer channelId;
-        private String sourceUri;
-        private Integer sourceId;
-        private String typeId;
-
-        public String getTypeId() {
-            return typeId;
-        }
-
-        public void setTypeId(String typeId) {
-            this.typeId = typeId;
-        }
-
-        public Integer getChannelId() {
-            return channelId;
-        }
-
-        public void setChannelId(Integer channelId) {
-            this.channelId = channelId;
-        }
-
-        public String getSourceUri() {
-            return sourceUri;
-        }
-
-        public void setSourceUri(String sourceUri) {
-            this.sourceUri = sourceUri;
-        }
-
-        public Integer getSourceId() {
-            return sourceId;
-        }
-
-        public void setSourceId(Integer sourceId) {
-            this.sourceId = sourceId;
         }
     }
 

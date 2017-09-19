@@ -44,6 +44,7 @@ import com.readyidu.source.local.sichuan.lvzhou.LuzhouLocal;
 import com.readyidu.source.local.sichuan.mianyang.MianyangLocal;
 import com.readyidu.source.local.sichuan.shuangliu.ShuangliuLocal;
 import com.readyidu.source.local.stv.STVLocal;
+import com.readyidu.source.local.tianyi.TianyiLocal;
 import com.readyidu.source.local.zhejiang.ZhejiangLocal;
 import com.readyidu.source.local.zhejiang.deqing.DeqingLocal;
 import com.readyidu.source.local.zhejiang.hangzhou.HangzhouLocal;
@@ -247,6 +248,9 @@ public class LiveManager {
         CarouselLocal carouselLocal =new CarouselLocal();
         locals.put(carouselLocal.getId(),carouselLocal);
 
+        //天翼电影
+        TianyiLocal tianyiLocal =new TianyiLocal();
+        locals.put(tianyiLocal.getId(),tianyiLocal);
     }
 
     public String getChannelSource(String sourceUri) {

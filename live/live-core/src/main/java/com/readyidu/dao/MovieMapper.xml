@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.readyidu.mapper.MovieMapper">
+    <sql id="Base_Column_List">
+        t1.id as id,
+        t1.title as title,
+        t1.contid as contid,
+        t1.country_name as countryName
+    </sql>
+    <select id="selectAllMovie" resultType="com.readyidu.model.Movie">
+        select
+        <include refid="Base_Column_List"/>
+        from t_movie_source t1
+        where istrailer !=0
+    </select>
+    <select id="selectAllTrailer" resultType="com.readyidu.model.Movie">
+        select
+        <include refid="Base_Column_List"/>
+        from t_movie_source t1
+        where istrailer = 0
+    </select>
+</mapper>

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.RouterMapping;
 import com.readyidu.service.RouterService;
+import com.readyidu.tools.JPushTool;
 import com.readyidu.util.JsonResult;
 import org.apache.commons.collections.MultiMap;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,9 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/router/channel/")
 public class RouterMapController {
+    private static final String MASTER_SECRET="a207b7daaf776cfe3764d01b";
+    private static final String APP_KEY="a9a36f92c045166a8219eece";
+    private static final String MESSAGE="命令映射缓存失效";
 
     @Resource(name = "routerService")
     RouterService routerService;
@@ -63,7 +67,7 @@ public class RouterMapController {
         return JsonResult.toString(NetworkCode.CODE_SUCCESS, routerMappings);
     }
 
-        @RequestMapping(value = "removeMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "removeMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String removeMapper(HttpServletRequest request) {
         if (routerService.deleteById(Integer.valueOf(request.getParameter("id"))) != 0) {
@@ -101,6 +105,12 @@ public class RouterMapController {
         }
 
         return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+    }
+    @RequestMapping(value = "mapCacheExpire.do",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String mapCacheExpire(){
+        JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE);
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
     }
 
 }

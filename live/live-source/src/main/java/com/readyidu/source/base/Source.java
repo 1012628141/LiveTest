@@ -21,16 +21,13 @@ abstract public class Source {
     }
 
     abstract protected String source();
-
+    public String getSource(){
+        return source;
+    }
     @Override
     public String toString() {
         String source=null;
-        try {
-            source = source();
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
+        source = source();
         if (NullUtil.isNullObject(source)) {
             return null;
         }

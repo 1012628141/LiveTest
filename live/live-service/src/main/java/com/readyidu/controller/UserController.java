@@ -43,7 +43,6 @@ public class UserController {
             case NetworkCode.CODE_SUCCESS:
                 model.addFlashAttribute("token",request.getSession().getId()+"loginInfo");
                 Cookie cookie = new Cookie("token", request.getSession().getId() + "loginInfo");
-                cookie.setMaxAge(1800);
                 cookie.setPath("/");
                 response.addCookie(cookie);
                 modelAndView.setViewName("redirect:/");

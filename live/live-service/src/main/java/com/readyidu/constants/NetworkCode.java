@@ -14,4 +14,5 @@ public class NetworkCode {
     public static final int ERROR_CODE_400 = 400;
 
     public static final int ERROR_CODE_412 = 412;
+    public static final int CACHE_EXPIRE = 12000;
 }

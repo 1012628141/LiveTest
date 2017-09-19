@@ -289,7 +289,7 @@ public class SourceConstants {
     public static  final String SOURCE_MIGU_CAROUSEL_LSSZPJ = "source_migu_carousel_lsszpj";
     public static  final String SOURCE_MIGU_CAROUSEL_MGFYT = "source_migu_carousel_mgfyt";
     public static  final String SOURCE_MIGU_CAROUSEL_MGYSHD = "source_migu_carousel_mgyshd";
-    public static  final String SOURCE_MIGU_CAROUSEL_LDJ = "source_migu_carousel_LDJ";
+    public static  final String SOURCE_MIGU_CAROUSEL_LDJ = "source_migu_carousel_ldj";
     public static  final String SOURCE_MIGU_CAROUSEL_XAJH = "source_migu_carousel_xajh";
     public static  final String SOURCE_MIGU_CAROUSEL_DFDYHD = "source_migu_carousel_dfdyhd";
     public static  final String SOURCE_MIGU_CAROUSEL_LIVESHOWHD = "source_migu_carousel_liveshowhd";

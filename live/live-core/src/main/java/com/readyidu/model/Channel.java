@@ -9,6 +9,7 @@ public class Channel {
 
     private String typeid;
 
+
     public Integer getId() {
         return id;
     }
@@ -40,4 +41,5 @@ public class Channel {
     public void setTypeid(String typeid) {
         this.typeid = typeid == null ? null : typeid.trim();
     }
+
 }

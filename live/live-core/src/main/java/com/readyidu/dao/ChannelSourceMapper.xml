@@ -9,9 +9,15 @@
     (parentid
     ,source
     ,create_time
-    ,modifty_time)
-    values(#{parentid},#{source},now(),now())
+    ,modifty_time
+    ,sort)
+    values(#{parentid},#{source},now(),now(),#{sort})
   </insert>
+  <update id="modifySource" parameterType="com.readyidu.model.ChannelSource">
+    update t_channel_source
+    set source = #{source}
+    where parentid = #{parentid} and id = #{id}
+  </update>
   <select id="selectSourceByParentId" parameterType="java.lang.Integer" resultType="com.readyidu.model.ChannelSource">
     select
     <include refid="Base_Column_List"/>
@@ -19,6 +25,13 @@
     t_channel_source
     where parentid=#{id}
     order by sort
+  </select>
+  <select id="countSourceByParentId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select
+    count(source)
+    from
+    t_channel_source
+    where parentid=#{id}
   </select>
   <select id="selectDeathSource" resultType="com.readyidu.model.CheckableChannel">
     select
@@ -33,10 +46,10 @@
     where t1.is_delete =2
   </select>
   <delete id="delectSourceByid" parameterType="java.lang.Integer">
-    update  t_channel_source set is_delete=1 where id=#{id}
+    update  t_channel_source set is_delete=1,modifty_time=now() where id=#{id}
   </delete>
   <delete id="reductionSourceByid" parameterType="java.lang.Integer">
-    update  t_channel_source set is_delete=0 where id=#{id} and is_delete=2
+    update  t_channel_source set is_delete=0,modifty_time=now() where id=#{id} and is_delete=2
   </delete>
   <update id="updateIsDelete" parameterType="java.lang.String">
     update t_channel_source set is_delete=2,modifty_time=now() where source=#{source}

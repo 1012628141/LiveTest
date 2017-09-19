@@ -13,8 +13,13 @@ public class ChannelSource {
         super();
     }
     public ChannelSource(int sort, String source) {
-        this.sort=sort;
-        this.source=source;
+        this.sort = sort;
+        this.source = source;
+    }
+    public ChannelSource(int id,int parentid, String source) {
+        this.id = id;
+        this.parentid = parentid;
+        this.source = source;
     }
 
     public Integer getId() {

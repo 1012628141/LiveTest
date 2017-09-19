@@ -59,12 +59,47 @@
             <!-- end content-->
             <div class="card-footer">
                 <button class="btn btn-info btn-add-channel">新增频道</button>
+                <button class="btn btn-primary" id="btn-remove-cache">清除客户端缓存</button>
             </div>
         </div>
         <!--  end card  -->
     </div>
     <script>
      $(function(){
+            $('#btn-remove-cache').click(function(){
+        $.ajax(
+        {
+            type: "get",
+            url: "/channel/mapCacheExpire.do",
+            success: function (data) {
+             var result = data;
+             if (result.code === 200) {
+               swal({ 
+                    title:"success!",
+                    text: "推送发送成功！",
+                    type: "success",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-info"})
+           } else {
+                swal({ 
+                    title:"error!",
+                    text: "推送发送失败！",
+                    type: "error",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-info"})
+           }
+       },
+       error: function () {
+        swal({ 
+                    title:"error!",
+                    text: "推送发送失败！",
+                    type: "error",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-info"})
+     }
+ }
+ );
+    });
          $('#datatables').DataTable({
                                  pageLength: 20,
                                  lengthChange: false,

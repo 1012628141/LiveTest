@@ -75,7 +75,7 @@ public class HntvSource extends Source {
         Matcher matcher = pattern.matcher(hntvStv);
         if (matcher.find()) {
             cacheSource = matcher.group(0);
-            return cacheSource;
+            return cacheSource.replace("9600","9601");
         }
         return null;
     }

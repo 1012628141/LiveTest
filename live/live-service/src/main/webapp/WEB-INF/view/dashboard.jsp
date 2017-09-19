@@ -46,8 +46,8 @@
             <div class="sidebar-wrapper">
                 <div class="user">
                     <div class="photo">
-                    <img src="${loginInfo.photo}" />
-                        <!-- <img src="/img/faces/avatar.jpg" /> -->
+                    <!-- <img src="${loginInfo.photo}" /> -->
+                        <img src="/img/faces/avatar.jpg" />
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">

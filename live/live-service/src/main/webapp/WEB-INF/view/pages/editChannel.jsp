@@ -51,7 +51,7 @@
                                                 <tr>
                                                     <th class="text-center">#</th>
                                                     <th>源地址</th>
-                                                    <th class="text-right">状态</th>
+                                                    <th class="text-center">状态</th>
                                                     <th class="text-right">操作</th>
                                                 </tr>
                                             </thead>
@@ -59,47 +59,56 @@
                                                 <c:if test="${sources != null}">
                                                 <c:forEach items="${ sources }" var="s" varStatus="loop">
                                                 <c:if test="${not empty s}">
-                                                <tr data-sid="${loop.index}" data-id="${channel.id}">
+                                                    <tr data-sid="${loop.index}" data-id="${channel.id}">
                                                     <td class="text-center">${loop.index + 1}</td>
                                                     <td>
-                                                        <a href="${fn:toLowerCase(s)}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
-                                                            ${fn:toLowerCase(s.source)}
-                                                        </a>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <c:choose>
-                                                        <c:when test="${s.isDelete == 0}">
-                                                        正常
-                                                    </c:when>
-                                                    <c:when test="${s.isDelete == 1}">
-                                                    已删除
+                                                        <a href="${fn:toLowerCase(s.source)}" title="${s.source}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
+                                                            <!-- ${fn:length(s.source)>50} -->
+                                                            <c:choose>
+                                                            <c:when test="${fn:length(s.source)>50}">${fn:substring(s.source,0,50)}.... </c:when>
+                                                            <c:otherwise>
+                                                                ${s.source}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <c:choose>
+                                                    <c:when test="${s.isDelete == 0}">
+                                                    正常
                                                 </c:when>
-                                                <c:when test="${s.isDelete == 2}">
-                                                待审核
+                                                <c:when test="${s.isDelete == 1}">
+                                                已删除
                                             </c:when>
-                                        </c:choose>
-                                    </td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </c:if>
-                        </c:forEach>
-                    </c:if>
-                </tbody>
-            </table>
-        </div>
+                                            <c:when test="${s.isDelete == 2}">
+                                            待审核
+                                        </c:when>
+                                    </c:choose>
+                                </td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-modify-source">
+                                        <i class="material-icons">mode_edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                </c:if>
+            </tbody>
+        </table>
     </div>
-    <div class="card-footer">
-        <div style="float: right; padding-bottom: 10px;">
-            <button class ="btn btn-info btn-chang-sort" data-id="${channel.id}"> 提交排序修改 </button>
-            <button class="btn btn-primary btn-add-source" data-id="${channel.id}">新增频道源</button>
-            <button class="btn btn-warning btn-change-type" data-id="${channel.id}">修改频道分类</button>
-            <button class="btn btn-danger btn-remove-channel" data-id="${channel.id}">删除频道</button>
-        </div>
+</div>
+<div class="card-footer">
+    <div style="float: right; padding-bottom: 10px;">
+        <button class ="btn btn-info btn-chang-sort" data-id="${channel.id}"> 提交排序修改 </button>
+        <button class="btn btn-primary btn-add-source" data-id="${channel.id}">新增频道源</button>
+        <button class="btn btn-warning btn-change-type" data-id="${channel.id}">修改频道分类</button>
+        <button class="btn btn-danger btn-remove-channel" data-id="${channel.id}">删除频道</button>
     </div>
+</div>
 </div>
 </div>
 </div>
@@ -204,6 +213,57 @@
                     });
                 }
             }]);
+        });
+        $('.btn-modify-source').on('click', function () {
+            var id = $(this).parent().parent().data("id");
+            var sid = $(this).parent().parent().data("sid");
+            // Remove this id source, with alert confirm.
+            swal({
+              title: '请输入修改后的SourceUrl',
+              input: 'text',
+              showCancelButton: true,
+              confirmButtonText: 'Submit',
+              showLoaderOnConfirm: true,
+              preConfirm: function (source) {
+                return new Promise(function (resolve, reject) {
+                  setTimeout(function() {
+                    if (source === 'taken@example.com') {
+                      reject('This email is already taken.')
+                  } else {
+                      $.ajax(
+                      {
+                        type: "POST",
+                        url: "/webChannel/modifySource.do",
+                        data: {"channelId": id, "sourceId": sid,"source":source},
+                        success: function (data) {
+                            var result = data;
+                            console.log(data)
+                            if (result.code === 200) {
+                                swal.insertQueueStep("修改成功 !");
+                                window.location.reload();
+                            } else {
+                                swal.insertQueueStep("修改失败！");
+                            }
+                            resolve()
+                        },
+                        error: function () {
+                            swal.insertQueueStep("修改失败！");
+                            resolve()
+                        }
+                    })
+                      resolve()
+                  }
+              }, 2000)
+              })
+            },
+            allowOutsideClick: false
+        }).then(function (email) {
+          swal({
+            type: 'success',
+            title: 'Ajax request finished!',
+            html: 'Submitted email: ' + email
+        })
+      })
         });
 
         // Add New sources
@@ -312,10 +372,10 @@
             }])
         });
         $('.btn-chang-sort').on('click',function(){
-           var id = $(this).data("id");
-           $list=$('.table > tbody')
-           var sourcelist=new Array()
-           $list.children('tr').each(function(){
+         var id = $(this).data("id");
+         $list=$('.table > tbody')
+         var sourcelist=new Array()
+         $list.children('tr').each(function(){
             sourcelist.push($(this).data('sid'))
         })
             // sourcelist=sourcelist.join(",")
@@ -330,13 +390,13 @@
                 console.log(data.code)
                 var result = data
                 if (result.code === 200) {
-                   swal({ 
+                 swal({ 
                     title:"success!",
                     text: "修改成功",
                     type: "success",
                     buttonsStyling: true,
                     confirmButtonClass: "btn btn-info"})
-               } else {
+             } else {
                 swal({ 
                     title:"error!",
                     text: "修改失败！",
@@ -349,11 +409,11 @@
         },
         error: function () {
             swal({ 
-                    title:"error!",
-                    text: "修改失败！",
-                    type: "error",
-                    buttonsStyling: true,
-                    confirmButtonClass: "btn btn-info"})
+                title:"error!",
+                text: "修改失败！",
+                type: "error",
+                buttonsStyling: true,
+                confirmButtonClass: "btn btn-info"})
             resolve()
         }
     })

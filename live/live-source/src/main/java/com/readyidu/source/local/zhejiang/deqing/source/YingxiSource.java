@@ -38,7 +38,7 @@ public class YingxiSource extends Source {
         if (NullUtil.isNullObject(cacheSource)) {
             return null;
         } else {
-            return cacheSource;
+            return cacheSource+"$1";
         }
     }
 }

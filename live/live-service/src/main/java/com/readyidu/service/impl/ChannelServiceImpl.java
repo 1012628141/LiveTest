@@ -1,18 +1,23 @@
 package com.readyidu.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.readyidu.mapper.ChannelSourceMapper;
 import com.readyidu.model.ChannelSource;
+import com.readyidu.model.Movie;
 import com.readyidu.service.ChannelService;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.mapper.ChannelTypeMapper;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
+import com.readyidu.service.MovieService;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
+import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.apache.http.util.TextUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -36,6 +41,10 @@ public class ChannelServiceImpl extends BaseService implements
     private CacheService cacheService;
     @Resource(name = "channelSourceMapper")
     private ChannelSourceMapper channelSourceMapper;
+
+    @Resource(name = "movieService")
+    private MovieService movieService;
+
     private static final String CACHE_NAME = "channel_";
 
     @Override
@@ -117,6 +126,8 @@ public class ChannelServiceImpl extends BaseService implements
         ChannelSource channelSource = new ChannelSource();
         channelSource.setSource(source);
         channelSource.setParentid(channelId);
+        int sort = channelSourceMapper.countSourceByParentId(channelId)+1;
+        channelSource.setSort(sort);
         return channelSourceMapper.importData(channelSource);
 //        Channel channel = channelMapper.selectByPrimaryKey(channelId);
 //        if (channel != null) {
@@ -189,6 +200,39 @@ public class ChannelServiceImpl extends BaseService implements
         }
 
         return 0;
+    }
+    @Override
+    public List<Channel> getMovieToSource() {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "movielList";
+        String cacheObj = cacheService.get(cacheKey);
+        List<Channel> channelList = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            List<Movie> movieList = movieService.selectAllMovie();
+            channelList = new ArrayList<>();
+            for (Movie movie: movieList){
+                Channel channel = new Channel();
+                channel.setId(movie.getId()+10000);
+                channel.setChannel(movie.getTitle());
+                channel.setSource("sourceUri://movie/tianyi/"+movie.getContid());
+                channel.setTypeid("1400");
+                channelList.add(channel);
+            }
+            movieList = movieService.selectAllTrailer();
+            for (Movie movie: movieList){
+                Channel channel = new Channel();
+                channel.setId(movie.getId()+10000);
+                channel.setChannel(movie.getTitle());
+                channel.setSource("sourceUri://movie/tianyi/"+movie.getContid());
+                channel.setTypeid("1500");
+                channelList.add(channel);
+            }
+            // 信息缓存5分钟
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);;
+        }
+        return channelList;
     }
 
     @Override

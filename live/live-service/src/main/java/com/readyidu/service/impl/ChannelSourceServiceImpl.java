@@ -1,16 +1,16 @@
 package com.readyidu.service.impl;
 
 import com.readyidu.mapper.ChannelSourceMapper;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.model.CheckableChannel;
-import com.readyidu.model.Source;
+import com.readyidu.model.*;
 import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelSourceService;
+import com.readyidu.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +20,6 @@ import java.util.List;
 public class ChannelSourceServiceImpl extends BaseService implements ChannelSourceService {
     @Autowired
     private ChannelSourceMapper channelSourceMapper;
-
     @Autowired
     private CacheService cacheService;
     @Override
@@ -55,6 +54,9 @@ public class ChannelSourceServiceImpl extends BaseService implements ChannelSour
 
     @Override
     public int updateSort(ChannelSource source) { return channelSourceMapper.updateSort(source);}
+
+    @Override
+    public int modifySource(ChannelSource source) {return channelSourceMapper.modifySource(source);}
 
     @Override
     public List<ChannelSource> selectSourceByParentId(Integer id) {

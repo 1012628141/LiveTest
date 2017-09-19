@@ -36,7 +36,7 @@ public class TvCatSource extends Source {
                     tvCatStv = HttpUtil.httpGet("http://a.hlyy.cc/migu-video.php?id=623899368&type=cmv&form=m", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
                     break;
                 case SourceConstants.SOURCE_TVCAT_DONGFANG_STV:
-                    tvCatStv = HttpUtil.httpGet("http://a.hlyy.cc/migu-video.php?id=619811679&type=migu&form=m", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
+                    tvCatStv = HttpUtil.httpGet("http://a.hlyy.cc/migu-video.php?id=619811679&type=live&form=m", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
                     break;
                 case SourceConstants.SOURCE_TVCAT_ANHUI_STV:
                     tvCatStv = HttpUtil.httpGet("http://a.hlyy.cc/migu-video.php?id=624878947&type=cmv&form=m", "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", null);
@@ -63,7 +63,7 @@ public class TvCatSource extends Source {
                     break;
             }
             if (tvCatStv!=null&&!"".equals(tvCatStv)){
-                Pattern pattern = Pattern.compile("http://[A-Za-z0-9?=&.:/_-]*");
+                Pattern pattern = Pattern.compile("http://[A-Za-z0-9?=&.:/%_-]*");
                 Matcher mather = pattern.matcher(tvCatStv);
                 if (mather.find()) {
                     return  mather.group();

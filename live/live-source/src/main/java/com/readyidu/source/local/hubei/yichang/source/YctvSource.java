@@ -16,9 +16,6 @@ import java.util.regex.Pattern;
  */
 public class YctvSource extends Source {
 
-    private static final String CACHE_NAME = "source_";
-    private static final int CHACHE_TIMEOUT = 1200;
-
     public YctvSource(String sourceId) {
         super(sourceId);
     }

@@ -10,6 +10,7 @@ import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
+import com.readyidu.tools.JPushTool;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "/channel")
 public class ChannelController {
+    private static final String MASTER_SECRET="ae03c3cd69069d05f04a0290";
+    private static final String APP_KEY="e27c9e82155e29b33d01a9e3";
+    private static final String MESSAGE="直播缓存失效";
 
     @Resource(name = "channelService")
     private ChannelService channelService;
@@ -33,6 +37,7 @@ public class ChannelController {
         try {
             List<Channel> channelInfoList = channelService
                     .getChannelList();
+            channelInfoList.addAll(channelService.getMovieToSource());
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfoList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -59,6 +64,7 @@ public class ChannelController {
         try {
             List<Channel> channelInfoList = channelService
                     .getChannelList();
+            channelInfoList.addAll(channelService.getMovieToSource());
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfoList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -76,5 +82,11 @@ public class ChannelController {
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
+    }
+    @RequestMapping(value = "/mapCacheExpire",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String mapCacheExpire(){
+        JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE);
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
     }
 }

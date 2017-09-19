@@ -18,4 +18,6 @@ public interface ChannelSourceMapper {
     int reductionSourceByid(Integer id);
     ChannelSource getDeathBySource(String source);
     int updateSort(ChannelSource channelSource);
+    int countSourceByParentId(Integer id);
+    int modifySource(ChannelSource source);
     }

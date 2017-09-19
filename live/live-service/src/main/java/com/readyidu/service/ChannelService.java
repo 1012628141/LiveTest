@@ -16,4 +16,5 @@ public interface ChannelService {
     public int removeSource(Integer channelId, Integer sourceId);
     public int changeType(Integer channelId, String typeId);
     public int removeChannel(Integer channelId);
+    public List<Channel> getMovieToSource();
 }

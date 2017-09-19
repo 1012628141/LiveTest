@@ -90,14 +90,15 @@ public class JstvSource extends Source {
         switch (sourceId) {
             case SourceConstants.SOURCE_JS_STV:
                 result = getUrl();
+                String jsonReturn = HttpUtil.httpGet(result);
+                Pattern pattern = Pattern.compile("rtmp://[a-zA-z0-9./?=&~%-]*");
+                Matcher matcher = pattern.matcher(jsonReturn);
+                List<String> urlList = new ArrayList();
+                while (matcher.find()) {
+                    urlList.add(matcher.group());
+                }
+                return urlList.get(index - 1);
         }
-        String jsonReturn = HttpUtil.httpGet(result);
-        Pattern pattern = Pattern.compile("rtmp://[a-zA-z0-9./?=&~%-]*");
-        Matcher matcher = pattern.matcher(jsonReturn);
-        List<String> urlList = new ArrayList();
-        while (matcher.find()) {
-            urlList.add(matcher.group());
-        }
-        return urlList.get(index - 1);
+        return null;
     }
 }
