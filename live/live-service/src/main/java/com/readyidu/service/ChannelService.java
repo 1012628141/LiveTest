@@ -3,7 +3,9 @@ package com.readyidu.service;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 public interface ChannelService {
     public List<Channel> getChannelList();
@@ -17,4 +19,5 @@ public interface ChannelService {
     public int changeType(Integer channelId, String typeId);
     public int removeChannel(Integer channelId);
     public List<Channel> getMovieToSource();
+    public Map<String,String> channelPlaybill(HttpServletRequest request);
 }

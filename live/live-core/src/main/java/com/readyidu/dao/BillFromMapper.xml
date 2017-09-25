@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readyidu.mapper.BillFromMapper">
+    <sql id="Base_Column_List">
+        t1.channelId as channelId,
+        t1.from_url as fromUrl,
+        t1.origin as origin
+    </sql>
+    <select id="selectBillFromInfoByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.BillFromInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        t_channel_billfrom t1
+        where channelid = #{channelId}
+    </select>
+</mapper>

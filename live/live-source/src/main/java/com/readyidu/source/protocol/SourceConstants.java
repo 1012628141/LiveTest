@@ -1,5 +1,7 @@
 package com.readyidu.source.protocol;
 
+import com.google.common.annotations.VisibleForTesting;
+
 /**
  * Created by yuzhang on 17/6/9.
  */
@@ -154,8 +156,29 @@ public class SourceConstants {
     //CCTV13
     public static final String SOURCE_TVCAT_CCTV13 = "source_tvcat_cctv13";
 
+    //liangTV
+    //央视
+    public static final String SOURCE_LIANG_CCTV1 = "source_liang_cctv1";
+    public static final String SOURCE_LIANG_CCTV2 = "source_liang_cctv2";
+    public static final String SOURCE_LIANG_CCTV3 = "source_liang_cctv3";
+    public static final String SOURCE_LIANG_CCTV4 = "source_liang_cctv4";
+    public static final String SOURCE_LIANG_CCTV7 = "source_liang_cctv7";
+    public static final String SOURCE_LIANG_CCTV8 = "source_liang_cctv8";
+    public static final String SOURCE_LIANG_CCTV9 = "source_liang_cctv9";
+    public static final String SOURCE_LIANG_CCTV10 = "source_liang_cctv10";
+    public static final String SOURCE_LIANG_CCTV11 = "source_liang_cctv11";
+    public static final String SOURCE_LIANG_CCTV12 = "source_liang_cctv12";
+    public static final String SOURCE_LIANG_CCTV13 = "source_liang_cctv13";
+    public static final String SOURCE_LIANG_CCTV14 = "source_liang_cctv14";
+    public static final String SOURCE_LIANG_CCTV15 = "source_liang_cctv15";
 
-
+    //卫视
+    public static final String SOURCE_LIANG_LYWS = "source_liang_lyws";
+    public static final String SOURCE_LIANG_SZWS = "source_liang_szws";
+    public static final String SOURCE_LIANG_LNWS = "source_liang_lnws";
+    public static final String SOURCE_LIANG_DNWS = "source_liang_dnws";
+    public static final String SOURCE_LIANG_BJWS = "source_liang_bjws";
+    public static final String SOURCE_LIANG_GXWS = "source_liang_gxws";
 
     //卫视
     //湖南卫视

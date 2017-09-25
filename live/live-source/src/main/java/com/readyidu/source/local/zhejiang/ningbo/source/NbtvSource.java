@@ -52,7 +52,7 @@ public class NbtvSource extends Source {
         }
 
         if (!NullUtil.isNullObject(nbtvDom)) {
-            Pattern pattern = Pattern.compile("http://hls.nbtv.cn/[a-z0-9]+/[0-9a-z]+/live/nbtv[1-6]_md/playlist.m3u8");
+            Pattern pattern = Pattern.compile("http://[a-z0-9./_]+.m3u8[a-zA-Z0-9?=&]*");
             Matcher matcher = pattern.matcher(nbtvDom);
             if (matcher.find()) {
                 cacheSource = matcher.group(0);

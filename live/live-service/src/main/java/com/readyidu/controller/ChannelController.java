@@ -1,6 +1,7 @@
 package com.readyidu.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -86,7 +87,22 @@ public class ChannelController {
     @RequestMapping(value = "/mapCacheExpire",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String mapCacheExpire(){
-        JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE);
-        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        try {
+            JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        }
+        catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+    @RequestMapping(value = "/channelPlaybill", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String channelPlaybill(HttpServletRequest request){
+        try {
+            Map<String, String> playBill = channelService.channelPlaybill(request);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
 }

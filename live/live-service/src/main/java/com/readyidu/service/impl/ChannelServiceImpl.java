@@ -1,16 +1,17 @@
 package com.readyidu.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.readyidu.mapper.BillFromMapper;
 import com.readyidu.mapper.ChannelSourceMapper;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.model.Movie;
+import com.readyidu.model.*;
+import com.readyidu.playbill.base.OriginManager;
 import com.readyidu.service.ChannelService;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.mapper.ChannelTypeMapper;
-import com.readyidu.model.Channel;
-import com.readyidu.model.ChannelType;
 import com.readyidu.service.MovieService;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
@@ -25,6 +26,7 @@ import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Service("channelService")
@@ -44,6 +46,12 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "movieService")
     private MovieService movieService;
+
+    @Resource(name = "billFromMapper")
+    private BillFromMapper billFromMapper;
+
+    @Resource(name = "originManager")
+    private OriginManager originManager;
 
     private static final String CACHE_NAME = "channel_";
 
@@ -233,6 +241,20 @@ public class ChannelServiceImpl extends BaseService implements
             cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);;
         }
         return channelList;
+    }
+
+    @Override
+    public Map<String, String> channelPlaybill(HttpServletRequest request) {
+        String channelId = request.getParameter("channelId");
+        BillFromInfo billFromInfo = billFromMapper.
+                selectBillFromInfoByChannelId(
+                        Integer.valueOf(channelId));
+        if (!NullUtil.isNullObject(billFromInfo)){
+            return originManager.getPlaybill(
+                    billFromInfo.getFromUrl(),
+                    billFromInfo.getOrigin());
+        }
+        return null;
     }
 
     @Override
