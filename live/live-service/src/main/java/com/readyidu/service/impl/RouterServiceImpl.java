@@ -71,6 +71,9 @@ public class RouterServiceImpl implements RouterService {
     }
 
     @Override
+    public RouterMapping selectByKey(String key) {return routerMappingMapper.selectByKey(key);}
+
+    @Override
     public List<RouterMapping> selectByPageNo(Integer pageNo) {
         return routerMappingMapper.selectByPageNo(pageNo);
     }

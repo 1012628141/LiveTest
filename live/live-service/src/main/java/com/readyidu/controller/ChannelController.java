@@ -1,13 +1,13 @@
 package com.readyidu.controller;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.model.ChannelSource;
 import com.readyidu.service.ChannelService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
@@ -15,6 +15,7 @@ import com.readyidu.tools.JPushTool;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
+import com.readyidu.util.NullUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +45,6 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-
     @RequestMapping(value = "/channelType.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String getChannelType(HttpServletRequest request,
@@ -103,6 +103,23 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+    @ResponseBody
+    @RequestMapping(value = "/searchChannelByKey",produces = "application/json; charset=utf-8")
+    public String searchChannelByKey(HttpServletRequest request){
+        try {
+            Channel channel = channelService.selectChannelByKey(request);
+            Map<String,Object> channelObj = new HashMap<>();
+            channelObj.put("channel",channel.getChannel());
+            channelObj.put("id",channel.getId());
+            channelObj.put("source", channel.getSource().split("\\|"));
+            if (NullUtil.isNullObject(channel)) {
+                return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelObj);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 }

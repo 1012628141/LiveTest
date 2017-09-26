@@ -9,10 +9,9 @@ import com.readyidu.mapper.BillFromMapper;
 import com.readyidu.mapper.ChannelSourceMapper;
 import com.readyidu.model.*;
 import com.readyidu.playbill.base.OriginManager;
-import com.readyidu.service.ChannelService;
+import com.readyidu.service.*;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.mapper.ChannelTypeMapper;
-import com.readyidu.service.MovieService;
 import com.readyidu.util.CacheUtil;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
@@ -22,8 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.readyidu.service.BaseService;
-import com.readyidu.service.CacheService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +43,9 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "movieService")
     private MovieService movieService;
+
+    @Resource(name = "routerService")
+    private RouterService routerService;
 
     @Resource(name = "billFromMapper")
     private BillFromMapper billFromMapper;
@@ -255,6 +255,13 @@ public class ChannelServiceImpl extends BaseService implements
                     billFromInfo.getOrigin());
         }
         return null;
+    }
+
+    @Override
+    public Channel selectChannelByKey(HttpServletRequest request) {
+        String key = request.getParameter("key");
+        RouterMapping router = routerService.selectByKey(key);
+        return channelMapper.selectChannelByChannel(router.getValue());
     }
 
     @Override

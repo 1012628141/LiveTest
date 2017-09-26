@@ -18,6 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 "/user/loginInit.do"
                 ,"/user/login.do",
                 "/channel/chanenel.do",
+                "/channel/searchChannelByKey.do",
                 "/source/source.do",
                 "/router/channel/getMapper.do",
                 "/channel/channelType.do"};

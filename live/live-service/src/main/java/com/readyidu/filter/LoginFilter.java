@@ -22,7 +22,9 @@ public class LoginFilter extends OncePerRequestFilter {
                 "/user/loginInit.do"
                 ,"/user/login.do",
                 "/channel/channel.do",
+                "/channel/searchChannelByKey.do",
                 "/source/source.do",
+                "/channel/channelPlaybill.do",
                 "/router/channel/getMapper.do",
                 "/channel/channelType.do",
                 "/report/add.do"
@@ -32,6 +34,7 @@ public class LoginFilter extends OncePerRequestFilter {
         for (String s : notFilter) {
             if (s.equals(url)) {
                 doFilter = false;
+                break;
             }
         }
         if(url.contains("/css")||url.contains("/img")|url.contains("/js"))

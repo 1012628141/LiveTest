@@ -1,6 +1,5 @@
 package com.readyidu.playbill.base;
 
-import com.readyidu.model.BillFromInfo;
 import com.readyidu.playbill.analyze.TvCatParser;
 import com.readyidu.playbill.analyze.YuntuParser;
 import org.springframework.stereotype.Component;

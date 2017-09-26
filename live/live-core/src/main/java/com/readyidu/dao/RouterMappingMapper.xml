@@ -57,6 +57,12 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
 
+    <select id="selectByKey" parameterType="java.lang.String" resultType="com.readyidu.model.RouterMapping">
+        select
+        <include refid="Base_Column_List" />
+        from t_channel_mapping
+        where `key` = #{key}
+    </select>
     <select id="selectByPageNo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
