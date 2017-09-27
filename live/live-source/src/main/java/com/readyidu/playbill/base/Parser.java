@@ -42,11 +42,11 @@ abstract public class Parser {
             }
             if (map.size() == 0)
             {
-                map.put("nowChannel", programList.get(programList.size()));
+                map.put("nowChannel", programList.get(programList.size()-1));
                 if (!NullUtil.isNullObject(this.nextUrl))
                 {
                     List<Program> nextList = getBillInfo(this.nextUrl);
-                    map.put("nextChannel",nextList.get(nextList.size()));
+                    map.put("nextChannel",nextList.get(0));
                 }else{
                     map.put("nextChannel",new Program("暂无节目信息",""));
                 }

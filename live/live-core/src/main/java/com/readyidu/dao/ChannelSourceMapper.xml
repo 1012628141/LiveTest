@@ -52,7 +52,7 @@
     update  t_channel_source set is_delete=0,modifty_time=now() where id=#{id} and is_delete=2
   </delete>
   <update id="updateIsDelete" parameterType="java.lang.String">
-    update t_channel_source set is_delete=2,modifty_time=now() where source=#{source}
+    update t_channel_source set is_delete=2,modifty_time=now() where source=#{source} and is_delete != 1
   </update>
   <update id="updateSort" parameterType="com.readyidu.model.ChannelSource">
     update t_channel_source set sort = #{sort} where source = #{source}

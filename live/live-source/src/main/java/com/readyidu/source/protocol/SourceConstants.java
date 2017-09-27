@@ -43,6 +43,21 @@ public class SourceConstants {
     public static final String SOURCE_FJTV_7 = "source_fjtv_7";
     public static final String SOURCE_FJTV_8 = "source_fjtv_8";
 
+    //天翼
+    public static final String SOURCE_TIANYI_CCTV1 = "source_tianyi_cctv1";
+    public static final String SOURCE_TIANYI_CCTV2 = "source_tianyi_cctv2";
+    public static final String SOURCE_TIANYI_CCTV3 = "source_tianyi_cctv3";
+    public static final String SOURCE_TIANYI_CCTV5 = "source_tianyi_cctv5";
+    public static final String SOURCE_TIANYI_CCTV6 = "source_tianyi_cctv6";
+    public static final String SOURCE_TIANYI_CCTV8 = "source_tianyi_cctv8";
+    public static final String SOURCE_TIANYI_CCTV9 = "source_tianyi_cctv9";
+    public static final String SOURCE_TIANYI_CCTV10 = "source_tianyi_cctv10";
+    public static final String SOURCE_TIANYI_CCTV11 = "source_tianyi_cctv11";
+    public static final String SOURCE_TIANYI_CCTV12 = "source_tianyi_cctv12";
+    public static final String SOURCE_TIANYI_CCTV13 = "source_tianyi_cctv13";
+    public static final String SOURCE_TIANYI_CCTV14 = "source_tianyi_cctv14";
+    public static final String SOURCE_TIANYI_CCTV5A = "source_tianyi_cctv5a";
+
 
     //视听网www.shiting5.com
     //CCTV1
