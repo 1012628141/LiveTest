@@ -3,6 +3,7 @@ package com.readyidu.source.local.cctv;
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.local.cctv.source.TianyiSource;
+import com.readyidu.source.local.cctv.source.YichengSource;
 import com.readyidu.source.protocol.SourceUri;
 import com.readyidu.util.NullUtil;
 
@@ -15,7 +16,7 @@ public class CCTVYIchengChannels extends Channel{
     }
     @Override
     public Source getSource(SourceUri uri) {
-        Source source=new TianyiSource(uri.getSource(),uri.getSourceIndex());
+        Source source= new YichengSource(uri.getSource(),uri.getSourceIndex());
         if (NullUtil.isNullObject(source.toString())) {
             return null;
         }

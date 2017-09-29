@@ -667,4 +667,124 @@ public class SourceConstants {
     public static final String SOURCE_SDTV_SD10 = "source_sdtv_sd10";//国际
     //轮播
     public static final String SOURCE_LOL_CAROUSEL = "source_lol_carousel";
+
+    // 翼城
+    //cctv
+    public static final String SOURCL_YICHENG_CCTV_1 = "source_yicheng_cctv_1";
+    //public static final String SOURCL_YICHENG_CCTVHD_1 = "source_yicheng_cctvhd_1";
+    public static final String SOURCL_YICHENG_CCTV_2 = "source_yicheng_cctv_2";
+    //public static final String SOURCL_YICHENG_CCTVHD_2 = "source_yicheng_cctvhd_2";
+    public static final String SOURCL_YICHENG_CCTV_3 = "source_yicheng_cctv_3";
+    //public static final String SOURCL_YICHENG_CCTVHD_3 = "source_yicheng_cctvhd_3";
+    public static final String SOURCL_YICHENG_CCTV_4 = "source_yicheng_cctv_4";
+    //public static final String SOURCL_YICHENG_CCTVHD_4 = "source_yicheng_cctvhd_4";
+    public static final String SOURCL_YICHENG_CCTV_5 = "source_yicheng_cctv_5";
+    //public static final String SOURCL_YICHENG_CCTVHD_5 = "source_yicheng_cctvhd_5";
+    public static final String SOURCL_YICHENG_CCTV_6 = "source_yicheng_cctv_6";
+    //public static final String SOURCL_YICHENG_CCTVHD_6 = "source_yicheng_cctvhd_6";
+    public static final String SOURCL_YICHENG_CCTV_7 = "source_yicheng_cctv_7";
+    //public static final String SOURCL_YICHENG_CCTVHD_7 = "source_yicheng_cctvhd_7";
+    public static final String SOURCL_YICHENG_CCTV_8 = "source_yicheng_cctv_8";
+    //public static final String SOURCL_YICHENG_CCTVHD_8 = "source_yicheng_cctvhd_8";
+    public static final String SOURCL_YICHENG_CCTV_9 = "source_yicheng_cctv_9";
+    //public static final String SOURCL_YICHENG_CCTVHD_9 = "source_yicheng_cctvhd_9";
+    public static final String SOURCL_YICHENG_CCTV_10 = "source_yicheng_cctv_10";
+    //public static final String SOURCL_YICHENG_CCTVHD_10 = "source_yicheng_cctvhd_10";
+    public static final String SOURCL_YICHENG_CCTV_11 = "source_yicheng_cctv_11";
+    //public static final String SOURCL_YICHENG_CCTVHD_11 = "source_yicheng_cctvhd_11";
+    public static final String SOURCL_YICHENG_CCTV_12 = "source_yicheng_cctv_12";
+    //public static final String SOURCL_YICHENG_CCTVHD_12 = "source_yicheng_cctvhd_12";
+    public static final String SOURCL_YICHENG_CCTV_13 = "source_yicheng_cctv_13";
+    //public static final String SOURCL_YICHENG_CCTVHD_13 = "source_yicheng_cctvhd_13";
+    public static final String SOURCL_YICHENG_CCTV_TY = "source_yicheng_cctv_ty";   //cctv-体育
+    //public static final String SOURCL_YICHENG_CCTVHD_TY = "source_yicheng_cctvhd_ty";
+    public static final String SOURCL_YICHENG_CCTV_SR = "source_yicheng_cctv_sr";   //cctv-少儿
+    //public static final String SOURCL_YICHENG_CCTVHD_SR = "source_yicheng_cctvhd_sr";
+    public static final String SOURCL_YICHENG_CCTV_YY = "source_yicheng_cctv_yy";   //cctv-音乐
+    //public static final String SOURCL_YICHENG_CCTVHD_YY = "source_yicheng_cctvhd_yy";
+    public static final String SOURCL_YICHENG_CCTV_DZCJ = "source_yicheng_cctv_dzcj";   //cctv-点掌财经
+    //public static final String SOURCL_YICHENG_CCTVHD_DZCJ = "source_yicheng_cctvhd_dzcj";
+    public static final String SOURCL_YICHENG_CCTV_GFJS = "source_yicheng_cctv_gfjs";   //cctv-国防军事
+    //public static final String SOURCL_YICHENG_CCTVHD_GFJS = "source_yicheng_cctvhd_gfjs";
+    public static final String SOURCL_YICHENG_CCTV_FYZQ = "source_yicheng_cctv_fyzq";   //cctv-风云足球
+    //public static final String SOURCL_YICHENG_CCTVHD_FYZQ = "source_yicheng_cctvhd_fyzq";
+    public static final String SOURCL_YICHENG_CCTV_FYJC = "source_yicheng_cctv_fyjc";   //cctv-风云剧场
+    //public static final String SOURCL_YICHENG_CCTVHD_FYJC = "source_yicheng_cctvhd_fyjc";
+    public static final String SOURCL_YICHENG_CCTV_HJJC = "source_yicheng_cctv_hjjc";   //cctv-怀旧剧场
+    //public static final String SOURCL_YICHENG_CCTVHD_HJJC = "source_yicheng_cctvhd_hjjc";
+    public static final String SOURCL_YICHENG_CCTV_DYJC = "source_yicheng_cctv_dyjc";   //cctv-第一剧场
+    //public static final String SOURCL_YICHENG_CCTVHD_DYJC = "source_yicheng_cctvhd_dyjc";
+    public static final String SOURCL_YICHENG_CCTV_GRFWQ = "source_yicheng_cctv_grfwq";   //cctv高尔夫网球
+    //public static final String SOURCL_YICHENG_CCTVHD_GRFWQ = "source_yicheng_cctvhd_grfwq";
+    public static final String SOURCL_YICHENG_CCTV_YSTQ = "source_yicheng_cctv_ystq";   //cctv央视台球
+    //public static final String SOURCL_YICHENG_CCTVHD_YSTQ = "source_yicheng_cctvhd_ystq";
+    public static final String SOURCL_YICHENG_CCTV_FYYY = "source_yicheng_cctv_fyyy";   //cctv风云音乐
+    //public static final String SOURCL_YICHENG_CCTVHD_FYYY = "source_yicheng_cctvhd_fyyy";
+    //public static final String SOURCL_YICHENG_CCTV_SJDL = "source_yicheng_cctv_sjdl";   //cctv世界地理
+    public static final String SOURCL_YICHENG_CCTVHD_SJDL = "source_yicheng_cctvhd_sjdl";
+    public static final String SOURCL_YICHENG_CCTV_DSZN = "source_yicheng_cctv_dszn";   //cctv电视指南
+    //public static final String SOURCL_YICHENG_CCTVHD_DSZN = "source_yicheng_cctvhd_dszn";
+    public static final String SOURCL_YICHENG_CCTV_NXSS = "source_yicheng_cctv_nxss";   //cctv女性时尚
+    //public static final String SOURCL_YICHENG_CCTVHD_NXSS = "source_yicheng_cctvhd_nxss";
+    public static final String SOURCL_YICHENG_CCTV_YSWHJP = "source_yicheng_cctv_yswhjp";   //cctv央视文化精品
+    //public static final String SOURCL_YICHENG_CCTVHD_YSWHJP = "source_yicheng_cctvhd_yswhjp";
+    //public static final String SOURCL_YICHENG_CCTV_XKDM = "source_yicheng_cctv_xkdm";   //cctv新科动漫
+    public static final String SOURCL_YICHENG_CCTVHD_XKDM = "source_yicheng_cctvhd_xkdm";
+    public static final String SOURCL_YICHENG_CCTV_NEWS = "source_yicheng_cctv_news";   //cctv外语频道
+
+    //卫视
+    public static final String SOURCL_YICHENG_STV_BJWS = "source_yicheng_stv_bjws"; //北京卫视
+    public static final String SOURCL_YICHENG_STV_HBWS = "source_yicheng_stv_hbws"; //湖北卫视
+    public static final String SOURCL_YICHENG_STV_YNWS = "source_yicheng_stv_ynws"; //云南卫视
+    public static final String SOURCL_YICHENG_STV_LNWS = "source_yicheng_stv_lnws"; //辽宁卫视
+    public static final String SOURCL_YICHENG_STV_JXWS = "source_yicheng_stv_jxws"; //江西卫视
+    public static final String SOURCL_YICHENG_STV_JLWS = "source_yicheng_stv_jlws"; //吉林卫视
+    public static final String SOURCL_YICHENG_STV_HEBWS = "source_yicheng_stv_hebws"; //河北卫视
+    public static final String SOURCL_YICHENG_STV_HLJWS = "source_yicheng_stv_hljws"; //黑龙江卫视
+    public static final String SOURCL_YICHENG_STV_CQWS = "source_yicheng_stv_cqws"; //重庆卫视
+    public static final String SOURCL_YICHENG_STV_GSWS = "source_yicheng_stv_gsws"; //甘肃卫视
+    public static final String SOURCL_YICHENG_STV_SCWS = "source_yicheng_stv_scws"; //四川卫视
+    public static final String SOURCL_YICHENG_STV_SXWS = "source_yicheng_stv_sxws"; //山西卫视
+    public static final String SOURCL_YICHENG_STV_QHWS = "source_yicheng_stv_qhws"; //青海卫视
+    public static final String SOURCL_YICHENG_STV_NMGWS = "source_yicheng_stv_nmgws"; //内蒙古卫视
+    public static final String SOURCL_YICHENG_STV_XZWS = "source_yicheng_stv_xzws"; //西藏卫视
+    public static final String SOURCL_YICHENG_STV_KBWS = "source_yicheng_stv_kbws"; //康巴卫视
+    public static final String SOURCL_YICHENG_STV_SDWS = "source_yicheng_stv_sdws"; //山东卫视
+    public static final String SOURCL_YICHENG_STV_YBWS = "source_yicheng_stv_ybws"; //延边卫视
+    public static final String SOURCL_YICHENG_STV_BTWS = "source_yicheng_stv_btws"; //兵团卫视
+    public static final String SOURCL_YICHENG_STV_TJWS = "source_yicheng_stv_tjws"; //天津卫视
+    public static final String SOURCL_YICHENG_STV_GDWS = "source_yicheng_stv_gdws"; //广东卫视
+    public static final String SOURCL_YICHENG_STV_FJWS = "source_yicheng_stv_fjws"; //福建卫视
+    public static final String SOURCL_YICHENG_STV_GZWS = "source_yicheng_stv_gzws"; //贵州卫视
+    public static final String SOURCL_YICHENG_STV_GXWS = "source_yicheng_stv_gxws"; //广西卫视
+    public static final String SOURCL_YICHENG_STV_SZWS = "source_yicheng_stv_szws"; //深圳卫视
+    public static final String SOURCL_YICHENG_STVHD_JYJS = "source_yicheng_stv_jyjs"; //金鹰纪实
+    public static final String SOURCL_YICHENG_STV_XJWS = "source_yicheng_stv_xjws"; //新疆卫视
+    public static final String SOURCL_YICHENG_STV_LYWS = "source_yicheng_stv_lyws"; //旅游卫视
+
+    //成都熊猫频道
+    public static final String SOURCL_YICHENG_PANDAHD_JX = "source_yicheng_panda_jx"; //精选
+    public static final String SOURCL_YICHENG_PANDA_CN_A = "source_yicheng_panda_cn_a"; //成年园a
+    public static final String SOURCL_YICHENG_PANDA_CN_B = "source_yicheng_panda_cn_b"; //成年园b
+    public static final String SOURCL_YICHENG_PANDA_YN_A = "source_yicheng_panda_yn_a"; //幼年园a
+    public static final String SOURCL_YICHENG_PANDA_YN_B = "source_yicheng_panda_yn_b"; //幼年园b
+    public static final String SOURCL_YICHENG_PANDA_YR_A = "source_yicheng_panda_yr_a"; //幼儿园a
+    public static final String SOURCL_YICHENG_PANDA_YR_B = "source_yicheng_panda_yr_b"; //幼儿园b
+    public static final String SOURCL_YICHENG_PANDA_MZ_A = "source_yicheng_panda_mz_a"; //母子园a
+    public static final String SOURCL_YICHENG_PANDA_MZ_B = "source_yicheng_panda_mz_b"; //母子园b
+    public static final String SOURCL_YICHENG_PANDA_BS_A = "source_yicheng_panda_bs_a"; //别墅园a
+    public static final String SOURCL_YICHENG_PANDA_BS_B = "source_yicheng_panda_bs_b"; //别墅园b
+
+    //特色频道
+    public static final String SOURCL_YICHENG_SPECIAL_TXWK = "source_yicheng_special_txwk"; //天下武库
+    public static final String SOURCL_YICHENG_SPECIAL_RJLB = "source_yicheng_panda_RJLB"; //热剧联播
+    public static final String SOURCL_YICHENG_SPECIAL_ZQZYP = "source_yicheng_special_zqzyp"; //最强综艺趴
+    public static final String SOURCL_YICHENG_SPECIAL_DM = "source_yicheng_special_dm"; //经典动漫大集合
+    public static final String SOURCL_YICHENG_SPECIAL_TT = "source_yicheng_special_tt"; //体坛名栏汇
+    public static final String SOURCL_YICHENG_SPECIAL_SS = "source_yicheng_special_ss"; //赛事最经典
+    public static final String SOURCL_YICHENG_SPECIAL_JQ = "source_yicheng_special_jq"; //军情烽火台
+    public static final String SOURCL_YICHENG_SPECIAL_XZ = "source_yicheng_special_xz"; //刑侦档案
+    public static final String SOURCL_YICHENG_SPECIAL_LS = "source_yicheng_special_ls"; //历史上你不知道的密码
+    public static final String SOURCL_YICHENG_SPECIAL_GQ = "source_yicheng_special_gq"; //高清大片
+    public static final String SOURCL_YICHENG_SPECIAL_GM = "source_yicheng_special_gm"; //古墓探险
 }

@@ -27,4 +27,12 @@ public class Program {
     public void setShowTime(String showTime) {
         this.showTime = showTime;
     }
+
+    @Override
+    public String toString() {
+        return "Program{" +
+                "channelName='" + channelName + '\'' +
+                ", showTime='" + showTime + '\'' +
+                '}';
+    }
 }

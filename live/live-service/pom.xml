@@ -98,15 +98,15 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>dubbo</artifactId>-->
-            <!--<version>2.5.3</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.springframework</groupId>-->
-                    <!--<artifactId>spring</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
+        <!--<groupId>com.alibaba</groupId>-->
+        <!--<artifactId>dubbo</artifactId>-->
+        <!--<version>2.5.3</version>-->
+        <!--<exclusions>-->
+        <!--<exclusion>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring</artifactId>-->
+        <!--</exclusion>-->
+        <!--</exclusions>-->
         <!--</dependency>-->
 
         <!-- spring 核心包 -->
@@ -206,11 +206,18 @@
             <scope>test</scope>
         </dependency>
         <!-- spring session -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.session</groupId>-->
+            <!--<artifactId>spring-session-data-redis</artifactId>-->
+            <!--<version>1.0.2.RELEASE</version>-->
+        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.session/spring-session-data-redis -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
-            <version>1.0.2.RELEASE</version>
+            <version>1.2.2.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
