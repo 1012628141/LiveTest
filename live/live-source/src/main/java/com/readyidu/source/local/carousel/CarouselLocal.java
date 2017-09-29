@@ -14,9 +14,11 @@ public class CarouselLocal extends Local{
         managerId = "carousel";
         Channel channel1 = new CarouselChannels();
         Channel channel2 = new LeCarousel();
+        Channel channel3 = new WtvCarouseChannels();
         channels = new HashMap<>();
         channels.put(channel1.getId(),channel1);
         channels.put(channel2.getId(),channel2);
+        channels.put(channel3.getId(),channel3);
     }
     @Override
     public String getSource(SourceUri uri) {

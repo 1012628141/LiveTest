@@ -787,4 +787,17 @@ public class SourceConstants {
     public static final String SOURCL_YICHENG_SPECIAL_LS = "source_yicheng_special_ls"; //历史上你不知道的密码
     public static final String SOURCL_YICHENG_SPECIAL_GQ = "source_yicheng_special_gq"; //高清大片
     public static final String SOURCL_YICHENG_SPECIAL_GM = "source_yicheng_special_gm"; //古墓探险
+
+
+    //电视猫轮播
+    //public static  final String SOURCE_TVCAT_CAROUSEL_MY = "source_tvcat_carousel_my";  //盲约
+
+    //MTV影视
+    public static  final String SOURCE_WTV_CAROUSEL_JPJC = "source_wtv_carousel_jpjc";  //精品剧场
+    public static  final String SOURCE_WTV_CAROUSEL_FSYY = "source_wtv_carousel_fsyy";  //风尚音乐
+    public static  final String SOURCE_WTV_CAROUSEL_QCTX = "source_wtv_carousel_qctx";  //晴彩天下
+    public static  final String SOURCE_WTV_CAROUSEL_EYL = "source_wtv_carousel_eyl";  //e娱乐
+    public static  final String SOURCE_WTV_CAROUSEL_DZCJ = "source_wtv_carousel_dzcj";  //点掌财经
+    public static  final String SOURCE_WTV_CAROUSEL_CTY = "source_wtv_carousel_cty";  //潮体育
+    public static  final String SOURCE_WTV_CAROUSEL_INYT = "source_wtv_carousel_inyt";  //in乐台
 }
