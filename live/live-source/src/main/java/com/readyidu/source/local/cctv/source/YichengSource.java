@@ -232,12 +232,6 @@ public class YichengSource extends Source {
             case SourceConstants.SOURCL_YICHENG_CCTV_NEWS:
                 content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=0&dataType=4&nodeId=9000000017");
                 break;
-
-
-
-
-
-
         }
         if (!NullUtil.isNullObject(content)){
             JSONObject jsonObject = JSONObject.parseObject(content);
@@ -250,7 +244,7 @@ public class YichengSource extends Source {
                 case 1:
                     String newContent = HttpUtil.httpGet(uri);
                     StringBuffer res = new StringBuffer(newContent.substring(newContent.indexOf("http")));
-                    result = res.insert(res.indexOf("/",31),"hd").insert(res.lastIndexOf("."),"hd").toString();
+                    result = res.insert(res.indexOf("/",31),"hd").insert(res.lastIndexOf("."),"hd").toString(); //将普清节目转化成高清节目
             }
         }
         return result;
