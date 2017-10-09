@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-autowire="byName">
+    <dubbo:application name="${dubbo.application.name}" />
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="${dubbo.registry.address}"/>
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
+    <!--<dubbo:service interface="com.readyidu.service.ApiBaiduKeyService" ref="apiBaiduKeyService" version="1.0.0"-->
+                   <!--timeout="5000"/>-->
+    <!--<bean id="apiBaiduKeyService" class="com.readyidu.service.impl.ApiBaiduKeyServiceImpl"/>-->
+    <dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="5000" />
+    <bean id="tvSourceService" class="com.readyidu.service.impl.TvSourceServiceImpl"/>
+</beans>
