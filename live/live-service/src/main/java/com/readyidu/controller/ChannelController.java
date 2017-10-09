@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ChannelController {
     private static final String MASTER_SECRET="ae03c3cd69069d05f04a0290";
     private static final String APP_KEY="e27c9e82155e29b33d01a9e3";
+
     private static final String MESSAGE="直播缓存失效";
 
     @Resource(name = "channelService")
