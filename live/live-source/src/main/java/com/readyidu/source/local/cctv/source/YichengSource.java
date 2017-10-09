@@ -73,9 +73,34 @@ public class YichengSource extends Source {
             case SourceConstants.SOURCL_YICHENG_CCTV_DZCJ :
                 content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000001172017090415144833750190954&dataType=4&nodeId=9000000117");
                 break;
+            case SourceConstants.SOURCL_YICHENG_CCTV_GFJS :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000302017100912012581738388459&dataType=4&nodeId=9000000030");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTV_FYJC :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000242017100914014081942200004&dataType=4&nodeId=9000000024");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTV_HJJC :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000282017100914015367546753871&dataType=4&nodeId=9000000028");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTV_DYJC :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000232017100914013693430937098&dataType=4&nodeId=9000000023");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTV_GRFWQ :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000272017100912011163073786610&dataType=4&nodeId=9000000027");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTV_FYYY :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000252017100914014387250092666&dataType=4&nodeId=9000000025");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTVHD_SJDL :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000222017100914013322571751460&dataType=4&nodeId=9000000022");
+                break;
+            case SourceConstants.SOURCL_YICHENG_CCTVHD_XKDM :
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000212017100914012890576621041&dataType=4&nodeId=9000000021");
+                break;
             case SourceConstants.SOURCL_YICHENG_CCTV_FYZQ :
                 content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000262017092514003857264336100&dataType=4&nodeId=9000000026");
                 break;
+
             case SourceConstants.SOURCL_YICHENG_CCTV_DSZN :
                 content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000582017092205031136077864667&dataType=4&nodeId=9000000058");
                 break;
