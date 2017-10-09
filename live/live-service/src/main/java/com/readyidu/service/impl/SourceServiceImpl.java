@@ -30,11 +30,11 @@ public class SourceServiceImpl implements SourceService {
         if (sourceUri == null) {
             return null;
         }
-//        String source = cacheService.get(sourceUri);
-//        if (!NullUtil.isNullObject(source)) {
-//            return source;
-//        }
-        String source = liveManager.getChannelSource(sourceUri);
+        String source = cacheService.get(sourceUri);
+        if (!NullUtil.isNullObject(source)) {
+            return source;
+        }
+        source = liveManager.getChannelSource(sourceUri);
         if (!NullUtil.isNullObject(source)) {
             cacheService.set(sourceUri, source, CHACHE_TIMEOUT);
         }

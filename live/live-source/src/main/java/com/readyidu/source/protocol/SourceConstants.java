@@ -784,7 +784,7 @@ public class SourceConstants {
 
     //特色频道
     public static final String SOURCL_YICHENG_SPECIAL_TXWK = "source_yicheng_special_txwk"; //天下武库
-    public static final String SOURCL_YICHENG_SPECIAL_RJLB = "source_yicheng_panda_RJLB"; //热剧联播
+    public static final String SOURCL_YICHENG_SPECIAL_RJLB = "source_yicheng_panda_rjlb"; //热剧联播
     public static final String SOURCL_YICHENG_SPECIAL_ZQZYP = "source_yicheng_special_zqzyp"; //最强综艺趴
     public static final String SOURCL_YICHENG_SPECIAL_DM = "source_yicheng_special_dm"; //经典动漫大集合
     public static final String SOURCL_YICHENG_SPECIAL_TT = "source_yicheng_special_tt"; //体坛名栏汇

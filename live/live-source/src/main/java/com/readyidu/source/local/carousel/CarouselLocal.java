@@ -15,10 +15,12 @@ public class CarouselLocal extends Local{
         Channel channel1 = new CarouselChannels();
         Channel channel2 = new LeCarousel();
         Channel channel3 = new WtvCarouseChannels();
+        Channel channel4 = new YichengCarouselChannels();
         channels = new HashMap<>();
         channels.put(channel1.getId(),channel1);
         channels.put(channel2.getId(),channel2);
         channels.put(channel3.getId(),channel3);
+        channels.put(channel4.getId(),channel4);
     }
     @Override
     public String getSource(SourceUri uri) {
