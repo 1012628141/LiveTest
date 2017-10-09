@@ -9,6 +9,7 @@ import com.readyidu.mapper.BillFromMapper;
 import com.readyidu.mapper.ChannelSourceMapper;
 import com.readyidu.model.*;
 import com.readyidu.playbill.base.OriginManager;
+import com.readyidu.playbill.model.Program;
 import com.readyidu.service.*;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.mapper.ChannelTypeMapper;
@@ -244,22 +245,28 @@ public class ChannelServiceImpl extends BaseService implements
     }
 
     @Override
-    public Map<String, String> channelPlaybill(HttpServletRequest request) {
+    public Map<String, Object> channelPlaybill(HttpServletRequest request) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelPlaybill";
         String channelId = request.getParameter("channelId");
+        String programStr = cacheService.get(cacheKey);
+        Map<String, Object> programMap =null;
         BillFromInfo billFromInfo = billFromMapper.
                 selectBillFromInfoByChannelId(
                         Integer.valueOf(channelId));
+        if (!NullUtil.isNullObject(programStr)) {
+            programMap = (Map<String, Object>) JSON.parse(programStr);
+        } else {
         if (!NullUtil.isNullObject(billFromInfo)){
-            return originManager.getPlaybill(
+            programMap = originManager.getPlaybill(
                     billFromInfo.getFromUrl(),
                     billFromInfo.getOrigin());
-        }
-        return null;
+            cacheService.set(cacheKey,JSON.toJSONString(programMap),600 );
+        }}
+        return programMap;
     }
 
     @Override
-    public Channel selectChannelByKey(HttpServletRequest request) {
-        String key = request.getParameter("key");
+    public Channel selectChannelByKey(String key) {
         RouterMapping router = routerService.selectByKey(key);
         return channelMapper.selectChannelByChannel(router.getValue());
     }

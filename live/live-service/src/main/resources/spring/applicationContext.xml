@@ -13,12 +13,12 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop.xsd">
-
+    <context:property-placeholder location="classpath*:properties/**.properties"/>
+    <import resource="classpath*:config/dubbo-*.xml"/>
     <aop:aspectj-autoproxy/>
 
     <context:component-scan base-package="com.readyidu"/>
 
-    <context:property-placeholder location="classpath*:properties/**.properties"/>
 
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="300"/>
@@ -106,6 +106,7 @@
             </bean>
         </property>
     </bean>
+
     <!-- 保存上下文 -->
     <bean class="com.readyidu.util.ApplicationContextRegister"/>
 

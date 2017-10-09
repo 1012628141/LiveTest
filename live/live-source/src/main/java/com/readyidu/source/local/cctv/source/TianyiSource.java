@@ -25,7 +25,7 @@ public class TianyiSource extends Source{
         switch (sourceId)
         {
             case SourceConstants.SOURCE_TIANYI_CCTV1:
-               content = HttpUtil.httpGet("http://m.tv189.com/480/protected/controllers/getData.jsp?act=getRate&contid=4275314&_="+ TimeUtil.getCurrentTime());
+                   content = HttpUtil.httpGet("http://m.tv189.com/480/protected/controllers/getData.jsp?act=getRate&contid=4275314&_="+ TimeUtil.getCurrentTime());
                break;
             case SourceConstants.SOURCE_TIANYI_CCTV2:
                 content = HttpUtil.httpGet("http://m.tv189.com/480/protected/controllers/getData.jsp?act=getRate&contid=4275324&_="+ TimeUtil.getCurrentTime());
@@ -81,6 +81,10 @@ public class TianyiSource extends Source{
                     result = rateUrls.getString("highUrl");
                     break;
             }
+        }
+        if (!result.contains("cdnhlive"))
+        {
+            result.replace("hlive","cdnhlive");
         }
         return result;
     }

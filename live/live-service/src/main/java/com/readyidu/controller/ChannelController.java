@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.ChannelSource;
+import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
@@ -84,7 +85,7 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-    @RequestMapping(value = "/mapCacheExpire",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/mapCacheExpire.do",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String mapCacheExpire(){
         try {
@@ -95,31 +96,15 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
-    @RequestMapping(value = "/channelPlaybill", produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/channelPlaybill.do", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String channelPlaybill(HttpServletRequest request){
         try {
-            Map<String, String> playBill = channelService.channelPlaybill(request);
+            Map<String, Object> playBill = channelService.channelPlaybill(request);
+
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-        }
-    }
-    @ResponseBody
-    @RequestMapping(value = "/searchChannelByKey",produces = "application/json; charset=utf-8")
-    public String searchChannelByKey(HttpServletRequest request){
-        try {
-            Channel channel = channelService.selectChannelByKey(request);
-            Map<String,Object> channelObj = new HashMap<>();
-            channelObj.put("channel",channel.getChannel());
-            channelObj.put("id",channel.getId());
-            channelObj.put("source", channel.getSource().split("\\|"));
-            if (NullUtil.isNullObject(channel)) {
-                return JsonResult.toString(NetworkCode.CODE_FAIL, "");
-            }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelObj);
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 }
