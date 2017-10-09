@@ -19,6 +19,6 @@ public interface ChannelService {
     public int changeType(Integer channelId, String typeId);
     public int removeChannel(Integer channelId);
     public List<Channel> getMovieToSource();
-    public Map<String,String> channelPlaybill(HttpServletRequest request);
-    public Channel selectChannelByKey(HttpServletRequest request);
+    public Map<String,Object> channelPlaybill(HttpServletRequest request);
+    public Channel selectChannelByKey(String key);
 }
