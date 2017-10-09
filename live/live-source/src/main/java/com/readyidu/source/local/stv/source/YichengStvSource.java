@@ -168,7 +168,8 @@ public class YichengStvSource extends Source {
             JSONObject jsonObject = JSONObject.parseObject(content);
             JSONObject resulturls = jsonObject.getJSONArray("playUrls").getJSONObject(0) ;
             String uri = resulturls.getString("playurl");
-            String m3u8 = HttpUtil.httpGet(uri).substring(HttpUtil.httpGet(uri).lastIndexOf("\"")+1).trim();
+            String subm3u8 = HttpUtil.httpGet(uri).substring(0,HttpUtil.httpGet(uri).indexOf("m3u8")+4);
+            String m3u8 = subm3u8.substring(subm3u8.lastIndexOf("\"")+1).trim();
             String resultM3u8 = null ;
             if(m3u8.startsWith("http://")){ //判断m3u8是否以http：开头，若是直接返回m3u8
                 resultM3u8 = m3u8 ;
