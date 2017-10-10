@@ -36,7 +36,7 @@ public class YctvSource extends Source {
             default:
                 break;
         }
-        Pattern pattern = Pattern.compile("http://zb.3xgd.com:1935/.*.&wowzatokenhash=.*.=");
+        Pattern pattern = Pattern.compile("http://[a-zA-Z0-9./]+m3u8\\?[a-zA-Z0-9-._=&]+");
         Matcher matcher = pattern.matcher(Dom);
         if (matcher.find()) {
             Dom = matcher.group(0);

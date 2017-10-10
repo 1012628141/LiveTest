@@ -19,6 +19,7 @@
         <module>live-service</module>
         <module>live-core</module>
         <module>live-source</module>
+        <module>live-service-api</module>
     </modules>
 
 

@@ -791,7 +791,7 @@ public class SourceConstants {
     public static final String SOURCL_YICHENG_SPECIAL_SS = "source_yicheng_special_ss"; //赛事最经典
     public static final String SOURCL_YICHENG_SPECIAL_JQ = "source_yicheng_special_jq"; //军情烽火台
     public static final String SOURCL_YICHENG_SPECIAL_XZ = "source_yicheng_special_xz"; //刑侦档案
-    public static final String SOURCL_YICHENG_SPECIAL_LS = "source_yicheng_special_ls"; //历史上你不知道的密码
+    public static final String SOURCL_YICHENG_SPECIAL_LS = "source_yicheng_special_ls"; //历史上你不知道的秘密
     public static final String SOURCL_YICHENG_SPECIAL_GQ = "source_yicheng_special_gq"; //高清大片
     public static final String SOURCL_YICHENG_SPECIAL_GM = "source_yicheng_special_gm"; //古墓探险
 

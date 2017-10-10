@@ -27,6 +27,7 @@ public class LoginFilter extends OncePerRequestFilter {
                 "/channel/channelPlaybill.do",
                 "/router/channel/getMapper.do",
                 "/channel/channelType.do",
+                "/play/tvPlayType.do",
                 "/report/add.do"
         };
         String url =request.getRequestURI();
