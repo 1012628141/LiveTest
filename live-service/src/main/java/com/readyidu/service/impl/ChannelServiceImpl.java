@@ -259,7 +259,10 @@ public class ChannelServiceImpl extends BaseService implements
             programMap = originManager.getPlaybill(
                     billFromInfo.getFromUrl(),
                     billFromInfo.getOrigin());
-            cacheService.set(cacheKey,JSON.toJSONString(programMap),600 );
+            if (!NullUtil.isNullObject(programMap))
+            {
+                cacheService.set(cacheKey,JSON.toJSONString(programMap),600 );
+            }
         }
         }
         return programMap;

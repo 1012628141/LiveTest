@@ -35,8 +35,10 @@ abstract public class Parser {
             Program thisProgram = null;
             map.put("todayProgram", getBillInfo(content));
             if (!NullUtil.isNullObject(this.nextUrl)) {
-                List<Program> nextList = getBillInfo(this.nextUrl);
-                map.put("tommorrowProgram", nextList.get(0));
+                String url = "https://www.tvsou.com" + this.nextUrl ;
+                String nextContent = HttpUtil.httpGet(url);
+                List<Program> nextList = getBillInfo(nextContent);
+                map.put("tommorrowProgram", nextList);
             } else {
                 map.put("tommorrowProgram", new Program("暂无节目信息", ""));
 
