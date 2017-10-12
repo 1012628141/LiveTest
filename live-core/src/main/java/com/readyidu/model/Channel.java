@@ -1,14 +1,35 @@
 package com.readyidu.model;
 
 public class Channel {
-    private Integer id;
 
+    /**
+     * 频道编号
+     */
+    private Integer id;
+    /**
+     * 频道名称
+     */
     private String channel;
 
     private String source;
 
     private String typeid;
+    /**
+     * 频道源
+     */
+    private String[] sources;
 
+    public Channel(){
+
+    }
+
+    public String[] getSources() {
+        return sources;
+    }
+
+    public void setSources(String[] sources) {
+        this.sources = sources;
+    }
 
     public Integer getId() {
         return id;

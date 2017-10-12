@@ -90,7 +90,7 @@ public class ChannelController {
     @ResponseBody
     public String mapCacheExpire(){
         try {
-            JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE);
+            JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE,NetworkCode.CACHE_EXPIRE);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
         }
         catch (Exception e){
@@ -101,7 +101,8 @@ public class ChannelController {
     @ResponseBody
     public String channelPlaybill(HttpServletRequest request){
         try {
-            Map<String, Object> playBill = channelService.channelPlaybill(request);
+            String channelId = request.getParameter("channelId");
+            Map<String, Object> playBill = channelService.channelPlaybill(channelId);
 
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
         }catch (Exception e){

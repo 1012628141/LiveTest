@@ -2,6 +2,9 @@ package com.readyidu.controller;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.PlayTypeService;
+import com.readyidu.service.TvSourceService;
+import com.readyidu.service.impl.TvSourceServiceImpl;
+import com.readyidu.tools.JPushTool;
 import com.readyidu.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +20,21 @@ import java.util.Map;
 @Controller
 @RequestMapping("/play")
 public class TvPlayController {
+    private static final String MASTER_SECRET="42cd72a24310d452da54caab";
+    private static final String APP_KEY="d351b43f6d69a55687f27c1f";
+
+    private static final String MESSAGE="切换TV";
     @Autowired
     private PlayTypeService playTypeService;
-
+    @ResponseBody
+    @RequestMapping(value = "pushPlayType.do",produces = "application/json; charset=utf-8")
     public String pushPlayType(){
-
-        return null;
+        try {
+            JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE,NetworkCode.TYPE_CHANGE);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
     @ResponseBody
     @RequestMapping(value = "tvPlayType.do",produces = "application/json; charset=utf-8")
@@ -31,6 +43,7 @@ public class TvPlayController {
         try {
             int playType = playTypeService.getPlayType();
             map.put("playType",playType);
+            new TvSourceServiceImpl().selectChannelByKey("Asfd");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,map);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");

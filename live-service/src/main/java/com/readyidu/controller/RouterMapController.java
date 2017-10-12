@@ -109,7 +109,7 @@ public class RouterMapController {
     @RequestMapping(value = "mapCacheExpire.do",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String mapCacheExpire(){
-        JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE);
+        JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE,NetworkCode.CACHE_EXPIRE);
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
     }
 

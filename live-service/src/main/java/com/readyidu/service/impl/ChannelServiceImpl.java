@@ -245,9 +245,8 @@ public class ChannelServiceImpl extends BaseService implements
     }
 
     @Override
-    public Map<String, Object> channelPlaybill(HttpServletRequest request) {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelPlaybill";
-        String channelId = request.getParameter("channelId");
+    public Map<String, Object> channelPlaybill(String channelId) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelPlaybill"+channelId;
         String programStr = cacheService.get(cacheKey);
         Map<String, Object> programMap =null;
         BillFromInfo billFromInfo = billFromMapper.
@@ -261,7 +260,8 @@ public class ChannelServiceImpl extends BaseService implements
                     billFromInfo.getFromUrl(),
                     billFromInfo.getOrigin());
             cacheService.set(cacheKey,JSON.toJSONString(programMap),600 );
-        }}
+        }
+        }
         return programMap;
     }
 

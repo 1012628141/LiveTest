@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -22,8 +22,8 @@ import com.readyidu.service.CacheService;
 import com.readyidu.util.ConfigSettings;
 import com.readyidu.util.NullUtil;
 
-@Service("cacheService")
-public class CacheServiceImpl implements CacheService {
+//@Service("cacheService")
+public class  CacheServiceImpl implements CacheService {
     private static final Logger log = LoggerFactory.getLogger(CacheServiceImpl.class);
 
     @Autowired(required = false)

@@ -1,7 +1,6 @@
 package com.readyidu.util;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.http.util.NetUtils;
 
 import java.util.Iterator;
 import java.util.Map;

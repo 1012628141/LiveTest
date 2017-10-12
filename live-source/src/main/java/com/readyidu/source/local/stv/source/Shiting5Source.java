@@ -124,7 +124,7 @@ public class Shiting5Source extends Source {
                     String src = matcher.group(0);
                     if (!NullUtil.isNullObject(src)) {
                         src = src.replace("src=\"", "");
-                        return src;
+                        return src+"$1";
                     }
                 }
             }

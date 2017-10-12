@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class JPushTool {
     protected static Logger LOG = Logger.getLogger(JPushTool.class);
-    public static void  sendPush(String masterSecret,String appKey,String message){
+    public static void  sendPush(String masterSecret,String appKey,String message,int code){
         JPushClient jpushClient = new JPushClient(masterSecret, appKey, null, ClientConfig.getInstance());
         Map map=new HashMap();
         map.put("message",message);
@@ -33,7 +33,7 @@ public class JPushTool {
 //        PushPayload payload = buildPushObject_all_all_alert();
 
         try {
-            PushResult result = jpushClient.sendMessageAll(JsonResult.toString(NetworkCode.CACHE_EXPIRE,map));
+            PushResult result = jpushClient.sendMessageAll(JsonResult.toString(code,map));
             LOG.info("Got result - " + result);
 
         } catch (APIConnectionException e) {

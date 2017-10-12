@@ -1,11 +1,37 @@
 package com.readyidu.service;
 
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by 123 on 2017/9/30.
+ * @version 1.1
  */
 public interface TvSourceService {
+    /**
+     * 搜索对应频道源
+     * @param key 语音的频道识别结果
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:{@link com.readyidu.model.Channel} 对应频道所有源)
+     */
     String selectChannelByKey(String key);
+    /**
+     * 获取真实源地址
+     * @param sourceUri 自定义的源地址("sourceUri://**")
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data: 对应真实源地址)
+     */
     String getSource(String sourceUri);
+    /**
+     * 获取所有的频道源
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
+     */
+    String getChannelList();
+    /**
+     * 获取当前频道的当前节目单，包含当天以及第二天的节目，第二天节目可能为空
+     * @param channelId 当前的频道编号
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:对应频道的节目表)
+     */
+    String channelPlaybill(String channelId);
+    /**
+     * 获取频道分类，包含分类名与分类id({"id":100,"type":"热门频道"})
+     * @return json  (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表)
+     */
+    String channelType();
 }
