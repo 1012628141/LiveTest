@@ -100,6 +100,9 @@ public class YichengStvSource extends Source {
             case SourceConstants.SOURCL_YICHENG_STV_LYWS:
                 content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000972017092214040823352115077&dataType=4&nodeId=9000000097");
                 break;
+            case SourceConstants.SOURCL_YICHENG_PANDAHD_JX:
+                content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000332017101008011769414816898&dataType=4&nodeId=9000000033");
+                break;
             case SourceConstants.SOURCL_YICHENG_PANDA_CN_A:
                 content = HttpUtil.httpGet("http://m.cctv4g.com/cntv/clt/getPlayUrl.msp?contId=90000000402017092218014718637853353&dataType=4&nodeId=9000000040");
                 break;
