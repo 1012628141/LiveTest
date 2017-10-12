@@ -246,7 +246,7 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public Map<String, Object> channelPlaybill(String channelId) {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelPlaybill"+channelId;
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "PLAYBILL"+channelId;
         String programStr = cacheService.get(cacheKey);
         Map<String, Object> programMap =null;
         BillFromInfo billFromInfo = billFromMapper.
