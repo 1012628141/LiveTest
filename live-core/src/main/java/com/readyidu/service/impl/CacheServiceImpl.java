@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -22,7 +23,7 @@ import com.readyidu.service.CacheService;
 import com.readyidu.util.ConfigSettings;
 import com.readyidu.util.NullUtil;
 
-//@Service("cacheService")
+@Service("cacheService")
 public class  CacheServiceImpl implements CacheService {
     private static final Logger log = LoggerFactory.getLogger(CacheServiceImpl.class);
 
