@@ -117,38 +117,39 @@ public class YichengSource extends Source {
             JSONObject jsonObject = JSONObject.parseObject(content);
             JSONObject resulturls = jsonObject.getJSONArray("playUrls").getJSONObject(0) ;
             String uri = resulturls.getString("playurl");
-            String m3u8 = HttpUtil.httpGet(uri).substring(HttpUtil.httpGet(uri).lastIndexOf("\"")+1).trim();
-            String resultM3u8 = null ;
-            if(m3u8.startsWith("http://")){ //判断m3u8是否以http：开头，若是直接返回m3u8
-                resultM3u8 = m3u8 ;
-            }else if(m3u8.startsWith("../")){ //判断m3u8是否是相对路径，若是，根据路径返回m3u8
-                int cnt = 0;
-                int offset = 0;
-                while((offset = m3u8.indexOf("../", offset)) != -1){
-                    offset = offset + "../".length();
-                    cnt++;
-                }
-                String subM3u8 = m3u8.substring(m3u8.lastIndexOf("../"+2));
-                String subUri = null ;
-                for (int i=0;i<cnt+1;i++){
-                    subUri = uri.substring(0,uri.lastIndexOf("/"));
-                }
-                resultM3u8 = subUri + subM3u8 ;
-            }else if(m3u8.startsWith("/")){ //将m3u8拼接在根目录后
-                resultM3u8 = uri.substring(0,uri.indexOf("/")) + m3u8;
-            }else {//在目录后将m3u8替换
-                resultM3u8 = uri.substring(0,uri.lastIndexOf("/")+1) + m3u8 ;
-                System.out.print(resultM3u8);
-            }
-            switch (index){
-                case 0:
-                    result = resultM3u8 ;
-                    break;
-                case 1:
-                    result = new StringBuffer(resultM3u8).insert(resultM3u8.indexOf("/",30),"hd").insert(resultM3u8.lastIndexOf(".")+2,"hd").toString(); //将普清节目转化成高清节目
-                    System.out.print(result);
-                    break;
-            }
+            result = uri ;
+//            String m3u8 = HttpUtil.httpGet(uri).substring(HttpUtil.httpGet(uri).lastIndexOf("\"")+1).trim();
+//            String resultM3u8 = null ;
+//            if(m3u8.startsWith("http://")){ //判断m3u8是否以http：开头，若是直接返回m3u8
+//                resultM3u8 = m3u8 ;
+//            }else if(m3u8.startsWith("../")){ //判断m3u8是否是相对路径，若是，根据路径返回m3u8
+//                int cnt = 0;
+//                int offset = 0;
+//                while((offset = m3u8.indexOf("../", offset)) != -1){
+//                    offset = offset + "../".length();
+//                    cnt++;
+//                }
+//                String subM3u8 = m3u8.substring(m3u8.lastIndexOf("../"+2));
+//                String subUri = null ;
+//                for (int i=0;i<cnt+1;i++){
+//                    subUri = uri.substring(0,uri.lastIndexOf("/"));
+//                }
+//                resultM3u8 = subUri + subM3u8 ;
+//            }else if(m3u8.startsWith("/")){ //将m3u8拼接在根目录后
+//                resultM3u8 = uri.substring(0,uri.indexOf("/")) + m3u8;
+//            }else {//在目录后将m3u8替换
+//                resultM3u8 = uri.substring(0,uri.lastIndexOf("/")+1) + m3u8 ;
+//                System.out.print(resultM3u8);
+//            }
+//            switch (index){
+//                case 0:
+//                    result = resultM3u8 ;
+//                    break;
+//                case 1:
+//                    result = new StringBuffer(resultM3u8).insert(resultM3u8.indexOf("/",30),"hd").insert(resultM3u8.lastIndexOf(".")+2,"hd").toString(); //将普清节目转化成高清节目
+//                    System.out.print(result);
+//                    break;
+//            }
         }
         return result;
     }
