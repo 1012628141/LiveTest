@@ -76,7 +76,7 @@ public class Shiting5Source extends Source {
             if (matcher.find()) {
                 String src = matcher.group(0);
                 if (!NullUtil.isNullObject(src)) {
-                    return src.replace("src=\"", "");
+                    return src.replace("src=\"", "")+"$1";
                 }
             }
         }

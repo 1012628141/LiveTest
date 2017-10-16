@@ -2,6 +2,7 @@ package com.readyidu.playbill.analyze;
 
 import com.readyidu.playbill.base.Parser;
 import com.readyidu.playbill.model.Program;
+import com.readyidu.util.HttpUtil;
 
 import java.util.ArrayList;
 import java.util.List;
