@@ -79,7 +79,10 @@ public class LiangTVSource extends Source{
         if (!NullUtil.isNullObject(result))
         {
             JSONObject jsonObj = JSONObject.parseObject(result);
-            playUrl = jsonObj.getJSONObject("content").getString("playUrl");
+            String url = jsonObj.getJSONObject("content").getString("playUrl");
+            String m3u8Content = HttpUtil.httpGet(url);
+            System.out.print(m3u8Content);
+            playUrl = m3u8Content.substring(m3u8Content.indexOf("http"));
         }
         return playUrl;
     }
