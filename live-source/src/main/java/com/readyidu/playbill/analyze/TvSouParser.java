@@ -24,8 +24,9 @@ public class TvSouParser extends Parser{
         Pattern pattern = Pattern.compile(regex);
         List<Program> list = new ArrayList<Program>();
         String showTime = null ;
-        for(String str:strs){
-            String channelName = null ;
+        String channelName = null ;
+        for(int i=0;i<strs.length;i++){
+            String str = strs[i];
             if(str.indexOf("data-name=") != -1){
                 channelName = str.substring(str.indexOf("data-name=")+11,str.indexOf("\"",str.indexOf("data-name=")+11));
             } else {
@@ -39,14 +40,19 @@ public class TvSouParser extends Parser{
 
                 int timeIndex = str.indexOf("data-mainstars=")+16;
                 showTime = str.substring(timeIndex,str.indexOf("\"",timeIndex)).substring(0,5);
+            }else {
+                if(i>0){
+                    int timeIndex = strs[i-1].indexOf("data-mainstars=")+16;
+                    showTime = strs[i-1].substring(timeIndex,str.indexOf("\"",timeIndex)).substring(6,11);
+                }
             }
             if(showTime != null && channelName !=  null){
                 Program p = new Program(channelName,showTime);
                 System.out.print(p);
                 list.add(p);
             }
-            //showTime = str.substring(0,str.indexOf("</span"));
-            //showTime = showTime.substring(showTime.lastIndexOf(">")+1);
+            showTime = null ;
+            channelName = null ;
 
         }
         return list;
