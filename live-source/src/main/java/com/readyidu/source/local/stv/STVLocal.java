@@ -55,6 +55,7 @@ public class STVLocal extends Local {
         Channel miguStvChannel = new MiguStvChannel();
         Channel liangStvChannel = new LiangStvChannel();
         Channel yichengStvChannel = new YichengStvChannel();
+        Channel fengmiStvChannel = new FengmiStvChannel();
 
         channels.put(guangdongChannel.getId(), guangdongChannel);
         channels.put(dongfangChannel.getId(), dongfangChannel);
@@ -93,6 +94,7 @@ public class STVLocal extends Local {
         channels.put(miguStvChannel.getId(), miguStvChannel);
         channels.put(liangStvChannel.getId(), liangStvChannel);
         channels.put(yichengStvChannel.getId(), yichengStvChannel);
+        channels.put(fengmiStvChannel.getId(),fengmiStvChannel);
     }
 
     @Override

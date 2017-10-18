@@ -807,4 +807,79 @@ public class SourceConstants {
     public static  final String SOURCE_WTV_CAROUSEL_DZCJ = "source_wtv_carousel_dzcj";  //点掌财经
     public static  final String SOURCE_WTV_CAROUSEL_CTY = "source_wtv_carousel_cty";  //潮体育
     public static  final String SOURCE_WTV_CAROUSEL_INYT = "source_wtv_carousel_inyt";  //in乐台
+
+
+    //枫蜜直播
+    //CCTV
+    public static final String SOURCE_FENGMI_CCTV_CCTV1 = "source_fengmi_cctv_cctv1";
+    public static final String SOURCE_FENGMI_CCTV_CCTV2 = "source_fengmi_cctv_cctv2";
+    public static final String SOURCE_FENGMI_CCTV_CCTV3 = "source_fengmi_cctv_cctv3";
+    public static final String SOURCE_FENGMI_CCTV_CCTV4 = "source_fengmi_cctv_cctv4";
+    public static final String SOURCE_FENGMI_CCTV_CCTV5 = "source_fengmi_cctv_cctv5";
+    public static final String SOURCE_FENGMI_CCTV_CCTV5_add = "source_fengmi_cctv_cctv5add";
+    public static final String SOURCE_FENGMI_CCTV_CCTV6 = "source_fengmi_cctv_cctv6";
+    public static final String SOURCE_FENGMI_CCTV_CCTV7= "source_fengmi_cctv_cctv7";
+    public static final String SOURCE_FENGMI_CCTV_CCTV8 = "source_fengmi_cctv_cctv8";
+    public static final String SOURCE_FENGMI_CCTV_CCTV9 = "source_fengmi_cctv_cctv9";
+    public static final String SOURCE_FENGMI_CCTV_CCTV10 = "source_fengmi_cctv_cctv10";
+    public static final String SOURCE_FENGMI_CCTV_CCTV11 = "source_fengmi_cctv_cctv11";
+    public static final String SOURCE_FENGMI_CCTV_CCTV12 = "source_fengmi_cctv_cctv12";
+    public static final String SOURCE_FENGMI_CCTV_CCTV13 = "source_fengmi_cctv_cctv13";
+    public static final String SOURCE_FENGMI_CCTV_CCTV14 = "source_fengmi_cctv_cctv14";
+    public static final String SOURCE_FENGMI_CCTV_CCTV15 = "source_fengmi_cctv_cctv15";
+    public static final String SOURCE_FENGMI_CCTV_CCTV_FYZQ = "source_fengmi_cctv_cctv_fyzq";  //风云足球
+    public static final String SOURCE_FENGMI_CCTV_CCTV_SJDL = "source_fengmi_cctv_cctv_sjdl";   //世界地理
+    public static final String SOURCE_FENGMI_CCTV_CCTV_HJJC = "source_fengmi_cctv_cctv_hjjc";   //怀旧剧场
+    public static final String SOURCE_FENGMI_CCTV_CCTV_GFJS = "source_fengmi_cctv_cctv_gfjs";   //国防军事
+    public static final String SOURCE_FENGMI_CCTV_CCTV_GRFWQ = "source_fengmi_cctv_cctv_grfwq"; //高尔夫网球
+    public static final String SOURCE_FENGMI_CCTV_CCTV_ZQZX = "source_fengmi_cctv_cctv_zqzx";   //证券资讯
+    public static final String SOURCE_FENGMI_CCTV_CCTV_NEWS = "source_fengmi_cctv_cctv_news";   //news
+    public static final String SOURCE_FENGMI_CCTV_CCTV_DOC = "source_fengmi_cctv_cctv_doc";     //documentary
+
+    //stv
+    public static final String SOURCE_FENGMI_STV_HNWSHD = "source_fengmi_stv_hnwshd";     //湖南卫视HD
+    public static final String SOURCE_FENGMI_STV_BJWSHD = "source_fengmi_stv_bjwshd";     //北京HD
+    public static final String SOURCE_FENGMI_STV_SZWSHD = "source_fengmi_stv_szwshd";     //深圳HD
+    public static final String SOURCE_FENGMI_STV_JSWSHD = "source_fengmi_stv_jswshd";     //江苏HD
+    public static final String SOURCE_FENGMI_STV_DFWSHD = "source_fengmi_stv_dfwshd";     //东方HD
+    public static final String SOURCE_FENGMI_STV_GDWSHD = "source_fengmi_stv_gdwshd";     //广东HD
+    public static final String SOURCE_FENGMI_STV_HLJWSHD = "source_fengmi_stv_hljwshd";     //黑龙江HD
+    public static final String SOURCE_FENGMI_STV_HBWSHD = "source_fengmi_stv_hbwshd";     //湖北HD
+    public static final String SOURCE_FENGMI_STV_TJWSHD = "source_fengmi_stv_tjwshd";     //天津
+    public static final String SOURCE_FENGMI_STV_HEBWSHD = "source_fengmi_stv_hebwshd";     //河北
+    public static final String SOURCE_FENGMI_STV_BJWS = "source_fengmi_stv_bjws";     //北京
+    public static final String SOURCE_FENGMI_STV_HNWS = "source_fengmi_stv_hnws";   //湖南
+    public static final String SOURCE_FENGMI_STV_GDWS = "source_fengmi_stv_gdws";   //广东
+    public static final String SOURCE_FENGMI_STV_DFWS = "source_fengmi_stv_dfws";   //东方
+    public static final String SOURCE_FENGMI_STV_SZWS = "source_fengmi_stv_szws";   //深圳
+    public static final String SOURCE_FENGMI_STV_HBWS = "source_fengmi_stv_hbws";   //湖北
+    public static final String SOURCE_FENGMI_STV_LNWS = "source_fengmi_stv_lnws";   //辽宁
+    public static final String SOURCE_FENGMI_STV_SXWS = "source_fengmi_stv_sxws";   //陕西
+    public static final String SOURCE_FENGMI_STV_QHWS = "source_fengmi_stv_qhws";   //青海
+    public static final String SOURCE_FENGMI_STV_GZWS = "source_fengmi_stv_gzws";   //贵州
+    public static final String SOURCE_FENGMI_STV_HEBWS = "source_fengmi_stv_hebws"; //河北
+    public static final String SOURCE_FENGMI_STV_HENWS = "source_fengmi_stv_henws"; //河南
+    public static final String SOURCE_FENGMI_STV_JSWS = "source_fengmi_stv_jsws";   //江苏
+    public static final String SOURCE_FENGMI_STV_GXWS = "source_fengmi_stv_gxws";   //广西
+    public static final String SOURCE_FENGMI_STV_CQWS = "source_fengmi_stv_cqws";   //重庆
+    public static final String SOURCE_FENGMI_STV_GSWS = "source_fengmi_stv_gsws";   //甘肃
+    public static final String SOURCE_FENGMI_STV_AHWS = "source_fengmi_stv_ahws";   //安徽
+    public static final String SOURCE_FENGMI_STV_XZWS = "source_fengmi_stv_xzws";   //西藏
+    public static final String SOURCE_FENGMI_STV_XJWS = "source_fengmi_stv_xjws";   //新疆
+    public static final String SOURCE_FENGMI_STV_JXWS = "source_fengmi_stv_jxws";   //江西
+    public static final String SOURCE_FENGMI_STV_NMGWS = "source_fengmi_stv_nmgws"; //内蒙古
+    public static final String SOURCE_FENGMI_STV_YNWS = "source_fengmi_stv_ynws";   //云南
+    public static final String SOURCE_FENGMI_STV_SCWS = "source_fengmi_stv_scws";   //四川
+    public static final String SOURCE_FENGMI_STV_TJWS = "source_fengmi_stv_tjws";   //天津
+    public static final String SOURCE_FENGMI_STV_JLWS = "source_fengmi_stv_jlws";   //吉林
+    public static final String SOURCE_FENGMI_STV_SHANXWS = "source_fengmi_stv_shanxws"; //山西
+    public static final String SOURCE_FENGMI_STV_NXWS = "source_fengmi_stv_nxws";   //宁夏
+    public static final String SOURCE_FENGMI_STV_DNWS = "source_fengmi_stv_dnws";   //东南
+    public static final String SOURCE_FENGMI_STV_XMWS = "source_fengmi_stv_xmws";   //厦门
+    public static final String SOURCE_FENGMI_STV_NFWS = "source_fengmi_stv_nfws";   //南方
+    public static final String SOURCE_FENGMI_STV_HLJWS = "source_fengmi_stv_hljws"; //黑龙江
+    public static final String SOURCE_FENGMI_STV_LYWS = "source_fengmi_stv_lyws";   //旅游
+    public static final String SOURCE_FENGMI_STV_BTWS = "source_fengmi_stv_btws";   //兵团
+    public static final String SOURCE_FENGMI_STV_NLWS = "source_fengmi_stv_nlws";   //农林
+    public static final String SOURCE_FENGMI_STV_SSWS = "source_fengmi_stv_ssws";   //三沙
 }
