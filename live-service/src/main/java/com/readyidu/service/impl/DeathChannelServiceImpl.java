@@ -1,12 +1,9 @@
 package com.readyidu.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelDeathMapper;
 import com.readyidu.mapper.ChannelMapper;
-import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelDeath;
-import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
 import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;

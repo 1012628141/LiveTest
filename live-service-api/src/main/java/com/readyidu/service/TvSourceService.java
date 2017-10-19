@@ -1,16 +1,21 @@
 package com.readyidu.service;
 
 
+import com.readyidu.model.Channel;
+
 /**
  * Created by 123 on 2017/9/30.
- * @version 1.1.1
+ * @version 1.1.3
+ * 提供新方法 {@link #selectChannelInfoByKey},取消了其他依赖
  */
 public interface TvSourceService {
     /**
      * 搜索对应频道源
      * @param key 语音的频道识别结果
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:{@link com.readyidu.model.Channel} 对应频道所有源)
+     * @see  #selectChannelInfoByKey(String)
      */
+    @Deprecated
     String selectChannelByKey(String key);
     /**
      * 获取真实源地址
@@ -34,4 +39,14 @@ public interface TvSourceService {
      * @return json  (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表)
      */
     String channelType();
+    /**
+     * 通过key搜索频道源，同时返回节目表
+     * @param key 语音的频道识别结果
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:{<br>
+     *    channel:{@link Channel},<br>
+     *    playBill:{tommorrowProgram:[{@link com.readyidu.model.Program},<br>todayProgram: 同上]}
+     * })
+     */
+    String selectChannelInfoByKey(String key);
 }
+

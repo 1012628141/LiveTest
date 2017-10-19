@@ -43,6 +43,24 @@ public class SourceConstants {
     public static final String SOURCE_FJTV_7 = "source_fjtv_7";
     public static final String SOURCE_FJTV_8 = "source_fjtv_8";
 
+    //IPTV
+    //cctv
+    public static final String SOURCE_IPTV_CCTV1 = "source_iptv_cctv1";
+    public static final String SOURCE_IPTV_CCTV2 = "source_iptv_cctv2";
+    public static final String SOURCE_IPTV_CCTV3 = "source_iptv_cctv3";
+    public static final String SOURCE_IPTV_CCTV4 = "source_iptv_cctv4";
+    public static final String SOURCE_IPTV_CCTV5 = "source_iptv_cctv5";
+    public static final String SOURCE_IPTV_CCTV6 = "source_iptv_cctv6";
+    public static final String SOURCE_IPTV_CCTV7 = "source_iptv_cctv7";
+    public static final String SOURCE_IPTV_CCTV8 = "source_iptv_cctv8";
+    public static final String SOURCE_IPTV_CCTV9 = "source_iptv_cctv9";
+    public static final String SOURCE_IPTV_CCTV10 = "source_iptv_cctv10";
+    public static final String SOURCE_IPTV_CCTV11 = "source_iptv_cctv11";
+    public static final String SOURCE_IPTV_CCTV12 = "source_iptv_cctv12";
+    public static final String SOURCE_IPTV_CCTV13 = "source_iptv_cctv13";
+    public static final String SOURCE_IPTV_CCTV14 = "source_iptv_cctv14";
+    public static final String SOURCE_IPTV_CCTV15 = "source_iptv_cctv15";
+    public static final String SOURCE_IPTV_CCTV5ADD = "source_iptv_cctv5add";
     //天翼
     //cctv
     public static final String SOURCE_TIANYI_CCTV1 = "source_tianyi_cctv1";
@@ -176,6 +194,24 @@ public class SourceConstants {
     public static final String SOURCE_TVCAT_CCTV9 = "source_tvcat_cctv9";
     //CCTV13
     public static final String SOURCE_TVCAT_CCTV13 = "source_tvcat_cctv13";
+
+    //NETTV
+    //cctv
+    public static final String SOURCE_NETTV_CCTV1 = "source_nettv_cctv1";
+    public static final String SOURCE_NETTV_CCTV2 = "source_nettv_cctv2";
+    public static final String SOURCE_NETTV_CCTV3 = "source_nettv_cctv3";
+    public static final String SOURCE_NETTV_CCTV4 = "source_nettv_cctv4";
+    public static final String SOURCE_NETTV_CCTV5 = "source_nettv_cctv5";
+    public static final String SOURCE_NETTV_CCTV6 = "source_nettv_cctv6";
+    public static final String SOURCE_NETTV_CCTV7 = "source_nettv_cctv7";
+    public static final String SOURCE_NETTV_CCTV8 = "source_nettv_cctv8";
+    public static final String SOURCE_NETTV_CCTV9 = "source_nettv_cctv9";
+    public static final String SOURCE_NETTV_CCTV10 = "source_nettv_cctv10";
+    public static final String SOURCE_NETTV_CCTV11 = "source_nettv_cctv11";
+    public static final String SOURCE_NETTV_CCTV12 = "source_nettv_cctv12";
+    public static final String SOURCE_NETTV_CCTV13 = "source_nettv_cctv13";
+    public static final String SOURCE_NETTV_CCTV14 = "source_nettv_cctv14";
+    public static final String SOURCE_NETTV_CCTV15 = "source_nettv_cctv15";
 
 
     //liangTV

@@ -40,8 +40,7 @@ abstract public class Parser {
             Program thisProgram = null;
             map.put("todayProgram", getBillInfo(content));
             if (!NullUtil.isNullObject(this.nextUrl)) {
-                String url =  this.nextUrl ;
-                String nextContent = HttpUtil.httpGet(url);
+                String nextContent = HttpUtil.httpGet(this.nextUrl);
                 List<Program> nextList = getBillInfo(nextContent);
                 map.put("tommorrowProgram", nextList);
             } else {

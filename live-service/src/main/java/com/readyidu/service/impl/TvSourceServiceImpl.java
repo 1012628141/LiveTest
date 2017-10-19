@@ -4,13 +4,14 @@ import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
-import com.readyidu.model.RouterMapping;
 import com.readyidu.model.Source;
 import com.readyidu.service.*;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,13 +35,16 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Override
     public String selectChannelByKey(String key) {
         try {
-            Channel channel = channelService.selectChannelByKey(key);
-            channel.setSources(channel.getSource().split("\\|"));
-            channel.setSource(null);
-            if (NullUtil.isNullObject(channel)) {
+            List<Channel> channels = channelService.selectChannelByKey(key);
+            if (channels.size() == 0) {
                 return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
             }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channel);
+            for (Channel channel : channels)
+            {
+                channel.setSources(channel.getSource().split("\\|"));
+                channel.setSource(null);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channels);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
@@ -63,6 +67,15 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     public String getChannelList() {
         try {
             List<Channel> channelList = channelService.getChannelList();
+            for (Channel channel : channelList)
+            {
+                String source = channel.getSource();
+                if (!NullUtil.isNullObject(source))
+                {
+                    channel.setSources(source.split("\\|"));
+                    channel.setSource(null);
+                }
+            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,channelList);
         }catch (Exception e)
         {
@@ -101,6 +114,30 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,channelTypeList);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+
+    @Override
+    public String selectChannelInfoByKey(String key) {
+        try {
+            List<Channel> channels = channelService.selectChannelByKey(key);
+            List<Object> channelInfo = new ArrayList<>();
+            if (channels.size() == 0) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+            for (Channel channel : channels)
+            {
+                Map<String,Object> dataMap = new HashMap<>();
+                channel.setSources(channel.getSource().split("\\|"));
+                channel.setSource(null);
+                Map<String, Object> playBill = channelService.channelPlaybill(channel.getId().toString());
+                dataMap.put("channel",channel);
+                dataMap.put("playBill",playBill);
+                channelInfo.add(dataMap);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 }

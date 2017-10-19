@@ -5,11 +5,15 @@ import com.readyidu.mapper.RouterMappingMapper;
 import com.readyidu.model.RouterMapping;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.RouterService;
+import com.readyidu.smartcore.hanlp.dto.SmartWord;
+import com.readyidu.smartcore.hanlp.service.CustomerDictService;
 import com.readyidu.util.NullUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2017/7/5
@@ -25,6 +29,12 @@ public class RouterServiceImpl implements RouterService {
     @Resource(name = "cacheService")
     private CacheService cacheService;
 
+//    @Resource(name = "customerDictService")
+//    private CustomerDictService customerDictService;
+
+    private static String ENGINE = "tv";
+    private static String WORD_NATURE = "tv_name";
+
     @Override
     public int deleteById(Integer id) {
         return routerMappingMapper.deleteById(id);
@@ -32,7 +42,14 @@ public class RouterServiceImpl implements RouterService {
 
     @Override
     public int insert(RouterMapping record) {
-        return routerMappingMapper.insert(record);
+        List<SmartWord> wordList = new ArrayList<>();
+        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
+//        Map<String, Object> result = customerDictService.addWordToDict(ENGINE, wordList);
+//        if ((Boolean) result.get("success"))
+//        {
+//            return routerMappingMapper.insert(record);
+//        }
+        return 0;
     }
 
     @Override
@@ -71,7 +88,7 @@ public class RouterServiceImpl implements RouterService {
     }
 
     @Override
-    public RouterMapping selectByKey(String key) {return routerMappingMapper.selectByKey(key);}
+    public List<RouterMapping> selectByKey(String key) {return routerMappingMapper.selectByKey(key);}
 
     @Override
     public List<RouterMapping> selectByPageNo(Integer pageNo) {

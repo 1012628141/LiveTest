@@ -1,6 +1,5 @@
 package com.readyidu.service;
 
-import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
 

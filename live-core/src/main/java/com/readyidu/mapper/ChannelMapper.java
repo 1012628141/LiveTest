@@ -21,4 +21,5 @@ public interface ChannelMapper {
     List<Channel> selectAll();
     List<Channel> selectBySource(String source);
     Channel selectChannelByChannel(String channel);
+    Channel selectChannelById(Integer id);
 }

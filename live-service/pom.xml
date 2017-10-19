@@ -21,30 +21,13 @@
         <webserver.port>6262</webserver.port>
         <jetty.version>7.6.14.v20131031</jetty.version>
     </properties>
-
-    <!--<profiles>-->
-    <!--<profile>-->
-    <!--<id>dev</id>-->
-    <!--<properties>-->
-    <!--<package.environment>dev</package.environment>-->
-    <!--</properties>-->
-    <!--</profile>-->
-    <!--<profile>-->
-    <!--<id>test</id>-->
-    <!--<properties>-->
-    <!--<package.environment>test</package.environment>-->
-    <!--</properties>-->
-    <!--<activation>-->
-    <!--<activeByDefault>true</activeByDefault>-->
-    <!--</activation>-->
-    <!--</profile>-->
-    <!--<profile>-->
-    <!--<id>prod</id>-->
-    <!--<properties>-->
-    <!--<package.environment>prod</package.environment>-->
-    <!--</properties>-->
-    <!--</profile>-->
-    <!--</profiles>-->
+    <repositories>
+        <repository>
+            <id>maven-snapshots</id>
+            <name>maven-snapshots</name>
+            <url>http://192.168.4.182:8081/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -59,7 +42,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.readyidu</groupId>
+            <groupId>com.readyidu.live</groupId>
             <artifactId>live-core</artifactId>
             <version>1.0.1</version>
         </dependency>
@@ -279,11 +262,6 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>commons-httpclient</groupId>-->
-        <!--<artifactId>commons-httpclient</artifactId>-->
-        <!--<version>3.1</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
@@ -328,6 +306,11 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.6.Final</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.readyidu.smartCore</groupId>
+            <artifactId>smart-hanlp-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -378,11 +361,6 @@
             <artifactId>live-service-api</artifactId>
             <version>1.1.2-SNAPSHOT</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.readyidu.smartCore</groupId>-->
-            <!--<artifactId>smart-hanlp-api</artifactId>-->
-            <!--<version>1.0.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>

@@ -2,6 +2,8 @@ package com.readyidu.source.local.cctv;
 
 import com.readyidu.source.base.Channel;
 import com.readyidu.source.base.Local;
+import com.readyidu.source.local.cctv.source.FengmiSource;
+import com.readyidu.source.local.stv.FengmiStvChannel;
 import com.readyidu.source.protocol.SourceUri;
 
 import java.util.HashMap;
@@ -23,7 +25,9 @@ public class CCTVLocal extends Local {
         Channel channel5 = new CCTVLiangChannels();
         Channel channel6 = new CCTVTianyiChannels();
         Channel channel7 = new CCTVYIchengChannels();
-        Channel channel8 = new CCTVFengmiChannel();
+        Channel channel8 = new NETTVChannels();
+        Channel channel9 = new IPTVChannels();
+        Channel channel10 = new CCTVFengmiChannel();
         channels = new HashMap<>();
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);
@@ -31,8 +35,10 @@ public class CCTVLocal extends Local {
         channels.put(channel4.getId(), channel4);
         channels.put(channel5.getId(), channel5);
         channels.put(channel6.getId(), channel6);
-        channels.put(channel7.getId(),channel7);
-        channels.put(channel8.getId(),channel8);
+        channels.put(channel7.getId(), channel7);
+        channels.put(channel8.getId(), channel8);
+        channels.put(channel9.getId(), channel9);
+        channels.put(channel10.getId(), channel10);
     }
 
     @Override

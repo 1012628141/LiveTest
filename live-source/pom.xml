@@ -30,9 +30,9 @@
             <version>2.5</version>
         </dependency>
         <dependency>
-            <groupId>com.readyidu</groupId>
+            <groupId>com.readyidu.live</groupId>
             <artifactId>live-core</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 
         <dependency>
