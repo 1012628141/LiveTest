@@ -73,8 +73,13 @@ public class TvSouParser extends Parser{
                 break;
             }
         }
-        String pageUrl = strs[index].substring(strs[index].indexOf("\"")+1,strs[index].indexOf("\"",strs[index].indexOf("\"")+1));
+        String pageUrl = "https://www.tvsou.com" + strs[index].substring(strs[index].indexOf("\"")+1,strs[index].indexOf("\"",strs[index].indexOf("\"")+1));
         return pageUrl;
+    }
+
+    @Override
+    protected String getTomorrowUrl(String url) {
+        return null;
     }
 
     @Override
