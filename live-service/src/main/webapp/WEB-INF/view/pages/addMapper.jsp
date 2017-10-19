@@ -33,7 +33,7 @@
                 </button>
             </div>
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"> 回到主页 </a>
+                <a class="navbar-brand" href="/?item=typeChannel"> 返回 </a>
             </div>
         </nav>
         <div class="content" style="margin-top: 45px;">
@@ -152,14 +152,14 @@
 <script src="/js/demo.js"></script>
 
 <script type="text/javascript">
-    
+
     function bindFunctions() {
         $('.btn-rm-row').on('click', function () {
             // 删除当前行
             $(this).parent().parent().remove();
         });
     }
-    
+
     $(document).ready(function() {
         $('.btn-add-row').on('click', function () {
             // 增加一行新的
