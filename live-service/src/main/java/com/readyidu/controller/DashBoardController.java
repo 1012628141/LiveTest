@@ -1,7 +1,6 @@
 package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.mysql.jdbc.StringUtils;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.*;
 import com.readyidu.service.*;
@@ -142,10 +141,12 @@ public class DashBoardController {
     }
     private void appendChannelList(ModelAndView modelAndView,HttpServletRequest request) {
         // Get living, channel data
-        List<Channel> list = channelService.getChannelList();
+        List<
+                Channel> list = channelService.getChannelList();
         PageUtil pageUtil = new PageUtil(1,list.size());
 //        pageUtil.setPageNo((pageNo    ==null)?1:Integer.parseInt(pageNo));
-        List<Channel> resultList = list.subList(0, 20);
+        List<
+                Channel> resultList = list.subList(0, 20);
         modelAndView.addObject("channelList", resultList);
         modelAndView.addObject("channelCount", list.size());
         modelAndView.addObject("pageNo",pageUtil.getPageNo());

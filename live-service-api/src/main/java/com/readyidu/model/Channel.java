@@ -1,9 +1,5 @@
 package com.readyidu.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Channel {
 
     /**
@@ -21,22 +17,18 @@ public class Channel {
     /**
      * 频道源
      */
-    private List<String> sources;
+    private String[] sources;
 
     public Channel(){
 
     }
 
-    public List<String> getSources() {
+    public String[] getSources() {
         return sources;
     }
 
-    public void setSources(List<String> sources) {
-        this.sources = sources;
-    }
-
     public void setSources(String[] sources) {
-        this.sources = Arrays.asList(sources);
+        this.sources = sources;
     }
 
     public Integer getId() {

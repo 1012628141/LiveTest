@@ -7,16 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
+import com.readyidu.service.TvSourceService;
 import com.readyidu.tools.JPushTool;
-import com.readyidu.util.CacheUtil;
-import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
-import com.readyidu.util.NullUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +29,7 @@ public class ChannelController {
 
     @Resource(name = "channelService")
     private ChannelService channelService;
+
 
     @RequestMapping(value = "/channel.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
@@ -59,7 +56,6 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-
     @RequestMapping(value = "/channel.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String postChannel(HttpServletRequest request,
@@ -95,6 +91,17 @@ public class ChannelController {
         }
         catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+    @RequestMapping(value = "channelInfoById")
+    @ResponseBody
+    public String channelInfoById(HttpServletRequest request){
+        try {
+            String channelId = request.getParameter("channelId");
+            Channel channel = channelService.selectChannelById(Integer.valueOf(channelId));
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,channel);
+        }catch (Exception e){
+            return null;
         }
     }
     @RequestMapping(value = "/channelPlaybill.do", produces = "application/json; charset=utf-8")

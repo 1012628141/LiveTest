@@ -22,6 +22,8 @@ abstract public class Parser {
     //获取明日节目地址
     protected abstract String getPageUrl(String content);
 
+    protected abstract String getTomorrowUrl(String url);
+
     public String getParserId() {
         return parserId;
     }
@@ -32,11 +34,13 @@ abstract public class Parser {
             String content = HttpUtil.httpGet(fromUrl);
             List<Program> programList = getBillInfo(content);
             this.nextUrl = getPageUrl(content);
+            if(NullUtil.isNullObject(nextUrl)){
+                this.nextUrl = getTomorrowUrl(fromUrl);
+            }
             Program thisProgram = null;
             map.put("todayProgram", getBillInfo(content));
             if (!NullUtil.isNullObject(this.nextUrl)) {
-                String url = "https://www.tvsou.com" + this.nextUrl ;
-                String nextContent = HttpUtil.httpGet(url);
+                String nextContent = HttpUtil.httpGet(this.nextUrl);
                 List<Program> nextList = getBillInfo(nextContent);
                 map.put("tommorrowProgram", nextList);
             } else {

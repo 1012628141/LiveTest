@@ -1,25 +1,17 @@
 package com.readyidu.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
-import com.readyidu.model.Channel;
-import com.readyidu.model.ChannelDeath;
 import com.readyidu.model.ChannelSource;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelSourceService;
 import com.readyidu.service.DeathChannelService;
 import com.readyidu.util.JsonResult;
 import org.apache.http.util.TextUtils;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.plaf.TextUI;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 2017/6/23

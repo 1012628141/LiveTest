@@ -1,8 +1,10 @@
 package com.readyidu.source.local.cctv.source;
 
+import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.protocol.SourceConstants;
 import com.readyidu.util.HttpUtil;
+import com.readyidu.util.SourceCheck;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.regex.Pattern;
 
 
 public class FengmiSource extends Source {
-    public FengmiSource(String sourceId,int index) {
+    public  FengmiSource(String sourceId,int index) {
         super(sourceId,index);
     }
 
@@ -116,8 +118,9 @@ public class FengmiSource extends Source {
         if(list != null){
             result = list.get(index) ;
         }
-
-        return result + "$1";
+//        SourceCheckResult sourceCheckResult = SourceCheck.playCheck(result);
+//        return sourceCheckResult.isAvailable()?result+"$1":null;
+        return result+"$1";
     }
     public  byte[] decodeBase64(String input) throws Exception{
         Class clazz=Class.forName("com.sun.org.apache.xerces.internal.impl.dv.util.Base64");

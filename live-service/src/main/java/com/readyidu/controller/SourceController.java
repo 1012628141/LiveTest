@@ -1,9 +1,6 @@
 package com.readyidu.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
-import com.readyidu.model.Channel;
-import com.readyidu.service.ChannelService;
 import com.readyidu.service.SourceService;
 import com.readyidu.model.Source;
 import com.readyidu.util.JsonResult;
@@ -15,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by yuzhang on 17/6/9.

@@ -4,13 +4,18 @@ import com.alibaba.fastjson.JSON;
 import com.readyidu.source.base.Source;
 import com.readyidu.source.model.CNTV;
 import com.readyidu.util.CacheUtil;
+import com.readyidu.util.DyMethodUtil;
 import com.readyidu.util.HttpUtil;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 /**
  * 2017/6/15
@@ -19,6 +24,8 @@ import java.net.URL;
  */
 public class CNTVSource extends Source {
     private static final Logger log = LoggerFactory.getLogger(CNTVSource.class);
+    public static ScriptEngine jse = new ScriptEngineManager().getEngineByName("JavaScript");
+    public static DecimalFormat df = new DecimalFormat("######0");
 
     public CNTVSource(String sourceId) {
         super(sourceId);
@@ -38,7 +45,12 @@ public class CNTVSource extends Source {
         String scriptResult = HttpUtil.httpGet(javascript);
         scriptResult = scriptResult.replace("var html5VideoData='", "");
         scriptResult = scriptResult.replace("';getHtml5VideoData(html5VideoData);", "");
-
+        String cha = null;
+        try {
+            cha = df.format(jse.eval("new Fingerprint2().get(function(result, components){})"));
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
         CNTV cctv = JSON.parseObject(scriptResult, CNTV.class);
 
         if (cctv.getAck().equals("yes")) {

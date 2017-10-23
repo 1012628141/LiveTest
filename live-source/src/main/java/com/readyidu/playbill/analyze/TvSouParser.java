@@ -48,7 +48,6 @@ public class TvSouParser extends Parser{
             }
             if(showTime != null && channelName !=  null){
                 Program p = new Program(channelName,showTime);
-                System.out.print(p);
                 list.add(p);
             }
             showTime = null ;
@@ -61,7 +60,6 @@ public class TvSouParser extends Parser{
     @Override
     protected String getPageUrl(String content) {
         //从网页内容中截取节目表div
-        System.out.print(content);
         int divIndex = content.indexOf("<div style=\"height: 24px;\">");
         String divContent = content.substring(divIndex,content.indexOf("</div>",divIndex)).trim();
         String[] strs = divContent.split("</a>");
@@ -73,8 +71,13 @@ public class TvSouParser extends Parser{
                 break;
             }
         }
-        String pageUrl = strs[index].substring(strs[index].indexOf("\"")+1,strs[index].indexOf("\"",strs[index].indexOf("\"")+1));
+        String pageUrl = "https://www.tvsou.com" + strs[index].substring(strs[index].indexOf("\"")+1,strs[index].indexOf("\"",strs[index].indexOf("\"")+1));
         return pageUrl;
+    }
+
+    @Override
+    protected String getTomorrowUrl(String url) {
+        return null;
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
-import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelSource;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelService;
@@ -12,14 +11,11 @@ import com.readyidu.util.JsonResult;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;

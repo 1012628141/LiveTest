@@ -1,7 +1,6 @@
 package com.readyidu.service.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,22 +8,19 @@ import com.readyidu.mapper.BillFromMapper;
 import com.readyidu.mapper.ChannelSourceMapper;
 import com.readyidu.model.*;
 import com.readyidu.playbill.base.OriginManager;
-import com.readyidu.playbill.model.Program;
+import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.mapper.ChannelTypeMapper;
-import com.readyidu.util.CacheUtil;
-import com.readyidu.util.HttpUtil;
-import com.readyidu.util.JsonResult;
+import com.readyidu.source.base.LiveManager;
 import com.readyidu.util.NullUtil;
-import org.apache.http.util.TextUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.readyidu.util.SourceCheck;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 
 @Service("channelService")
@@ -53,6 +49,9 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "originManager")
     private OriginManager originManager;
+
+    @Resource(name = "liveManager")
+    private LiveManager liveManager;
 
     private static final String CACHE_NAME = "channel_";
 
@@ -269,10 +268,40 @@ public class ChannelServiceImpl extends BaseService implements
     }
 
     @Override
-    public Channel selectChannelByKey(String key) {
-        RouterMapping router = routerService.selectByKey(key);
-        return channelMapper.selectChannelByChannel(router.getValue());
+    public List<Channel> selectChannelByKey(String key) {
+        List<RouterMapping> routers = routerService.selectByKey(key);
+        List<Channel> channels = new ArrayList<>();
+        for (RouterMapping router:routers)
+        {
+            channels.add(channelMapper.selectChannelByChannel(router.getValue()));
+        }
+        return channels;
     }
+
+    @Override
+    public Channel selectChannelById(Integer id) {
+        Channel channel = channelMapper.selectChannelById(id);
+        String[] sources = channel.getSource().split("\\|");
+        List<String> trueSources = new ArrayList<>();
+        for (String source : sources)
+        {
+            if(source.contains("sourceUri://"))
+            {
+                String realSource = liveManager.getChannelSource(source);
+                if (!NullUtil.isNullObject(realSource)){
+                    trueSources.add(source);
+                }
+                continue;
+            }
+            SourceCheckResult result = SourceCheck.playCheck(source);
+            if (result.isAvailable())
+            {
+                trueSources.add(source);
+            }
+        }
+        channel.setSources(trueSources);
+        channel.setSource(null);
+        return channel;}
 
     @Override
     public int removeChannel(Integer channelId) {

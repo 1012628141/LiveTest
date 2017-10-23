@@ -21,7 +21,10 @@ public class YuntuParser extends Parser {
         parserId = "yuntu";
     }
 
-
+    @Override
+    protected String getTomorrowUrl(String url) {
+        return null;
+    }
 
     @Override
     protected String getPageUrl(String content) {

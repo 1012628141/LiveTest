@@ -16,6 +16,10 @@ public class TvCatParser extends Parser {
         parserId = "tvcat";
     }
 
+    @Override
+    protected String getTomorrowUrl(String url) {
+        return null;
+    }
 
     @Override
     protected List<Program> getBillInfo(String content) {

@@ -17,7 +17,7 @@ public interface RouterMappingMapper {
     RouterMapping selectById(Integer id);
     List<RouterMapping> selectByValue(String value);
     List<RouterMapping> selectAll();
-    RouterMapping selectByKey(String key);
+    List<RouterMapping> selectByKey(String key);
     /**
      * 后台分页查询
      * @param pageNo
