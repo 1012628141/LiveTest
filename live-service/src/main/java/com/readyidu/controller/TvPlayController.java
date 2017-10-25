@@ -26,6 +26,9 @@ public class TvPlayController {
     private static final String MESSAGE="切换TV";
     @Autowired
     private PlayTypeService playTypeService;
+
+    @Autowired
+    private TvSourceService tvSourceService;
     @ResponseBody
     @RequestMapping(value = "pushPlayType.do",produces = "application/json; charset=utf-8")
     public String pushPlayType(){
@@ -43,10 +46,14 @@ public class TvPlayController {
         try {
             int playType = playTypeService.getPlayType();
             map.put("playType",playType);
-            new TvSourceServiceImpl().selectChannelByKey("Asfd");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,map);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
+    }
+    @ResponseBody
+    @RequestMapping(value = "tvsource")
+    public String tvsource(){
+        return JsonResult.toString(200,tvSourceService.selectChannelInfoByKey("浙江影视娱乐"));
     }
 }

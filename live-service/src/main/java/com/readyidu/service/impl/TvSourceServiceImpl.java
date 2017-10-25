@@ -3,14 +3,17 @@ package com.readyidu.service.impl;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.model.Channel;
+import com.readyidu.model.ChannelSource;
 import com.readyidu.model.ChannelType;
 import com.readyidu.model.Source;
 import com.readyidu.service.*;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +22,7 @@ import java.util.Map;
 /**
  * Created by 123 on 2017/9/30.
  */
+@Service("tvSourceService")
 public class TvSourceServiceImpl extends BaseService implements TvSourceService {
     @Resource(name = "channelMapper")
     private ChannelMapper channelMapper;
@@ -31,6 +35,9 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
 
     @Resource(name = "sourceService")
     SourceService sourceService;
+
+    @Resource(name = "channelSourceService")
+    ChannelSourceService channelSourceService;
 
     @Override
     public String selectChannelByKey(String key) {
@@ -137,6 +144,28 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
         }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String insertReport(String source) {
+        // Check if update
+        try {
+            if (!TextUtils.isEmpty(source)) {
+                ChannelSource channelDeath = channelSourceService.getDeathBySource(source);
+                if (channelDeath != null) {
+                    return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+                }
+                else {
+                    if (channelSourceService.updateIsDelete(source) != 0) {
+                        return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+                    }
+                }
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+        }catch (Exception e)
+        {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }

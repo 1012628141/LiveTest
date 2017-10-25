@@ -44,6 +44,6 @@ public class CCTVLocal extends Local {
     @Override
     public String getSource(SourceUri uri) {
         Channel channel = channels.get(uri.getChannel());
-        return channel.getSource(uri).getSource();
+            return channel.getSource(uri).getSource();
     }
 }

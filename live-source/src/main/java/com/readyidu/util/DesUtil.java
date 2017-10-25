@@ -1,20 +1,15 @@
 package com.readyidu.util;
 
-import java.security.*;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.IvParameterSpec;
 
 /**
- * Copyright 2007 GuangZhou Cotel Co. Ltd.
- * All right reserved.
- * DES加密解密类.
  *
- * @author <a href="mailto:xiexingxing1121@126.com" mce_href="mailto:xiexingxing1121@126.com">AmigoXie</a>
+ * @author
  * @version 1.0
- *          Creation date: 2007-7-31 - 上午11:59:28
+ *
  */
 public class DesUtil {
 

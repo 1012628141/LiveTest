@@ -167,7 +167,7 @@
                 '<tr>' +
                     '<td class="text-center" style="border: none;">' +
                         '<div class="form-group">' +
-                            '<input type="text" prop="key" placeholder="识别结果" class="form-control text-center" />' +
+                            '<input type="text" prop="key" placeholder="识别结果" class="for m-control text-center" />' +
                         '</div> ' +
                     '</td> ' +
                     '<td class="text-center" style="border: none;"> ' +

@@ -47,4 +47,10 @@ public interface TvSourceService {
      * })
      */
     String selectChannelInfoByKey(String key);
+    /**
+     * 当源播放失效时，通过调用该方法上报
+     * @param source 无法播放的源地址（）
+     * @return json (code: 200 成功，400 参数错误,10000 服务出错)
+     */
+    String insertReport(String source);
 }

@@ -83,6 +83,18 @@ public class SourceConstants {
     public static final String SOURCE_TIANYI_BEIJING_STV = "source_tianyi_beijing_stv";
     public static final String SOURCE_TIANYI_SHENZHEN_STV = "source_tianyi_shenzhen_stv";
 
+
+    //souhu
+    //stv
+    public static final String SOURCE_SOUHU_BEIJING_STV = "source_souhu_beijing_stv";
+    public static final String SOURCE_SOUHU_GUANGDONG_STV = "source_souhu_guangdong_stv";
+    public static final String SOURCE_SOUHU_SHENZHEN_STV = "source_souhu_shenzhen_stv";
+    public static final String SOURCE_SOUHU_HEILONGJIANG_STV = "source_souhu_heilongjiang_stv";
+    public static final String SOURCE_SOUHU_SHANDONG_STV = "source_souhu_shandong_stv";
+    public static final String SOURCE_SOUHU_ANHUI_STV = "source_souhu_anhui_stv";
+    public static final String SOURCE_SOUHU_JIANGXI_STV = "source_souhu_jiangxi_stv";
+    public static final String SOURCE_SOUHU_TIANJING_STV = "source_souhu_tianjing_Stv";
+    public static final String SOURCE_SOUHU_SICHUAN_STV = "source_souhu_sicuan_stv";
     //视听网www.shiting5.com
     //CCTV1
     public static final String SOURCE_SHITING_CCTV1 = "source_shiting_cctv1";

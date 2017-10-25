@@ -27,7 +27,7 @@ public class SourceServiceImpl implements SourceService {
     @Autowired
     private CntvSourceMapper cntvSourceMapper;
 
-    public static String cntv = "sourceUri://cctv_cntv/";
+    private static final String SOURCE_CNTV = "sourceUri://cctv_cntv/";
     private static final int CHACHE_TIMEOUT = 1800;
 
     @Override
@@ -35,8 +35,8 @@ public class SourceServiceImpl implements SourceService {
         if (sourceUri == null) {
             return null;
         }
-        if(sourceUri.startsWith(cntv)){
-            String channel_name = sourceUri.substring(cntv.length());
+        if(sourceUri.startsWith(SOURCE_CNTV)){
+            String channel_name = sourceUri.replace(SOURCE_CNTV,"");
             String source = cntvSourceMapper.findByChannelName(channel_name);
             return source;
         }
