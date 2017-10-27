@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <p class="category text-center">
-                                        Or Be Classical
+
                                     </p>
                                     <div class="card-content">
                                         <!-- <div class="input-group">
@@ -212,13 +212,18 @@
         }, 700)
         if(loginMsg!="")
         {
-        // alert(loginMsg)
-        swal({ 
-            title:"worry!",
-            text: loginMsg,
-            type: "error",
-            buttonsStyling: true,
-            confirmButtonClass: "btn btn-info"})
+            $.notify({
+              	icon: "warning",
+              	message: loginMsg,
+
+          	},{
+              type: 'warning',
+              timer: 4000,
+              placement: {
+                  from: 'top',
+                  align: 'right'
+              }
+          });
     }
 });
 </script>

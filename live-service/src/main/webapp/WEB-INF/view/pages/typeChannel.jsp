@@ -61,14 +61,14 @@
             success: function (data) {
              var result = data;
              if (result.code === 200) {
-               swal({ 
+               swal({
                     title:"success!",
                     text: "推送发送成功！",
                     type: "success",
                     buttonsStyling: true,
                     confirmButtonClass: "btn btn-info"})
            } else {
-                swal({ 
+                swal({
                     title:"error!",
                     text: "推送发送失败！",
                     type: "error",
@@ -77,7 +77,7 @@
            }
        },
        error: function () {
-        swal({ 
+        swal({
                     title:"error!",
                     text: "推送发送失败！",
                     type: "error",
