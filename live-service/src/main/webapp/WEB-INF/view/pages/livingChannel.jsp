@@ -66,40 +66,56 @@
     </div>
     <script>
      $(function(){
-            $('#btn-remove-cache').click(function(){
-        $.ajax(
-        {
-            type: "get",
-            url: "/channel/mapCacheExpire.do",
-            success: function (data) {
-             var result = data;
-             if (result.code === 200) {
-               swal({ 
-                    title:"success!",
-                    text: "推送发送成功！",
-                    type: "success",
-                    buttonsStyling: true,
-                    confirmButtonClass: "btn btn-info"})
-           } else {
-                swal({ 
-                    title:"error!",
-                    text: "推送发送失败！",
-                    type: "error",
-                    buttonsStyling: true,
-                    confirmButtonClass: "btn btn-info"})
-           }
-       },
-       error: function () {
-        swal({ 
-                    title:"error!",
-                    text: "推送发送失败！",
-                    type: "error",
-                    buttonsStyling: true,
-                    confirmButtonClass: "btn btn-info"})
-     }
- }
- );
-    });
+			$('#btn-remove-cache').click(function() {
+				swal.queue([{
+					title: '确认清除客户端缓存 ？',
+					confirmButtonClass: 'btn btn-warning',
+					confirmButtonText: '确认',
+					buttonsStyling: false,
+					showLoaderOnConfirm: true,
+					cancelButtonText: '取消',
+					cancelButtonClass: 'btn btn-default',
+					showCancelButton: true,
+					allowOutsideClick: false,
+					preConfirm: function() {
+						return new Promise(function(resolve) {
+							$.ajax({
+								type: "get",
+								url: "/router/channel/mapCacheExpire.do",
+								success: function(data) {
+									var result = data;
+									if(result.code === 200) {
+										swal({
+											title: "success!",
+											text: "推送发送成功！",
+											type: "success",
+											buttonsStyling: true,
+											confirmButtonClass: "btn btn-info"
+										})
+									} else {
+										swal({
+											title: "error!",
+											text: "推送发送失败！",
+											type: "error",
+											buttonsStyling: true,
+											confirmButtonClass: "btn btn-info"
+										})
+									}
+								},
+								error: function() {
+									swal({
+										title: "error!",
+										text: "推送发送失败！",
+										type: "error",
+										buttonsStyling: true,
+										confirmButtonClass: "btn btn-info"
+									})
+								}
+							})
+						})
+					}
+				}])
+			});
          $('#datatables').DataTable({
                                  pageLength: 20,
                                  lengthChange: false,
