@@ -22,4 +22,7 @@ public interface ChannelMapper {
     List<Channel> selectBySource(String source);
     Channel selectChannelByChannel(String channel);
     Channel selectChannelById(Integer id);
+    List<Channel> selectAllNew();
+    List<Channel> selectHotChannel();
+    List<Channel> selectChannelByKey(String Key);
 }

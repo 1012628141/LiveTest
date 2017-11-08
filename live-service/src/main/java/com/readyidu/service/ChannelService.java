@@ -20,5 +20,7 @@ public interface ChannelService {
     public List<Channel> getMovieToSource();
     public Map<String,Object> channelPlaybill(String channelId);
     public List<Channel> selectChannelByKey(String key);
-    public Channel selectChannelById(Integer id);
+//    public Channel selectChannelById(Integer id);
+    public List<Channel> selectAllNew();
+    public List<Channel> selectHotChannel();
 }

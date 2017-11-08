@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.readyidu.mapper.IpDataMapper">
+    <select id="SelectIpOperator" parameterType="com.readyidu.model.IpData" resultType="java.lang.String">
+        select
+        operator
+        from
+        t_ip_data
+        where firstNumber = #{firstNumber}
+        and secondNumber = #{secondNumber}
+    </select>
+    <insert id="insertIpData" parameterType="com.readyidu.model.IpData" >
+        insert into t_ip_data(
+        firstNumber,
+        secondNumber,
+        operator)
+        values(
+        #{firstNumber},
+        #{secondNumber},
+        #{operator}
+        )
+    </insert>
+</mapper>

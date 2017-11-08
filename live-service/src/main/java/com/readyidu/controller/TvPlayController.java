@@ -52,8 +52,10 @@ public class TvPlayController {
         }
     }
     @ResponseBody
-    @RequestMapping(value = "tvsource")
+    @RequestMapping(value = "tvsource",produces = "application/json; charset=utf-8")
     public String tvsource(){
-        return JsonResult.toString(200,tvSourceService.selectChannelInfoByKey("浙江影视娱乐"));
+
+        return  tvSourceService.getChannelList();
+
     }
 }

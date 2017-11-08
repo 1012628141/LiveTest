@@ -31,7 +31,7 @@ public interface TvSourceService {
     /**
      * 获取当前频道的当前节目单，包含当天以及第二天的节目，第二天节目可能为空
      * @param channelId 当前的频道编号
-     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:对应频道的节目表)
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:{channels:对应频道的节目表,hotChannels:热门频道列表})
      */
     String channelPlaybill(String channelId);
     /**

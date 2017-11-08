@@ -67,10 +67,12 @@ public class TvSouParser extends Parser{
         for(int i=0;i<strs.length;i++){
             String str = strs[i];
             if (str.contains("week")){
-                index = i+1;
+                index = i;
                 break;
             }
         }
+        String todayUrl = strs[index];
+        
         String pageUrl = "https://www.tvsou.com" + strs[index].substring(strs[index].indexOf("\"")+1,strs[index].indexOf("\"",strs[index].indexOf("\"")+1));
         return pageUrl;
     }

@@ -21,23 +21,31 @@ public class Channel {
     /**
      * 频道源
      */
-    private List<String> sources;
+    private List<ChannelSource> sources;
 
     public Channel(){
 
     }
 
-    public List<String> getSources() {
+    public List<ChannelSource> getSources() {
         return sources;
     }
 
-    public void setSources(List<String> sources) {
+    public void setSources(List<ChannelSource> sources) {
         this.sources = sources;
     }
 
-    public void setSources(String[] sources) {
-        this.sources = Arrays.asList(sources);
-    }
+    //    public List<String> getSources() {
+//        return sources;
+//    }
+//
+//    public void setSources(List<String> sources) {
+//        this.sources = sources;
+//    }
+//
+//    public void setSources(String[] sources) {
+//        this.sources = Arrays.asList(sources);
+//    }
 
     public Integer getId() {
         return id;

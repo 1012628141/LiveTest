@@ -43,6 +43,39 @@ public class SourceConstants {
     public static final String SOURCE_FJTV_7 = "source_fjtv_7";
     public static final String SOURCE_FJTV_8 = "source_fjtv_8";
 
+    //selfChannel
+    //cctv
+    public static final String SOURCE_LZD_CCTV1 = "source_lzd_cctv1";
+    public static final String SOURCE_LZD_CCTV2 = "source_lzd_cctv2";
+    public static final String SOURCE_LZD_CCTV3 = "source_lzd_cctv3";
+    public static final String SOURCE_LZD_CCTV4 = "source_lzd_cctv4";
+    public static final String SOURCE_LZD_CCTV5 = "source_lzd_cctv5";
+    public static final String SOURCE_LZD_CCTV6 = "source_lzd_cctv6";
+    public static final String SOURCE_LZD_CCTV7 = "source_lzd_cctv7";
+    public static final String SOURCE_LZD_CCTV8 = "source_lzd_cctv8";
+    public static final String SOURCE_LZD_CCTV9 = "source_lzd_cctv9";
+    public static final String SOURCE_LZD_CCTV10 = "source_lzd_cctv10";
+    public static final String SOURCE_LZD_CCTV11 = "source_lzd_cctv11";
+    public static final String SOURCE_LZD_CCTV12 = "source_lzd_cctv12";
+    public static final String SOURCE_LZD_CCTV13 = "source_lzd_cctv13";
+    public static final String SOURCE_LZD_CCTV14 = "source_lzd_cctv14";
+    public static final String SOURCE_LZD_CCTV15 = "source_lzd_cctv15";
+    public static final String SOURCE_LZD_CCTV5ADD = "source_lzd_cctvADD";
+    //stv
+    public static final String SOURCE_LZD_AHWS = "source_lzd_AHWS";
+    public static final String SOURCE_LZD_BJWS = "source_lzd_BJWS";
+    public static final String SOURCE_LZD_CQWS = "source_lzd_CQWS";
+    public static final String SOURCE_LZD_DFWS = "source_lzd_DFWS";
+    public static final String SOURCE_LZD_DNWS = "source_lzd_DNWS";
+    public static final String SOURCE_LZD_GDWS = "source_lzd_GDWS";
+    public static final String SOURCE_LZD_HUBWS = "source_lzd_HUBWS";
+    public static final String SOURCE_LZD_HUNWS = "source_lzd_HUNWS";
+    public static final String SOURCE_LZD_JSWS = "source_lzd_JSWS";
+    public static final String SOURCE_LZD_JXWS = "source_lzd_JXWS";
+    public static final String SOURCE_LZD_SCWS = "source_lzd_SCWS";
+    public static final String SOURCE_LZD_SDWS = "source_lzd_SDWS";
+    public static final String SOURCE_LZD_SZWS = "source_lzd_SZWS";
+    public static final String SOURCE_LZD_ZJWS = "source_lzd_ZJWS";
     //IPTV
     //cctv
     public static final String SOURCE_IPTV_CCTV1 = "source_iptv_cctv1";
