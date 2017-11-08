@@ -222,9 +222,13 @@ public class ChannelServiceImpl extends BaseService implements
             channelList = new ArrayList<>();
             for (Movie movie: movieList) {
                 Channel channel = new Channel();
+                ChannelSource channelSource = new ChannelSource();
                 channel.setId(movie.getId() + 10000);
                 channel.setChannel(movie.getTitle());
-                channel.setSource("sourceUri://movie/tianyi/" + movie.getContid());
+                channelSource.setSource("sourceUri://movie/tianyi/" + movie.getContid());
+                List<ChannelSource> sources = new ArrayList<>();
+                sources.add(channelSource);
+                channel.setSources(sources);
                 channel.setTypeid("1600");
                 channelList.add(channel);
             }
