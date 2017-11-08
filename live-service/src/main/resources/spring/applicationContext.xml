@@ -17,7 +17,7 @@
     <context:property-placeholder location="classpath*:properties/**.properties"/>
 
     <!--dubbo-->
-    <import resource="classpath*:config/dubbo-*.xml"/>
+    <!--<import resource="classpath*:config/dubbo-*.xml"/>-->
 
 
     <aop:aspectj-autoproxy/>

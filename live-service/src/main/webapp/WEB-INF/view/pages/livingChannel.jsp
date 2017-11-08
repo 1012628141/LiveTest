@@ -60,6 +60,7 @@
             <div class="card-footer">
                 <button class="btn btn-info btn-add-channel">新增频道</button>
                 <button class="btn btn-primary" id="btn-remove-cache">清除客户端缓存</button>
+                <a href="/router/channel/delete.do" class="btn btn-danger ">批量删除源</a>
             </div>
         </div>
         <!--  end card  -->
