@@ -33,7 +33,7 @@
                                     客户端反馈
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary btn-round audit" data_id="${channel.deathSourceId}"><font><font>chilk</font></font><div class="ripple-container"></div></button>
+                                    <button class="btn btn-primary btn-round audit" data_id="${channel.deathSourceId}"><font><font>审核操作</font></font><div class="ripple-container"></div></button>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -55,7 +55,7 @@
    var page='${content}'
    init(pageCount,page);
    $('#datatables').on('click','button',function(){
-    if(confirm("确定通过审核?")){
+    if(confirm("直播源审核，点击确认删除直播源，点取消或直接关闭对话框不会删除直播源")){
  　　//点击确定后操作
  var attr=$(this).attr("data_id")
  　　console.log(attr)
@@ -73,8 +73,7 @@
 }
 ,"json"
 )
-}
-else{
+} else{
     var attr=$(this).attr("data_id")
     $.post("/report/auditPass.do",
     {
@@ -92,6 +91,8 @@ else{
 }
 $(this).parent().parent().remove()
 });
+
+
    function showNotification(from,align,isSuccess){
     var msg=null
     var type=null
