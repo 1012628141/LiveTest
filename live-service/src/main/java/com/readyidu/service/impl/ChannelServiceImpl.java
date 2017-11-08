@@ -220,21 +220,12 @@ public class ChannelServiceImpl extends BaseService implements
             // 若redis中无数据，则查询数据库, 并缓存
             List<Movie> movieList = movieService.selectAllMovie();
             channelList = new ArrayList<>();
-            for (Movie movie: movieList){
+            for (Movie movie: movieList) {
                 Channel channel = new Channel();
-                channel.setId(movie.getId()+10000);
+                channel.setId(movie.getId() + 10000);
                 channel.setChannel(movie.getTitle());
-                channel.setSource("sourceUri://movie/tianyi/"+movie.getContid());
-                channel.setTypeid("1400");
-                channelList.add(channel);
-            }
-            movieList = movieService.selectAllTrailer();
-            for (Movie movie: movieList){
-                Channel channel = new Channel();
-                channel.setId(movie.getId()+10000);
-                channel.setChannel(movie.getTitle());
-                channel.setSource("sourceUri://movie/tianyi/"+movie.getContid());
-                channel.setTypeid("1500");
+                channel.setSource("sourceUri://movie/tianyi/" + movie.getContid());
+                channel.setTypeid("1600");
                 channelList.add(channel);
             }
             // 信息缓存5分钟
@@ -269,39 +260,76 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> selectChannelByKey(String key) {
-        List<RouterMapping> routers = routerService.selectByKey(key);
-        List<Channel> channels = new ArrayList<>();
-        for (RouterMapping router:routers)
-        {
-            channels.add(channelMapper.selectChannelByChannel(router.getValue()));
-        }
+        List<Channel> channels = channelMapper.selectChannelByKey(key);
         return channels;
     }
 
     @Override
-    public Channel selectChannelById(Integer id) {
-        Channel channel = channelMapper.selectChannelById(id);
-        String[] sources = channel.getSource().split("\\|");
-        List<String> trueSources = new ArrayList<>();
-        for (String source : sources)
-        {
-            if(source.contains("sourceUri://"))
-            {
-                String realSource = liveManager.getChannelSource(source);
-                if (!NullUtil.isNullObject(realSource)){
-                    trueSources.add(source);
-                }
-                continue;
-            }
-            SourceCheckResult result = SourceCheck.playCheck(source);
-            if (result.isAvailable())
-            {
-                trueSources.add(source);
-            }
+    public List<Channel> selectAllNew() {
+        // TODO Auto-generated method stub
+        // 拼装缓存key值
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelNewList";
+
+        List<Channel> channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectAllNew();
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
         }
-        channel.setSources(trueSources);
-        channel.setSource(null);
-        return channel;}
+        return channelList;
+    }
+
+    @Override
+    public List<Channel> selectHotChannel() {
+        // TODO Auto-generated method stub
+        // 拼装缓存key值
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "hotChannelList";
+
+        List<Channel> channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectHotChannel();
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+
+//    @Override
+//    public Channel selectChannelById(Integer id) {
+//        Channel channel = channelMapper.selectChannelById(id);
+//        String[] sources = channel.getSource().split("\\|");
+//        List<String> trueSources = new ArrayList<>();
+//        for (String source : sources)
+//        {
+//            if(source.contains("sourceUri://"))
+//            {
+//                String realSource = liveManager.getChannelSource(source);
+//                if (!NullUtil.isNullObject(realSource)){
+//                    trueSources.add(source);
+//                }
+//                continue;
+//            }
+//            SourceCheckResult result = SourceCheck.playCheck(source);
+//            if (result.isAvailable())
+//            {
+//                trueSources.add(source);
+//            }
+//        }
+//        channel.setSources(trueSources);
+//        channel.setSource(null);
+//        return channel;}
 
     @Override
     public int removeChannel(Integer channelId) {

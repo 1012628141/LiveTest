@@ -61,7 +61,8 @@
         select
         <include refid="Base_Column_List" />
         from t_channel_mapping
-        where `key` = #{key}
+        where `key` like CONCAT(CONCAT('%', #{key}), '%')
+        group by `value`
     </select>
     <select id="selectByPageNo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

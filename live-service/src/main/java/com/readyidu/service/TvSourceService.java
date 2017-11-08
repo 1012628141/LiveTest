@@ -53,4 +53,5 @@ public interface TvSourceService {
      * @return json (code: 200 成功，400 参数错误,10000 服务出错)
      */
     String insertReport(String source);
+    String checkOperator(String IpAdress);
 }

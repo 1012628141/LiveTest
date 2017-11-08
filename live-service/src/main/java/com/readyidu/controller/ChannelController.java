@@ -38,7 +38,6 @@ public class ChannelController {
         try {
             List<Channel> channelInfoList = channelService
                     .getChannelList();
-            channelInfoList.addAll(channelService.getMovieToSource());
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfoList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -63,7 +62,6 @@ public class ChannelController {
         try {
             List<Channel> channelInfoList = channelService
                     .getChannelList();
-            channelInfoList.addAll(channelService.getMovieToSource());
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfoList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -93,17 +91,17 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
-    @RequestMapping(value = "channelInfoById")
-    @ResponseBody
-    public String channelInfoById(HttpServletRequest request){
-        try {
-            String channelId = request.getParameter("channelId");
-            Channel channel = channelService.selectChannelById(Integer.valueOf(channelId));
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,channel);
-        }catch (Exception e){
-            return null;
-        }
-    }
+//    @RequestMapping(value = "channelInfoById")
+//    @ResponseBody
+//    public String channelInfoById(HttpServletRequest request){
+//        try {
+//            String channelId = request.getParameter("channelId");
+//            Channel channel = channelService.selectChannelById(Integer.valueOf(channelId));
+//            return JsonResult.toString(NetworkCode.CODE_SUCCESS,channel);
+//        }catch (Exception e){
+//            return null;
+//        }
+//    }
     @RequestMapping(value = "/channelPlaybill.do", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String channelPlaybill(HttpServletRequest request){

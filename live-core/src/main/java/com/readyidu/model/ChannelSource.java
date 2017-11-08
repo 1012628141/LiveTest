@@ -1,5 +1,7 @@
 package com.readyidu.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * Created by 123 on 2017/7/26.
  */
@@ -7,7 +9,12 @@ public class ChannelSource {
     private Integer id;
     private Integer parentid;
     private String source;
+    @JSONField(serialize=false)
     private int sort;
+    private int resolve;
+    private float responseTime;
+    private int isSelf;
+    @JSONField(serialize=false)
     private int isDelete;
     public ChannelSource(){
         super();
@@ -60,5 +67,29 @@ public class ChannelSource {
 
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public int getResolve() {
+        return resolve;
+    }
+
+    public void setResolve(int resolve) {
+        this.resolve = resolve;
+    }
+
+    public float getResponseTime() {
+        return responseTime;
+    }
+
+    public void setResponseTime(float responseTime) {
+        this.responseTime = responseTime;
+    }
+
+    public int getIsSelf() {
+        return isSelf;
+    }
+
+    public void setIsSelf(int isSelf) {
+        this.isSelf = isSelf;
     }
 }

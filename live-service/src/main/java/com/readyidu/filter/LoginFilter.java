@@ -28,7 +28,9 @@ public class LoginFilter extends OncePerRequestFilter {
                 "/router/channel/getMapper.do", //获取语音Mapping表
                 "/channel/channelType.do", //获取频道
                 "/play/tvPlayType.do",
-                "/report/add.do"
+                "/report/add.do",
+                "/play/tvsource",
+                "/channel/channelNow.do"
         };
         String url =request.getRequestURI();
         boolean doFilter=true;

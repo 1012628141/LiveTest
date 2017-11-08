@@ -22,6 +22,17 @@
     <!--<include refid="Base_Column_List" />-->
     <!--from t_channel order by id-->
     <!--</select>-->
+    <resultMap id="channelInfo" type="com.readyidu.model.Channel">
+        <id property = "id" column="id"/>
+        <result property="channel" column="channel"/>
+        <result property="typeid" column="typeid"/>
+        <collection property="sources" ofType="com.readyidu.model.ChannelSource">
+            <result property="source"  column="source" />
+            <result property="resolve" column="resolve" />
+            <result property="responseTime" column="responseTime" />
+            <result column="isSelf" property="isSelf"/>
+        </collection>
+    </resultMap>
 
     <select id="selectAll" resultType="com.readyidu.model.Channel">
         select
@@ -38,17 +49,44 @@
         on t1.id=t2.parentid
         order by t1.id
     </select>
-    <select id="selectChannelByChannel" parameterType="java.lang.String" resultType="com.readyidu.model.Channel">
+    <select id="selectAllNew" resultMap="channelInfo">
         select
         <include refid="Second_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
         from t_channel t1
         left join
         (select
         parentid
-        ,group_concat(source order by sort) as source
+        ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
         from t_channel_source
         where is_delete != 1
-        group by parentid
+        ) t2
+        on t1.id=t2.parentid
+        order by t1.id,t2.sort
+    </select>
+    <select id="selectChannelByChannel" parameterType="java.lang.String" resultMap="channelInfo">
+        select
+        <include refid="Second_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
+        from t_channel t1
+        left join
+        (select
+        parentid
+        ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
         ) t2
         on t1.id=t2.parentid
         where channel = #{channel}
@@ -156,4 +194,65 @@
         typeid = #{typeid,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <select id="selectHotChannel" resultMap="channelInfo">
+        select
+        <include refid="Second_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
+        from t_channel t1
+        left join
+        (select
+        parentid
+        ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
+        ) t2
+        on t1.id=t2.parentid
+        right join
+        (select
+        channelId,
+        sort
+        from t_channel_hot
+        ) t3
+        on t1.id = t3.channelId
+        order by t3.sort,t2.sort
+    </select>
+    <select id="selectChannelByKey" parameterType="java.lang.String" resultMap="channelInfo">
+        select
+        <include refid="Second_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
+        ,t3.`key`
+        ,t3.`value`
+        from t_channel t1
+        left join
+        (select
+        parentid
+        ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
+        ) t2
+        on t1.id=t2.parentid
+        right join
+        (select
+        `value`
+        ,`key`
+        from t_channel_mapping
+        where `key` like CONCAT(CONCAT('%',#{key}), '%')
+        group by `value`
+        ) t3
+        on t1.channel = t3.value
+        where t1.channel is not null
+        order by t1.id
+    </select>
 </mapper>
