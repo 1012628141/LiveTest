@@ -20,6 +20,15 @@
 		<!--     Fonts and icons     -->
 		<link href="/css/mont.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/css/gont.css" />
+		<style>
+			.table-responsive {
+				overflow: visible;
+				/*overflow-x: visible;*/
+			}
+
+
+
+		</style>
 	</head>
 
 	<body>
@@ -45,7 +54,7 @@
 										<h4 class="card-title">TYPE: ${channel.typeid} - ${channel.channel} ( ID: ${channel.id} )</h4>
 									</div>
 									<div class="card-content">
-										<div class="table-responsive">
+										<div id="" class="table-responsive">
 											<table class="table">
 												<thead>
 													<tr>
@@ -266,6 +275,7 @@
 	<script src="/js/demo.js"></script>
 	<script src="/js/sort-source.js"></script>
 	<script type="text/javascript">
+
 
         function selectOnchang(obj){
             var value = obj.val();
