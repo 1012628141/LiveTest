@@ -64,6 +64,7 @@ public class WebChannelController {
         }
     }
     @RequestMapping(value = "/modifySource.do",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
+    @ResponseBody
     public String modifySource(HttpServletRequest request){
         String channelId = request.getParameter("channelId");
         String source = request.getParameter("source");

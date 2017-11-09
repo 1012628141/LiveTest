@@ -60,7 +60,7 @@
 														<c:forEach items="${ sources }" var="s" varStatus="loop">
 															<c:if test="${not empty s }">
 																<c:if test="${s.isDelete!=1}">
-																	<tr data-sid="${loop.index}" data-id="${channel.id}">
+																	<tr data-sid="${loop.index}" data-id="${channel.id}" data-sourceid="${s.id}">
 																		<td class="text-center">${loop.index + 1}</td>
 																		<td>
 																			<a href="${fn:toLowerCase(s.source)}" title="${s.source}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
@@ -84,12 +84,63 @@
 																			</c:choose>
 																		</td>
 																		<td class="td-actions text-right">
-																			<button type="button" rel="tooltip" class="btn btn-danger btn-modify-source">
-                                        <i class="material-icons">mode_edit</i>
-                                    </button>
-																			<button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
-                                        <i class="material-icons">close</i>
-                                    </button>
+
+																			<select class="selectpicker col-md-4"
+																					onchange="selectOnchang($(this))"
+																					data-style="btn btn-primary btn-round"
+																					title="选择播放器" data-size="7">
+																				<c:set var="flag_lenth"
+																					   value="${fn:length(s.source)}"/>
+																				<c:set var="source_flag"
+																					   value="${fn:substring(s.source,-2,flag_lenth)}"/>
+																				<c:choose>
+
+																					<c:when test="${fn:contains(source_flag, '$1')}">
+																						<option value="">播放器1</option>
+																						<option value="$1"
+																								selected="selected">播放器2
+																						</option>
+																						<option value="$2">播放器3</option>
+																						<option value="$3">播放器4</option>
+																					</c:when>
+																					<c:when test="${fn:contains(source_flag, '$2')}">
+																						<option value="">播放器1</option>
+																						<option value="$1">播放器2</option>
+																						<option value="$2"
+																								selected="selected">播放器3
+																						</option>
+																						<option value="$3">播放器4</option>
+																					</c:when>
+																					<c:when test="${fn:contains(source_flag, '$3')}">
+																						<option value="">播放器1</option>
+																						<option value="$1">播放器2</option>
+																						<option value="$2">播放器3</option>
+																						<option value="$3"
+																								selected="selected">播放器4
+																						</option>
+																					</c:when>
+																					<c:when test="${!fn:contains(source_flag, '$')}">
+																						<option value=""
+																								selected="selected">播放器1
+																						</option>
+																						<option value="$1">播放器2</option>
+																						<option value="$2">播放器3</option>
+																						<option value="$3">播放器4</option>
+																					</c:when>
+
+																				</c:choose>
+
+
+																			</select>
+
+																			<button type="button" rel="tooltip"
+																					class="btn btn-danger btn-modify-source">
+																				<i class="material-icons">mode_edit</i>
+																			</button>
+																			<button type="button" rel="tooltip"
+																					class="btn btn-danger btn-remove-source">
+																				<i class="material-icons">close</i>
+																			</button>
 																		</td>
 																	</tr>
 																</c:if>
@@ -215,7 +266,47 @@
 	<script src="/js/demo.js"></script>
 	<script src="/js/sort-source.js"></script>
 	<script type="text/javascript">
+
+        function selectOnchang(obj){
+            var value = obj.val();
+            var id =  obj.parent().parent().parent().data("id");
+            var sourceid =  obj.parent().parent().parent().data("sourceid");
+            var href = obj.parent().parent().prev().prev().children().attr('href');
+
+            var index = href.indexOf("$");
+            if(index != -1){
+                href = href.substr(0,index);
+			}
+			var source = href + value;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/webChannel/modifySource.do",
+                    data: {
+                        "channelId": sourceid,
+                        "sourceId": id,
+                        "source": source,
+                    },
+                    success: function(data) {
+                        var result = data;
+                        console.log(data)
+                        if(result.code === 200) {
+                            alert("修改成功");
+                            window.location.reload();
+                        } else {
+                            alert("修改失败！");
+                        }
+
+                    },
+                    error: function() {
+                       alert("修改失败！");
+                    }
+                })
+        }
+
 		$(document).ready(function() {
+
+
 			// Bind actions
 			$('.btn-remove-source').on('click', function() {
 				var id = $(this).parent().parent().data("id");
@@ -262,11 +353,15 @@
 			});
 			$('.btn-modify-source').on('click', function() {
 				var id = $(this).parent().parent().data("id");
-				var sid = $(this).parent().parent().data("sid");
+                var sourceid = $(this).parent().parent().data("sourceid");
+				//var sid = $(this).parent().parent().data("sid");
 				// Remove this id source, with alert confirm.
+
+				var sourceUrl = $(this).parent().prev().prev().children().attr('href');
 				swal({
 					title: '请输入修改后的SourceUrl',
 					input: 'text',
+                    inputValue: sourceUrl,
 					showCancelButton: true,
 					confirmButtonText: 'Submit',
 					showLoaderOnConfirm: true,
@@ -280,8 +375,9 @@
 										type: "POST",
 										url: "/webChannel/modifySource.do",
 										data: {
-											"channelId": id,
-											"sourceId": sid,
+//											"channelId": id,
+                                            "channelId": sourceid,
+											"sourceId": id,
 											"source": source
 										},
 										success: function(data) {
@@ -289,6 +385,7 @@
 											console.log(data)
 											if(result.code === 200) {
 												swal.insertQueueStep("修改成功 !");
+												console.log("ssssss");
 												window.location.reload();
 											} else {
 												swal.insertQueueStep("修改失败！");
@@ -300,13 +397,14 @@
 											resolve()
 										}
 									})
-									resolve()
+
 								}
 							}, 2000)
 						})
 					},
 					allowOutsideClick: false
 				}).then(function(email) {
+                    //window.location.reload();
 					swal({
 						type: 'success',
 						title: 'Ajax request finished!',
@@ -474,8 +572,8 @@
 			// Delete channel
 			$('.btn-remove-channel').on('click', function() {
 				var id = $(this).data("id");
-				s
 
+				sss
 				swal.queue([{
 					title: '确认删除此频道？',
 					confirmButtonClass: 'btn btn-warning',
