@@ -94,4 +94,9 @@ public class RouterServiceImpl implements RouterService {
     public List<RouterMapping> selectByPageNo(Integer pageNo) {
         return routerMappingMapper.selectByPageNo(pageNo);
     }
+
+    @Override
+    public List<RouterMapping> selectExactByKey(String key) {
+        return routerMappingMapper.selectExactByKey(key);
+    }
 }

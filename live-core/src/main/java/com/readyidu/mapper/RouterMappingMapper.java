@@ -24,4 +24,11 @@ public interface RouterMappingMapper {
      * @return
      */
     List<RouterMapping> selectByPageNo(Integer pageNo);
+
+    /**
+     * 通过key精确搜索
+     * @param key
+     * @return
+     */
+    List<RouterMapping> selectExactByKey(String key);
 }
