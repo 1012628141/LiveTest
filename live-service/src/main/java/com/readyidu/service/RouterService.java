@@ -20,8 +20,4 @@ public interface RouterService {
     List<RouterMapping> selectAll();
     List<RouterMapping> selectByKey(String key);
     List<RouterMapping> selectByPageNo(Integer pageNo);
-
-    List<String> selectMenu(Integer number);
-    List<Map>  selectForm(String TvName,Integer form);
-    List<Map>  selectColumn(String search);
 }

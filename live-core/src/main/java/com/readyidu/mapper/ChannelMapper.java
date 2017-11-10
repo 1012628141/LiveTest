@@ -24,10 +24,8 @@ public interface ChannelMapper {
     Channel selectChannelByChannel(String channel);
     Channel selectChannelById(Integer id);
 
-    List<String> selectCCTV();
-    List<String> selectSatellite();
-    List<Map> selectUrlByChannel(String TvName);
-    List<Map> selectUrlByClassName(String ClassName);
-    List<Map> selectUrlByChannelName(String search);
+    public List<Channel> selectAllNew();
+    public List<Channel> selectHotChannel();
+    List<Channel> selectChannelByKey(String key);
 
 }

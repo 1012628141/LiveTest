@@ -5,7 +5,8 @@
         t1.id as id,
         t1.title as title,
         t1.contid as contid,
-        t1.country_name as countryName
+        t1.country_name as countryName,
+        t1.subCategoryId as subCategoryId
     </sql>
     <select id="selectAllMovie" resultType="com.readyidu.model.Movie">
         select

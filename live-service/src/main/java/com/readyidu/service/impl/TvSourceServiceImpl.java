@@ -75,10 +75,8 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         try {
             Map<String,Object> dataJson = new HashMap<>();
             List<Channel> channelList = channelService.selectAllNew();
-            List<Channel> hotChannelList = channelService.selectHotChannel();
             List<Channel> movieList = channelService.getMovieToSource();
             dataJson.put("channels",channelList);
-            dataJson.put("hotChannels",hotChannelList);
             dataJson.put("movieList",movieList);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,dataJson);
         }catch (Exception e)

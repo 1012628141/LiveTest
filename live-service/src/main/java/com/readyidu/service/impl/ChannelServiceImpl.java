@@ -214,6 +214,7 @@ public class ChannelServiceImpl extends BaseService implements
         String cacheKey = SERVICE_RBK + CACHE_NAME + "movielList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
+        cacheObj = null;
         if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
@@ -229,7 +230,7 @@ public class ChannelServiceImpl extends BaseService implements
                 List<ChannelSource> sources = new ArrayList<>();
                 sources.add(channelSource);
                 channel.setSources(sources);
-                channel.setTypeid("1600");
+                channel.setTypeid(movie.getSubCategoryId());
                 channelList.add(channel);
             }
             // 信息缓存5分钟

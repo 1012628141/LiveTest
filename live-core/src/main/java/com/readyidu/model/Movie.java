@@ -8,6 +8,9 @@ public class Movie {
     private String title;
     private String countryName;
     private String contid;
+    private String subCategoryId;
+
+
 
 
     public Integer getId() {
@@ -42,4 +45,11 @@ public class Movie {
         this.contid = contid;
     }
 
+    public String getSubCategoryId() {
+        return subCategoryId;
+    }
+
+    public void setSubCategoryId(String subCategoryId) {
+        this.subCategoryId = subCategoryId;
+    }
 }
