@@ -21,4 +21,5 @@ public interface ChannelService {
     public Map<String,Object> channelPlaybill(String channelId);
     public List<Channel> selectChannelByKey(String key);
     public Channel selectChannelById(Integer id);
+    public List<Map> selectAllChannel();
 }

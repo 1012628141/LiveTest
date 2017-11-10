@@ -161,7 +161,7 @@
 			$.get(url, args, function(data) {
 			    var dataList = data.data
 				if(data != null && dataList.length > 0) {
-					for(var i = 0; i < dataList.length+1; i++) {
+					for(i = 0,length=dataList.length+1; i < length; i++) {
 					    if(i==0){
 					        selobj.options[i] = new Option("详细分类","")
 					    }
@@ -194,7 +194,7 @@
 			$.get(url, args, function(data) {
 			    var dataMap = data.data
 			    if(data != null && dataMap.length != 0) {
-				for(var i = 0; i < dataMap.length; i++) {
+				for(i = 0,length = dataMap.length ; i < length; i++) {
 						if(dataMap[i].source.length > 100) {
 							var sources = dataMap[i].source.substring(0, 100) + "....";
 						} else {
@@ -233,7 +233,7 @@
 			$.get(url, args, function(data) {
 			    var listMap = data.data
 				if(data != null && listMap.length != 0) {
-					for(var i = 0; i < listMap.length; i++) {
+					for(i = 0,length=listMap.length; i < length; i++) {
 						if(listMap[i].source.length > 100) {
 							var sources = listMap[i].source.substring(0, 100) + "....";
 						} else {
