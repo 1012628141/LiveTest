@@ -104,7 +104,6 @@ public class RouterServiceImpl implements RouterService {
     public List<RouterMapping> selectByPageNo(Integer pageNo) {
         return routerMappingMapper.selectByPageNo(pageNo);
     }
-
     @Override
     public  List<String> selectMenu(Integer number){
         if(number==2) {
@@ -132,5 +131,8 @@ public class RouterServiceImpl implements RouterService {
     public  List<Map> selectColumn(String search){
         return channelMapper.selectUrlByChannelName(search);
     }
-
+    @Override
+    public List<RouterMapping> selectExactByKey(String key) {
+        return routerMappingMapper.selectExactByKey(key);
+    }
 }
