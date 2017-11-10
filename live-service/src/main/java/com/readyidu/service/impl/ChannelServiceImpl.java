@@ -269,7 +269,11 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> selectChannelByKey(String key) {
-        List<RouterMapping> routers = routerService.selectByKey(key);
+        List<RouterMapping> routers = routerService.selectExactByKey(key);
+        if (routers.size() == 0){
+            routers = routerService.selectByKey(key);
+        }
+//        List<RouterMapping> routers = routerService.selectByKey(key);
         List<Channel> channels = new ArrayList<>();
         for (RouterMapping router:routers)
         {
