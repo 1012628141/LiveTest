@@ -53,7 +53,7 @@ public class RouterServiceImpl implements RouterService {
     @Override
     public int insert(RouterMapping record) {
         List<SmartWord> wordList = new ArrayList<>();
-//        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
+        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
 //        Map<String, Object> result = customerDictService.addWordToDict(ENGINE, wordList);
 //        if ((Boolean) result.get("success"))
 //        {

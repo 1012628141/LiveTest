@@ -3,6 +3,7 @@ package com.readyidu.mapper;
 import com.readyidu.model.Channel;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ChannelMapper {
     int deleteByPrimaryKey(Integer id);
@@ -22,4 +23,9 @@ public interface ChannelMapper {
     List<Channel> selectBySource(String source);
     Channel selectChannelByChannel(String channel);
     Channel selectChannelById(Integer id);
+
+    public List<Channel> selectAllNew();
+    public List<Channel> selectHotChannel();
+    List<Channel> selectChannelByKey(String key);
+
 }
