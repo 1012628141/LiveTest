@@ -2,16 +2,20 @@ package com.readyidu.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.mapper.RouterMappingMapper;
+import com.readyidu.mapper.ChannelClassMapper;
+import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.model.RouterMapping;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.RouterService;
 import com.readyidu.smartcore.hanlp.dto.SmartWord;
 import com.readyidu.smartcore.hanlp.service.CustomerDictService;
 import com.readyidu.util.NullUtil;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +32,12 @@ public class RouterServiceImpl implements RouterService {
 
     @Resource(name = "cacheService")
     private CacheService cacheService;
+
+    @Resource(name="channelClassMapper")
+    private ChannelClassMapper channelClassMapper;
+
+    @Resource(name = "channelMapper")
+    private ChannelMapper  channelMapper;
 
 //    @Resource(name = "customerDictService")
 //    private CustomerDictService customerDictService;
@@ -94,4 +104,33 @@ public class RouterServiceImpl implements RouterService {
     public List<RouterMapping> selectByPageNo(Integer pageNo) {
         return routerMappingMapper.selectByPageNo(pageNo);
     }
+
+    @Override
+    public  List<String> selectMenu(Integer number){
+        if(number==2) {
+            return channelClassMapper.selectAllClassName();
+        }
+        else if(number==3){
+            return channelMapper.selectCCTV();
+        }
+        else {
+            return channelMapper.selectSatellite();
+        }
+    }
+
+    @Override
+    public  List<Map> selectForm(String TvName,Integer form) {
+        if(form==1){
+            return channelMapper.selectUrlByClassName(TvName);
+        }
+        else{
+            return channelMapper.selectUrlByChannel(TvName);
+        }
+    }
+
+    @Override
+    public  List<Map> selectColumn(String search){
+        return channelMapper.selectUrlByChannelName(search);
+    }
+
 }
