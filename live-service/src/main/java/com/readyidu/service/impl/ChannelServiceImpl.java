@@ -19,13 +19,13 @@ import com.sun.javafx.scene.control.skin.VirtualFlow;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import org.w3c.dom.ls.LSException;
 
 import javax.annotation.Resource;
 
 
 @Service("channelService")
-public class ChannelServiceImpl extends BaseService implements ChannelService {
+public class ChannelServiceImpl extends BaseService implements
+        ChannelService {
 
     @Resource(name = "channelMapper")
     private ChannelMapper channelMapper;
@@ -306,10 +306,5 @@ public class ChannelServiceImpl extends BaseService implements ChannelService {
     @Override
     public int removeChannel(Integer channelId) {
         return channelMapper.deleteByPrimaryKey(channelId);
-    }
-
-    @Override
-    public List<Map> selectAllChannel(){
-        return channelMapper.selectAllChannel();
     }
 }

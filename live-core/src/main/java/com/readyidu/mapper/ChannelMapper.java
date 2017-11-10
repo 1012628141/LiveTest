@@ -26,10 +26,8 @@ public interface ChannelMapper {
 
     List<String> selectCCTV();
     List<String> selectSatellite();
-    //由于以下方法均是页面加载完成后使用的返回POJO页面无法识别所以使用Map对象返回
     List<Map> selectUrlByChannel(String TvName);
     List<Map> selectUrlByClassName(String ClassName);
     List<Map> selectUrlByChannelName(String search);
-    List<Map> selectAllChannel();
 
 }

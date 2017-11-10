@@ -139,19 +139,14 @@ public class DashBoardController {
         list = null;
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,resultList);
     }
-    @ResponseBody
-    @RequestMapping(value = "getAllChannel.do",produces = "application/json; charset=utf-8")
-    public String getAllChannel(HttpServletRequest request){
-        List<Map> list = new ArrayList<>();
-        list = channelService.selectAllChannel();
-        return  JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
-    }
     private void appendChannelList(ModelAndView modelAndView,HttpServletRequest request) {
         // Get living, channel data
-        List<Channel> list = channelService.getChannelList();
+        List<
+                Channel> list = channelService.getChannelList();
         PageUtil pageUtil = new PageUtil(1,list.size());
 //        pageUtil.setPageNo((pageNo    ==null)?1:Integer.parseInt(pageNo));
-        List<Channel> resultList = list.subList(0, 20);
+        List<
+                Channel> resultList = list.subList(0, 20);
         modelAndView.addObject("channelList", resultList);
         modelAndView.addObject("channelCount", list.size());
         modelAndView.addObject("pageNo",pageUtil.getPageNo());

@@ -147,16 +147,6 @@
         t1.is_delete!=1
         ORDER BY t2.id
     </select>
-    <select id="selectAllChannel" resultType="java.util.Map">
-        SELECT
-        t1.id as id,t1.channel as channel, COUNT(t2.parentid) as count
-        FROM
-        t_channel t1,t_channel_source t2
-        WHERE
-        t1.id =t2.parentid
-        GROUP BY
-        t1.id
-    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from t_channel
         where id = #{id,jdbcType=INTEGER}

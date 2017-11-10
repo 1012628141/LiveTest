@@ -92,7 +92,7 @@ public class RouterMapController {
     public String select1class(HttpServletRequest request){
         String number = request.getParameter("number");
         List<String> list = new ArrayList<>();
-        list =routerService.selectChannelOrClassName(Integer.valueOf(number));
+        list =routerService.selectMenu(Integer.valueOf(number));
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
     }
 
@@ -102,7 +102,7 @@ public class RouterMapController {
         String form = request.getParameter("form");
         String TvName = request.getParameter("TvName");
         List<Map> list = new ArrayList<>();
-        list = routerService.selectUrlByClassNameOrChannel(TvName,Integer.valueOf(form));
+        list = routerService.selectForm(TvName,Integer.valueOf(form));
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
     }
 
@@ -111,7 +111,7 @@ public class RouterMapController {
     public String selectcolumn (HttpServletRequest request){
         String search = request.getParameter("search");
         List<Map> list = new ArrayList<>();
-        list = routerService.selectUrlByChannel(search);
+        list = routerService.selectColumn(search);
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
     }
 

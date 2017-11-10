@@ -21,7 +21,7 @@ public interface RouterService {
     List<RouterMapping> selectByKey(String key);
     List<RouterMapping> selectByPageNo(Integer pageNo);
 
-    List<String> selectChannelOrClassName(Integer number);
-    List<Map>  selectUrlByClassNameOrChannel(String TvName,Integer form);
-    List<Map>  selectUrlByChannel(String search);
+    List<String> selectMenu(Integer number);
+    List<Map>  selectForm(String TvName,Integer form);
+    List<Map>  selectColumn(String search);
 }
