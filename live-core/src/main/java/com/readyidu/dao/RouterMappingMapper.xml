@@ -72,5 +72,10 @@
             limit #{pageNo*20},20
         </if>
     </select>
-
+    <select id="selectExactByKey" parameterType="java.lang.String" resultType="com.readyidu.model.RouterMapping">
+        select
+        <include refid="Base_Column_List" />
+        from t_channel_mapping
+        where `key` = #{key}
+    </select>
 </mapper>
