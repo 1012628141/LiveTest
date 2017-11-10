@@ -3,6 +3,7 @@ package com.readyidu.service;
 import com.readyidu.model.RouterMapping;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2017/7/5
@@ -26,4 +27,8 @@ public interface RouterService {
      * @return
      */
     List<RouterMapping> selectExactByKey(String key);
+    List<String> selectMenu(Integer number);
+    List<Map>  selectForm(String TvName,Integer form);
+    List<Map>  selectColumn(String search);
+
 }

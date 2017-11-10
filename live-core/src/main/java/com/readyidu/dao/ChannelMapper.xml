@@ -93,6 +93,60 @@
         where t1.id =#{id}
         order by t1.id
     </select>
+    <select id="selectCCTV" resultType="java.lang.String">
+        select
+        channel
+        from t_channel
+        where id&lt;17
+    </select>
+    <select id="selectSatellite" resultType="java.lang.String">
+        SELECT
+        distinct  t1.channel as channel
+        FROM
+        t_channel t1,
+        (SELECT parentid FROM t_channel_source  WHERE is_delete!=1) t2
+        WHERE
+        t1.id = t2.parentid
+        AND t1.id&lt;65
+        AND t1.id&gt;25
+    </select>
+    <select id="selectUrlByChannel" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+        t1.id as id,t1.source as source,t2.channel as channel
+        from
+        t_channel_source t1, t_channel t2
+        where
+        t1.parentid = t2.id
+        AND
+        t2.channel = #{TvName,jdbcType=VARCHAR}
+        AND
+        t1.is_delete!=1
+    </select>
+    <select id="selectUrlByClassName" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+        t1.id as id,t1.source as source,t2.channel as channel
+        from
+        t_channel_source t1,t_channel t2
+        where
+        t1.is_class = (select id from t_channel_class where className = #{TvName,jdbcType=VARCHAR})
+        AND
+        t1.parentid = t2.id
+        AND
+        t1.is_delete!=1
+    </select>
+    <select id="selectUrlByChannelName" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+        t1.id as id,t1.source as source,t2.channel as channel
+        from
+        t_channel_source t1,t_channel t2
+        where
+        t2.channel like #{search,jdbcType=VARCHAR}
+        AND
+        t1.parentid = t2.id
+        AND
+        t1.is_delete!=1
+        ORDER BY t2.id
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from t_channel
         where id = #{id,jdbcType=INTEGER}

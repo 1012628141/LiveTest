@@ -20,6 +20,15 @@
 		<!--     Fonts and icons     -->
 		<link href="/css/mont.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/css/gont.css" />
+		<style>
+			.table-responsive {
+				overflow: visible;
+				/*overflow-x: visible;*/
+			}
+
+
+
+		</style>
 	</head>
 
 	<body>
@@ -45,7 +54,7 @@
 										<h4 class="card-title">TYPE: ${channel.typeid} - ${channel.channel} ( ID: ${channel.id} )</h4>
 									</div>
 									<div class="card-content">
-										<div class="table-responsive">
+										<div id="" class="table-responsive">
 											<table class="table">
 												<thead>
 													<tr>
@@ -85,48 +94,62 @@
 																		</td>
 																		<td class="td-actions text-right">
 
-																				<select class="selectpicker col-md-4" onchange="selectOnchang($(this))" data-style="btn btn-primary btn-round" title="选择播放器" data-size="7">
-																					<c:set var="flag_lenth" value="${fn:length(s.source)}"/>
-																					<c:set var="source_flag" value="${fn:substring(s.source,-2,flag_lenth)}"/>
-																		<c:choose >
+																			<select class="selectpicker col-md-4"
+																					onchange="selectOnchang($(this))"
+																					data-style="btn btn-primary btn-round"
+																					title="选择播放器" data-size="7">
+																				<c:set var="flag_lenth"
+																					   value="${fn:length(s.source)}"/>
+																				<c:set var="source_flag"
+																					   value="${fn:substring(s.source,-2,flag_lenth)}"/>
+																				<c:choose>
 
-																		<c:when test="${fn:contains(source_flag, '$1')}">
-																			<option value=""  >播放器1</option>
-																			<option value="$1" selected = "selected">播放器2</option>
-																			<option value="$2">播放器3</option>
-																			<option value="$3">播放器4</option>
-																		</c:when>
-																		<c:when test="${fn:contains(source_flag, '$2')}">
-																			<option value=""  >播放器1</option>
-																			<option value="$1" >播放器2</option>
-																			<option value="$2" selected = "selected">播放器3</option>
-																			<option value="$3">播放器4</option>
-																		</c:when>
-																		<c:when test="${fn:contains(source_flag, '$3')}">
-																			<option value=""  >播放器1</option>
-																			<option value="$1" >播放器2</option>
-																			<option value="$2">播放器3</option>
-																			<option value="$3"selected = "selected">播放器4</option>
-																		</c:when>
-																			<c:when test="${!fn:contains(source_flag, '$')}">
-																				<option value="" selected = "selected" >播放器1</option>
-																				<option value="$1">播放器2</option>
-																				<option value="$2">播放器3</option>
-																				<option value="$3">播放器4</option>
-																			</c:when>
+																					<c:when test="${fn:contains(source_flag, '$1')}">
+																						<option value="">播放器1</option>
+																						<option value="$1"
+																								selected="selected">播放器2
+																						</option>
+																						<option value="$2">播放器3</option>
+																						<option value="$3">播放器4</option>
+																					</c:when>
+																					<c:when test="${fn:contains(source_flag, '$2')}">
+																						<option value="">播放器1</option>
+																						<option value="$1">播放器2</option>
+																						<option value="$2"
+																								selected="selected">播放器3
+																						</option>
+																						<option value="$3">播放器4</option>
+																					</c:when>
+																					<c:when test="${fn:contains(source_flag, '$3')}">
+																						<option value="">播放器1</option>
+																						<option value="$1">播放器2</option>
+																						<option value="$2">播放器3</option>
+																						<option value="$3"
+																								selected="selected">播放器4
+																						</option>
+																					</c:when>
+																					<c:when test="${!fn:contains(source_flag, '$')}">
+																						<option value=""
+																								selected="selected">播放器1
+																						</option>
+																						<option value="$1">播放器2</option>
+																						<option value="$2">播放器3</option>
+																						<option value="$3">播放器4</option>
+																					</c:when>
 
-																	</c:choose>
+																				</c:choose>
 
 
+																			</select>
 
-																				</select>
-
-																				<button type="button" rel="tooltip" class="btn btn-danger btn-modify-source">
+																			<button type="button" rel="tooltip"
+																					class="btn btn-danger btn-modify-source">
 																				<i class="material-icons">mode_edit</i>
-                                                                          </button>
-																			<button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
-                                        <i class="material-icons">close</i>
-                                    </button>
+																			</button>
+																			<button type="button" rel="tooltip"
+																					class="btn btn-danger btn-remove-source">
+																				<i class="material-icons">close</i>
+																			</button>
 																		</td>
 																	</tr>
 																</c:if>
@@ -252,6 +275,7 @@
 	<script src="/js/demo.js"></script>
 	<script src="/js/sort-source.js"></script>
 	<script type="text/javascript">
+
 
         function selectOnchang(obj){
             var value = obj.val();
@@ -558,8 +582,8 @@
 			// Delete channel
 			$('.btn-remove-channel').on('click', function() {
 				var id = $(this).data("id");
-				s
 
+				sss
 				swal.queue([{
 					title: '确认删除此频道？',
 					confirmButtonClass: 'btn btn-warning',
