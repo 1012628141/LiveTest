@@ -58,6 +58,42 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     }
 
     @Override
+    public String getSourceByIp(String sourceUri, String IpAdress) {
+        try {
+            String source = sourceService.getSource(sourceUri);
+            if (NullUtil.isNullObject(source)) {
+                return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+            }
+            if (source.contains("60.190.249.8"))
+            {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip))
+                {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator))
+                {
+                    operator = "联通";
+                }
+                switch (operator){
+                    case "电信":
+                        break;
+                    case "联通":
+                        source = source.replace("60.190.249.8","101.71.36.8");
+                        break;
+                    case "移动":
+                        source = source.replace("60.190.249.8","218.205.92.189");
+                        break;
+                }
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, new Source(source));
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
     public String getSource(String sourceUri) {
         try {
             String source = sourceService.getSource(sourceUri);
@@ -99,15 +135,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         }
     }
 
-//    @Override
-//    public String getMapperList() {
-//        try {
-//            List<RouterMapping> routerMappings = routerService.selectAll();
-//            return JsonResult.toString(NetworkCode.CODE_SUCCESS,routerMappings);
-//        }catch (Exception e){
-//            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-//        }
-//    }
 
     @Override
     public String channelType() {
@@ -170,14 +197,13 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-    @Override
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
         try {
             String searchResult = ipDataService.SelectIpOperator(ipData);
             if (!NullUtil.isNullObject(searchResult))
             {
-                return JsonResult.toString(NetworkCode.CODE_SUCCESS,ipData.getOperator());
+                return searchResult;
             }
         }
         catch (Exception e){

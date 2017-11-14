@@ -53,9 +53,8 @@ public class TvPlayController {
     }
     @ResponseBody
     @RequestMapping(value = "tvsource",produces = "application/json; charset=utf-8")
-    public String tvsource(){
-
-        return  tvSourceService.getChannelList();
+    public String tvsource(String source){
+        return  tvSourceService.getSourceByIp(source,"112.17.244.40");
 
     }
 }
