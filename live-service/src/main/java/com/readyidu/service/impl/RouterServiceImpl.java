@@ -29,8 +29,8 @@ public class RouterServiceImpl implements RouterService {
     @Resource(name = "cacheService")
     private CacheService cacheService;
 
-    @Resource(name = "customerDictService")
-    private CustomerDictService customerDictService;
+//    @Resource(name = "customerDictService")
+//    private CustomerDictService customerDictService;
 
     private static String ENGINE = "tv";
     private static String WORD_NATURE = "tv_name";
@@ -42,13 +42,13 @@ public class RouterServiceImpl implements RouterService {
 
     @Override
     public int insert(RouterMapping record) {
-        List<SmartWord> wordList = new ArrayList<>();
-        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
-        Map<String, Object> result = customerDictService.addWordToDict(ENGINE, wordList);
-        if ((Boolean) result.get("success"))
-        {
-            return routerMappingMapper.insert(record);
-        }
+//        List<SmartWord> wordList = new ArrayList<>();
+//        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
+//        Map<String, Object> result = customerDictService.addWordToDict(ENGINE, wordList);
+//        if ((Boolean) result.get("success"))
+//        {
+//            return routerMappingMapper.insert(record);
+//        }
         return 0;
     }
 
