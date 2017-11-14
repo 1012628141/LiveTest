@@ -40,32 +40,6 @@ public class SourceController {
             if (NullUtil.isNullObject(source)) {
                 return JsonResult.toString(NetworkCode.CODE_FAIL, "");
             }
-            if (source.contains("lvds"))
-            {
-                String ip = request.getHeader("X-Cluster-Client-Ip");
-                if (NullUtil.isNullObject(ip))
-                {
-                    ip = request.getRemoteAddr();
-                }
-                String operator = null;
-                if (!NullUtil.isNullObject(ip))
-                {
-                    operator = tvSourceService.checkOperator(ip);
-                }
-                if (NullUtil.isNullObject(operator))
-                {
-                    operator = "联通";
-                }
-                switch (operator){
-                    case "电信":
-                        break;
-                    case "联通":
-                        source = source.replace("183.131.16.143","101.69.114.248");
-                        break;
-                    case "移动":
-                        source = source.replace("183.131.16.143","112.13.89.153");
-                }
-            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, new Source(source));
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
