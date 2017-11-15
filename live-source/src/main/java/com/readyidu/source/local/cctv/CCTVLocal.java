@@ -29,6 +29,7 @@ public class CCTVLocal extends Local {
         Channel channel9 = new IPTVChannels();
         Channel channel10 = new CCTVFengmiChannel();
         Channel channel11 = new CCTVSelfChannels();
+        Channel channel12 = new CCTVFengcaiChannels();
         channels = new HashMap<>();
         channels.put(channel1.getId(), channel1);
         channels.put(channel2.getId(), channel2);
@@ -41,6 +42,7 @@ public class CCTVLocal extends Local {
         channels.put(channel9.getId(), channel9);
         channels.put(channel10.getId(), channel10);
         channels.put(channel11.getId(), channel11);
+        channels.put(channel12.getId(),channel12);
     }
 
     @Override

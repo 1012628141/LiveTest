@@ -23,4 +23,5 @@ public interface ChannelService {
 //    public Channel selectChannelById(Integer id);
     public List<Channel> selectAllNew();
     public List<Channel> selectHotChannel();
+
 }
