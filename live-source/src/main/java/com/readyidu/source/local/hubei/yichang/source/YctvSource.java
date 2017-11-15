@@ -25,13 +25,13 @@ public class YctvSource extends Source {
         String Dom = null;
         switch (sourceId) {
             case SourceConstants.SOURCE_HBTV_YCTV1:
-                Dom = HttpUtil.httpGet("http://live.3xgd.com/?ChannelID=1");
+                Dom = HttpUtil.httpGet("http://live.3xgd.com/geturl.asp?ChannelID=1","", "http://live.kankanews.com/huikan/");
                 break;
             case SourceConstants.SOURCE_HBTV_YCTV2:
-                Dom = HttpUtil.httpGet("http://live.3xgd.com/?ChannelID=2");
+                Dom = HttpUtil.httpGet("http://live.3xgd.com/geturl.asp?ChannelID=2","", "http://live.kankanews.com/huikan/");
                 break;
             case SourceConstants.SOURCE_HBTV_YCTV3:
-                Dom = HttpUtil.httpGet("http://live.3xgd.com/?ChannelID=11");
+                Dom = HttpUtil.httpGet("http://live.3xgd.com/geturl.asp?ChannelID=3","", "http://live.kankanews.com/huikan/");
                 break;
             default:
                 break;

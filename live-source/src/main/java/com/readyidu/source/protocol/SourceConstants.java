@@ -968,4 +968,51 @@ public class SourceConstants {
     public static final String SOURCE_FENGMI_STV_BTWS = "source_fengmi_stv_btws";   //兵团
     public static final String SOURCE_FENGMI_STV_NLWS = "source_fengmi_stv_nlws";   //农林
     public static final String SOURCE_FENGMI_STV_SSWS = "source_fengmi_stv_ssws";   //三沙
+
+    //峰彩直播
+    //cctv
+    public static final String SOURCE_FENGCAI_CCTV_CCTV1 = "source_fengcai_cctv_cctv1";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV2 = "source_fengcai_cctv_cctv2";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV3 = "source_fengcai_cctv_cctv3";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV4 = "source_fengcai_cctv_cctv4";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV5 = "source_fengcai_cctv_cctv5";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV6 = "source_fengcai_cctv_cctv6";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV7 = "source_fengcai_cctv_cctv7";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV8 = "source_fengcai_cctv_cctv8";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV9 = "source_fengcai_cctv_cctv9";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV10 = "source_fengcai_cctv_cctv10";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV11 = "source_fengcai_cctv_cctv11";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV12 = "source_fengcai_cctv_cctv12";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV13 = "source_fengcai_cctv_cctv13";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV14 = "source_fengcai_cctv_cctv14";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV15 = "source_fengcai_cctv_cctv15";
+    public static final String SOURCE_FENGCAI_CCTV_CCTV5plus = "source_fengcai_cctv_cctv5plus";
+
+    //stv
+    public static final String SOURCE_FENGCAI_STV_HN = "source_fengcai_stv_hn";//湖南
+    public static final String SOURCE_FENGCAI_STV_ZJ = "source_fengcai_stv_zj";//浙江
+    public static final String SOURCE_FENGCAI_STV_DF = "source_fengcai_stv_df";//东方
+    public static final String SOURCE_FENGCAI_STV_GD = "source_fengcai_stv_gd";//广东
+    public static final String SOURCE_FENGCAI_STV_BJ = "source_fengcai_stv_bj";//北京
+    public static final String SOURCE_FENGCAI_STV_HLJ = "source_fengcai_stv_hlj";//黑龙江
+    public static final String SOURCE_FENGCAI_STV_LN = "source_fengcai_stv_ln";//辽宁
+    public static final String SOURCE_FENGCAI_STV_DN = "source_fengcai_stv_dn";//东南
+    public static final String SOURCE_FENGCAI_STV_JL = "source_fengcai_stv_jl";//吉林
+    public static final String SOURCE_FENGCAI_STV_SC = "source_fengcai_stv_sc";//四川
+    public static final String SOURCE_FENGCAI_STV_QH = "source_fengcai_stv_qh";//青海
+    public static final String SOURCE_FENGCAI_STV_GS = "source_fengcai_stv_gs";//甘肃
+    public static final String SOURCE_FENGCAI_STV_JX = "source_fengcai_stv_jx";//江西
+    public static final String SOURCE_FENGCAI_STV_GX = "source_fengcai_stv_gx";//广西
+    public static final String SOURCE_FENGCAI_STV_HENAN = "source_fengcai_stv_henan";//河南
+    public static final String SOURCE_FENGCAI_STV_YN = "source_fengcai_stv_yn";//云南
+    public static final String SOURCE_FENGCAI_STV_SHANXI = "source_fengcai_stv_shanxi";//陕西
+    public static final String SOURCE_FENGCAI_STV_SZ = "source_fengcai_stv_sz";//深圳
+    public static final String SOURCE_FENGCAI_STV_TJ = "source_fengcai_stv_tj";//天津
+    public static final String SOURCE_FENGCAI_STV_CQ = "source_fengcai_stv_cq";//重庆
+//    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
+//    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
+//    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
+//    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
+
+
 }
