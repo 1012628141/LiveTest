@@ -11,6 +11,12 @@
 			</div>
 			<div class="card-content">
 				<h4 class="card-title">全部频道</h4>
+                <div class="col-sm-3" style="float:right">
+                <div class="form-group label-floating">
+                <label class="control-label">输入频道名</label>
+                <input id="search" type="text" class="form-control">
+                </div>
+                </div>
 				<div class="material-datatables">
 					<table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 						<thead>
@@ -23,10 +29,10 @@
 								<th style="text-align: center">操作</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody  id="t-data-body">
 							<c:if test="${not empty channelList}">
 								<c:forEach var="channel" items="${channelList}" varStatus="loop">
-									<tr role="row" class="${loop.index % 2 == 0 ? " odd ": "even "}">
+									<tr class="prototype"  role="row" class="${loop.index % 2 == 0 ? " odd ": "even "}">
 										<td style="text-align: center">${channel.id}</td>
 										<td style="text-align: center">${channel.channel}</td>
 										<!--<c:set value="0" var="sources" />-->
@@ -66,6 +72,69 @@
 		<!--  end card  -->
 	</div>
 	<script>
+        var allChannel = new Array();
+        var oneClick = true;
+        var isnull = false;
+        $('#search').on('click',function(){
+            if(!oneClick){
+                return
+            }
+            oneClick = false
+            var url = "/getAllChannel.do"
+            $.get(url,function(data){
+                allChannel = data.data
+            })
+        })
+        $('#search').keyup(function(){
+            var value = $('#search').val();
+            var r = /^-?[ADFHJM-RU-Yadfhjm-ru-y02-9]\d*$/;
+            if(value!=""){
+                if(r.test(value.substring(0,1))){
+                    return
+                }
+                if(!isnull){
+                $('.prototype').hide();
+                isnull=true
+                }
+                $('.automatic').remove();
+                for(i=0,length=allChannel.length;i<length;i++){
+                    var len = value.length;
+                    var ac = allChannel[i];
+                    if(value.substring(0,len) == allChannel[i].channel.substring(0,len)){
+                        $('#t-data-body').append(
+                        '<tr class="automatic"role="row" >'+
+                        '<td style="text-align: center">'+
+                        allChannel[i].id+
+                        '</td>'+
+                        '<td style="text-align: center">'+
+                        allChannel[i].channel+
+                        '</td>'+
+                        '<td style="text-align: center">'+
+                        allChannel[i].count +
+                        '</td>'+
+                        '<td style="text-align: center">未设置</td>'+
+                        '<td style="text-align: center">未设置</td>'+
+                        '<td style="text-align: center">'+
+                        '<a href="?eid='+allChannel[i].id+'" class="btn btn-simple btn-warning btn-icon edit">'+
+                        '<i class="material-icons">'+
+                        'edit'+
+                        '</i>'+
+                        '</a>'+
+                        '</td>'+
+                        '</tr>'
+                        )
+                    }
+                }
+            }
+            else{
+                if(isnull){
+                    $(".automatic").empty();
+                    $('.prototype').show();
+                    isnull=false;
+                }
+            }
+        })
+
 		$(function() {
 			$('#btn-remove-cache').click(function() {
 				swal.queue([{
@@ -82,7 +151,7 @@
 						return new Promise(function(resolve) {
 							$.ajax({
 								type: "get",
-								url: "/router/channel/mapCacheExpire.do",
+								url: "/channel/mapCacheExpire.do",
 								success: function(data) {
 									var result = data;
 									if(result.code === 200) {

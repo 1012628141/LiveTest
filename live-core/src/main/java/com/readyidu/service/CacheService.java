@@ -14,7 +14,7 @@ public interface CacheService {
 
     public static final int CACHE_TIMEOUT = 300;
     public static final int CACHE_LONG_TIMEOUT = 3600;
-
+    public static final int CACHE_TWODAY_TIMEOUT = 172800;
     long zadd(String key, long score, String value);
 
     Tuple zpop(String key);

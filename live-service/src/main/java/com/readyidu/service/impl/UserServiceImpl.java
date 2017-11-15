@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 123 on 2017/8/9.
  */
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class    UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
     @Autowired

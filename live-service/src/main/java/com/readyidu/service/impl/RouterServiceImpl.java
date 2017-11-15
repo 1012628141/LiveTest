@@ -105,7 +105,7 @@ public class RouterServiceImpl implements RouterService {
         return routerMappingMapper.selectByPageNo(pageNo);
     }
     @Override
-    public  List<String> selectMenu(Integer number){
+    public  List<String> selectChannelById(Integer number){
         if(number==2) {
             return channelClassMapper.selectAllClassName();
         }
@@ -118,7 +118,7 @@ public class RouterServiceImpl implements RouterService {
     }
 
     @Override
-    public  List<Map> selectForm(String TvName,Integer form) {
+    public  List<Map> selectUrlByChannelOrClassName(String TvName,Integer form) {
         if(form==1){
             return channelMapper.selectUrlByClassName(TvName);
         }
@@ -128,7 +128,7 @@ public class RouterServiceImpl implements RouterService {
     }
 
     @Override
-    public  List<Map> selectColumn(String search){
+    public  List<Map> selectUrlByChannel(String search){
         return channelMapper.selectUrlByChannelName(search);
     }
     @Override

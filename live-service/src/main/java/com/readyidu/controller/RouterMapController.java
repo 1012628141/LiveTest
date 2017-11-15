@@ -87,6 +87,45 @@ public class RouterMapController {
         return "pages/deleteMapper";
     }
 
+    @RequestMapping(value = "select1Class.do",method=RequestMethod.GET,produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String select1class(HttpServletRequest request){
+        String number = request.getParameter("number");
+        List<String> list = new ArrayList<>();
+        list =routerService.selectChannelById(Integer.valueOf(number));
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
+    }
+
+    @RequestMapping(value = "select2Class.do",method=RequestMethod.GET,produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String select2class(HttpServletRequest request){
+        String form = request.getParameter("form");
+        String TvName = request.getParameter("TvName");
+        List<Map> list = new ArrayList<>();
+        list = routerService.selectUrlByChannelOrClassName(TvName,Integer.valueOf(form));
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
+    }
+    @RequestMapping(value = "selectColumn.do",method=RequestMethod.GET,produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String selectcolumn (HttpServletRequest request){
+        String search = request.getParameter("search");
+        List<Map> list = new ArrayList<>();
+        list = routerService.selectUrlByChannel(search);
+       return JsonResult.toString(NetworkCode.CODE_SUCCESS,list);
+    }
+    @RequestMapping(value = "deleteMoreUrl.do",method=RequestMethod.GET,produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String deleteUrl (HttpServletRequest request){
+        String form = request.getParameter("form");
+        form = form.substring(1,form.length()-1);
+        String[] forms = form.split(",");
+        for(String i : forms){
+                i=i.substring(1,i.length()-1);
+                System.out.printf(i);
+                channelSourceService.delectSourceByid(Integer.valueOf(i));
+            }
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+    }
 
     @RequestMapping(value = "addMapper.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody

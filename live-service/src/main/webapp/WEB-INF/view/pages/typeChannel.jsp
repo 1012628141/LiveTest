@@ -68,7 +68,7 @@
                     return new Promise(function(resolve) {
                         $.ajax({
                             type: "get",
-                            url: "/router/channel/mapCacheExpire.do",
+                            url: "/channel/mapCacheExpire.do",
                             success: function(data) {
                                 var result = data;
                                 if(result.code === 200) {
