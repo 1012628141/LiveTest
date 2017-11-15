@@ -33,12 +33,6 @@ public class RouterServiceImpl implements RouterService {
     @Resource(name = "cacheService")
     private CacheService cacheService;
 
-    @Resource(name="channelClassMapper")
-    private ChannelClassMapper channelClassMapper;
-
-    @Resource(name = "channelMapper")
-    private ChannelMapper  channelMapper;
-
 //    @Resource(name = "customerDictService")
 //    private CustomerDictService customerDictService;
 
@@ -52,8 +46,8 @@ public class RouterServiceImpl implements RouterService {
 
     @Override
     public int insert(RouterMapping record) {
-        List<SmartWord> wordList = new ArrayList<>();
-        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
+//        List<SmartWord> wordList = new ArrayList<>();
+//        wordList.add(new SmartWord(record.getKey(),WORD_NATURE));
 //        Map<String, Object> result = customerDictService.addWordToDict(ENGINE, wordList);
 //        if ((Boolean) result.get("success"))
 //        {
@@ -104,33 +98,33 @@ public class RouterServiceImpl implements RouterService {
     public List<RouterMapping> selectByPageNo(Integer pageNo) {
         return routerMappingMapper.selectByPageNo(pageNo);
     }
-    @Override
-    public  List<String> selectMenu(Integer number){
-        if(number==2) {
-            return channelClassMapper.selectAllClassName();
-        }
-        else if(number==3){
-            return channelMapper.selectCCTV();
-        }
-        else {
-            return channelMapper.selectSatellite();
-        }
-    }
-
-    @Override
-    public  List<Map> selectForm(String TvName,Integer form) {
-        if(form==1){
-            return channelMapper.selectUrlByClassName(TvName);
-        }
-        else{
-            return channelMapper.selectUrlByChannel(TvName);
-        }
-    }
-
-    @Override
-    public  List<Map> selectColumn(String search){
-        return channelMapper.selectUrlByChannelName(search);
-    }
+//    @Override
+//    public  List<String> selectMenu(Integer number){
+//        if(number==2) {
+//            return channelClassMapper.selectAllClassName();
+//        }
+//        else if(number==3){
+//            return channelMapper.selectCCTV();
+//        }
+//        else {
+//            return channelMapper.selectSatellite();
+//        }
+//    }
+//
+//    @Override
+//    public  List<Map> selectForm(String TvName,Integer form) {
+//        if(form==1){
+//            return channelMapper.selectUrlByClassName(TvName);
+//        }
+//        else{
+//            return channelMapper.selectUrlByChannel(TvName);
+//        }
+//    }
+//
+//    @Override
+//    public  List<Map> selectColumn(String search){
+//        return channelMapper.selectUrlByChannelName(search);
+//    }
     @Override
     public List<RouterMapping> selectExactByKey(String key) {
         return routerMappingMapper.selectExactByKey(key);

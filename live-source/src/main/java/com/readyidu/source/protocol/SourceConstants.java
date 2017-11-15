@@ -76,6 +76,11 @@ public class SourceConstants {
     public static final String SOURCE_LZD_SDWS = "source_lzd_SDWS";
     public static final String SOURCE_LZD_SZWS = "source_lzd_SZWS";
     public static final String SOURCE_LZD_ZJWS = "source_lzd_ZJWS";
+    //lunbo
+    public static final String SOURCE_LZD_ZXDP = "source_lzd_zxdp";
+    public static final String SOURCE_LZD_GNWJDDY = "source_lzd_gnwjddy";
+    public static final String SOURCE_LZD_DHDY = "source_lzd_dhdy";
+
     //IPTV
     //cctv
     public static final String SOURCE_IPTV_CCTV1 = "source_iptv_cctv1";

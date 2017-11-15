@@ -66,9 +66,9 @@ public class WebChannelController {
     @RequestMapping(value = "/modifySource.do",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
     @ResponseBody
     public String modifySource(HttpServletRequest request){
-        String channelId = request.getParameter("channelId");
+        String channelId = request.getParameter("channelId");//对应t_channel_source的ID
         String source = request.getParameter("source");
-        String sourceId = request.getParameter("sourceId");
+        String sourceId = request.getParameter("sourceId");//对应t_channel_source的parentid
         System.out.println(source);
         if(channelSourceService.modifySource(new ChannelSource(
                 Integer.valueOf(channelId),
@@ -82,7 +82,7 @@ public class WebChannelController {
     @RequestMapping(value = "/removeSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String removeSource(HttpServletRequest request) {
-        if (channelService.removeSource(Integer.valueOf(request.getParameter("channelId")), Integer.valueOf(request.getParameter("sourceId"))) != 0) {
+        if (channelService.removeSource(Integer.valueOf(request.getParameter("channelId")), Integer.valueOf(request.getParameter("sourceId"))) != 0) {//ssourceId为web端同一频道的源序号
             cacheService.del("LIVE_SERVICE_channel_channelList");
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
         } else {

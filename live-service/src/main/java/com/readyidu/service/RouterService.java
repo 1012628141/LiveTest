@@ -27,8 +27,8 @@ public interface RouterService {
      * @return
      */
     List<RouterMapping> selectExactByKey(String key);
-    List<String> selectMenu(Integer number);
-    List<Map>  selectForm(String TvName,Integer form);
-    List<Map>  selectColumn(String search);
+//    List<String> selectMenu(Integer number);
+//    List<Map>  selectForm(String TvName,Integer form);
+//    List<Map>  selectColumn(String search);
 
 }
