@@ -43,6 +43,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Resource(name = "ipDataService")
     IpDataService ipDataService;
 
+    @Resource(name = "cacheService")
+    CacheService cacheService;
+
+    private static final String CACHE_NAME = "channel_";
+
+
 
     @Override
     public String selectChannelByKey(String key) {
@@ -157,8 +163,14 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Override
     public String selectChannelInfoByKey(String key) {
         try {
-            List<Channel> channels = channelService.selectChannelByKey(key);
+//            String cacheKey = SERVICE_RBK + CACHE_NAME + "INFO_"+key;
             List<Object> channelInfo = new ArrayList<>();
+//            String channelObj = cacheService.get(cacheKey);
+//            if (!NullUtil.isNullObject(channelObj)){
+//                channelInfo = JSON.parseArray(channelObj,Object.class);
+//                return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo    );
+//            }
+            List<Channel> channels = channelService.selectChannelByKey(key);
             if (channels.size() == 0) {
                 return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
             }
@@ -170,6 +182,10 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 dataMap.put("playBill",playBill);
                 channelInfo.add(dataMap);
             }
+//            if (!NullUtil.isNullObject(channelInfo))
+//            {
+//                cacheService.set(cacheKey,JSON.toJSONString(channelInfo),CacheService.CACHE_TIMEOUT);
+//            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
