@@ -1,20 +1,16 @@
 package com.readyidu.service.impl;
 
-import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.model.Channel;
+import com.readyidu.model.ChannelSource;
 import com.readyidu.model.ChannelType;
 import com.readyidu.service.*;
 import com.readyidu.tools.TestBaseConfig;
-import com.readyidu.util.JsonResult;
-import com.readyidu.util.NullUtil;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
 import javax.annotation.Resource;
-import javax.swing.text.html.parser.TagElement;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +52,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     }
 
     /**
+     * 已弃用
      * Method: selectChannelByKey(String key)
      */
     @Test
@@ -78,11 +75,11 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     }
 
     /**
+     * 已弃用
      * Method: getSource(String sourceUri)
      */
     @Test
     public void testGetSource() throws Exception {
-//TODO: Test goes here... 
     }
 
     /**
@@ -121,7 +118,16 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
      */
     @Test
     public void testSelectChannelInfoByKey() throws Exception {
-//TODO: Test goes here... 
+        String key = "中央一套";
+        List<Channel> channels = channelService.selectChannelByKey(key);
+        assertTrue(!channels.isEmpty());
+        for (Channel channel : channels)
+        {
+            System.out.println(channel.getChannel());
+            Map<String, Object> playBill = channelService.channelPlaybill(channel.getId().toString());
+            System.out.println(playBill);
+            assertTrue(!playBill.isEmpty());
+        }
     }
 
     /**
@@ -129,7 +135,13 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
      */
     @Test
     public void testInsertReport() throws Exception {
-//TODO: Test goes here... 
+        String source = "http://stream.jinhua.com.cn/xwzh/app/live.m3u8";
+        ChannelSource channelDeath = channelSourceService.getDeathBySource(source);
+        if (channelDeath == null) {
+            if (channelSourceService.updateIsDelete(source) == 0) {
+                assertTrue(1==0);
+            }
+        }
     }
 
     /**
@@ -137,7 +149,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
      */
     @Test
     public void testCheckOperator() throws Exception {
-//TODO: Test goes here... 
+//TODO: Test goes here...
     }
 
 
