@@ -128,7 +128,7 @@ public void testChangeType() throws Exception {
 } 
 
 /** 
-* 
+* 已弃用
 * Method: removeChannel(HttpServletRequest request) 
 * 
 */ 
@@ -143,16 +143,16 @@ public void testRemoveChannel() throws Exception {
 */ 
 @Test
 public void testCheckChannel() throws Exception {
-//    String json = this.mockMvc
-//            .perform((get("/webChannel/checkSource.do")
-//                    .param("sourceUri","http://lms.csytv.com/Live/125/live/livestream.m3u8")
-//            ))
-//            .andExpect(status().isOk())
-//            .andReturn().getResponse().getContentAsString();
-//    System.out.println(json);
-//    JSONObject jsonObject = JSONObject.parseObject(json);
-//    String code = jsonObject.getString("code");
-//    assertTrue(code.equals("10000"));
+    String json = this.mockMvc
+            .perform((get("/webChannel/checkSource.do")
+                    .param("sourceUri","http://lms.csytv.com/Live/125/live/livestream.m3u8")
+            ))
+            .andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString();
+    System.out.println(json);
+    JSONObject jsonObject = JSONObject.parseObject(json);
+    String code = jsonObject.getString("code");
+    assertTrue(code.equals("200"));
 } 
 
 /** 

@@ -11,6 +11,7 @@ import com.readyidu.smartcore.hanlp.dto.SmartWord;
 import com.readyidu.smartcore.hanlp.service.CustomerDictService;
 import com.readyidu.util.NullUtil;
 import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,7 +34,7 @@ public class RouterServiceImpl implements RouterService {
     @Resource(name = "cacheService")
     private CacheService cacheService;
 
-    @Resource(name = "customerDictService")
+    @Autowired(required = false)
     private CustomerDictService customerDictService;
 
     private static String ENGINE = "tv";
