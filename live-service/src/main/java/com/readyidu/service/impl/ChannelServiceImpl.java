@@ -214,7 +214,6 @@ public class ChannelServiceImpl extends BaseService implements
         String cacheKey = SERVICE_RBK + CACHE_NAME + "movielList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
-        cacheObj = null;
         if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
@@ -241,24 +240,14 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public Map<String, Object> channelPlaybill(String channelId) {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "PLAYBILL"+channelId;
-        String programStr = cacheService.get(cacheKey);
         Map<String, Object> programMap =null;
         BillFromInfo billFromInfo = billFromMapper.
                 selectBillFromInfoByChannelId(
                         Integer.valueOf(channelId));
-        if (!NullUtil.isNullObject(programStr)) {
-            programMap = (Map<String, Object>) JSON.parse(programStr);
-        } else {
         if (!NullUtil.isNullObject(billFromInfo)){
             programMap = originManager.getPlaybill(
                     billFromInfo.getFromUrl(),
                     billFromInfo.getOrigin());
-            if (!NullUtil.isNullObject(programMap))
-            {
-                cacheService.set(cacheKey,JSON.toJSONString(programMap),600 );
-            }
-        }
         }
         return programMap;
     }
