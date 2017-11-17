@@ -5,7 +5,7 @@ import com.readyidu.model.Channel;
 
 /**
  * Created by 123 on 2017/9/30.
- * @version 1.1.3
+ * @version 1.1.5
  * 提供新方法 {@link #selectChannelInfoByKey},取消了其他依赖
  */
 public interface TvSourceService {
@@ -21,8 +21,16 @@ public interface TvSourceService {
      * 获取真实源地址
      * @param sourceUri 自定义的源地址("sourceUri://**")
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data: 对应真实源地址)
+     * @see #getSourceByIp(String, String)
      */
     String getSource(String sourceUri);
+    /**
+     * 获取真实源地址
+     * @param sourceUri 自定义的源地址("sourceUri://**")
+     * @param IpAdress 用户的ip
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data: 对应真实源地址)
+     */
+    String getSourceByIp(String sourceUri,String IpAdress);
     /**
      * 获取所有的频道源
      * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
