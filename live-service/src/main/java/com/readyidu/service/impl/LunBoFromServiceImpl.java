@@ -3,7 +3,7 @@ package com.readyidu.service.impl;
 import com.readyidu.model.LunBoBillFrom;
 import com.readyidu.playbill.model.Program;
 import com.readyidu.service.CacheService;
-import com.readyidu.service.lunBoFromService;
+import com.readyidu.service.LunBoFromService;
 import com.readyidu.mapper.LunBoFromMapper;
 import com.readyidu.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ import static com.readyidu.constants.NetworkCode.CODE_FAIL;
 import static com.readyidu.constants.NetworkCode.CODE_SUCCESS;
 import static com.readyidu.service.BaseService.SERVICE_RBK;
 
-@Service("lunBoFromService")
-public class lunBoFromServiceImpl implements lunBoFromService {
+@Service("LunBoFromService")
+public class LunBoFromServiceImpl implements LunBoFromService {
 
     @Autowired
     private LunBoFromMapper lunBoFromMapper;

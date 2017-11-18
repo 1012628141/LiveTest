@@ -1,6 +1,6 @@
 package com.readyidu.service;
 
-public interface lunBoFromService {
+public interface LunBoFromService {
 
     String getLunBoListByChannelId(Integer ChannelId, Integer fileName);
 }

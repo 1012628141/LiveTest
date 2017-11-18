@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSONReader;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
-import com.readyidu.service.lunBoFromService;
+import com.readyidu.service.LunBoFromService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
 import com.readyidu.service.TvSourceService;
@@ -34,7 +34,7 @@ public class ChannelController {
     private ChannelService channelService;
 
     @Autowired
-    private lunBoFromService lunBoFromService;
+    private LunBoFromService lunBoFromService;
 
 
 
