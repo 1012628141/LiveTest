@@ -4,13 +4,15 @@
 
     <select id="getFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.lunBoBillFrom">
         select
-        fileName,
         playTime,
-        movieName
+        movieName,
+        sort
         from
         t_lunbo_billfrom
         where
         channelId = #{ChannelId}
+        order by
+        sort
     </select>
 
 </mapper>

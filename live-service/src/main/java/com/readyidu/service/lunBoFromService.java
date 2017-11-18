@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface lunBoFromService {
 
-    String getLunBoListByChannelId(Integer ChannelId,String fileName);
+    String getLunBoListByChannelId(Integer ChannelId,Integer fileName);
 }
