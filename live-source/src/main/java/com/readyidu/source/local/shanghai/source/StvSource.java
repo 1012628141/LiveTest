@@ -64,7 +64,7 @@ public class StvSource extends Source {
         if (NullUtil.isNullObject(url) || NullUtil.isNullObject(paras)) {
             return null;
         }
-        return url + paras;
+        return url + paras +"-";
     }
 
 }
