@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONReader;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
 import com.readyidu.service.lunBoFromService;
@@ -116,6 +117,19 @@ public class ChannelController {
             Map<String, Object> playBill = channelService.channelPlaybill(channelId);
 
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+
+    @RequestMapping(value = "/lunboPlaybill.do", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public  String lunboPlaybill(HttpServletRequest request){
+        try{
+            String channelId = request.getParameter("channelId");
+            String sort = request.getParameter("sort");
+            String Map = lunBoFromService.getLunBoListByChannelId(Integer.valueOf(channelId),Integer.valueOf(sort));
+            return Map;
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }

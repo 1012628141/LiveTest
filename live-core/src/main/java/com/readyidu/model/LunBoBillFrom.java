@@ -1,6 +1,6 @@
 package com.readyidu.model;
 
-public class lunBoBillFrom {
+public class LunBoBillFrom {
     private int id;
     private String channelId;
     private String fileName;
