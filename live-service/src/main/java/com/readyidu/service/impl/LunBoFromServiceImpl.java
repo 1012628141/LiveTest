@@ -1,11 +1,13 @@
 package com.readyidu.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.readyidu.mapper.LunBoFromMapper;
 import com.readyidu.model.LunBoBillFrom;
 import com.readyidu.playbill.model.Program;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.LunBoFromService;
-import com.readyidu.mapper.LunBoFromMapper;
 import com.readyidu.util.JsonResult;
+import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,31 +18,36 @@ import static com.readyidu.constants.NetworkCode.CODE_FAIL;
 import static com.readyidu.constants.NetworkCode.CODE_SUCCESS;
 import static com.readyidu.service.BaseService.SERVICE_RBK;
 
-@Service("LunBoFromService")
+@Service("lunBoFromService")
 public class LunBoFromServiceImpl implements LunBoFromService {
 
     @Autowired
     private LunBoFromMapper lunBoFromMapper;
+
     @Autowired
     private CacheService cacheService;
 
     private static final String CACHE_NAME = "lunBo_";
 
+    private  long timeStamp = 0;
+
     @Override
-    public String getLunBoListByChannelId(Integer parentId,Integer sort) {
+    public String getLunBoListByChannelId(Integer channelId,Integer sort) {
         try{
-            String cacheKey = SERVICE_RBK + CACHE_NAME + "ChannelId" +parentId;
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "ChannelId" +channelId;
             List<LunBoBillFrom> list = null;
             String cacheObj = cacheService.get(cacheKey);
-            list = lunBoFromMapper.getFromByChannelId(parentId);
+            list = lunBoFromMapper.getFromByChannelId(channelId);
             Map<String,List> table = new HashMap<>();
             table = getProgramTable(list,sort);
+
             cacheService.set(cacheKey,JsonResult.toString(CODE_SUCCESS,table),CacheService.CACHE_TWODAY_TIMEOUT);
             return JsonResult.toString(CODE_SUCCESS,table);
         }catch(Exception e ){
             return JsonResult.toString(CODE_FAIL,"");
         }
     }
+
 
     private Map<String,List> getProgramTable(List<LunBoBillFrom> list, Integer sort) {
         List<Program> todayList = new ArrayList<Program>();
@@ -64,13 +71,14 @@ public class LunBoFromServiceImpl implements LunBoFromService {
             String MovieName = lunBoBillFrom.getMovieName();
             if (startId == i)
                 break;
+
             if (sortId==sort) {
-                    startId = i;
-                    start = true;
-                    todayList.add(SetMovie(MovieName,time));
-                    if(i==length-1)
-                        i=-1;
-                    continue;
+                startId = i;
+                start = true;
+                todayList.add(SetMovie(MovieName,time));
+                if(i==length-1)
+                    i=-1;
+                continue;
             }else if(start) {
                 time = time + (long) (playTime * 1000);
                 if(time>tomorrowTime){
@@ -84,9 +92,9 @@ public class LunBoFromServiceImpl implements LunBoFromService {
                             i = -1;
                         }
                     }
-                    }
-                    if(today){
-                        todayList.add(SetMovie(MovieName,time));
+                }
+                if(today){
+                    todayList.add(SetMovie(MovieName,time));
                     if (i == length - 1) {
                         i = -1;
                     }
@@ -113,4 +121,22 @@ public class LunBoFromServiceImpl implements LunBoFromService {
         cal.set(Calendar.SECOND, 0);
         return cal.getTime().getTime();
     }
+
+
+    @Override
+    public String getDemandListByChannelId(  ) {
+        List<LunBoBillFrom> list = null;
+
+        try{
+            list = lunBoFromMapper.selectFromByChannelId();
+            if(list != null && list.size() != 0){
+                return JsonResult.toString(CODE_SUCCESS,list);
+            }
+            return JsonResult.toString(CODE_SUCCESS,"");
+        }catch (Exception e){
+            return JsonResult.toString(CODE_FAIL,"");
+        }
+
+    }
+
 }

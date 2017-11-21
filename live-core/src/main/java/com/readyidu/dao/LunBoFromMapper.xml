@@ -15,4 +15,17 @@
         sort
     </select>
 
+
+    <select id="selectFromByChannelId" resultType="com.readyidu.model.LunBoBillFrom">
+        select
+        id ,
+        movieName,
+        parentId
+        from
+        t_lunbo_billfrom
+
+    </select>
+
+
+
 </mapper>

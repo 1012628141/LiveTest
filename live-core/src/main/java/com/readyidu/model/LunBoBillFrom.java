@@ -7,6 +7,24 @@ public class LunBoBillFrom {
     private int playtime;
     private String movieName;
     private  int sort;
+    private String source;
+    private Integer parentId;
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public int getSort() {
         return sort;
