@@ -34,7 +34,9 @@ public interface TvSourceService {
     /**
      * 获取所有的频道源
      * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
+     * @see #getChannelList
      */
+    @Deprecated
     String getChannelList();
     /**
      * 获取当前频道的当前节目单，包含当天以及第二天的节目，第二天节目可能为空
@@ -63,5 +65,13 @@ public interface TvSourceService {
      * @return json (code: 200 成功，400 参数错误,10000 服务出错)
      */
     String insertReport(String source);
+    /**
+     * 获取所有的频道源
+     * @param  platformName 平台名称
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
+     */
+    String getChannelList(String platformName);
+
+    String getSourceById(Integer sourceId);
 }
 

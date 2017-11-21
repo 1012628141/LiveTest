@@ -34,10 +34,8 @@ public class lunBoFromServiceImpl implements lunBoFromService {
         try{
             String cacheKey = SERVICE_RBK + CACHE_NAME + "ChannelId" + ChannelId;
             List<lunBoBillFrom> list = null;
-            String cacheObj = cacheService.get(cacheKey);
             list = lunBoFromMapper.getFromByChannelId(ChannelId);
-            Map<String,List<Map>> table = new HashMap<>();
-            table = getProgramTable(list,sort);
+            Map<String,List<Map>> table = getProgramTable(list,sort);
             cacheService.set(cacheKey,JsonResult.toString(CODE_SUCCESS,table),CacheService.CACHE_TWODAY_TIMEOUT);
             return JsonResult.toString(CODE_SUCCESS,"");
         }catch(Exception e ){
@@ -73,7 +71,7 @@ public class lunBoFromServiceImpl implements lunBoFromService {
             String MovieName = list.get(i).getMovieName();
             if (startId == i)
                 break;
-            Map<String, String> map = new HashMap<String, String>();
+            Map<String, String> map = new HashMap();
             if (sortId==sort) {
                     startId = i;
                     start = true;

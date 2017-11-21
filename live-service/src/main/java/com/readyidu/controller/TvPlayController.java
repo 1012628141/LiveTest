@@ -54,6 +54,6 @@ public class TvPlayController {
     @ResponseBody
     @RequestMapping(value = "tvsource",produces = "application/json; charset=utf-8")
     public String tvsource(String source){
-        return  tvSourceService.selectChannelInfoByKey("中央一套");
+        return  tvSourceService.getChannelList();
     }
 }
