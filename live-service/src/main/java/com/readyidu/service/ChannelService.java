@@ -24,5 +24,6 @@ public interface ChannelService {
     public List<Channel> selectAllNew();
     public List<Channel> selectHotChannel();
     public List<Map> getAllChannel();
+    public List<Channel> getMovieToSourceNotTv();
 
 }

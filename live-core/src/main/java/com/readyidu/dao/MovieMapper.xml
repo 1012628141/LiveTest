@@ -8,6 +8,13 @@
         t1.country_name as countryName,
         t1.subCategoryId as subCategoryId
     </sql>
+    <sql id="Base_Another_List">
+        t1.id as id,
+        t1.title as title,
+        t1.sourceId as sourceId,
+        t1.country_name as countryName,
+        t1.subCategoryId as subCategoryId
+    </sql>
     <select id="selectAllMovie" resultType="com.readyidu.model.Movie">
         select
         <include refid="Base_Column_List"/>
@@ -16,8 +23,9 @@
     </select>
     <select id="selectAllTrailer" resultType="com.readyidu.model.Movie">
         select
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Another_List"/>
         from t_movie_source t1
         where istrailer = 0
     </select>
+
 </mapper>

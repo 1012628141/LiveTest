@@ -225,7 +225,36 @@ public class ChannelServiceImpl extends BaseService implements
                 ChannelSource channelSource = new ChannelSource();
                 channel.setId(movie.getId() + 10000);
                 channel.setChannel(movie.getTitle());
+
                 channelSource.setSource("sourceUri://movie/tianyi/" + movie.getContid());
+                List<ChannelSource> sources = new ArrayList<>();
+                sources.add(channelSource);
+                channel.setSources(sources);
+                channel.setTypeid(movie.getSubCategoryId());
+                channelList.add(channel);
+            }
+            // 信息缓存5分钟
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+    @Override
+    public List<Channel> getMovieToSourceNotTv() {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "movielListNotTv";
+        String cacheObj = cacheService.get(cacheKey);
+        List<Channel> channelList = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            List<Movie> movieList = movieService.selectAllMovie();
+            channelList = new ArrayList<>();
+            for (Movie movie: movieList) {
+                Channel channel = new Channel();
+                ChannelSource channelSource = new ChannelSource();
+                channel.setId(movie.getId() + 10000);
+                channel.setChannel(movie.getTitle());
+                channel.setSourceId(movie.getSourceId());
                 List<ChannelSource> sources = new ArrayList<>();
                 sources.add(channelSource);
                 channel.setSources(sources);

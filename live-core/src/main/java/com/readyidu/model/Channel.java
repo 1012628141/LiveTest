@@ -18,10 +18,21 @@ public class Channel {
     private String source;
 
     private String typeid;
+
     /**
      * 频道源
      */
     private List<ChannelSource> sources;
+
+    private Integer sourceId;
+
+    public Integer getSourceId() {
+        return sourceId;
+    }
+
+    public void setSourceId(Integer sourceId) {
+        this.sourceId = sourceId;
+    }
 
     public Channel(){
 
