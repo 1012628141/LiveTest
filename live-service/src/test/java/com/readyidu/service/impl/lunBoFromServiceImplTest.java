@@ -115,8 +115,7 @@ public class lunBoFromServiceImplTest extends TestBaseConfig {
 
     @Test
     public void getDemandListByChannelId() throws Exception {
-        int  ChannelId = 5050;
-        List<LunBoBillFrom>   list = lunBoFromMapper.selectFromByChannelId(ChannelId);
+        List<LunBoBillFrom>   list = lunBoFromMapper.selectFromByChannelId();
 
         System.out.println(list);
         assertTrue(!list.isEmpty());

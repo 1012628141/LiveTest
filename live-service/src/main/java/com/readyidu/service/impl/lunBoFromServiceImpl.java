@@ -124,11 +124,11 @@ public class lunBoFromServiceImpl implements lunBoFromService {
 
 
     @Override
-    public String getDemandListByChannelId(Integer ChannelId  ) {
+    public String getDemandListByChannelId(  ) {
         List<LunBoBillFrom> list = null;
 
         try{
-            list = lunBoFromMapper.selectFromByChannelId(ChannelId);
+            list = lunBoFromMapper.selectFromByChannelId();
             if(list != null && list.size() != 0){
                 return JsonResult.toString(CODE_SUCCESS,list);
             }

@@ -213,6 +213,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
+    @Override
+    public String getChannelList(String platformName) {
+        return null;
+    }
+
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
         try {
