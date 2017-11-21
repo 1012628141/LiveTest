@@ -90,6 +90,19 @@ public class WebChannelController {
         }
     }
 
+    @RequestMapping(value = "/reinstateSource.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String reinstateSource(HttpServletRequest request) {
+        if (channelService.reinstateSource(Integer.valueOf(request.getParameter("channelId")), Integer.valueOf(request.getParameter("sourceId"))) != 0) {
+            cacheService.del("LIVE_SERVICE_channel_channelList");
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+        } else {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+
+
     @RequestMapping(value = "/changeType.do", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String changeType(HttpServletRequest request) {

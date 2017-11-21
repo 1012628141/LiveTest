@@ -1,5 +1,7 @@
 package com.readyidu.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.readyidu.mapper.LunBoFromMapper;
 import com.readyidu.model.LunBoBillFrom;
 import com.readyidu.service.CacheService;
@@ -26,12 +28,16 @@ public class lunBoFromServiceImplTest extends TestBaseConfig {
     @Test
     public void getLunBoListByChannelId() throws Exception {
         int  ChannelId = 5050;
-        int  sort = 1;
+        int  sort = 4;
         List<LunBoBillFrom> list = null;
-        //Map<String,List<Map>> table = new HashMap<>();
-        //table = getProgramTable(list,sort);
-        System.out.println(list);
-        assertTrue(!list.isEmpty());
+        list = lunBoFromMapper.getFromByChannelId(ChannelId);
+
+
+
+        Map<String,List<Map>> table = new HashMap<>();
+        table = getProgramTable(list,sort);
+        System.out.println(table);
+        assertTrue(!table.isEmpty());
     }
 
 
@@ -106,4 +112,14 @@ public class lunBoFromServiceImplTest extends TestBaseConfig {
         programTable.put("todayProgram",todayMap);
         return programTable;
     }
+
+    @Test
+    public void getDemandListByChannelId() throws Exception {
+        List<LunBoBillFrom>   list = lunBoFromMapper.selectFromByChannelId();
+
+        System.out.println(list);
+        assertTrue(!list.isEmpty());
+
+    }
+
 }
