@@ -10,7 +10,7 @@
         from
         t_lunbo_billfrom
         where
-        channelId = #{ChannelId}
+        parentId = #{parentId}
         order by
         sort
     </select>

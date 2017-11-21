@@ -5,5 +5,5 @@ import com.readyidu.model.LunBoBillFrom;
 import java.util.List;
 
 public interface LunBoFromMapper {
-    List<LunBoBillFrom> getFromByChannelId(Integer ChannelId);
+    List<LunBoBillFrom> getFromByChannelId(Integer parentId);
 }

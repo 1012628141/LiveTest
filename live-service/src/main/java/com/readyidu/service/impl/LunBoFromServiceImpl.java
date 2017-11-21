@@ -27,12 +27,12 @@ public class LunBoFromServiceImpl implements LunBoFromService {
     private static final String CACHE_NAME = "lunBo_";
 
     @Override
-    public String getLunBoListByChannelId(Integer ChannelId,Integer sort) {
+    public String getLunBoListByChannelId(Integer parentId,Integer sort) {
         try{
-            String cacheKey = SERVICE_RBK + CACHE_NAME + "ChannelId" + ChannelId;
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "ChannelId" +parentId;
             List<LunBoBillFrom> list = null;
             String cacheObj = cacheService.get(cacheKey);
-            list = lunBoFromMapper.getFromByChannelId(ChannelId);
+            list = lunBoFromMapper.getFromByChannelId(parentId);
             Map<String,List> table = new HashMap<>();
             table = getProgramTable(list,sort);
             cacheService.set(cacheKey,JsonResult.toString(CODE_SUCCESS,table),CacheService.CACHE_TWODAY_TIMEOUT);
@@ -67,7 +67,7 @@ public class LunBoFromServiceImpl implements LunBoFromService {
             if (sortId==sort) {
                     startId = i;
                     start = true;
-                    todayList.add(SetProgram(MovieName,time));
+                    todayList.add(SetMovie(MovieName,time));
                     if(i==length-1)
                         i=-1;
                     continue;
@@ -77,16 +77,16 @@ public class LunBoFromServiceImpl implements LunBoFromService {
                     if(!tomorrow) {
                         tomorrow=true;
                         today=false;
-                        tomorrowList.add(SetProgram(MovieName,time));
+                        tomorrowList.add(SetMovie(MovieName,time));
                     }else if(tomorrow){
-                        tomorrowList.add(SetProgram(MovieName,time));
+                        tomorrowList.add(SetMovie(MovieName,time));
                         if (i == length - 1) {
                             i = -1;
                         }
                     }
                     }
                     if(today){
-                        todayList.add(SetProgram(MovieName,time));
+                        todayList.add(SetMovie(MovieName,time));
                     if (i == length - 1) {
                         i = -1;
                     }
@@ -98,7 +98,7 @@ public class LunBoFromServiceImpl implements LunBoFromService {
         return programTable;
     }
 
-    private Program SetProgram(String MovieName,long time){
+    private Program SetMovie(String MovieName,long time){
         String ShowTime = new SimpleDateFormat("HH:mm").format(new Date(time));
         Program program = new Program(MovieName,ShowTime);
         return program;
