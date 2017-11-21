@@ -28,17 +28,11 @@ public class lunBoFromServiceImplTest extends TestBaseConfig {
     @Test
     public void getLunBoListByChannelId() throws Exception {
         int  ChannelId = 5050;
-        int  sort = 1;
+        int  sort = 4;
         List<LunBoBillFrom> list = null;
         list = lunBoFromMapper.getFromByChannelId(ChannelId);
 
-        if(list != null && list.size() != 0){
-            for (LunBoBillFrom bill : list ){
-                JSONObject jsonObj = (JSONObject) JSON.toJSON(bill);
-                System.out.println(jsonObj);
-                return;
-            }
-        }
+
 
         Map<String,List<Map>> table = new HashMap<>();
         table = getProgramTable(list,sort);
