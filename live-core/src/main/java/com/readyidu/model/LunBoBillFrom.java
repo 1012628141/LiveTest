@@ -8,6 +8,15 @@ public class LunBoBillFrom {
     private String movieName;
     private  int sort;
     private String source;
+    private Integer parentId;
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
+    }
 
     public String getSource() {
         return source;

@@ -1,14 +1,21 @@
 package com.readyidu.service.impl; 
 
-import org.junit.Test; 
+import com.readyidu.model.LunBoBillFrom;
+import com.readyidu.util.JsonResult;
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.util.List;
+
+import static com.readyidu.constants.NetworkCode.CODE_FAIL;
+import static com.readyidu.constants.NetworkCode.CODE_SUCCESS;
 
 /** 
 * lunBoFromServiceImpl Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>十一月 21, 2017</pre> 
+* @since <pre>十一锟斤拷 21, 2017</pre> 
 * @version 1.0 
 */ 
 public class lunBoFromServiceImplTest { 
@@ -100,6 +107,7 @@ try {
 } catch(InvocationTargetException e) { 
 } 
 */ 
-} 
+}
+
 
 } 
