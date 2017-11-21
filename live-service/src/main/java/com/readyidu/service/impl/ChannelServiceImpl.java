@@ -197,6 +197,14 @@ public class ChannelServiceImpl extends BaseService implements
 //
 //        return 0;
     }
+    @Override
+    public int reinstateSource(Integer channelId, Integer sourceId) {
+
+        return channelSourceMapper.updateSourceDeleteFlag(channelId,sourceId);
+
+    }
+
+
 
     @Override
     public int changeType(Integer channelId, String typeId) {

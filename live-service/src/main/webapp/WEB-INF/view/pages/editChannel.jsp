@@ -181,8 +181,9 @@
 														<c:forEach items="${ sources }" var="s" varStatus="loop">
 															<c:if test="${not empty s }">
 																<c:if test="${s.isDelete==1}">
-																	<tr data-sid="${loop.index}" data-id="${channel.id}">
-																		<td class="text-center">${loop.index + 1}</td>
+																	<%--<tr data-sid="${loop.index}" data-id="${channel.id}">--%>
+																	<tr data-sid="${loop.index}" data-id="${channel.id}" data-sourceid="${s.id}">
+																	<td class="text-center">${loop.index + 1}</td>
 																		<td>
 																			<a href="${fn:toLowerCase(s.source)}" title="${s.source}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
 																				<!-- ${fn:length(s.source)>50} -->
@@ -204,6 +205,9 @@
 																			<button type="button" rel="tooltip" class="btn btn-danger btn-remove-source">
                                         <i class="material-icons">close</i>
                                     </button>
+																			<button type="button" rel="tooltip" class="btn btn-success btn-reinstate-source">
+																				<i class="material-icons">恢复源</i>
+																			</button>
 																		</td>
 																	</tr>
 																</c:if>
@@ -316,8 +320,55 @@
 
 		$(document).ready(function() {
 
+            $('.btn-reinstate-source').on('click', function() {
+                var id = $(this).parent().parent().data("id");
+                var sid = $(this).parent().parent().data("sourceid");
+                // Remove this id source, with alert confirm.
+                swal.queue([{
+                    title: '确认恢复 ？',
+                    confirmButtonText: '确认',
+                    cancelButtonText: '取消',
+                    cancelButtonClass: 'btn btn-default',
+                    text: '表示恢复当前源的使用',
+                    type: 'warning',
+                    showCancelButton: true,
+                    showLoaderOnConfirm: true,
+                    allowOutsideClick: false,
+                    preConfirm: function() {
+                        return new Promise(function(resolve) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/webChannel/reinstateSource.do",
+                                data: {
+                                    "channelId": id,
+                                    "sourceId": sid
+                                },
+                                success: function(data) {
+                                    var result = data;
+                                    console.log(data)
+                                    if(result.code === 200) {
+                                        swal.insertQueueStep("恢复成功 !");
+                                        window.location.reload();
+                                    } else {
+                                        swal.insertQueueStep("恢复失败！");
+                                    }
+                                    resolve()
+                                },
+                                error: function() {
+                                    swal.insertQueueStep("恢复失败！");
+                                    resolve()
+                                }
+                            });
+                        });
+                    }
+                }]);
+            });
 
-			// Bind actions
+
+
+
+
+            // Bind actions
 			$('.btn-remove-source').on('click', function() {
 				var id = $(this).parent().parent().data("id");
 				var sid = $(this).parent().parent().data("sid");
