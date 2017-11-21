@@ -122,7 +122,7 @@ public class lunBoFromServiceImpl implements lunBoFromService {
 
 
     @Override
-    public String getDemandListByChannelId(Integer ChannelId) {
+    public String getDemandListByChannelId(Integer ChannelId  ) {
         List<LunBoBillFrom> list = null;
 
         try{
