@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
+import com.readyidu.service.lunBoFromService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
 import com.readyidu.service.TvSourceService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.util.JsonResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,10 @@ public class ChannelController {
 
     @Resource(name = "channelService")
     private ChannelService channelService;
+
+    @Autowired
+    private lunBoFromService lunBoFromService;
+
 
 
     @RequestMapping(value = "/channel.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
