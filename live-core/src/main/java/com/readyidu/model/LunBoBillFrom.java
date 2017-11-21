@@ -1,12 +1,21 @@
 package com.readyidu.model;
 
-public class lunBoBillFrom {
+public class LunBoBillFrom {
     private int id;
     private String channelId;
     private String fileName;
     private int playtime;
     private String movieName;
     private  int sort;
+    private String source;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public int getSort() {
         return sort;
