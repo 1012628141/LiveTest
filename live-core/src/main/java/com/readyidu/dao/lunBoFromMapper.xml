@@ -16,18 +16,14 @@
     </select>
 
 
-    <select id="selectFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
+    <select id="selectFromByChannelId" resultType="com.readyidu.model.LunBoBillFrom">
         select
-        id,
+        id ,
         movieName,
-        source ,
-        parent
+        parentId
         from
         t_lunbo_billfrom
-        where
-        channelId = #{ChannelId}
-        order by
-        sort
+
     </select>
 
 

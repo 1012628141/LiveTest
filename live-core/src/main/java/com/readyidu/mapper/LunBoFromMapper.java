@@ -9,5 +9,5 @@ import java.util.List;
 public interface LunBoFromMapper {
     List<LunBoBillFrom> getFromByChannelId(Integer ChannelId);
 
-    List<LunBoBillFrom> selectFromByChannelId(Integer ChannelId);
+    List<LunBoBillFrom> selectFromByChannelId();
 }

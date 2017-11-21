@@ -8,5 +8,5 @@ public interface lunBoFromService {
 
     String getLunBoListByChannelId(Integer ChannelId,Integer fileName);
 
-    String getDemandListByChannelId(Integer ChannelId);
+    String getDemandListByChannelId( );
 }
