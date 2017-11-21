@@ -80,8 +80,11 @@
 											</div>
 										</div>
 										<div class="card-footer">
+										    <div style="float: left; padding-bottom: 10px;">
+										        <input id="btn-remove-cache" type="button" value="清除客户端缓存" class="btn btn-danger btn-submit-source" />
+										    </div>
 											<div style="float: right; padding-bottom: 10px;">
-												<input id="AllOptions" type="button" value="全选" class="btn btn-primary btn-submit-source" />
+												<input id="AllOptions" type="button" value="全选" class="btn btn-info btn-submit-source" />
 												<input id="deleted" type="button" value="提交删除" class="btn btn-primary btn-submit-source" />
 											</div>
 										</div>
@@ -161,7 +164,7 @@
 			$.get(url, args, function(data) {
 			    var dataList = data.data
 				if(data != null && dataList.length > 0) {
-					for(var i = 0; i < dataList.length+1; i++) {
+					for(i = 0,length=dataList.length+1; i < length; i++) {
 					    if(i==0){
 					        selobj.options[i] = new Option("详细分类","")
 					    }
@@ -194,7 +197,7 @@
 			$.get(url, args, function(data) {
 			    var dataMap = data.data
 			    if(data != null && dataMap.length != 0) {
-				for(var i = 0; i < dataMap.length; i++) {
+				for(i = 0,length = dataMap.length ; i < length; i++) {
 						if(dataMap[i].source.length > 100) {
 							var sources = dataMap[i].source.substring(0, 100) + "....";
 						} else {
@@ -233,7 +236,7 @@
 			$.get(url, args, function(data) {
 			    var listMap = data.data
 				if(data != null && listMap.length != 0) {
-					for(var i = 0; i < listMap.length; i++) {
+					for(i = 0,length=listMap.length; i < length; i++) {
 						if(listMap[i].source.length > 100) {
 							var sources = listMap[i].source.substring(0, 100) + "....";
 						} else {
@@ -303,7 +306,7 @@
 						return new Promise(function(resolve) {
 							$.ajax({
 								type: "get",
-								url:"/router/channel/deleteMoreUrl.do",
+								url:"/channel/deleteMoreUrl.do",
 								data:{"form":JSON.stringify(form)  },
 								success: function(data) {
 									var result = data;
@@ -371,4 +374,54 @@
 				'</tr>'
 			)
 		}
+		$('#btn-remove-cache').click(function() {
+            swal.queue([{
+                title: '确认清除客户端缓存 ？',
+                confirmButtonClass: 'btn btn-warning',
+                confirmButtonText: '确认',
+                buttonsStyling: false,
+                showLoaderOnConfirm: true,
+                cancelButtonText: '取消',
+                cancelButtonClass: 'btn btn-default',
+                showCancelButton: true,
+                allowOutsideClick: false,
+                preConfirm: function() {
+                    return new Promise(function(resolve) {
+                        $.ajax({
+                            type: "get",
+                            url: "/router/channel/mapCacheExpire.do",
+                            success: function(data) {
+                                var result = data;
+                                if(result.code === 200) {
+                                    swal({
+                                        title: "success!",
+                                        text: "推送发送成功！",
+                                        type: "success",
+                                        buttonsStyling: true,
+                                        confirmButtonClass: "btn btn-info"
+                                    })
+                                } else {
+                                    swal({
+                                        title: "error!",
+                                        text: "推送发送失败！",
+                                        type: "error",
+                                        buttonsStyling: true,
+                                        confirmButtonClass: "btn btn-info"
+                                    })
+                                }
+                            },
+                            error: function() {
+                                swal({
+                                    title: "error!",
+                                    text: "推送发送失败！",
+                                    type: "error",
+                                    buttonsStyling: true,
+                                    confirmButtonClass: "btn btn-info"
+                                })
+                            }
+                        })
+                    })
+                }
+            }])
+        });
 	</script>

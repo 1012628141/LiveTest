@@ -52,7 +52,7 @@ public interface TvSourceService {
      * @param key 语音的频道识别结果
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:{<br>
      *    channel:{@link Channel},<br>
-     *    playBill:{tommorrowProgram:[{@link com.readyidu.model.Program},<br>todayProgram: 同上]}
+     *    playBill:{tommorrowProgram:[{@link //com.readyidu.model.Program},<br>todayProgram: 同上]}
      * })
      */
     String selectChannelInfoByKey(String key);

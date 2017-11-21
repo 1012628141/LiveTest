@@ -163,13 +163,13 @@ public class ChannelServiceImpl extends BaseService implements
     @Override
     public int removeSource(Integer channelId, Integer sourceId) {
 //        Channel channel = channelMapper.selectByPrimaryKey(channelId);
-        List<ChannelSource> channleList = channelSourceMapper.selectSourceByParentId(channelId);
+        List<ChannelSource> channelList = channelSourceMapper.selectSourceByParentId(channelId);
         int deleteId=0;
-        if (sourceId<channleList.size()){
-            if (channleList.size()!=0){
-                for (int i = 0; i < channleList.size(); i++) {
+        if (sourceId<channelList.size()){
+            if (channelList.size()!=0){
+                for (int i = 0; i < channelList.size(); i++) {
                     if (i==sourceId){
-                        deleteId=channleList.get(i).getId();
+                        deleteId=channelList.get(i).getId();
                     }
                 }
             }
@@ -241,7 +241,7 @@ public class ChannelServiceImpl extends BaseService implements
                 channelList.add(channel);
             }
             // 信息缓存5分钟
-            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);;
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -337,4 +337,10 @@ public class ChannelServiceImpl extends BaseService implements
     public int removeChannel(Integer channelId) {
         return channelMapper.deleteByPrimaryKey(channelId);
     }
+
+    @Override
+    public List<Map> getAllChannel(){
+        return channelMapper.selectAllChannel();
+    }
+
 }
