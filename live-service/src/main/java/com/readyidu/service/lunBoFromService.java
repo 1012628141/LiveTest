@@ -1,10 +1,12 @@
 package com.readyidu.service;
 
-import com.readyidu.model.lunBoBillFrom;
 
 import java.util.List;
+import java.util.Map;
 
 public interface lunBoFromService {
 
     String getLunBoListByChannelId(Integer ChannelId,Integer fileName);
+
+    String getDemandListByChannelId(Integer ChannelId);
 }
