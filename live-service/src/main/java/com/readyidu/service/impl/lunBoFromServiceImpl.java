@@ -40,6 +40,7 @@ public class lunBoFromServiceImpl implements lunBoFromService {
             list = lunBoFromMapper.getFromByChannelId(channelId);
             Map<String,List> table = new HashMap<>();
             table = getProgramTable(list,sort);
+
             cacheService.set(cacheKey,JsonResult.toString(CODE_SUCCESS,table),CacheService.CACHE_TWODAY_TIMEOUT);
             return JsonResult.toString(CODE_SUCCESS,table);
         }catch(Exception e ){
@@ -70,6 +71,7 @@ public class lunBoFromServiceImpl implements lunBoFromService {
             String MovieName = lunBoBillFrom.getMovieName();
             if (startId == i)
                 break;
+
             if (sortId==sort) {
                 startId = i;
                 start = true;

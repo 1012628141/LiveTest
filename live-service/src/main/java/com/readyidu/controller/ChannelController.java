@@ -120,4 +120,15 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
+    @RequestMapping(value = "/lunboPlaybill.do", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public  String lunboPlaybill(HttpServletRequest request){
+        try{
+            String channelId = request.getParameter("channelId");
+            String sort = request.getParameter("sort");
+            return lunBoFromService.getLunBoListByChannelId(Integer.valueOf(channelId), Integer.valueOf(sort));
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
 }
