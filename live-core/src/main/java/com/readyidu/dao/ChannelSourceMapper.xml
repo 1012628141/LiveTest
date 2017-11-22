@@ -66,4 +66,10 @@
     from t_channel_source
     where source=#{source} and is_delete !=0
   </select>
+  <select id="selectSourceById" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select
+    source
+    from t_channel_source
+    where id = #{id}
+  </select>
 </mapper>

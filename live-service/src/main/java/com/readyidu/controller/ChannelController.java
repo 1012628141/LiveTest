@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
-import com.readyidu.service.lunBoFromService;
+import com.readyidu.service.LunBoFromService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
 import com.readyidu.service.TvSourceService;
@@ -33,7 +33,7 @@ public class ChannelController {
     private ChannelService channelService;
 
     @Autowired
-    private lunBoFromService lunBoFromService;
+    private LunBoFromService lunBoFromService;
 
 
 
@@ -122,11 +122,12 @@ public class ChannelController {
     }
     @RequestMapping(value = "/lunboPlaybill.do", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public  String lunboPlaybill(HttpServletRequest request){
+    public  String lunboPlaybill(Integer channelId){
         try{
-            String channelId = request.getParameter("channelId");
-            String sort = request.getParameter("sort");
-            return lunBoFromService.getLunBoListByChannelId(Integer.valueOf(channelId), Integer.valueOf(sort));
+            if (lunBoFromService.refreshChannelBill(channelId)){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }

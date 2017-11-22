@@ -16,6 +16,12 @@
         ,t1.typeid as typeid
         ,t2.source as source
     </sql>
+    <sql id="third_Column_List">
+        t1.id as id
+        ,t1.channel as channel
+        ,t1.typeid as typeid
+        ,t2.sourceid as sourceid
+    </sql>
 
     <!--<select id="selectAll" resultType="com.readyidu.model.Channel" >-->
     <!--select-->
@@ -28,6 +34,17 @@
         <result property="typeid" column="typeid"/>
         <collection property="sources" ofType="com.readyidu.model.ChannelSource">
             <result property="source"  column="source" />
+            <result property="resolve" column="resolve" />
+            <result property="responseTime" column="responseTime" />
+            <result column="isSelf" property="isSelf"/>
+        </collection>
+    </resultMap>
+    <resultMap id="channelInfoNew" type="com.readyidu.model.Channel">
+        <id property = "id" column="id"/>
+        <result property="channel" column="channel"/>
+        <result property="typeid" column="typeid"/>
+        <collection property="sources" ofType="com.readyidu.model.ChannelSource">
+            <result property="sourceId"  column="sourceId" />
             <result property="resolve" column="resolve" />
             <result property="responseTime" column="responseTime" />
             <result column="isSelf" property="isSelf"/>
@@ -60,6 +77,27 @@
         (select
         parentid
         ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
+        ) t2
+        on t1.id=t2.parentid
+        order by t1.id,t2.sort
+    </select>
+    <select id="selectWithoutSource" resultMap="channelInfoNew">
+        select
+        <include refid="third_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
+        from t_channel t1
+        left join
+        (select
+        parentid
+        ,id as sourceId
         ,source_px as resolve
         ,response_time as responseTime
         ,is_self as isSelf

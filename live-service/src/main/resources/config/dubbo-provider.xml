@@ -10,7 +10,7 @@
     <dubbo:registry address="${dubbo.registry.address}"/>
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <!--<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" host="${dubbo.protocol.host}"/>-->
-    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" iothreads="5"/>
     <!--<dubbo:service interface="com.readyidu.service.ApiBaiduKeyService" ref="apiBaiduKeyService" version="1.0.0"-->
                    <!--timeout="5000"/>-->
     <!--<bean id="apiBaiduKeyService" class="com.readyidu.service.impl.ApiBaiduKeyServiceImpl"/>-->

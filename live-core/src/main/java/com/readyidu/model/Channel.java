@@ -18,6 +18,8 @@ public class Channel {
     private String source;
 
     private String typeid;
+
+    private Integer parentid;
     /**
      * 频道源
      */
@@ -79,4 +81,11 @@ public class Channel {
         this.typeid = typeid == null ? null : typeid.trim();
     }
 
+    public Integer getParentid() {
+        return parentid;
+    }
+
+    public void setParentid(Integer parentid) {
+        this.parentid = parentid;
+    }
 }
