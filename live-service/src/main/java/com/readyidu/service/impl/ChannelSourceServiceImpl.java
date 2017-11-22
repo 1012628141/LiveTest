@@ -62,4 +62,9 @@ public class ChannelSourceServiceImpl extends BaseService implements ChannelSour
     public List<ChannelSource> selectSourceByParentId(Integer id) {
         cacheService.del(SERVICE_RBK + "channel_" + "channelList");
         return channelSourceMapper.selectSourceByParentId(id);}
+
+    @Override
+    public String selectSourceById(Integer id) {
+        return channelSourceMapper.selectSourceById(id);
+    }
 }

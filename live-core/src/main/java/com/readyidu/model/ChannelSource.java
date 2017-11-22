@@ -6,7 +6,8 @@ import com.alibaba.fastjson.annotation.JSONField;
  * Created by 123 on 2017/7/26.
  */
 public class ChannelSource {
-    private Integer id;
+    @JSONField(name="id")
+    private Integer sourceId;
     private Integer parentid;
     private String source;
     @JSONField(serialize=false)
@@ -24,17 +25,17 @@ public class ChannelSource {
         this.source = source;
     }
     public ChannelSource(int id,int parentid, String source) {
-        this.id = id;
+        this.sourceId = id;
         this.parentid = parentid;
         this.source = source;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getSourceId() {
+        return sourceId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSourceId(Integer sourceId) {
+        this.sourceId = sourceId;
     }
 
     public Integer getParentid() {

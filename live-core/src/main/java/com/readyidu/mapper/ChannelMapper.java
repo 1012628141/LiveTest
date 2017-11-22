@@ -28,4 +28,14 @@ public interface ChannelMapper {
     public List<Channel> selectHotChannel();
     List<Channel> selectChannelByKey(String key);
 
+    List<String> selectCCTV();
+    List<String> selectSatellite();
+    List<Channel> selectWithoutSource();
+
+    //由于以下方法均是页面加载完成后使用的返回POJO页面无法识别所以使用Map对象返回
+    List<Map> selectUrlByClassName(String TvName);
+    List<Map> selectUrlByChannel(String TvName);
+    List<Map> selectUrlByChannelName(String search);
+    List<Map> selectAllChannel();
+
 }

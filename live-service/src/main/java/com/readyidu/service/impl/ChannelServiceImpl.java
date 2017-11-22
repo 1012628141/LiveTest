@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.readyidu.mapper.BillFromMapper;
-import com.readyidu.mapper.ChannelSourceMapper;
+import com.readyidu.mapper.*;
 import com.readyidu.model.*;
 import com.readyidu.playbill.base.OriginManager;
 import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
-import com.readyidu.mapper.ChannelMapper;
-import com.readyidu.mapper.ChannelTypeMapper;
 import com.readyidu.source.base.LiveManager;
 import com.readyidu.util.NullUtil;
+import com.readyidu.util.PageUtil;
 import com.readyidu.util.SourceCheck;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import org.springframework.stereotype.Service;
@@ -52,6 +50,9 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "liveManager")
     private LiveManager liveManager;
+
+    @Resource(name = "lunBoFromService")
+    private LunBoFromService lunBoFromService;
 
     private static final String CACHE_NAME = "channel_";
 
@@ -163,13 +164,13 @@ public class ChannelServiceImpl extends BaseService implements
     @Override
     public int removeSource(Integer channelId, Integer sourceId) {
 //        Channel channel = channelMapper.selectByPrimaryKey(channelId);
-        List<ChannelSource> channleList = channelSourceMapper.selectSourceByParentId(channelId);
+        List<ChannelSource> channelList = channelSourceMapper.selectSourceByParentId(channelId);
         int deleteId=0;
-        if (sourceId<channleList.size()){
-            if (channleList.size()!=0){
-                for (int i = 0; i < channleList.size(); i++) {
+        if (sourceId<channelList.size()){
+            if (channelList.size()!=0){
+                for (int i = 0; i < channelList.size(); i++) {
                     if (i==sourceId){
-                        deleteId=channleList.get(i).getId();
+                        deleteId=channelList.get(i).getSourceId();
                     }
                 }
             }
@@ -197,6 +198,14 @@ public class ChannelServiceImpl extends BaseService implements
 //
 //        return 0;
     }
+    @Override
+    public int reinstateSource(Integer channelId, Integer sourceId) {
+
+        return channelSourceMapper.updateSourceDeleteFlag(channelId,sourceId);
+
+    }
+
+
 
     @Override
     public int changeType(Integer channelId, String typeId) {
@@ -233,10 +242,11 @@ public class ChannelServiceImpl extends BaseService implements
                 channelList.add(channel);
             }
             // 信息缓存5分钟
-            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);;
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
+
 
     @Override
     public Map<String, Object> channelPlaybill(String channelId) {
@@ -249,13 +259,30 @@ public class ChannelServiceImpl extends BaseService implements
                     billFromInfo.getFromUrl(),
                     billFromInfo.getOrigin());
         }
+        if (NullUtil.isNullObject(programMap))
+        {
+            programMap = lunBoFromService.getChannelBill(Integer.valueOf(channelId));
+        }
         return programMap;
     }
 
     @Override
     public List<Channel> selectChannelByKey(String key) {
-        List<Channel> channels = channelMapper.selectChannelByKey(key);
-        return channels;
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelByKey";
+
+        List<Channel> channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectChannelByKey(key);;
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
     }
 
     @Override
@@ -278,6 +305,8 @@ public class ChannelServiceImpl extends BaseService implements
         }
         return channelList;
     }
+
+
 
     @Override
     public List<Channel> selectHotChannel() {
@@ -329,4 +358,29 @@ public class ChannelServiceImpl extends BaseService implements
     public int removeChannel(Integer channelId) {
         return channelMapper.deleteByPrimaryKey(channelId);
     }
+
+    @Override
+    public List<Map> getAllChannel(){
+        return channelMapper.selectAllChannel();
+    }
+
+    @Override
+    public List<Channel> getChannelWithoutSource() {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelNew";
+
+        List<Channel> channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectWithoutSource();
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+
 }

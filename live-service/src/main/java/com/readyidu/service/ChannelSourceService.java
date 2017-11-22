@@ -18,4 +18,5 @@ public interface ChannelSourceService {
     int updateSort(ChannelSource source);
     int modifySource(ChannelSource source);
     List<ChannelSource> selectSourceByParentId(Integer id);
+    String selectSourceById(Integer id);
 }
