@@ -132,4 +132,16 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
+    @RequestMapping(value = "/checkLunboBill.do",produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String checkLunboBill(Integer channelId,String fileName){
+        try{
+            if (lunBoFromService.checkLunboBill(channelId,fileName)){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
 }

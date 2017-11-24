@@ -10,11 +10,11 @@
         channelId)
         value(#{date},#{playontime},#{showname},#{channelId})
     </insert>
-    <delete id="cleanBillInfo" parameterType="java.lang.String">
+    <delete id="cleanBillInfo" parameterType="java.lang.Integer">
         delete
         from
         t_billfrom_info
-        where date = #{date}
+        where channelId = #{channelId}
     </delete>
     <select id="selectBill" parameterType="com.readyidu.model.PlayBillInfo" resultType="com.readyidu.model.PlayBillInfo">
         select

@@ -74,16 +74,16 @@ public interface TvSourceService {
     /**
      * 获取直播源的播放地址
      * @param id
-     * @param IpAdress 用户的ip
+     * @param ipAdress 用户的ip
      * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
      */
-    String getSourceById(Integer id,String IpAdress);
+    String getSourceById(Integer id,String ipAdress);
     /**
      * 获取点播的播放地址
      * @param id
-     * @param IpAdress 用户的ip
+     * @param ipAdress 用户的ip
      * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
      */
-    String getDemandById(Integer id,String IpAdress);
+    String getDemandById(Integer id,String ipAdress);
 }
 

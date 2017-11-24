@@ -46,20 +46,18 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
             long todayLong = TimeUtil.getTodayLong();
             String todayTime = TimeUtil.getTodayTime();
             String tomrrow = TimeUtil.getTomorrowTime(currtentData);
-            playBillInfoMapper.cleanBillInfo(todayTime);
-            playBillInfoMapper.cleanBillInfo(tomrrow);
+            playBillInfoMapper.cleanBillInfo(channelId);
             SimpleDateFormat spd = new SimpleDateFormat("HH:mm");
             List<LunBoBillFrom> dramaList = lunBoFromMapper.getFromByChannelId(channelId);
             long nexttime = currtentData;
             for (LunBoBillFrom drame : dramaList){
-                String playDate = nexttime - todayLong < ONEDAYSTAMP ? TimeUtil.getTodayTime() : TimeUtil.getTomorrowTime(currtentData);
+                int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
                 long length = (long) drame.getPlaytime() * 1000;
-                playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), playDate,channelId));
+                playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), TimeUtil.getTargetDayTime(playDate),channelId));
                 nexttime = nexttime+length;
             }
             return true;
         }catch (Exception e){
-            e.printStackTrace();
             return false;
         }
     }
@@ -87,7 +85,6 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
-        cacheObj =null;
         if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
@@ -112,9 +109,54 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         return channelBill;
     }
 
+
     @Override
     public String selectDemandById(Integer id) {
         return lunBoFromMapper.selectDemandById(id);
+    }
+
+    @Override
+    public boolean checkLunboBill(Integer channelId,String fileName) {
+        List<LunBoBillFrom> fileList = lunBoFromMapper.selectFileByChannelId(channelId);
+        ListIterator<LunBoBillFrom> fileIterator = fileList.listIterator();
+        while (fileIterator.hasNext())
+        {
+            LunBoBillFrom thisObj = fileIterator.next();
+            if (thisObj.getFileName().equals(fileName))
+            {
+                if (fileIterator.hasNext())
+                {
+                    return true;
+                }
+                long currtentData = new Date().getTime();
+                long todayLong = TimeUtil.getTodayLong();
+                String todayTime = TimeUtil.getTodayTime();
+                String tomrrow = TimeUtil.getTomorrowTime(currtentData);
+                playBillInfoMapper.cleanBillInfo(channelId);
+                SimpleDateFormat spd = new SimpleDateFormat("HH:mm");
+                List<LunBoBillFrom> dramaList = lunBoFromMapper.getFromByChannelId(channelId);
+                long nexttime = currtentData;
+                playBillInfoMapper.insertBillInfo(
+                        new PlayBillInfo(thisObj.getMovieName()
+                                ,spd.format(nexttime)
+                                , todayTime
+                                ,channelId));
+                nexttime = nexttime+(long)thisObj.getPlaytime()*1000;
+                for (LunBoBillFrom drame : dramaList){
+                    int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
+                    long length = (long) drame.getPlaytime() * 1000;
+                    playBillInfoMapper.insertBillInfo(
+                            new PlayBillInfo(drame.getMovieName()
+                            ,spd.format(nexttime)
+                            , TimeUtil.getTargetDayTime(playDate)
+                            ,channelId));
+                    nexttime = nexttime+length;
+                }
+                return true;
+            }
+
+        }
+        return false;
     }
 
 }

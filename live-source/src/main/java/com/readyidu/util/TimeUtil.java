@@ -50,6 +50,15 @@ public class TimeUtil
         cal.set(Calendar.SECOND, 0);
         return cal.getTime().getTime();
     }
+    public static String getTargetDayTime(int days){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.DAY_OF_YEAR,days);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        return new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime().getTime());
+    }
     public static String getTodayTime(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());

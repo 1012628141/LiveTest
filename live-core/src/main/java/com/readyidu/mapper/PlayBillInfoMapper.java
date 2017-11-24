@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface PlayBillInfoMapper {
     int insertBillInfo(PlayBillInfo playBillInfo);
-    int cleanBillInfo(String date);
+    int cleanBillInfo(Integer channelId);
     List<PlayBillInfo> selectBill(PlayBillInfo playBillInfo);
 }

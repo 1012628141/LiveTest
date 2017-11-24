@@ -13,10 +13,10 @@ public class PlayBillInfo {
     private int id;
     @JSONField(serialize=false)
     private int channelId;
+    @JSONField(name = "showTime")
     private String playontime;
     @JSONField(name = "channelName")
     private String showname;
-    @JSONField(name = "showTime")
     private String date;
 
     public PlayBillInfo() {

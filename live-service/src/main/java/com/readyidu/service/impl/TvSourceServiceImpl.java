@@ -55,7 +55,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Resource(name = "cacheService")
     CacheService cacheService;
 
-    private static final String CACHE_NAME = "channel_";
+    private static final String CACHE_NAME = "tv_source";
 
 
 
@@ -229,7 +229,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             Map<String,Object> dataJson = new HashMap<>();
             List<Channel> channelList = null;
             List<Channel> movieList = null;
-            if (platformName.equals("tv")){
+            if (!NullUtil.isNullObject(platformName)&&platformName.equals("tv")){
                 channelList = channelService.getChannelWithoutSource();
 //                movieList = channelService.getMovieToSource();
                 movieList = lunBoFromService.getDemandList();
@@ -243,7 +243,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             dataJson.put("movieList",movieList);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,dataJson);
         }catch (Exception e){
-            e.printStackTrace();
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
@@ -257,7 +256,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
             }
             if (source.startsWith("sourceUri://")){
-                source = liveManager.getChannelSource(source);
+                source = sourceService.getSource(source);
             }
             if (source.contains("60.190.249.8"))
             {
@@ -285,7 +284,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
         }catch (Exception e)
         {
-            e.printStackTrace();
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
@@ -327,22 +325,15 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
         }catch (Exception e)
         {
-            e.printStackTrace();
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
-        try {
-            String searchResult = ipDataService.SelectIpOperator(ipData);
-            if (!NullUtil.isNullObject(searchResult))
-            {
-                return searchResult;
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
+        String searchResult = ipDataService.SelectIpOperator(ipData);
+        if (!NullUtil.isNullObject(searchResult)) {
+            return searchResult;
         }
         String httpResult = HttpUtil.httpGet("http://ipapi.ipip.net/find?addr=" + IpAdress, IPIP_TOKEN);
         JSONObject jsonResult = JSON.parseObject(httpResult);
