@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readyidu.mapper.LunBoFromMapper">
+    <sql id="third_Column_List">
+        t1.id as id
+        ,t1.movieName as channel
+        ,t1.typeid as typeid
+        ,t1.id as sourceid
+        ,t1.parentid as parentid
+        ,t1.sort as sort
+    </sql>
+
+    <resultMap id="channelInfoNew" type="com.readyidu.model.Channel">
+        <id property = "id" column="id"/>
+        <result property="channel" column="channel"/>
+        <result property="typeid" column="typeid"/>
+        <result property="parentid" column="parentid"/>
+        <collection property="sources" ofType="com.readyidu.model.ChannelSource">
+            <result property="sourceId"  column="sourceId" />
+            <result property="resolve" column="resolve" />
+            <result property="responseTime" column="responseTime" />
+            <result column="isSelf" property="isSelf"/>
+        </collection>
+    </resultMap>
+
+    <select id="getFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
+        select
+        playTime,
+        movieName,
+        sort
+        from
+        t_lunbo_billfrom
+        where
+        channelId = #{ChannelId}
+        order by
+        sort
+    </select>
+
+
+    <select id="selectFromByChannelId" resultType="com.readyidu.model.LunBoBillFrom">
+        select
+        id ,
+        movieName,
+        parentId
+        from
+        t_lunbo_billfrom
+    </select>
+    <select id="selectFileByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
+        select
+        fileName,
+        playTime,
+        movieName
+        from
+        t_lunbo_billfrom
+        where is_delete = 0 and parentId = #{ChannelId}
+        order by sort
+    </select>
+
+    <select id="selectIntoChannel" resultMap="channelInfoNew">
+        select
+        <include refid="third_Column_List"/>
+        from
+        t_lunbo_billfrom t1
+        order by sort
+    </select>
+    <select id="selectDemandById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select
+        source
+        from
+        t_lunbo_billfrom
+        where id = #{id}
+
+    </select>
+
+
+</mapper>

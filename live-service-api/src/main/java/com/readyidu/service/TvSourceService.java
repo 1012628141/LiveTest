@@ -5,7 +5,7 @@ import com.readyidu.model.Channel;
 
 /**
  * Created by 123 on 2017/9/30.
- * @version 1.1.5
+ * @version 1.1.6
  * 提供新方法 {@link #selectChannelInfoByKey},取消了其他依赖
  */
 public interface TvSourceService {
@@ -34,7 +34,9 @@ public interface TvSourceService {
     /**
      * 获取所有的频道源
      * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
+     * @see #getChannelList
      */
+    @Deprecated
     String getChannelList();
     /**
      * 获取当前频道的当前节目单，包含当天以及第二天的节目，第二天节目可能为空
@@ -63,5 +65,25 @@ public interface TvSourceService {
      * @return json (code: 200 成功，400 参数错误,10000 服务出错)
      */
     String insertReport(String source);
+    /**
+     * 获取所有的频道源
+     * @param platformName 用户使用平台
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
+     */
+    String getChannelList(String platformName);
+    /**
+     * 获取直播源的播放地址
+     * @param id
+     * @param ipAdress 用户的ip
+     * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
+     */
+    String getSourceById(Integer id,String ipAdress);
+    /**
+     * 获取点播的播放地址
+     * @param id
+     * @param ipAdress 用户的ip
+     * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
+     */
+    String getDemandById(Integer id,String ipAdress);
 }
 

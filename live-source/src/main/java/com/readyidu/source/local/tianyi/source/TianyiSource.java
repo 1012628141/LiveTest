@@ -17,9 +17,7 @@ public class TianyiSource extends Source {
 
     @Override
     protected String source() {
-        System.out.println(sourceId);
         String content = HttpUtil.httpGet("http://h5.tv189.com/api/portal/program/freeplay?contid=" + sourceId);
-        //http:[a-zA-z0-9\\/.?&_=-]*
         if (!NullUtil.isNullObject(content)){
             Pattern pattern = Pattern.compile("http:[a-zA-z0-9\\\\/.?&_=-]*");
             Matcher mather = pattern.matcher(content);

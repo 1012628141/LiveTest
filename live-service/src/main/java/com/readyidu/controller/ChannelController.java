@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
+import com.readyidu.service.LunBoFromService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
 import com.readyidu.service.TvSourceService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.util.JsonResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,10 @@ public class ChannelController {
 
     @Resource(name = "channelService")
     private ChannelService channelService;
+
+    @Autowired
+    private LunBoFromService lunBoFromService;
+
 
 
     @RequestMapping(value = "/channel.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
@@ -110,6 +116,30 @@ public class ChannelController {
             Map<String, Object> playBill = channelService.channelPlaybill(channelId);
 
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+    @RequestMapping(value = "/lunboPlaybill.do", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public  String lunboPlaybill(Integer channelId){
+        try{
+            if (lunBoFromService.refreshChannelBill(channelId)){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+    }
+    @RequestMapping(value = "/checkLunboBill.do",produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String checkLunboBill(Integer channelId,String fileName){
+        try{
+            if (lunBoFromService.checkLunboBill(channelId,fileName)){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }

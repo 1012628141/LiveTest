@@ -15,6 +15,7 @@ public interface ChannelService {
     public Channel getChannel(Integer id);
     public int updateSource(Integer channelId, String source);
     public int removeSource(Integer channelId, Integer sourceId);
+    public int reinstateSource(Integer channelId, Integer sourceId);
     public int changeType(Integer channelId, String typeId);
     public int removeChannel(Integer channelId);
     public List<Channel> getMovieToSource();
@@ -23,5 +24,7 @@ public interface ChannelService {
 //    public Channel selectChannelById(Integer id);
     public List<Channel> selectAllNew();
     public List<Channel> selectHotChannel();
+    public List<Map> getAllChannel();
+    public List<Channel> getChannelWithoutSource();
 
 }

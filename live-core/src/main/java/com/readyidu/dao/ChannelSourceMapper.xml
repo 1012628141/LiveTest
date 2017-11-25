@@ -48,6 +48,9 @@
   <delete id="delectSourceByid" parameterType="java.lang.Integer">
     update  t_channel_source set is_delete=1,modifty_time=now() where id=#{id}
   </delete>
+  <update id="updateSourceDeleteFlag" >
+    update  t_channel_source set is_delete=0,modifty_time=now() where parentid = #{parentId} and id = #{sourceId}
+  </update>
   <delete id="reductionSourceByid" parameterType="java.lang.Integer">
     update  t_channel_source set is_delete=0,modifty_time=now() where id=#{id} and is_delete=2
   </delete>
@@ -62,5 +65,11 @@
     <include refid="Base_Column_List"/>
     from t_channel_source
     where source=#{source} and is_delete !=0
+  </select>
+  <select id="selectSourceById" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select
+    source
+    from t_channel_source
+    where id = #{id}
   </select>
 </mapper>
