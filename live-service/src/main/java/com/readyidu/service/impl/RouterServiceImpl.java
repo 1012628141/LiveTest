@@ -11,6 +11,7 @@ import com.readyidu.smartcore.hanlp.dto.SmartWord;
 import com.readyidu.smartcore.hanlp.service.CustomerDictService;
 import com.readyidu.util.NullUtil;
 import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +24,7 @@ import java.util.Map;
  * 2017/7/5
  * Created by dylan.
  * Home: http://www.devdylan.cn
+
  */
 @Service("routerService")
 public class RouterServiceImpl implements RouterService {
@@ -105,7 +107,7 @@ public class RouterServiceImpl implements RouterService {
         return routerMappingMapper.selectByPageNo(pageNo);
     }
     @Override
-    public  List<String> selectMenu(Integer number){
+    public  List<String> selectChannelById(Integer number){
         if(number==2) {
             return channelClassMapper.selectAllClassName();
         }
@@ -118,7 +120,7 @@ public class RouterServiceImpl implements RouterService {
     }
 
     @Override
-    public  List<Map> selectForm(String TvName,Integer form) {
+    public  List<Map> selectUrlByChannelOrClassName(String TvName,Integer form) {
         if(form==1){
             return channelMapper.selectUrlByClassName(TvName);
         }
@@ -128,7 +130,7 @@ public class RouterServiceImpl implements RouterService {
     }
 
     @Override
-    public  List<Map> selectColumn(String search){
+    public  List<Map> selectUrlByChannel(String search){
         return channelMapper.selectUrlByChannelName(search);
     }
     @Override
