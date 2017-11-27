@@ -1,6 +1,7 @@
 package com.readyidu.mapper;
 
 import com.readyidu.model.Channel;
+import com.readyidu.model.NewChannel;
 
 import java.util.List;
 import java.util.Map;
@@ -37,5 +38,6 @@ public interface ChannelMapper {
     List<Map> selectUrlByChannel(String TvName);
     List<Map> selectUrlByChannelName(String search);
     List<Map> selectAllChannel();
-
+    List<NewChannel> selectNewWithoutSource();
+    List<Integer>selectByTypeId(String typeId);
 }

@@ -2,6 +2,7 @@ package com.readyidu.service;
 
 
 import com.readyidu.model.Channel;
+import com.readyidu.model.NewChannel;
 
 /**
  * Created by 123 on 2017/9/30.
@@ -91,4 +92,17 @@ public interface TvSourceService {
      * @return json(code: 200 成功，10000服务出错)
      */
     String insertReport(Integer sourceId,Boolean isLive);
+
+    /**
+     * app端获取所有频道列表
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.NewChannelChannel}] 返回所有频道和分类ID)
+     */
+    String getNewChannelList();
+
+    /**
+     * app端通过节目类型ID（typeId）查询节目单列表
+     * @param typeId 节目类型ID
+     * @return json (code: 200 成功,10000 服务出错; 返回同个节目类型下所有的频道节目表（2天）)
+     */
+    String getchannelPlaybillByTypeId(String typeId);
 }

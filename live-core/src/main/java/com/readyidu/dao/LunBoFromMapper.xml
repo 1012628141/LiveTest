@@ -22,7 +22,11 @@
             <result column="isSelf" property="isSelf"/>
         </collection>
     </resultMap>
-
+    <resultMap id="newChannel" type="com.readyidu.model.NewChannel">
+        <id property = "i" column="id"/>
+        <result property="c" column="channel"/>
+        <result property="t" column="typeid"/>
+    </resultMap>
     <select id="getFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
         select
         playTime,
@@ -61,6 +65,7 @@
         <include refid="third_Column_List"/>
         from
         t_lunbo_billfrom t1
+        where is_delete != 1
         order by sort
     </select>
     <select id="selectDemandById" parameterType="java.lang.Integer" resultType="java.lang.String">
@@ -74,6 +79,15 @@
     <update id="reportDemand" parameterType="java.lang.Integer">
         update  t_lunbo_billfrom set is_delete=2,modify_time=now() where id=#{id} and is_delete != 1
     </update>
-
+    <select id="selectNewChannel" resultMap="newChannel">
+        select
+        id as i
+        ,movieName as c
+        ,typeid as t
+        from
+        t_lunbo_billfrom
+        where is_delete != 1
+        order by sort
+    </select>
 
 </mapper>

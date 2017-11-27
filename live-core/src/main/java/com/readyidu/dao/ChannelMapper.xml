@@ -50,6 +50,11 @@
             <result column="isSelf" property="isSelf"/>
         </collection>
     </resultMap>
+    <resultMap id="newChannel" type="com.readyidu.model.NewChannel">
+        <id property = "i" column="id"/>
+        <result property="c" column="channel"/>
+        <result property="t" column="typeid"/>
+    </resultMap>
 
     <select id="selectAll" resultType="com.readyidu.model.Channel">
         select
@@ -356,6 +361,24 @@
         ) t3
         on t1.channel = t3.value
         where t1.channel is not null
+        order by t1.id
+    </select>
+    <select id="selectNewWithoutSource" resultMap="newChannel">
+        select
+        t1.id as i,t1.channel as c,t1.typeid as t
+        from t_channel t1
+        where
+        (select count(*) from t_channel_source t2 where t1.id = t2.parentid and t2.is_delete !=1)>0
+        order by t1.id
+    </select>
+    <select id="selectByTypeId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        t1.id
+        from t_channel t1
+        where
+        (select count(*) from t_channel_source t2 where t1.id = t2.parentid and t2.is_delete !=1)>0
+        and
+        typeid = #{typeId,jdbcType=VARCHAR}
         order by t1.id
     </select>
 </mapper>

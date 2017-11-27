@@ -343,6 +343,27 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         }
     }
 
+    @Override
+    public String getNewChannelList() {
+        try {
+            Map<String,Object> dataJson = new HashMap<>();
+            List<NewChannel> channelList;
+            List<NewChannel> movieList;
+            channelList = channelService.getNewChannelWithoutSource();
+            movieList = lunBoFromService.getNewDemandList();
+            dataJson.put("channels",channelList);
+            dataJson.put("movieList",movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,dataJson);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String getchannelPlaybillByTypeId(String typeId) {
+        return null;
+    }
+
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
         String searchResult = ipDataService.SelectIpOperator(ipData);
