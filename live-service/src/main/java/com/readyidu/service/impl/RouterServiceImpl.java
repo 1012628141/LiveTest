@@ -33,11 +33,6 @@ public class RouterServiceImpl implements RouterService {
 
     @Resource(name = "cacheService")
     private CacheService cacheService;
-
-<<<<<<< HEAD
-=======
-    //@Resource(name = "customerDictService")
->>>>>>> a4f7ccd34c56164311859af43604929a88ef6610
     @Autowired(required = false)
     private CustomerDictService customerDictService;
     @Resource(name="channelClassMapper")

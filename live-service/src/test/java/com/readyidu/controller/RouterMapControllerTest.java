@@ -1,11 +1,11 @@
-package com.readyidu.controller; 
+package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.readyidu.tools.TestBaseConfig;
 import org.junit.Test;
-import org.junit.Before; 
+import org.junit.Before;
 import org.junit.After;
 
 import static org.junit.Assert.assertTrue;
@@ -13,28 +13,28 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/** 
-* RouterMapController Tester. 
-* 
-* @author <Authors name> 
-* @since <pre>11/16/2017</pre> 
-* @version 1.0 
-*/ 
+/**
+* RouterMapController Tester.
+*
+* @author <Authors name>
+* @since <pre>11/16/2017</pre>
+* @version 1.0
+*/
 public class RouterMapControllerTest extends TestBaseConfig{
 
 @Before
-public void before() throws Exception { 
-} 
+public void before() throws Exception {
+}
 
 @After
-public void after() throws Exception { 
-} 
+public void after() throws Exception {
+}
 
-/** 
-* 
-* Method: getAllChannelMap() 
-* 
-*/ 
+/**
+*
+* Method: getAllChannelMap()
+*
+*/
 @Test
 public void testGetAllChannelMap() throws Exception {
     String json = this.mockMvc
@@ -48,13 +48,13 @@ public void testGetAllChannelMap() throws Exception {
     JSONArray dataList = JSONArray.parseArray(jsonObject.getString("data"));
     assertTrue(code.equals("200"));
     assertTrue(!dataList.isEmpty());
-} 
+}
 
-/** 
-* 
-* Method: removeMapper(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: removeMapper(HttpServletRequest request)
+*
+*/
 @Test
 public void testRemoveMapper() throws Exception {
     String json = this.mockMvc
@@ -67,33 +67,33 @@ public void testRemoveMapper() throws Exception {
     JSONObject jsonObject = JSONObject.parseObject(json);
     String code = jsonObject.getString("code");
     assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: addMapper() 
-* 
-*/ 
+/**
+*
+* Method: addMapper()
+*
+*/
 @Test
-public void testAddMapper() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testAddMapper() throws Exception {
+//TODO: Test goes here...
+}
 
-/** 
-* 
-* Method: deleteMapper() 
-* 
-*/ 
+/**
+*
+* Method: deleteMapper()
+*
+*/
 @Test
-public void testDeleteMapper() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testDeleteMapper() throws Exception {
+//TODO: Test goes here...
+}
 
-/** 
-* 
-* Method: addMapper(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: addMapper(HttpServletRequest request)
+*
+*/
 @Test
 public void testAddMapperRequest() throws Exception {
 //    String json = this.mockMvc
@@ -106,17 +106,17 @@ public void testAddMapperRequest() throws Exception {
 //    JSONObject jsonObject = JSONObject.parseObject(json);
 //    String code = jsonObject.getString("code");
 //    assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: mapCacheExpire() 
-* 
-*/ 
+/**
+*
+* Method: mapCacheExpire()
+*
+*/
 @Test
-public void testMapCacheExpire() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testMapCacheExpire() throws Exception {
+//TODO: Test goes here...
+}
 
 
-} 
+}
