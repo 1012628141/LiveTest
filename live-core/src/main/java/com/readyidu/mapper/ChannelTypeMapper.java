@@ -18,4 +18,6 @@ public interface ChannelTypeMapper {
     int updateByPrimaryKey(ChannelType record);
 
     List<ChannelType> selectAll();
+
+    List<ChannelType> getTypeListBySort();
 }

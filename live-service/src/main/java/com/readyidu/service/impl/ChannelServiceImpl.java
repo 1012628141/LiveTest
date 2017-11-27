@@ -378,4 +378,23 @@ public class ChannelServiceImpl extends BaseService implements
         return channelList;
     }
 
+    public List<ChannelType> getTypeListBySort(){
+        // TODO Auto-generated method stub
+        // 拼装缓存key值
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelTypeNew";
+
+        List<ChannelType> channelType = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelType = JSON.parseArray(cacheObj, ChannelType.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelType = channelTypeMapper.getTypeListBySort();
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelType),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelType;
+    }
 }
