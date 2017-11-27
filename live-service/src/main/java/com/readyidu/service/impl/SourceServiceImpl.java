@@ -35,13 +35,13 @@ public class SourceServiceImpl implements SourceService {
         if (sourceUri == null) {
             return null;
         }
-        if(sourceUri.startsWith(SOURCE_CNTV)){
-            String channel_name = sourceUri.replace(SOURCE_CNTV,"");
-            String source = cntvSourceMapper.findByChannelName(channel_name);
-            return source;
-        }
         String source = cacheService.get(sourceUri);
         if (!NullUtil.isNullObject(source)) {
+            return source;
+        }
+        if(sourceUri.startsWith(SOURCE_CNTV)){
+            String channel_name = sourceUri.replace(SOURCE_CNTV,"");
+            source = cntvSourceMapper.findByChannelName(channel_name);
             return source;
         }
         source = liveManager.getChannelSource(sourceUri);

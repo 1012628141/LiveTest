@@ -54,6 +54,6 @@ public class TvPlayController {
     @ResponseBody
     @RequestMapping(value = "tvsource",produces = "application/json; charset=utf-8")
     public String tvsource(String source){
-        return  tvSourceService.getSourceById(2177,"218.205.92.125");
+        return  tvSourceService.selectChannelInfoByKey("浙江数码时代");
     }
 }

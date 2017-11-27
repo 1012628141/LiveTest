@@ -13,6 +13,7 @@ import java.util.List;
 public interface ChannelSourceMapper {
     int importData(ChannelSource channelSource);
     int delectSourceByid(Integer id);
+        int reportSourceByid(Integer id);
     List<ChannelSource> selectSourceByParentId(Integer id);
     List<CheckableChannel> selectDeathSource();
     int updateIsDelete(String source);

@@ -9,10 +9,12 @@ import java.util.List;
 
 @Component
 public interface LunBoFromMapper {
-    List<LunBoBillFrom> getFromByChannelId(Integer ChannelId);
+    List<LunBoBillFrom> getFromByChannelId(Integer channelId);
 
     List<LunBoBillFrom> selectFromByChannelId();
 
     List<Channel> selectIntoChannel();
     String selectDemandById(Integer id);
+    int reportDemand(Integer id);
+    List<LunBoBillFrom> selectFileByChannelId(Integer channelId);
 }

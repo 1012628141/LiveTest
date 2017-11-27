@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.readyidu.mapper.LunBoFromMapper;
 import com.readyidu.mapper.PlayBillInfoMapper;
 import com.readyidu.model.*;
+import com.readyidu.playbill.model.Program;
 import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.LunBoFromService;
@@ -46,20 +47,18 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
             long todayLong = TimeUtil.getTodayLong();
             String todayTime = TimeUtil.getTodayTime();
             String tomrrow = TimeUtil.getTomorrowTime(currtentData);
-            playBillInfoMapper.cleanBillInfo(todayTime);
-            playBillInfoMapper.cleanBillInfo(tomrrow);
+            playBillInfoMapper.cleanBillInfo(channelId);
             SimpleDateFormat spd = new SimpleDateFormat("HH:mm");
             List<LunBoBillFrom> dramaList = lunBoFromMapper.getFromByChannelId(channelId);
             long nexttime = currtentData;
             for (LunBoBillFrom drame : dramaList){
-                String playDate = nexttime - todayLong < ONEDAYSTAMP ? TimeUtil.getTodayTime() : TimeUtil.getTomorrowTime(currtentData);
+                int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
                 long length = (long) drame.getPlaytime() * 1000;
-                playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), playDate,channelId));
+                playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), TimeUtil.getTargetDayTime(playDate),channelId));
                 nexttime = nexttime+length;
             }
             return true;
         }catch (Exception e){
-            e.printStackTrace();
             return false;
         }
     }
@@ -87,8 +86,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
-        cacheObj =null;
-        if (!NullUtil.isNullObject(cacheObj)) {
+            if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
@@ -107,14 +105,75 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         List<PlayBillInfo> todayProgram = playBillInfoMapper.selectBill(new PlayBillInfo(todayTime, channelId));
         List<PlayBillInfo> tommorrowProgram = playBillInfoMapper.selectBill(new PlayBillInfo(tomrrow, channelId));
         Map<String,Object> channelBill = new HashMap<>();
-        channelBill.put("todayProgram",todayProgram);
-        channelBill.put("tommorrowProgram",tommorrowProgram);
+        if(todayProgram.size()!=0)
+        {
+            channelBill.put("todayProgram",todayProgram);
+            channelBill.put("tommorrowProgram",tommorrowProgram);
+        }
+        else {
+            List<Program> today = new ArrayList<>();
+            List<Program> tommorrow = new ArrayList<>();
+            today.add(new Program("暂无节目信息", "00:00"));
+            tommorrow.add(new Program("暂无节目信息", "00:00"));
+            channelBill.put("todayProgram",today);
+            channelBill.put("tommorrowProgram", tommorrow);
+        }
         return channelBill;
     }
+
 
     @Override
     public String selectDemandById(Integer id) {
         return lunBoFromMapper.selectDemandById(id);
+    }
+
+    @Override
+    public int reportDemand(Integer id) {
+        return lunBoFromMapper.reportDemand(id);
+    }
+
+    @Override
+    public boolean checkLunboBill(Integer channelId,String fileName) {
+        List<LunBoBillFrom> fileList = lunBoFromMapper.selectFileByChannelId(channelId);
+        ListIterator<LunBoBillFrom> fileIterator = fileList.listIterator();
+        while (fileIterator.hasNext())
+        {
+            LunBoBillFrom thisObj = fileIterator.next();
+            if (thisObj.getFileName().equals(fileName))
+            {
+                if (fileIterator.hasNext())
+                {
+                    return true;
+                }
+                long currtentData = new Date().getTime();
+                long todayLong = TimeUtil.getTodayLong();
+                String todayTime = TimeUtil.getTodayTime();
+                String tomrrow = TimeUtil.getTomorrowTime(currtentData);
+                playBillInfoMapper.cleanBillInfo(channelId);
+                SimpleDateFormat spd = new SimpleDateFormat("HH:mm");
+                List<LunBoBillFrom> dramaList = lunBoFromMapper.getFromByChannelId(channelId);
+                long nexttime = currtentData;
+                playBillInfoMapper.insertBillInfo(
+                        new PlayBillInfo(thisObj.getMovieName()
+                                ,spd.format(nexttime)
+                                , todayTime
+                                ,channelId));
+                nexttime = nexttime+(long)thisObj.getPlaytime()*1000;
+                for (LunBoBillFrom drame : dramaList){
+                    int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
+                    long length = (long) drame.getPlaytime() * 1000;
+                    playBillInfoMapper.insertBillInfo(
+                            new PlayBillInfo(drame.getMovieName()
+                            ,spd.format(nexttime)
+                            , TimeUtil.getTargetDayTime(playDate)
+                            ,channelId));
+                    nexttime = nexttime+length;
+                }
+                return true;
+            }
+
+        }
+        return false;
     }
 
 }

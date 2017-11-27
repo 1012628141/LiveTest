@@ -84,4 +84,11 @@ public interface TvSourceService {
      * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
      */
     String getDemandById(Integer id,String IpAdress);
+    /**
+     * 新增上报源接口
+     * @param sourceId
+     * @param isLive 是否是直播
+     * @return json(code: 200 成功，10000服务出错)
+     */
+    String insertReport(Integer sourceId,Boolean isLive);
 }

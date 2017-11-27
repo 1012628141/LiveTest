@@ -6,6 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
  * Created by 123 on 2017/7/26.
  */
 public class ChannelSource {
+
     @JSONField(name="id")
     private Integer sourceId;
     private Integer parentid;

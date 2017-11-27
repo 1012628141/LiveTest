@@ -55,7 +55,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Resource(name = "cacheService")
     CacheService cacheService;
 
-    private static final String CACHE_NAME = "channel_";
+    private static final String CACHE_NAME = "tv_source";
 
 
 
@@ -79,7 +79,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (NullUtil.isNullObject(source)) {
                 return JsonResult.toString(NetworkCode.CODE_FAIL, "");
             }
-            if (source.contains("60.190.249.8"))
+            if (source.contains("124.160.117.35"))
             {
                 String ip = IpAdress;
                 String operator = null;
@@ -93,12 +93,11 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 }
                 switch (operator){
                     case "电信":
+                        source = source.replace("124.160.117.35","183.134.101.35");
                         break;
                     case "联通":
-                        source = source.replace("60.190.249.8","101.71.36.8");
                         break;
                     case "移动":
-                        source = source.replace("60.190.249.8","218.205.92.189");
                         break;
                 }
             }
@@ -175,6 +174,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             String cacheKey = SERVICE_RBK + CACHE_NAME + "INFO_"+key;
             List<Object> channelInfo = new ArrayList<>();
             String channelObj = cacheService.get(cacheKey);
+            channelObj = null;
             if (!NullUtil.isNullObject(channelObj)){
                 channelInfo = JSON.parseArray(channelObj,Object.class);
                 return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo    );
@@ -229,7 +229,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             Map<String,Object> dataJson = new HashMap<>();
             List<Channel> channelList = null;
             List<Channel> movieList = null;
-            if (platformName.equals("tv")){
+            if (!NullUtil.isNullObject(platformName)&&platformName.equals("tv")){
                 channelList = channelService.getChannelWithoutSource();
 //                movieList = channelService.getMovieToSource();
                 movieList = lunBoFromService.getDemandList();
@@ -243,7 +243,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             dataJson.put("movieList",movieList);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,dataJson);
         }catch (Exception e){
-            e.printStackTrace();
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
@@ -257,9 +256,9 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
             }
             if (source.startsWith("sourceUri://")){
-                source = liveManager.getChannelSource(source);
+                source = sourceService.getSource(source);
             }
-            if (source.contains("60.190.249.8"))
+            if (source.contains("124.160.117.35"))
             {
                 String ip = IpAdress;
                 String operator = null;
@@ -273,19 +272,17 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 }
                 switch (operator){
                     case "电信":
+                        source = source.replace("124.160.117.35","183.134.101.35");
                         break;
                     case "联通":
-                        source = source.replace("183.134.101.36","124.160.117.36");
                         break;
                     case "移动":
-                        source = source.replace("183.134.101.36","218.205.92.125");
                         break;
                 }
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
         }catch (Exception e)
         {
-            e.printStackTrace();
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
@@ -301,7 +298,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (source.startsWith("sourceUri://")){
                 source = liveManager.getChannelSource(source);
             }
-            if (source.contains("60.190.249.8"))
+            if (source.contains("124.160.117.35"))
             {
                 String ip = IpAdress;
                 String operator = null;
@@ -315,34 +312,42 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 }
                 switch (operator){
                     case "电信":
+                        source = source.replace("124.160.117.35","183.134.101.35");
                         break;
                     case "联通":
-                        source = source.replace("60.190.249.8","101.71.36.8");
                         break;
                     case "移动":
-                        source = source.replace("60.190.249.8","218.205.92.189");
                         break;
                 }
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
         }catch (Exception e)
         {
-            e.printStackTrace();
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String insertReport(Integer sourceId, Boolean isLive) {
+        try {
+            if (isLive&&channelSourceService.reportSourceByid(sourceId)!=0)
+            {
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }else if(!isLive&&lunBoFromService.reportDemand(sourceId)!=0){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
+        }catch (Exception e)
+        {
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
 
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
-        try {
-            String searchResult = ipDataService.SelectIpOperator(ipData);
-            if (!NullUtil.isNullObject(searchResult))
-            {
-                return searchResult;
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
+        String searchResult = ipDataService.SelectIpOperator(ipData);
+        if (!NullUtil.isNullObject(searchResult)) {
+            return searchResult;
         }
         String httpResult = HttpUtil.httpGet("http://ipapi.ipip.net/find?addr=" + IpAdress, IPIP_TOKEN);
         JSONObject jsonResult = JSON.parseObject(httpResult);

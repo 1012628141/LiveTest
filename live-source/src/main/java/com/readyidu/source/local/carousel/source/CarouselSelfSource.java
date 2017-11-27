@@ -32,7 +32,7 @@ public class CarouselSelfSource extends Source {
             //http://114.113.90.49:5912/lvds/live/cctv-2/live.m3u8
             if (!NullUtil.isNullObject(channelName))
             {
-                return "http://183.134.101.36/vod/" + channelName + "/index.m3u8$3";
+                return "http://124.160.117.35/vod/" + channelName + "/index.m3u8$3";
             }
         }
         catch (Exception e)
