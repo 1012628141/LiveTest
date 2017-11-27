@@ -5,6 +5,7 @@ import com.readyidu.util.HttpUtil;
 import com.readyidu.util.NullUtil;
 import com.readyidu.util.TimeUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,12 +33,10 @@ abstract public class Parser {
         Map<String, Object> map = new HashMap<>();
         try {
             String content = HttpUtil.httpGet(fromUrl);
-            List<Program> programList = getBillInfo(content);
             this.nextUrl = getPageUrl(content);
             if(NullUtil.isNullObject(nextUrl)){
                 this.nextUrl = getTomorrowUrl(fromUrl);
             }
-            Program thisProgram = null;
             map.put("todayProgram", getBillInfo(content));
             if (!NullUtil.isNullObject(this.nextUrl)) {
                 String nextContent = HttpUtil.httpGet(this.nextUrl);
@@ -70,7 +69,12 @@ abstract public class Parser {
 //                map.put("nowChannel",programList.get(index-1));
 //            }
         } catch (Exception e) {
-            return null;
+            List<Program> today = new ArrayList<>();
+            List<Program> tommorrow = new ArrayList<>();
+            today.add(new Program("暂无节目信息", "00:00"));
+            tommorrow.add(new Program("暂无节目信息", "00:00"));
+            map.put("todayProgram",today);
+            map.put("tommorrowProgram", tommorrow);
         }
         return map;
     }

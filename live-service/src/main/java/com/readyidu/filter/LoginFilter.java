@@ -31,7 +31,8 @@ public class LoginFilter extends OncePerRequestFilter {
                 "/report/add.do",
                 "/play/tvsource",
                 "/channel/channelNow.do",
-                "/channel/lunboPlaybill.do"
+                "/channel/lunboPlaybill.do",
+                "channel/checkLunboBill?"
         };
         String url =request.getRequestURI();
         boolean doFilter=true;

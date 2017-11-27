@@ -5,7 +5,7 @@ import com.readyidu.model.Channel;
 
 /**
  * Created by 123 on 2017/9/30.
- * @version 1.1.6
+ * @version 1.1.7
  * 提供新方法 {@link #selectChannelInfoByKey},取消了其他依赖
  */
 public interface TvSourceService {
@@ -85,5 +85,12 @@ public interface TvSourceService {
      * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
      */
     String getDemandById(Integer id,String ipAdress);
+    /**
+     * 新增上报源接口
+     * @param sourceId
+     * @param isLive 是否是直播
+     * @return json(code: 200 成功，10000服务出错)
+     */
+    String insertReport(Integer sourceId,Boolean isLive);
 }
 

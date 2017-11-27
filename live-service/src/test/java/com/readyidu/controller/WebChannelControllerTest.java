@@ -1,9 +1,9 @@
-package com.readyidu.controller; 
+package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.readyidu.tools.TestBaseConfig;
 import org.junit.Test;
-import org.junit.Before; 
+import org.junit.Before;
 import org.junit.After;
 
 import static org.junit.Assert.assertTrue;
@@ -11,28 +11,28 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/** 
-* WebChannelController Tester. 
-* 
+/**
+* WebChannelController Tester.
+*
 * @author ypf
-* @since <pre>ʮһ�� 15, 2017</pre> 
-* @version 1.0 
-*/ 
+* @since <pre>ʮһ�� 15, 2017</pre>
+* @version 1.0
+*/
 public class WebChannelControllerTest extends TestBaseConfig{
 
 @Before
-public void before() throws Exception { 
-} 
+public void before() throws Exception {
+}
 
 @After
-public void after() throws Exception { 
-} 
+public void after() throws Exception {
+}
 
-/** 
-* 
-* Method: addChannel(@PathVariable String channelName) 
-* 
-*/ 
+/**
+*
+* Method: addChannel(@PathVariable String channelName)
+*
+*/
 @Test
 public void testAddChannel() throws Exception {
     String json = this.mockMvc
@@ -44,13 +44,13 @@ public void testAddChannel() throws Exception {
     JSONObject jsonObject = JSONObject.parseObject(json);
     String code = jsonObject.getString("code");
     assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: addSource(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: addSource(HttpServletRequest request)
+*
+*/
 @Test
 public void testAddSource() throws Exception {
     String json = this.mockMvc
@@ -64,13 +64,13 @@ public void testAddSource() throws Exception {
     JSONObject jsonObject = JSONObject.parseObject(json);
     String code = jsonObject.getString("code");
     assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: modifySource(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: modifySource(HttpServletRequest request)
+*
+*/
 @Test
 public void testModifySource() throws Exception {
     String json = this.mockMvc
@@ -85,13 +85,13 @@ public void testModifySource() throws Exception {
     JSONObject jsonObject = JSONObject.parseObject(json);
     String code = jsonObject.getString("code");
     assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: removeSource(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: removeSource(HttpServletRequest request)
+*
+*/
 @Test
 public void testRemoveSource() throws Exception {
     String json = this.mockMvc
@@ -105,13 +105,13 @@ public void testRemoveSource() throws Exception {
     JSONObject jsonObject = JSONObject.parseObject(json);
     String code = jsonObject.getString("code");
     assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: changeType(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: changeType(HttpServletRequest request)
+*
+*/
 @Test
 public void testChangeType() throws Exception {
     String json = this.mockMvc
@@ -125,22 +125,22 @@ public void testChangeType() throws Exception {
     JSONObject jsonObject = JSONObject.parseObject(json);
     String code = jsonObject.getString("code");
     assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: removeChannel(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: removeChannel(HttpServletRequest request)
+*
+*/
 @Test
 public void testRemoveChannel() throws Exception {
-} 
+}
 
-/** 
-* 
-* Method: checkChannel(HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: checkChannel(HttpServletRequest request)
+*
+*/
 @Test
 public void testCheckChannel() throws Exception {
 //    String json = this.mockMvc
@@ -153,13 +153,13 @@ public void testCheckChannel() throws Exception {
 //    JSONObject jsonObject = JSONObject.parseObject(json);
 //    String code = jsonObject.getString("code");
 //    assertTrue(code.equals("10000"));
-} 
+}
 
-/** 
-* 
-* Method: sortChange(@RequestParam(value = "sourceList[]") int[] sourceList, int channelId, HttpServletRequest request) 
-* 
-*/ 
+/**
+*
+* Method: sortChange(@RequestParam(value = "sourceList[]") int[] sourceList, int channelId, HttpServletRequest request)
+*
+*/
 @Test
 public void testSortChange() throws Exception {
 //    String json = this.mockMvc
@@ -173,52 +173,52 @@ public void testSortChange() throws Exception {
 //    JSONObject jsonObject = JSONObject.parseObject(json);
 //    String code = jsonObject.getString("code");
 //    assertTrue(code.equals("200"));
-} 
+}
 
-/** 
-* 
-* Method: getData() 
-* 
-*/ 
+/**
+*
+* Method: getData()
+*
+*/
 @Test
 public void testGetData() throws Exception {
-} 
+}
 
-/** 
-* 
-* Method: setData(HashMap<String, String> data) 
-* 
-*/ 
+/**
+*
+* Method: setData(HashMap<String, String> data)
+*
+*/
 @Test
 public void testSetData() throws Exception {
-} 
+}
 
-/** 
-* 
-* Method: getCode() 
-* 
-*/ 
+/**
+*
+* Method: getCode()
+*
+*/
 @Test
 public void testGetCode() throws Exception {
-} 
+}
 
-/** 
-* 
-* Method: setCode(Integer code) 
-* 
-*/ 
+/**
+*
+* Method: setCode(Integer code)
+*
+*/
 @Test
 public void testSetCode() throws Exception {
-} 
+}
 
 
-/** 
-* 
-* Method: checkSource(String sourceUri) 
-* 
-*/ 
+/**
+*
+* Method: checkSource(String sourceUri)
+*
+*/
 @Test
 public void testCheckSource() throws Exception {
-} 
+}
 
-} 
+}

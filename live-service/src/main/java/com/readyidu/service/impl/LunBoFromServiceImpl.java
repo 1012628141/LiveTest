@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.readyidu.mapper.LunBoFromMapper;
 import com.readyidu.mapper.PlayBillInfoMapper;
 import com.readyidu.model.*;
+import com.readyidu.playbill.model.Program;
 import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.LunBoFromService;
@@ -85,7 +86,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
-        if (!NullUtil.isNullObject(cacheObj)) {
+            if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
@@ -104,8 +105,19 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         List<PlayBillInfo> todayProgram = playBillInfoMapper.selectBill(new PlayBillInfo(todayTime, channelId));
         List<PlayBillInfo> tommorrowProgram = playBillInfoMapper.selectBill(new PlayBillInfo(tomrrow, channelId));
         Map<String,Object> channelBill = new HashMap<>();
-        channelBill.put("todayProgram",todayProgram);
-        channelBill.put("tommorrowProgram",tommorrowProgram);
+        if(todayProgram.size()!=0)
+        {
+            channelBill.put("todayProgram",todayProgram);
+            channelBill.put("tommorrowProgram",tommorrowProgram);
+        }
+        else {
+            List<Program> today = new ArrayList<>();
+            List<Program> tommorrow = new ArrayList<>();
+            today.add(new Program("暂无节目信息", "00:00"));
+            tommorrow.add(new Program("暂无节目信息", "00:00"));
+            channelBill.put("todayProgram",today);
+            channelBill.put("tommorrowProgram", tommorrow);
+        }
         return channelBill;
     }
 
@@ -113,6 +125,11 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
     @Override
     public String selectDemandById(Integer id) {
         return lunBoFromMapper.selectDemandById(id);
+    }
+
+    @Override
+    public int reportDemand(Integer id) {
+        return lunBoFromMapper.reportDemand(id);
     }
 
     @Override
