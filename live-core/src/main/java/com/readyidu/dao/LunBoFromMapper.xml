@@ -71,6 +71,9 @@
         where id = #{id}
 
     </select>
+    <update id="reportDemand" parameterType="java.lang.Integer">
+        update  t_lunbo_billfrom set is_delete=2,modify_time=now() where id=#{id} and is_delete != 1
+    </update>
 
 
 </mapper>

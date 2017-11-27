@@ -5,6 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
        default-autowire="byName">
-    <!--<dubbo:reference id="customerDictService" interface="com.readyidu.smartcore.hanlp.service.CustomerDictService" version="1.0.0"-->
-                     <!--timeout="3000"/>-->
+    <dubbo:reference id="customerDictService" interface="com.readyidu.smartcore.hanlp.service.CustomerDictService" version="1.0.0"
+                     timeout="3000"/>
 </beans>

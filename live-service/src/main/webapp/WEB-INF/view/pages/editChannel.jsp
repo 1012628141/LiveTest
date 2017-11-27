@@ -69,7 +69,7 @@
 														<c:forEach items="${ sources }" var="s" varStatus="loop">
 															<c:if test="${not empty s }">
 																<c:if test="${s.isDelete!=1}">
-																	<tr data-sid="${loop.index}" data-id="${channel.id}" data-sourceid="${s.id}">
+																	<tr data-sid="${loop.index}" data-id="${channel.id}" data-sourceid="${s.sourceId}">
 																		<td class="text-center">${loop.index + 1}</td>
 																		<td>
 																			<a href="${fn:toLowerCase(s.source)}" title="${s.source}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">
@@ -182,7 +182,7 @@
 															<c:if test="${not empty s }">
 																<c:if test="${s.isDelete==1}">
 																	<%--<tr data-sid="${loop.index}" data-id="${channel.id}">--%>
-																	<tr data-sid="${loop.index}" data-id="${channel.id}" data-sourceid="${s.id}">
+																	<tr data-sid="${loop.index}" data-id="${channel.id}" data-sourceid="${s.sourceId}">
 																	<td class="text-center">${loop.index + 1}</td>
 																		<td>
 																			<a href="${fn:toLowerCase(s.source)}" title="${s.source}" style="display: block; width: 70%; word-wrap: break-word; word-break: normal;">

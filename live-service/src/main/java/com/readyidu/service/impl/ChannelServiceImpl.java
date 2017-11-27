@@ -1,12 +1,14 @@
 package com.readyidu.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.readyidu.mapper.*;
 import com.readyidu.model.*;
 import com.readyidu.playbill.base.OriginManager;
+import com.readyidu.playbill.model.Program;
 import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
 import com.readyidu.source.base.LiveManager;
@@ -259,7 +261,7 @@ public class ChannelServiceImpl extends BaseService implements
                     billFromInfo.getFromUrl(),
                     billFromInfo.getOrigin());
         }
-        if (NullUtil.isNullObject(programMap))
+        if (NullUtil.isNullObject(programMap)|| programMap.size()==0)
         {
             programMap = lunBoFromService.getChannelBill(Integer.valueOf(channelId));
         }
@@ -288,7 +290,7 @@ public class ChannelServiceImpl extends BaseService implements
         // 优先从缓存中取
         String cacheObj = cacheService.get(cacheKey);
         if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, Channel.class);
+                channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList = channelMapper.selectAllNew();

@@ -38,6 +38,11 @@ public class ChannelSourceServiceImpl extends BaseService implements ChannelSour
     }
 
     @Override
+    public int reportSourceByid(Integer id) {
+        return channelSourceMapper.reportSourceByid(id);
+    }
+
+    @Override
     public int updateIsDelete(String source) {
         return channelSourceMapper.updateIsDelete(source);
     }
