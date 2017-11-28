@@ -378,7 +378,7 @@ public class ChannelServiceImpl extends BaseService implements
         return channelList;
     }
 
-    public List<ChannelType> getTypeListBySort(){
+    public List<ChannelType> getTypeList(){
         // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "channelTypeNew";

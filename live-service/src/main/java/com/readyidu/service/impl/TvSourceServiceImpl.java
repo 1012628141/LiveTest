@@ -361,7 +361,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         }
         return operator;
     }
-    public String getTpyeList() {
+    public String getTypeList() {
         try {
             List<ChannelType> channelTypeList = channelService.getTypeListBySort();
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);

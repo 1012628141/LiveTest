@@ -19,5 +19,5 @@ public interface ChannelTypeMapper {
 
     List<ChannelType> selectAll();
 
-    List<ChannelType> getTypeListBySort();
+    List<ChannelType> getTypeList();
 }

@@ -96,7 +96,7 @@ public interface TvSourceService {
      * 新增按sort排序的频道分类接口
      * @return json(code:200成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
      */
-    String getTpyeList();
+    String getTypeList();
 
     /**
      * 新增按频道id获取频道源接口,返回源地址，源清晰度，源响应时间
