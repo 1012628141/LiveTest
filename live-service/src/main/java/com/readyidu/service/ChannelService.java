@@ -29,4 +29,5 @@ public interface ChannelService {
     public List<Channel> getChannelWithoutSource();
     public List<NewChannel> getNewChannelWithoutSource();
 
+    public List<ChannelType> getTypeListBySort();
 }

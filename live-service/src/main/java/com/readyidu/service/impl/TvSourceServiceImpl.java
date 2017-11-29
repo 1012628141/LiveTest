@@ -348,7 +348,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         try {
             Map<String,Object> dataJson = new HashMap<>();
             List<NewChannel> channelList;
-            List<NewChannel> movieList;
+            List<NewDemand> movieList;
             channelList = channelService.getNewChannelWithoutSource();
             movieList = lunBoFromService.getNewDemandList();
             dataJson.put("channels",channelList);
@@ -381,5 +381,72 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             ipDataService.insertIpData(ipData);
         }
         return operator;
+    }
+    public String getTpyeList() {
+        try {
+            List<ChannelType> channelTypeList = channelService.getTypeListBySort();
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+    public String getSourceByIdNew(Integer channelId,String ipAdress){
+        String sourceUri = null ;
+        try {
+             List<NewChannelSource> sources = channelSourceService.selectSourceByIdNew(channelId);
+            if (NullUtil.isNullObject(sources))
+            {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+            for (NewChannelSource source:sources){
+                sourceUri = source.getSource();
+                if (sourceUri.startsWith("sourceUri://")){
+                    sourceUri = sourceService.getSource(source.getSource());
+                }
+                if (sourceUri.contains("124.160.117.35"))
+                {
+                    String ip = ipAdress;
+                    String operator = null;
+                    if (!NullUtil.isNullObject(ip))
+                    {
+                        operator = checkOperator(ip);
+                    }
+                    if (NullUtil.isNullObject(operator))
+                    {
+                        operator = "联通";
+                    }
+                    switch (operator){
+                        case "电信":
+                            sourceUri = sourceUri.replace("124.160.117.35","183.134.101.35");
+                            break;
+                        case "联通":
+                            sourceUri = sourceUri.replace("124.160.117.35","218.205.92.125");
+                            break;
+                        case "移动":
+                            sourceUri = sourceUri.replace("124.160.117.35","124.160.117.36");
+                            break;
+                    }
+                }
+                source.setSource(sourceUri);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, sources);
+        }catch (Exception e)
+        {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+    public String getDemandByIdNew(Integer id) {
+        try {
+            String source = lunBoFromService.selectDemandById(id);
+            if (NullUtil.isNullObject(source)) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+            if (source.startsWith("sourceUri://")) {
+                source = liveManager.getChannelSource(source);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
     }
 }

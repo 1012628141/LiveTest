@@ -26,6 +26,7 @@
         <id property = "i" column="id"/>
         <result property="c" column="channel"/>
         <result property="t" column="typeid"/>
+        <result property="p" column="typeid"/>
     </resultMap>
     <select id="getFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
         select
@@ -84,6 +85,7 @@
         id as i
         ,movieName as c
         ,typeid as t
+        ,parentid as p
         from
         t_lunbo_billfrom
         where is_delete != 1

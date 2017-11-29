@@ -1,11 +1,16 @@
 package com.readyidu.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelMapper;
-import com.readyidu.model.Channel;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.model.ChannelType;
+import com.readyidu.model.*;
 import com.readyidu.service.*;
+import com.readyidu.source.base.LiveManager;
 import com.readyidu.tools.TestBaseConfig;
+import com.readyidu.util.HttpUtil;
+import com.readyidu.util.JsonResult;
+import com.readyidu.util.NullUtil;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -42,6 +47,12 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 
     @Resource(name = "ipDataService")
     IpDataService ipDataService;
+
+    @Resource(name = "lunBoFromService")
+    LunBoFromService lunBoFromService ;
+
+    @Resource(name = "liveManager")
+    LiveManager liveManager ;
 
     @Before
     public void before() throws Exception {
@@ -151,6 +162,76 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     public void testCheckOperator() throws Exception {
 //TODO: Test goes here...
     }
+    @Test
+    public void testGetSourceByIdNew() throws Exception{
 
+        Integer channelId = 1 ;
+        String ipAdress = "192.168.4.178";
+        String sourceUri = null;
+        List<NewChannelSource> sources = channelSourceService.selectSourceByIdNew(channelId);
+        for (NewChannelSource source:sources){
+            sourceUri = source.getSource();
+            if (sourceUri.startsWith("sourceUri://")){
+                sourceUri = sourceService.getSource(source.getSource());
+            }
+            if (sourceUri.contains("124.160.117.35"))
+            {
+                String ip = ipAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip))
+                {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator))
+                {
+                    operator = "联通";
+                }
+                switch (operator){
+                    case "电信":
+                        sourceUri = sourceUri.replace("124.160.117.35","183.134.101.35");
+                        break;
+                    case "联通":
+                        sourceUri = sourceUri.replace("124.160.117.35","218.205.92.125");
+                        break;
+                    case "移动":
+                        sourceUri = sourceUri.replace("124.160.117.35","124.160.117.36");
+                        break;
+                }
+            }
+            source.setSource(sourceUri);
+        }
+       System.out.println(JsonResult.toString(200,sources));
+        assertTrue(!sources.isEmpty());
+    }
 
+    @Test
+    public void testGetDemandByIdNew()throws Exception{
+        Integer id = 643 ;
+        String source = lunBoFromService.selectDemandById(id);
+        if (source.startsWith("sourceUri://")) {
+            source = liveManager.getChannelSource(source);
+        }
+        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, source));
+        assertTrue(!source.isEmpty());
+    }
+
+    public String checkOperator(String IpAdress) {
+        String IPIP_TOKEN = "30e93b06b4a738f4bf233566a83f30f02ba6c093";
+        IpData ipData = new IpData(IpAdress);
+        String searchResult = ipDataService.SelectIpOperator(ipData);
+        if (!NullUtil.isNullObject(searchResult)) {
+            return searchResult;
+        }
+        String httpResult = HttpUtil.httpGet("http://ipapi.ipip.net/find?addr=" + IpAdress, IPIP_TOKEN);
+        JSONObject jsonResult = JSON.parseObject(httpResult);
+        String data = jsonResult.getString("data");
+        String[] info = data.split(",");
+        String operator = info[4].replace("\"", "");
+        if (!NullUtil.isNullObject(operator))
+        {
+            ipData.setOperator(operator);
+            ipDataService.insertIpData(ipData);
+        }
+        return operator;
+    }
 }

@@ -2,6 +2,7 @@ package com.readyidu.mapper;
 
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
+import com.readyidu.model.NewChannelSource;
 import com.readyidu.model.Source;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,4 +25,5 @@ public interface ChannelSourceMapper {
     int modifySource(ChannelSource source);
     int updateSourceDeleteFlag(@Param("parentId")Integer parentId, @Param("sourceId")Integer sourceId);
     String selectSourceById(Integer id);
+    List<NewChannelSource> selectSourceByIdNew(Integer id);
 }

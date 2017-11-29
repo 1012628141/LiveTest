@@ -62,4 +62,9 @@
     set type = #{type,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="getTypeListBySort" resultType="com.readyidu.model.ChannelType">
+        select
+        <include refid="Base_Column_List"/>
+        from t_channel_type ORDER BY sort
+    </select>
 </mapper>

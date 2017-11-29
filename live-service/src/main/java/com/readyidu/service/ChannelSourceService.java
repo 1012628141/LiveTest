@@ -2,6 +2,7 @@ package com.readyidu.service;
 
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
+import com.readyidu.model.NewChannelSource;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface ChannelSourceService {
     int modifySource(ChannelSource source);
     List<ChannelSource> selectSourceByParentId(Integer id);
     String selectSourceById(Integer id);
+    List<NewChannelSource> selectSourceByIdNew(Integer id);
 }

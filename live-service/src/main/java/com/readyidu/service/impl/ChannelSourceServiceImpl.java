@@ -72,4 +72,7 @@ public class ChannelSourceServiceImpl extends BaseService implements ChannelSour
     public String selectSourceById(Integer id) {
         return channelSourceMapper.selectSourceById(id);
     }
+    public List<NewChannelSource> selectSourceByIdNew(Integer id){
+        return channelSourceMapper.selectSourceByIdNew(id);
+    }
 }

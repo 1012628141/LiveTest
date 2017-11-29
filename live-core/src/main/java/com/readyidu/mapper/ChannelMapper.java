@@ -1,7 +1,11 @@
 package com.readyidu.mapper;
 
 import com.readyidu.model.Channel;
+<<<<<<< HEAD
 import com.readyidu.model.NewChannel;
+=======
+import com.readyidu.model.NewChannelSource;
+>>>>>>> 0a876a3d7a7ac602b8bbaca6770011fd6b6dda6b
 
 import java.util.List;
 import java.util.Map;
