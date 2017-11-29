@@ -49,11 +49,13 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
             String tomrrow = TimeUtil.getTomorrowTime(currtentData);
             playBillInfoMapper.cleanBillInfo(channelId);
             SimpleDateFormat spd = new SimpleDateFormat("HH:mm");
+            // TODO: 2017/11/28 加缓存
             List<LunBoBillFrom> dramaList = lunBoFromMapper.getFromByChannelId(channelId);
             long nexttime = currtentData;
             for (LunBoBillFrom drame : dramaList){
                 int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
                 long length = (long) drame.getPlaytime() * 1000;
+                // TODO: 2017/11/28 加缓存
                 playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), TimeUtil.getTargetDayTime(playDate),channelId));
                 nexttime = nexttime+length;
             }
@@ -69,6 +71,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
     public String getDemandListByChannelId() {
         List<LunBoBillFrom> list = null;
         try{
+            // TODO: 2017/11/28 加缓存
             list = lunBoFromMapper.selectFromByChannelId();
             if(list != null && list.size() != 0){
                 return JsonResult.toString(CODE_SUCCESS,list);
@@ -102,6 +105,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         long currtentData = new Date().getTime();
         String todayTime = TimeUtil.getTodayTime();
         String tomrrow = TimeUtil.getTomorrowTime(currtentData);
+        // TODO: 2017/11/28 加缓存
         List<PlayBillInfo> todayProgram = playBillInfoMapper.selectBill(new PlayBillInfo(todayTime, channelId));
         List<PlayBillInfo> tommorrowProgram = playBillInfoMapper.selectBill(new PlayBillInfo(tomrrow, channelId));
         Map<String,Object> channelBill = new HashMap<>();
@@ -124,16 +128,19 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
     @Override
     public String selectDemandById(Integer id) {
+        // TODO: 2017/11/28 加缓存策略
         return lunBoFromMapper.selectDemandById(id);
     }
 
     @Override
     public int reportDemand(Integer id) {
+        // TODO: 2017/11/28 加缓存策略
         return lunBoFromMapper.reportDemand(id);
     }
 
     @Override
     public boolean checkLunboBill(Integer channelId,String fileName) {
+        // TODO: 2017/11/28 加缓存策略
         List<LunBoBillFrom> fileList = lunBoFromMapper.selectFileByChannelId(channelId);
         ListIterator<LunBoBillFrom> fileIterator = fileList.listIterator();
         while (fileIterator.hasNext())
