@@ -397,7 +397,8 @@ public class ChannelServiceImpl extends BaseService implements
         return channelList;
     }
 
-    public List<ChannelType> getTypeListBySort(){
+
+    public List<ChannelType> getTypeList(){
         // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "channelTypeNew";
@@ -409,7 +410,7 @@ public class ChannelServiceImpl extends BaseService implements
             channelType = JSON.parseArray(cacheObj, ChannelType.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
-            channelType = channelTypeMapper.getTypeListBySort();
+            channelType = channelTypeMapper.getTypeList();
             // 信息缓存5分钟
             cacheService.set(cacheKey, JSON.toJSONString(channelType),
                     CacheService.CACHE_TIMEOUT);
