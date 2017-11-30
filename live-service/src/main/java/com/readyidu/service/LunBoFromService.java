@@ -19,5 +19,4 @@ public interface LunBoFromService {
     String selectDemandById(Integer id);
     int reportDemand(Integer id);
     boolean checkLunboBill(Integer channelId,String fileName);
-    List<NewDemand> getNewDemandList();
 }

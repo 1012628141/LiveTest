@@ -54,6 +54,12 @@
         <id property = "i" column="id"/>
         <result property="c" column="channel"/>
         <result property="t" column="typeid"/>
+        <collection property="o" ofType="com.readyidu.model.NewChannelSource">
+            <result property="s"  column="source" />
+            <result property="r" column="resolve" />
+            <result property="m" column="responseTime" />
+            <result property="f" column="isSelf"/>
+        </collection>
     </resultMap>
 
     <select id="selectAll" resultType="com.readyidu.model.Channel">
@@ -363,22 +369,26 @@
         where t1.channel is not null
         order by t1.id
     </select>
-    <select id="selectNewWithoutSource" resultMap="newChannel">
+    <select id="selectNewChannelList" parameterType="java.lang.String" resultMap="newChannel">
         select
-        t1.id as i,t1.channel as c,t1.typeid as t
+        <include refid="Second_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
         from t_channel t1
-        where
-        (select count(*) from t_channel_source t2 where t1.id = t2.parentid and t2.is_delete !=1)>0
-        order by t1.id
-    </select>
-    <select id="selectByTypeId" parameterType="java.lang.String" resultType="java.lang.Integer">
-        select
-        t1.id
-        from t_channel t1
-        where
-        (select count(*) from t_channel_source t2 where t1.id = t2.parentid and t2.is_delete !=1)>0
-        and
-        typeid = #{typeId,jdbcType=VARCHAR}
-        order by t1.id
+        left join
+        (select
+        parentid
+        ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
+        ) t2
+        on t1.id=t2.parentid
+        where t1.typeid = #{typeid,jdbcType=VARCHAR}
+        order by t1.id,t2.sort
     </select>
 </mapper>

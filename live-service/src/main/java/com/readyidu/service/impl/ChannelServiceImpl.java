@@ -60,7 +60,6 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> getChannelList() {
-        // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "channelList";
 
@@ -304,7 +303,6 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> selectHotChannel() {
-        // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "hotChannelList";
 
@@ -377,28 +375,8 @@ public class ChannelServiceImpl extends BaseService implements
         return channelList;
     }
 
-    @Override
-    public List<NewChannel> getNewChannelWithoutSource() {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelListNew";
-//
-        List<NewChannel> channelList = null;
-//        // 优先从缓存中取
-        String cacheObj = cacheService.get(cacheKey);
-        if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, NewChannel.class);
-        } else {
-            // 若redis中无数据，则查询数据库, 并缓存
-            channelList = channelMapper.selectNewWithoutSource();
-            // 信息缓存5分钟
-            cacheService.set(cacheKey, JSON.toJSONString(channelList),
-                    CacheService.CACHE_TIMEOUT);
-        }
-        return channelList;
-    }
-
 
     public List<ChannelType> getTypeList(){
-        // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "channelTypeNew";
 

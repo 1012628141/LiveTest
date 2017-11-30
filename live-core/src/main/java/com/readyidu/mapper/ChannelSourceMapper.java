@@ -25,5 +25,4 @@ public interface ChannelSourceMapper {
     int modifySource(ChannelSource source);
     int updateSourceDeleteFlag(@Param("parentId")Integer parentId, @Param("sourceId")Integer sourceId);
     String selectSourceById(Integer id);
-    List<NewChannelSource> selectSourceByIdNew(Integer id);
 }

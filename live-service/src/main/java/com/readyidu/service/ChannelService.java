@@ -27,6 +27,5 @@ public interface ChannelService {
     public List<Channel> selectHotChannel();
     public List<Map> getAllChannel();
     public List<Channel> getChannelWithoutSource();
-    public List<NewChannel> getNewChannelWithoutSource();
     public List<ChannelType> getTypeList();
 }

@@ -95,34 +95,14 @@ public interface TvSourceService {
 
     /**
      * app端获取所有频道列表
-     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.NewChannelChannel}] 返回所有频道和分类ID)
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.NewChannel}] 返回所有频道和分类ID)
      */
-    String getNewChannelList();
+    String getNewChannelListByTypeId(String typeId);
 
-    /**
-     * app端通过节目类型ID（typeId）查询节目单列表
-     * @param typeId 节目类型ID
-     * @return json (code: 200 成功,10000 服务出错; 返回同个节目类型下所有的频道节目表（2天）)
-     */
-    String getchannelPlaybillByTypeId(String typeId);
     /**
      * 新增按sort排序的频道分类接口
      * @return json(code:200成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
      */
     String getTypeList();
 
-    /**
-     * 新增按频道id获取频道源接口,返回源地址，源清晰度，源响应时间
-     * @param channelId
-     * @param ipAdress
-     * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：[{@link com.readyidu.model.NewChannelSource}]data包括源播放地址，源清晰度，源响应时间，是否是自己源)
-     */
-    String getSourceByIdNew(Integer channelId,String ipAdress);
-
-    /**
-     * 新增获取天翼点播源接口，通过id查询对应源地址
-     * @param id
-     * @return json(code: 200 成功，10000 服务出错;data:source 源的播放地址)
-     */
-    String getDemandByIdNew(Integer id);
 }

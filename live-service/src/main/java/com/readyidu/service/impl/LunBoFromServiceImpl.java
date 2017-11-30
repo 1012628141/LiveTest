@@ -89,14 +89,13 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
-            if (!NullUtil.isNullObject(cacheObj)) {
+        if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectIntoChannel();
-            if (channelList.size()!=0)
             // 信息缓存5分钟
-                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -128,8 +127,19 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
     @Override
     public String selectDemandById(Integer id) {
-        // TODO: 2017/11/28 加缓存策略
-        return lunBoFromMapper.selectDemandById(id);
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlSource";
+        String cacheObj = cacheService.get(cacheKey);
+        String source = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            source = cacheObj;
+        } else {
+            source = lunBoFromMapper.selectDemandById(id);
+            if (!source.isEmpty())
+                // 信息缓存5分钟
+                cacheService.set(cacheKey,source,CacheService.CACHE_TIMEOUT);
+        }
+        return source;
+
     }
 
     @Override
@@ -181,23 +191,6 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
         }
         return false;
-    }
-
-    @Override
-    public List<NewDemand> getNewDemandList() {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "NewDemandlList";
-        String cacheObj = cacheService.get(cacheKey);
-        List<NewDemand> channelList = null;
-        if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, NewDemand.class);
-        } else {
-            // 若redis中无数据，则查询数据库, 并缓存
-            channelList= lunBoFromMapper.selectNewChannel();
-            if (channelList.size()!=0)
-                // 信息缓存5分钟
-                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
-        }
-        return channelList;
     }
 
 }

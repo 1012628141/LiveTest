@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.After;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +54,9 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 
     @Resource(name = "liveManager")
     LiveManager liveManager ;
+
+    @Resource(name = "cacheService")
+    CacheService cacheService;
 
     @Before
     public void before() throws Exception {
@@ -162,58 +166,6 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     public void testCheckOperator() throws Exception {
 //TODO: Test goes here...
     }
-    @Test
-    public void testGetSourceByIdNew() throws Exception{
-
-        Integer channelId = 1 ;
-        String ipAdress = "192.168.4.178";
-        String sourceUri = null;
-        List<NewChannelSource> sources = channelSourceService.selectSourceByIdNew(channelId);
-        for (NewChannelSource source:sources){
-            sourceUri = source.getSource();
-            if (sourceUri.startsWith("sourceUri://")){
-                sourceUri = sourceService.getSource(source.getSource());
-            }
-            if (sourceUri.contains("124.160.117.35"))
-            {
-                String ip = ipAdress;
-                String operator = null;
-                if (!NullUtil.isNullObject(ip))
-                {
-                    operator = checkOperator(ip);
-                }
-                if (NullUtil.isNullObject(operator))
-                {
-                    operator = "联通";
-                }
-                switch (operator){
-                    case "电信":
-                        sourceUri = sourceUri.replace("124.160.117.35","183.134.101.35");
-                        break;
-                    case "联通":
-                        sourceUri = sourceUri.replace("124.160.117.35","218.205.92.125");
-                        break;
-                    case "移动":
-                        sourceUri = sourceUri.replace("124.160.117.35","124.160.117.36");
-                        break;
-                }
-            }
-            source.setSource(sourceUri);
-        }
-       System.out.println(JsonResult.toString(200,sources));
-        assertTrue(!sources.isEmpty());
-    }
-
-    @Test
-    public void testGetDemandByIdNew()throws Exception{
-        Integer id = 643 ;
-        String source = lunBoFromService.selectDemandById(id);
-        if (source.startsWith("sourceUri://")) {
-            source = liveManager.getChannelSource(source);
-        }
-        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, source));
-        assertTrue(!source.isEmpty());
-    }
 
     public String checkOperator(String IpAdress) {
         String IPIP_TOKEN = "30e93b06b4a738f4bf233566a83f30f02ba6c093";
@@ -233,5 +185,11 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
             ipDataService.insertIpData(ipData);
         }
         return operator;
+    }
+
+    public void testGetNewChannelListByTypeId() throws Exception{
+        String cacheKey = "LIVE_SERVICE_" + "tv_source" + ""+"200";
+        String cacheObj = cacheService.get(cacheKey);
+        System.out.println(cacheObj);
     }
 }

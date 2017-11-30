@@ -75,10 +75,4 @@
     from t_channel_source
     where id = #{id}
   </select>
-  <select id="selectSourceByIdNew" parameterType="java.lang.Integer" resultType="com.readyidu.model.NewChannelSource">
-    SELECT source,source_px resolve,response_time responseTime,is_self isSelf
-    FROM t_channel_source
-    WHERE parentid=#{id} AND is_delete != 1
-    ORDER BY sort
-  </select>
 </mapper>

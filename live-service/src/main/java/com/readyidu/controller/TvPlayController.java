@@ -56,9 +56,4 @@ public class TvPlayController {
     public String tvsource(String source){
         return  tvSourceService.selectChannelInfoByKey("浙江数码时代");
     }
-    @ResponseBody
-    @RequestMapping(value = "test",produces = "application/json; charset=utf-8")
-    public String test(){
-        return  tvSourceService.getNewChannelList();
-    }
 }

@@ -21,5 +21,4 @@ public interface ChannelSourceService {
     int modifySource(ChannelSource source);
     List<ChannelSource> selectSourceByParentId(Integer id);
     String selectSourceById(Integer id);
-    List<NewChannelSource> selectSourceByIdNew(Integer id);
 }
