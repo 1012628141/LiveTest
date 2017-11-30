@@ -65,6 +65,6 @@
     <select id="getTypeList" resultType="com.readyidu.model.ChannelType">
         select
         <include refid="Base_Column_List"/>
-        from t_channel_type ORDER BY sort
+        from t_channel_appType ORDER BY sort
     </select>
 </mapper>

@@ -361,9 +361,19 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         }
         return operator;
     }
-    public String getTypeList() {
+    public String getTypeList(String type) {
         try {
             List<ChannelType> channelTypeList = channelService.getTypeList();
+            for(int i=0;i<channelTypeList.size();i++){
+                //遍历集合，若找到城市则将该城市的频道分类与浙江交换
+                ChannelType c = channelTypeList.get(i);
+                String p = c.getType();
+                if(type.equals(p)){
+                    ChannelType temp = channelTypeList.get(i);
+                    channelTypeList.set(i,channelTypeList.get(2)) ;
+                    channelTypeList.set(2,temp);
+                }
+            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
