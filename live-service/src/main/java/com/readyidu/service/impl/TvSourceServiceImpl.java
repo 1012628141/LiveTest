@@ -11,16 +11,15 @@ import com.readyidu.source.base.LiveManager;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import org.apache.commons.jexl2.UnifiedJEXL;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by 123 on 2017/9/30.
@@ -317,6 +316,39 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         }
     }
 
+    @Override
+    public String getNewChannelListByTypeId(String typeId) {
+        try {
+            Map<String, Object> dataJson = new HashMap<>();
+            //获取直播播放列表根据typeid
+            List<Integer>channelList = channelService.selectChannelByTypeId(typeId);
+            //获取点播播放列表根据typeid
+            List<NewDemand> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
+            List<NewChannel> channelsList = new ArrayList<NewChannel>();
+            String cacheKey =null;
+            NewChannel newChannel =null;
+            SimpleDateFormat df = new SimpleDateFormat("MM-dd");
+            String nowTime = df.format(new Date());
+            for (Integer channelId:channelList) {
+                cacheKey = "channel_playbill_"+channelId.toString()+"_"+nowTime;
+                //获取redis缓存数据
+                String cacheObj = cacheService.get(cacheKey);
+                if (!NullUtil.isNullObject(cacheObj)){
+                    newChannel = JSON.parseObject(cacheObj,NewChannel.class);
+                    channelsList.add(newChannel);
+                }else {
+                    //获取部分没有节目表的频道
+                    channelsList.add(channelService.selectNewChannelById(channelId));
+                }
+            }
+            dataJson.put("channels", channelsList);
+            dataJson.put("movieList", movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
         String searchResult = ipDataService.SelectIpOperator(ipData);
@@ -334,4 +366,24 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         }
         return operator;
     }
+    @Override
+    public String getTypeList(String type) {
+        try {
+            List<ChannelType> channelTypeList = channelService.getTypeList();
+            for(int i=0;i<channelTypeList.size();i++){
+                //遍历集合，若找到城市则将该城市的频道分类与浙江交换
+                ChannelType c = channelTypeList.get(i);
+                String p = c.getType();
+                if(type.equals(p)){
+                    ChannelType temp = channelTypeList.get(i);
+                    channelTypeList.set(i,channelTypeList.get(2)) ;
+                    channelTypeList.set(2,temp);
+                }
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
 }

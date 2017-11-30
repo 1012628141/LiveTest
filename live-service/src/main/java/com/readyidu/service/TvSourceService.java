@@ -91,4 +91,17 @@ public interface TvSourceService {
      * @return json(code: 200 成功，10000服务出错)
      */
     String insertReport(Integer sourceId,Boolean isLive);
+
+    /**
+     * app端获取所有频道列表
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.NewChannel}] 返回所有频道和分类ID)
+     */
+    String getNewChannelListByTypeId(String typeId);
+    /**
+     * 新增按sort排序的频道分类接口
+     * @param type  定位的省份
+     * @return json (code: 200 成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
+     */
+    String getTypeList(String type);
+
 }

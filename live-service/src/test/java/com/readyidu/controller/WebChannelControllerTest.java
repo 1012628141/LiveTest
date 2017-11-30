@@ -128,7 +128,11 @@ public void testChangeType() throws Exception {
 }
 
 /**
+<<<<<<< HEAD
+* 已弃用
+=======
 *
+>>>>>>> a213f85b06352faf770b15653bf89903ba8d5d3d
 * Method: removeChannel(HttpServletRequest request)
 *
 */

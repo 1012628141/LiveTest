@@ -17,7 +17,7 @@ public class MovieServiceImpl implements MovieService {
     private MovieMapper movieMapper;
     @Override
     public List<Movie> selectAllMovie() { return movieMapper.selectAllMovie(); }
-
+    //获取所有的预告片
     @Override
     public List<Movie> selectAllTrailer() {return movieMapper.selectAllTrailer();}
 }

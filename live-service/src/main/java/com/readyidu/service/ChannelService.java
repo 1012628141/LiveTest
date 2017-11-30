@@ -2,6 +2,7 @@ package com.readyidu.service;
 
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
+import com.readyidu.model.NewChannel;
 
 import java.util.List;
 import java.util.Map;
@@ -26,5 +27,7 @@ public interface ChannelService {
     public List<Channel> selectHotChannel();
     public List<Map> getAllChannel();
     public List<Channel> getChannelWithoutSource();
-
+    public List<ChannelType> getTypeList();
+    List<Integer> selectChannelByTypeId(String typeid);
+    NewChannel selectNewChannelById(Integer id);
 }

@@ -24,6 +24,7 @@ import java.util.Map;
  * 2017/7/5
  * Created by dylan.
  * Home: http://www.devdylan.cn
+
  */
 @Service("routerService")
 public class RouterServiceImpl implements RouterService {
@@ -33,8 +34,6 @@ public class RouterServiceImpl implements RouterService {
 
     @Resource(name = "cacheService")
     private CacheService cacheService;
-
-    //@Resource(name = "customerDictService")
     @Autowired(required = false)
     private CustomerDictService customerDictService;
     @Resource(name="channelClassMapper")

@@ -5,13 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import com.readyidu.mapper.*;
 import com.readyidu.model.*;
+import com.readyidu.model.Channel;
 import com.readyidu.playbill.base.OriginManager;
 import com.readyidu.playbill.model.Program;
 import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
-import com.readyidu.source.base.LiveManager;
+import com.readyidu.source.base.*;
+import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import com.readyidu.util.PageUtil;
 import com.readyidu.util.SourceCheck;
@@ -60,7 +63,6 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> getChannelList() {
-        // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "channelList";
 
@@ -101,7 +103,7 @@ public class ChannelServiceImpl extends BaseService implements
     @Override
     public List<ChannelType> getChannelType() {
         // 拼装缓存key值
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelType";
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "getChannelType";
 
         List<ChannelType> channelType = null;
         // 优先从缓存中取
@@ -110,7 +112,6 @@ public class ChannelServiceImpl extends BaseService implements
             channelType = JSON.parseArray(cacheObj, ChannelType.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
-            // TODO: 2017/11/28 优化 过滤掉typeId==100
             channelType = channelTypeMapper.selectAll();
             // 信息缓存5分钟
             cacheService.set(cacheKey, JSON.toJSONString(channelType),
@@ -129,8 +130,18 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public Channel getChannel(Integer id) {
-        // TODO: 2017/11/28 加缓存
-        return channelMapper.selectByPrimaryKey(id);
+        // 拼装缓存key值
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelType"+id.toString();
+        Channel channel = null;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channel = JSON.parseObject(cacheObj,Channel.class);
+        } else {
+            channel = channelMapper.selectByPrimaryKey(id);
+            cacheService.set(cacheKey, JSON.toJSONString(channel),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channel;
     }
 
     @Override
@@ -167,8 +178,16 @@ public class ChannelServiceImpl extends BaseService implements
     @Override
     public int removeSource(Integer channelId, Integer sourceId) {
 //        Channel channel = channelMapper.selectByPrimaryKey(channelId);
-        // TODO: 2017/11/28 加缓存
-        List<ChannelSource> channelList = channelSourceMapper.selectSourceByParentId(channelId);
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectSourceByParentId"+channelId.toString();
+        List<ChannelSource> channelList = null;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj,ChannelSource.class);
+        } else {
+            channelList = channelSourceMapper.selectSourceByParentId(channelId);
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
         int deleteId = 0;
         if (sourceId < channelList.size()) {
             if (channelList.size() != 0) {
@@ -211,8 +230,16 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public int changeType(Integer channelId, String typeId) {
-        // TODO: 2017/11/28 加缓存
-        Channel channel = channelMapper.selectByPrimaryKey(channelId);
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelType"+channelId;
+        Channel channel = null;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channel = JSON.parseObject(cacheObj,Channel.class);
+        }else {
+            channel = channelMapper.selectByPrimaryKey(channelId);
+            cacheService.set(cacheKey, JSON.toJSONString(channel),
+                    CacheService.CACHE_TIMEOUT);
+        }
         if (channel != null) {
             channel.setTypeid(typeId);
             return channelMapper.updateByPrimaryKey(channel);
@@ -270,14 +297,20 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> selectChannelByKey(String key) {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelByKey";
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelByKey"+key;
 
         List<Channel> channelList = null;
         // 优先从缓存中取
-        // 若redis中无数据，则查询数据库, 并缓存
-        channelList = channelMapper.selectChannelByKey(key);
-        // TODO: 2017/11/28 加缓存
-        // 信息缓存5分钟
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Channel.class);
+        }else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectChannelByKey(key);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
         return channelList;
     }
 
@@ -304,7 +337,6 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public List<Channel> selectHotChannel() {
-        // TODO Auto-generated method stub
         // 拼装缓存key值
         String cacheKey = SERVICE_RBK + CACHE_NAME + "hotChannelList";
 
@@ -377,4 +409,58 @@ public class ChannelServiceImpl extends BaseService implements
         return channelList;
     }
 
+    @Override
+    public List<ChannelType> getTypeList(){
+        // 拼装缓存key值
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelTypeNew";
+
+        List<ChannelType> channelType = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelType = JSON.parseArray(cacheObj, ChannelType.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelType = channelTypeMapper.getTypeList();
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelType),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelType;
+    }
+    @Override
+    public List<Integer> selectChannelByTypeId(String typeid) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid;
+
+        List<Integer> channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, Integer.class);
+        }else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectChannelByTypeId(typeid);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+    @Override
+    public  NewChannel selectNewChannelById(Integer id){
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectNewChannelById"+id.toString();
+        NewChannel channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseObject(cacheObj, NewChannel.class);
+        }else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectNewChannelById(id);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
 }

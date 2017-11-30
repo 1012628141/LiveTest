@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +55,18 @@ public class TvPlayController {
     @ResponseBody
     @RequestMapping(value = "tvsource",produces = "application/json; charset=utf-8")
     public String tvsource(String source){
-        return  tvSourceService.selectChannelInfoByKey("浙江数码时代");
+        return  tvSourceService.selectChannelInfoByKey(source);
+    }
+    @ResponseBody
+    @RequestMapping(value = "test",produces = "application/json; charset=utf-8")
+    public String test(HttpServletRequest request){
+        String source = tvSourceService.getNewChannelListByTypeId(request.getParameter("source"));
+        return  source;
+    }
+    @ResponseBody
+    @RequestMapping(value = "testType",produces = "application/json; charset=utf-8")
+    public String testType(String type){
+        String source = tvSourceService.getTypeList(type);
+        return  source;
     }
 }

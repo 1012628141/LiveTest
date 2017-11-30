@@ -1,11 +1,13 @@
 package com.readyidu.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.readyidu.mapper.ChannelSourceMapper;
 import com.readyidu.model.*;
 import com.readyidu.service.BaseService;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelSourceService;
 import com.readyidu.service.MovieService;
+import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,9 @@ public class ChannelSourceServiceImpl extends BaseService implements ChannelSour
     private ChannelSourceMapper channelSourceMapper;
     @Autowired
     private CacheService cacheService;
+
+    private static final String CACHE_NAME = "channelSource_";
+
     @Override
     public void importData(ChannelSource channelSource) {
         channelSourceMapper.importData(channelSource);

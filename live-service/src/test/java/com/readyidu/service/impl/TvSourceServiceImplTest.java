@@ -1,16 +1,22 @@
 package com.readyidu.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelMapper;
-import com.readyidu.model.Channel;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.model.ChannelType;
+import com.readyidu.model.*;
 import com.readyidu.service.*;
+import com.readyidu.source.base.LiveManager;
 import com.readyidu.tools.TestBaseConfig;
+import com.readyidu.util.HttpUtil;
+import com.readyidu.util.JsonResult;
+import com.readyidu.util.NullUtil;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +48,15 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 
     @Resource(name = "ipDataService")
     IpDataService ipDataService;
+
+    @Resource(name = "lunBoFromService")
+    LunBoFromService lunBoFromService ;
+
+    @Resource(name = "liveManager")
+    LiveManager liveManager ;
+
+    @Resource(name = "cacheService")
+    CacheService cacheService;
 
     @Before
     public void before() throws Exception {
@@ -152,5 +167,48 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 //TODO: Test goes here...
     }
 
+    @Test
+    public void testGetTypeList() throws Exception{
+        String type = "江西";
+        List<ChannelType> channelTypeList = channelService.getTypeList();
+        for(int i=0;i<channelTypeList.size();i++) {
+            //遍历集合，若找到城市则将该城市的频道分类与浙江交换
+            ChannelType c = channelTypeList.get(i);
+            String p = c.getType();
+            if (type.equals(p)) {
+                ChannelType temp = channelTypeList.get(i);
+                channelTypeList.set(i, channelTypeList.get(2));
+                channelTypeList.set(2, temp);
+            }
+        }
+        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList));
+        assertTrue(type.equals(channelTypeList.get(2).getType()));
+    }
 
+    public String checkOperator(String IpAdress) {
+        String IPIP_TOKEN = "30e93b06b4a738f4bf233566a83f30f02ba6c093";
+        IpData ipData = new IpData(IpAdress);
+        String searchResult = ipDataService.SelectIpOperator(ipData);
+        if (!NullUtil.isNullObject(searchResult)) {
+            return searchResult;
+        }
+        String httpResult = HttpUtil.httpGet("http://ipapi.ipip.net/find?addr=" + IpAdress, IPIP_TOKEN);
+        JSONObject jsonResult = JSON.parseObject(httpResult);
+        String data = jsonResult.getString("data");
+        String[] info = data.split(",");
+        String operator = info[4].replace("\"", "");
+        if (!NullUtil.isNullObject(operator))
+        {
+            ipData.setOperator(operator);
+            ipDataService.insertIpData(ipData);
+        }
+        return operator;
+    }
+
+//    public void testGetNewChannelListByTypeId() throws Exception{
+////        String cacheKey = "channel_" + "1"+"_date" ;
+//        String cacheKey = "channel_675_date";
+//        String cacheObj = cacheService.get(cacheKey);
+//        System.out.println(cacheObj);
+//    }
 }
