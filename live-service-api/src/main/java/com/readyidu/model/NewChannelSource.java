@@ -1,17 +1,20 @@
 package com.readyidu.model;
 
 public class NewChannelSource {
-    private Integer s;
+    private Integer i;
     private int r;
     private float m;
     private int f;
 
-    public Integer getS() {
-        return s;
+    public NewChannelSource(){
+        super();
+    }
+    public Integer getI() {
+        return i;
     }
 
-    public void setS(Integer s) {
-        this.s = s;
+    public void setI(Integer i) {
+        this.i = i;
     }
 
     public int getR() {

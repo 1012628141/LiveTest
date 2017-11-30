@@ -28,4 +28,6 @@ public interface ChannelService {
     public List<Map> getAllChannel();
     public List<Channel> getChannelWithoutSource();
     public List<ChannelType> getTypeList();
+    List<Integer> selectChannelByTypeId(String typeid);
+    NewChannel selectNewChannelById(Integer id);
 }

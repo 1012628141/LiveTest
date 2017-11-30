@@ -2,8 +2,6 @@ package com.readyidu.mapper;
 
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
-import com.readyidu.model.NewChannelSource;
-import com.readyidu.model.Source;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

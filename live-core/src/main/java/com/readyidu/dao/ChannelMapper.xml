@@ -51,14 +51,14 @@
         </collection>
     </resultMap>
     <resultMap id="newChannel" type="com.readyidu.model.NewChannel">
-        <id property = "i" column="id"/>
-        <result property="c" column="channel"/>
-        <result property="t" column="typeid"/>
+        <id property = "i" column="i"/>
+        <result property="c" column="c"/>
+        <result property="t" column="t"/>
         <collection property="o" ofType="com.readyidu.model.NewChannelSource">
-            <result property="s"  column="source" />
-            <result property="r" column="resolve" />
-            <result property="m" column="responseTime" />
-            <result property="f" column="isSelf"/>
+            <result property="i"  column="s" />
+            <result property="r" column="r" />
+            <result property="m" column="m" />
+            <result column="f" property="f"/>
         </collection>
     </resultMap>
 
@@ -369,26 +369,41 @@
         where t1.channel is not null
         order by t1.id
     </select>
-    <select id="selectNewChannelList" parameterType="java.lang.String" resultMap="newChannel">
+    <select id="selectChannelByTypeId" parameterType="java.lang.String" resultType="java.lang.Integer">
         select
-        <include refid="Second_Column_List"></include>
-        ,t2.resolve as resolve
-        ,t2.responseTime as responseTime
-        ,t2.isSelf
-        from t_channel t1
-        left join
-        (select
-        parentid
-        ,source
-        ,source_px as resolve
-        ,response_time as responseTime
-        ,is_self as isSelf
-        ,sort
-        from t_channel_source
-        where is_delete != 1
-        ) t2
-        on t1.id=t2.parentid
-        where t1.typeid = #{typeid,jdbcType=VARCHAR}
-        order by t1.id,t2.sort
+        id
+        from t_channel
+        where
+        typeid = #{typeid}
+        order by id
+    </select>
+    <select id="selectNewChannelById" parameterType="java.lang.Integer" resultMap="newChannel">
+        SELECT
+        t1.id AS i,
+        t1.channel AS c,
+        t2.source_px AS r,
+        t2.response_time AS m,
+        t2.is_self AS f,
+        t2.id AS s
+        FROM
+        t_channel t1
+        LEFT JOIN (
+        SELECT
+        source_px,
+        response_time,
+        is_self,
+        id,
+        parentid,
+        sort
+        FROM
+        t_channel_source
+        WHERE
+        is_delete != 1
+        ) t2 ON t1.id = t2.parentid
+        WHERE
+        t1.id = #{id}
+        ORDER BY
+        t1.id,
+        t2.sort
     </select>
 </mapper>

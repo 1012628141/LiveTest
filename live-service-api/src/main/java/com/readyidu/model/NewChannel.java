@@ -17,6 +17,19 @@ public class NewChannel {
      */
     private String t;
     /**
+     * 节目名称
+     */
+    private String n;
+
+    public String getN() {
+        return n;
+    }
+
+    public void setN(String n) {
+        this.n = n;
+    }
+
+    /**
      * 频道源
      */
     private List<NewChannelSource> o;

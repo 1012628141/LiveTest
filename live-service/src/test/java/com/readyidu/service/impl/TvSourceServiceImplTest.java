@@ -167,6 +167,24 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 //TODO: Test goes here...
     }
 
+    @Test
+    public void testGetTypeList() throws Exception{
+        String type = "江西";
+        List<ChannelType> channelTypeList = channelService.getTypeList();
+        for(int i=0;i<channelTypeList.size();i++) {
+            //遍历集合，若找到城市则将该城市的频道分类与浙江交换
+            ChannelType c = channelTypeList.get(i);
+            String p = c.getType();
+            if (type.equals(p)) {
+                ChannelType temp = channelTypeList.get(i);
+                channelTypeList.set(i, channelTypeList.get(2));
+                channelTypeList.set(2, temp);
+            }
+        }
+        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList));
+        assertTrue(type.equals(channelTypeList.get(2).getType()));
+    }
+
     public String checkOperator(String IpAdress) {
         String IPIP_TOKEN = "30e93b06b4a738f4bf233566a83f30f02ba6c093";
         IpData ipData = new IpData(IpAdress);
@@ -187,9 +205,10 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
         return operator;
     }
 
-    public void testGetNewChannelListByTypeId() throws Exception{
-        String cacheKey = "LIVE_SERVICE_" + "tv_source" + ""+"200";
-        String cacheObj = cacheService.get(cacheKey);
-        System.out.println(cacheObj);
-    }
+//    public void testGetNewChannelListByTypeId() throws Exception{
+////        String cacheKey = "channel_" + "1"+"_date" ;
+//        String cacheKey = "channel_675_date";
+//        String cacheObj = cacheService.get(cacheKey);
+//        System.out.println(cacheObj);
+//    }
 }

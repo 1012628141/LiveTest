@@ -2,7 +2,6 @@ package com.readyidu.service;
 
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
-import com.readyidu.model.NewChannelSource;
 
 import java.util.List;
 

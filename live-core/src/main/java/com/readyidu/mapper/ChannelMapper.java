@@ -2,7 +2,6 @@ package com.readyidu.mapper;
 
 import com.readyidu.model.Channel;
 import com.readyidu.model.NewChannel;
-import com.readyidu.model.NewChannelSource;
 
 import java.util.List;
 import java.util.Map;
@@ -39,4 +38,7 @@ public interface ChannelMapper {
     List<Map> selectUrlByChannel(String TvName);
     List<Map> selectUrlByChannelName(String search);
     List<Map> selectAllChannel();
+    //根据typeID查询频道list
+    List<Integer> selectChannelByTypeId(String typeid);
+    NewChannel selectNewChannelById(Integer id);
 }
