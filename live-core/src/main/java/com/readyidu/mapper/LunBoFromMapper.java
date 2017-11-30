@@ -1,8 +1,6 @@
 package com.readyidu.mapper;
 
-import com.readyidu.model.Channel;
-import com.readyidu.model.LunBoBillFrom;
-import com.readyidu.model.Source;
+import com.readyidu.model.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,4 +15,5 @@ public interface LunBoFromMapper {
     String selectDemandById(Integer id);
     int reportDemand(Integer id);
     List<LunBoBillFrom> selectFileByChannelId(Integer channelId);
+    List<NewDemand>selectDemandByTypeId(Integer typeid);
 }

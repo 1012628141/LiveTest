@@ -49,6 +49,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
             String tomrrow = TimeUtil.getTomorrowTime(currtentData);
             playBillInfoMapper.cleanBillInfo(channelId);
             SimpleDateFormat spd = new SimpleDateFormat("HH:mm");
+            // TODO: 2017/11/28 加缓存
             List<LunBoBillFrom> dramaList = lunBoFromMapper.getFromByChannelId(channelId);
             long nexttime = currtentData;
             for (LunBoBillFrom drame : dramaList){
@@ -67,9 +68,17 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
     @Override
     public String getDemandListByChannelId() {
-        List<LunBoBillFrom> list = null;
         try{
-            list = lunBoFromMapper.selectFromByChannelId();
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "getDemandListByChannelId";
+            String cacheObj = cacheService.get(cacheKey);
+            List<LunBoBillFrom> list = null;
+            if (!NullUtil.isNullObject(cacheObj)) {
+                list = JSON.parseArray(cacheObj,LunBoBillFrom.class);
+            }else {
+                list = lunBoFromMapper.selectFromByChannelId();
+                cacheService.set(cacheKey, JSON.toJSONString(list),
+                        CacheService.CACHE_TIMEOUT);
+            }
             if(list != null && list.size() != 0){
                 return JsonResult.toString(CODE_SUCCESS,list);
             }
@@ -86,14 +95,13 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlList";
         String cacheObj = cacheService.get(cacheKey);
         List<Channel> channelList = null;
-            if (!NullUtil.isNullObject(cacheObj)) {
+        if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Channel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectIntoChannel();
-            if (channelList.size()!=0)
             // 信息缓存5分钟
-                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -102,6 +110,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         long currtentData = new Date().getTime();
         String todayTime = TimeUtil.getTodayTime();
         String tomrrow = TimeUtil.getTomorrowTime(currtentData);
+        // TODO: 2017/11/28 加缓存
         List<PlayBillInfo> todayProgram = playBillInfoMapper.selectBill(new PlayBillInfo(todayTime, channelId));
         List<PlayBillInfo> tommorrowProgram = playBillInfoMapper.selectBill(new PlayBillInfo(tomrrow, channelId));
         Map<String,Object> channelBill = new HashMap<>();
@@ -124,7 +133,19 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
     @Override
     public String selectDemandById(Integer id) {
-        return lunBoFromMapper.selectDemandById(id);
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlSource"+id.toString();
+        String cacheObj = cacheService.get(cacheKey);
+        String source = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            source = cacheObj;
+        } else {
+            source = lunBoFromMapper.selectDemandById(id);
+            if (!source.isEmpty())
+                // 信息缓存5分钟
+                cacheService.set(cacheKey,source,CacheService.CACHE_TIMEOUT);
+        }
+        return source;
+
     }
 
     @Override
@@ -134,6 +155,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
     @Override
     public boolean checkLunboBill(Integer channelId,String fileName) {
+        // TODO: 2017/11/28 加缓存策略
         List<LunBoBillFrom> fileList = lunBoFromMapper.selectFileByChannelId(channelId);
         ListIterator<LunBoBillFrom> fileIterator = fileList.listIterator();
         while (fileIterator.hasNext())
@@ -174,6 +196,21 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
         }
         return false;
+    }
+    @Override
+    public List<NewDemand> selectDemandByTypeId(Integer typeid) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlListByTypeid"+typeid.toString();
+        String cacheObj = cacheService.get(cacheKey);
+        List<NewDemand> channelList = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, NewDemand.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList= lunBoFromMapper.selectDemandByTypeId(typeid);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
     }
 
 }
