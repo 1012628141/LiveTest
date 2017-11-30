@@ -20,6 +20,9 @@ public class Channel {
     private String typeid;
 
     private Integer parentid;
+
+
+
     /**
      * 频道源
      */

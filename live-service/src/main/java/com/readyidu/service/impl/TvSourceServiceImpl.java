@@ -174,7 +174,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             String cacheKey = SERVICE_RBK + CACHE_NAME + "INFO_"+key;
             List<Object> channelInfo = new ArrayList<>();
             String channelObj = cacheService.get(cacheKey);
-            channelObj = null;
             if (!NullUtil.isNullObject(channelObj)){
                 channelInfo = JSON.parseArray(channelObj,Object.class);
                 return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo    );
