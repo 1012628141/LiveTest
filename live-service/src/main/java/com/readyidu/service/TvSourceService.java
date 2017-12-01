@@ -99,9 +99,9 @@ public interface TvSourceService {
     String getNewChannelListByTypeId(String typeId);
     /**
      * 新增按sort排序的频道分类接口
-     * @param type  定位的省份
+     * @param id  定位的所在区域的id
      * @return json (code: 200 成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
      */
-    String getTypeList(String type);
+    String getTypeList(Integer id);
 
 }

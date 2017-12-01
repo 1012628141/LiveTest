@@ -30,4 +30,5 @@ public interface ChannelService {
     public List<ChannelType> getTypeList();
     List<Integer> selectChannelByTypeId(String typeid);
     NewChannel selectNewChannelById(Integer id);
+    String getTypeById(Integer id);
 }

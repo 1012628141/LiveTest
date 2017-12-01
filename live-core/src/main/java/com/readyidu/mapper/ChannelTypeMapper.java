@@ -20,4 +20,6 @@ public interface ChannelTypeMapper {
     List<ChannelType> selectAll();
 
     List<ChannelType> getTypeList();
+
+    String getTypeById(Integer id);
 }

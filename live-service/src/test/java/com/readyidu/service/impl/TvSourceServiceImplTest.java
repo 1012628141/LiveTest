@@ -169,8 +169,10 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 
     @Test
     public void testGetTypeList() throws Exception{
-        String type = "江西";
+        int id = 5520 ;
         List<ChannelType> channelTypeList = channelService.getTypeList();
+        String type = channelService.getTypeById(id);
+        type = type.replace("省","").replace("市","").replace("自治区","");
         for(int i=0;i<channelTypeList.size();i++) {
             //遍历集合，若找到城市则将该城市的频道分类与浙江交换
             ChannelType c = channelTypeList.get(i);
