@@ -181,9 +181,12 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
                 ChannelType temp = channelTypeList.get(i);
                 channelTypeList.set(i, channelTypeList.get(2));
                 channelTypeList.set(2, temp);
+                channelTypeList.get(2).setCategoryId(0);
+                break;
             }
         }
-        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList));
+        List<ChannelType> newChannelTypeList = channelTypeList.subList(0,12);
+        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, newChannelTypeList));
         assertTrue(type.equals(channelTypeList.get(2).getType()));
     }
 

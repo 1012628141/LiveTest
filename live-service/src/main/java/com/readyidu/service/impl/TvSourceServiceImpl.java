@@ -320,29 +320,41 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     public String getNewChannelListByTypeId(String typeId,Integer id) {
         try {
             Map<String, Object> dataJson = new HashMap<>();
-            //获取直播播放列表根据typeid
-            List<Integer>channelList = channelService.selectChannelByTypeId(typeId,id);
-            //获取点播播放列表根据typeid
-            List<NewDemand> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
-            List<NewChannel> channelsList = new ArrayList<NewChannel>();
-            String cacheKey =null;
-            NewChannel newChannel =null;
-            SimpleDateFormat df = new SimpleDateFormat("MM-dd");
-            String nowTime = df.format(new Date());
-            for (Integer channelId:channelList) {
-                cacheKey = "channel_playbill_"+channelId.toString()+"_"+nowTime;
-                //获取redis缓存数据
-                String cacheObj = cacheService.get(cacheKey);
-                if (!NullUtil.isNullObject(cacheObj)){
-                    newChannel = JSON.parseObject(cacheObj,NewChannel.class);
-                    channelsList.add(newChannel);
-                }else {
-                    //获取部分没有节目表的频道
-                    channelsList.add(channelService.selectNewChannelById(channelId));
+            String cacheAllkey = SERVICE_RBK + CACHE_NAME + "getNewChannelListByTypeId"+id.toString()+typeId;
+            String cacheAll = cacheService.get(cacheAllkey);
+            if (!NullUtil.isNullObject(cacheAll)){
+                dataJson = JSON.parseObject(cacheAll,Map.class);
+            }else {
+                //获取直播播放列表根据typeid
+                List<Integer>channelList = channelService.selectChannelByTypeId(typeId,id);
+                //获取点播播放列表根据typeid
+                List<NewChannel> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
+                List<NewChannel> channelsList = new ArrayList<NewChannel>();
+                String cacheKey =null;
+                NewChannel newChannel =null;
+                SimpleDateFormat df = new SimpleDateFormat("MM-dd");
+                String nowTime = df.format(new Date());
+                String cacheObj = null;
+                for (Integer channelId:channelList) {
+                    cacheKey = "channel_playbill_"+channelId.toString()+"_"+nowTime;
+                    //获取redis缓存数据
+                    cacheObj = cacheService.get(cacheKey);
+                    if (!NullUtil.isNullObject(cacheObj)){
+                        newChannel = JSON.parseObject(cacheObj,NewChannel.class);
+                        channelsList.add(newChannel);
+                    }else {
+                        //获取部分没有节目表的频道
+                        newChannel = channelService.selectNewChannelById(channelId);
+                        if (!NullUtil.isNullObject(newChannel)){
+                            channelsList.add(newChannel);
+                        }
+                    }
                 }
+                dataJson.put("channels", channelsList);
+                dataJson.put("movieList", movieList);
+                // 信息缓存5分钟
+                cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
             }
-            dataJson.put("channels", channelsList);
-            dataJson.put("movieList", movieList);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -381,9 +393,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     ChannelType temp = channelTypeList.get(i);
                     channelTypeList.set(i,channelTypeList.get(2)) ;
                     channelTypeList.set(2,temp);
+                    channelTypeList.get(2).setCategoryId(0);
+                    break;
                 }
             }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
+            List<ChannelType> newChannelTypeList = channelTypeList.subList(0,12);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, newChannelTypeList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }

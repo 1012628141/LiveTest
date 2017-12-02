@@ -198,12 +198,12 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         return false;
     }
     @Override
-    public List<NewDemand> selectDemandByTypeId(Integer typeid) {
+    public List<NewChannel> selectDemandByTypeId(Integer typeid) {
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlListByTypeid"+typeid.toString();
         String cacheObj = cacheService.get(cacheKey);
-        List<NewDemand> channelList = null;
+        List<NewChannel> channelList = null;
         if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, NewDemand.class);
+            channelList = JSON.parseArray(cacheObj, NewChannel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectDemandByTypeId(typeid);

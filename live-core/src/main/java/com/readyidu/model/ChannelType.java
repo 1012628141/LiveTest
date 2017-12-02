@@ -5,6 +5,10 @@ public class ChannelType {
 
     private String type;
 
+    private Integer categoryId ;
+
+//    private int sort;
+
     public Integer getId() {
         return id;
     }
@@ -20,4 +24,21 @@ public class ChannelType {
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
     }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+//    public int getSort() {
+//        return sort;
+//    }
+//
+//    public void setSort(int sort) {
+//        this.sort = sort;
+//    }
+
+
 }
