@@ -93,15 +93,18 @@ public interface TvSourceService {
     String insertReport(Integer sourceId,Boolean isLive);
 
     /**
-     * app端获取所有频道列表
-     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.NewChannel}] 返回所有频道和分类ID)
+     * app端根据typeid获取频道列表以及节目表
+     * @version 1.1.8
+     * @param typeId  频道分类ID
+     * @param id  定位的所在区域的id
+     * @return json (code: 200 成功,10000 服务出错;data:[channels:{@link com.readyidu.model.NewChannel}movieList:{@link com.readyidu.model.NewDemand}] 返回所有频道以及节目表)
      */
-    String getNewChannelListByTypeId(String typeId);
+    String getNewChannelListByTypeId(String typeId,Integer id);
     /**
      * 新增按sort排序的频道分类接口
-     * @param type  定位的省份
+     * @param id  定位的所在区域的id
      * @return json (code: 200 成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
      */
-    String getTypeList(String type);
+    String getTypeList(Integer id);
 
 }

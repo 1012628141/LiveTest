@@ -317,11 +317,11 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     }
 
     @Override
-    public String getNewChannelListByTypeId(String typeId) {
+    public String getNewChannelListByTypeId(String typeId,Integer id) {
         try {
             Map<String, Object> dataJson = new HashMap<>();
             //获取直播播放列表根据typeid
-            List<Integer>channelList = channelService.selectChannelByTypeId(typeId);
+            List<Integer>channelList = channelService.selectChannelByTypeId(typeId,id);
             //获取点播播放列表根据typeid
             List<NewDemand> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
             List<NewChannel> channelsList = new ArrayList<NewChannel>();
@@ -367,11 +367,14 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         return operator;
     }
     @Override
-    public String getTypeList(String type) {
+    public String getTypeList(Integer id) {
         try {
+            String type = null ;
             List<ChannelType> channelTypeList = channelService.getTypeList();
+            type = channelService.getTypeById(id);
+            type = type.replace("省","").replace("市","").replace("回族自治区","").replace("维吾尔自治区","").replace("自治区","");
             for(int i=0;i<channelTypeList.size();i++){
-                //遍历集合，若找到城市则将该城市的频道分类与浙江交换
+               // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
                 ChannelType c = channelTypeList.get(i);
                 String p = c.getType();
                 if(type.equals(p)){
@@ -385,5 +388,4 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-
 }

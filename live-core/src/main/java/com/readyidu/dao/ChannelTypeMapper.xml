@@ -67,4 +67,7 @@
         <include refid="Base_Column_List"/>
         from t_channel_appType ORDER BY sort
     </select>
+    <select id="getTypeById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT province FROM t_area_code WHERE id=#{id}
+    </select>
 </mapper>
