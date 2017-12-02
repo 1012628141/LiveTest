@@ -21,10 +21,12 @@ public class NewChannel {
      */
     private String n;
 
+
     /**
      *二级类目
      */
     private String g;
+
 
     public String getG() {
         return g;

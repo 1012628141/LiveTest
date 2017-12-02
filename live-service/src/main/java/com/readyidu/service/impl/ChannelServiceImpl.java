@@ -428,6 +428,26 @@ public class ChannelServiceImpl extends BaseService implements
         }
         return channelType;
     }
+
+    @Override
+    public List<NewChannel> selectAppChannelByKey(String key) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "app_channelByKey"+key;
+
+        List<NewChannel> channelList = null;
+        // 优先从缓存中取
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, NewChannel.class);
+        }else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectAppChannelByKey(key);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                    CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+
     @Override
     public List<Integer> selectChannelByTypeId(String typeid,Integer appTypeId) {
         String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid+appTypeId.toString();
@@ -483,4 +503,5 @@ public class ChannelServiceImpl extends BaseService implements
         }
         return type;
     }
+
 }

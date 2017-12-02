@@ -388,4 +388,34 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
+    @Override
+    public String selectNewChannelInfoByKey(String key) {
+        try {
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "APP_INFO_" + key;
+            List<Object> channelInfo = new ArrayList<>();
+            String channelObj = cacheService.get(cacheKey);
+            if (!NullUtil.isNullObject(channelObj)) {
+                channelInfo = JSON.parseArray(channelObj, Object.class);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
+            }
+            List<NewChannel> channels = channelService.selectAppChannelByKey(key);
+            if (channels.size() == 0) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+//            for (Channel channel : channels) {
+//                Map<String, Object> dataMap = new HashMap<>();
+//                Map<String, Object> playBill = channelService.channelPlaybill(channel.getId().toString());
+//                dataMap.put("channel", channel);
+//                dataMap.put("playBill", playBill);
+//                channelInfo.add(dataMap);
+//            }
+            if (!NullUtil.isNullObject(channels)) {
+                cacheService.set(cacheKey, JSON.toJSONString(channels), CacheService.CACHE_TIMEOUT);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channels);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
 }

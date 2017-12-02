@@ -23,6 +23,13 @@
         ,t2.sourceid as sourceid
     </sql>
 
+    <sql id="app_Column_List">
+        t1.id as id
+        ,t1.channel as channel
+        ,t1.appTypeId as typeid
+        ,t2.source as source
+    </sql>
+
     <!--<select id="selectAll" resultType="com.readyidu.model.Channel" >-->
     <!--select-->
     <!--<include refid="Base_Column_List" />-->
@@ -378,6 +385,24 @@
         appTypeId = #{appTypeId}
         and typeid != #{typeId}
         order by sort
+    </select>
+    <select id="selectAppChannelByKey" parameterType="java.lang.String" resultType="com.readyidu.model.NewChannel">
+        select
+        t1.id as i
+        ,t1.channel as c
+        ,t1.appTypeId as t
+        from t_channel t1
+        right join
+        (select
+        `value`
+        ,`key`
+        from t_channel_mapping
+        where `key` like CONCAT(CONCAT('%',#{key}), '%')
+        group by `value`
+        ) t3
+        on t1.channel = t3.value
+        where t1.channel is not null
+        order by t1.id
     </select>
     <select id="selectNewChannelById" parameterType="java.lang.Integer" resultMap="newChannel">
         SELECT

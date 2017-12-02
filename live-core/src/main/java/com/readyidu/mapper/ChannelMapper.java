@@ -42,4 +42,6 @@ public interface ChannelMapper {
     //根据typeID查询频道list
     List<Integer> selectChannelByTypeId(NewChannelType newChannelType);
     NewChannel selectNewChannelById(Integer id);
+    List<NewChannel> selectAppChannelByKey(String key);
+
 }

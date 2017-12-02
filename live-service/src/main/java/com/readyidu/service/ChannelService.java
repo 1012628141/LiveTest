@@ -28,6 +28,7 @@ public interface ChannelService {
     public List<Map> getAllChannel();
     public List<Channel> getChannelWithoutSource();
     public List<ChannelType> getTypeList();
+    public List<NewChannel> selectAppChannelByKey(String key);
     List<Integer> selectChannelByTypeId(String typeid,Integer appTypeId);
     NewChannel selectNewChannelById(Integer id);
     String getTypeById(Integer id);
