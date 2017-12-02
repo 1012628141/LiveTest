@@ -386,7 +386,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             type = channelService.getTypeById(id);
             type = type.replace("省","").replace("市","").replace("回族自治区","").replace("维吾尔自治区","").replace("自治区","");
             for(int i=0;i<channelTypeList.size();i++){
-               // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
+                // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
                 ChannelType c = channelTypeList.get(i);
                 String p = c.getType();
                 if(type.equals(p)){
@@ -400,6 +400,46 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             List<ChannelType> newChannelTypeList = channelTypeList.subList(0,12);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, newChannelTypeList);
         } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String selectNewChannelInfoByKey(String key) {
+        try {
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "APP_INFO_" + key;
+            List<Object> channelInfo = new ArrayList<>();
+            String channelObj = cacheService.get(cacheKey);
+            if (!NullUtil.isNullObject(channelObj)) {
+                channelInfo = JSON.parseArray(channelObj, Object.class);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
+            }
+            List<NewChannel> channels = channelService.selectAppChannelByKey(key);
+            if (channels.size() == 0) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+//            for (Channel channel : channels) {
+//                Map<String, Object> dataMap = new HashMap<>();
+//                Map<String, Object> playBill = channelService.channelPlaybill(channel.getId().toString());
+//                dataMap.put("channel", channel);
+//                dataMap.put("playBill", playBill);
+//                channelInfo.add(dataMap);
+//            }
+            if (!NullUtil.isNullObject(channels)) {
+                cacheService.set(cacheKey, JSON.toJSONString(channels), CacheService.CACHE_TIMEOUT);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channels);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String selectTvShowByChannelId(Integer channelId) {
+        try{
+            List<NewChannel> channelList = lunBoFromService.selectTvShowByChannelId(channelId);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList);
+        }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
