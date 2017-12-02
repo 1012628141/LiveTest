@@ -61,4 +61,9 @@ public class TvPlayController {
     public String tvsource(String source) {
         return tvSourceService.getChannelList("tv");
     }
+    @ResponseBody
+    @RequestMapping(value = "test", produces = "application/json; charset=utf-8")
+    public String test(String source,Integer id) {
+        return tvSourceService.getNewChannelListByTypeId(source,id);
+    }
 }

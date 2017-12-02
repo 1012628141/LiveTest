@@ -54,6 +54,7 @@
         <id property = "i" column="i"/>
         <result property="c" column="c"/>
         <result property="t" column="t"/>
+        <result property="g" column="g"/>
         <collection property="o" ofType="com.readyidu.model.NewChannelSource">
             <result property="i"  column="s" />
             <result property="r" column="r" />
@@ -369,28 +370,31 @@
         where t1.channel is not null
         order by t1.id
     </select>
-    <select id="selectChannelByTypeId" parameterType="java.lang.String" resultType="java.lang.Integer">
+    <select id="selectChannelByTypeId" parameterType="com.readyidu.model.NewChannelType" resultType="java.lang.Integer">
         select
         id
         from t_channel
         where
-        typeid = #{typeid}
-        order by id
+        appTypeId = #{appTypeId}
+        and typeid != #{typeId}
+        order by sort
     </select>
     <select id="selectNewChannelById" parameterType="java.lang.Integer" resultMap="newChannel">
         SELECT
         t1.id AS i,
         t1.channel AS c,
-        t2.source_px AS r,
-        t2.response_time AS m,
+        t2.resolution AS r,
+        t2.response AS m,
         t2.is_self AS f,
-        t2.id AS s
+        t2.id AS s,
+        t3.categoryType as g
         FROM
         t_channel t1
         LEFT JOIN (
         SELECT
-        source_px,
-        response_time,
+        count(*) as num,
+        resolution,
+        response,
         is_self,
         id,
         parentid,
@@ -400,10 +404,17 @@
         WHERE
         is_delete != 1
         ) t2 ON t1.id = t2.parentid
+        LEFT JOIN(
+        SELECT
+        id,
+        categoryType
+        FROM
+        t_category_type
+        ) t3 ON t1.category = t3.id
         WHERE
         t1.id = #{id}
         ORDER BY
-        t1.id,
+        t1.sort,
         t2.sort
     </select>
 </mapper>

@@ -317,11 +317,11 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     }
 
     @Override
-    public String getNewChannelListByTypeId(String typeId) {
+    public String getNewChannelListByTypeId(String typeId,Integer id) {
         try {
             Map<String, Object> dataJson = new HashMap<>();
             //获取直播播放列表根据typeid
-            List<Integer>channelList = channelService.selectChannelByTypeId(typeId);
+            List<Integer>channelList = channelService.selectChannelByTypeId(typeId,id);
             //获取点播播放列表根据typeid
             List<NewDemand> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
             List<NewChannel> channelsList = new ArrayList<NewChannel>();
@@ -388,5 +388,4 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
-
 }

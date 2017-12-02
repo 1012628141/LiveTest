@@ -80,10 +80,18 @@
         ,t1.movieName as c
         ,t1.typeid as t
         ,t1.parentid as p
+        ,t2.categoryType as g
         from
         t_lunbo_billfrom t1
+        LEFT JOIN(
+        SELECT
+        id,
+        categoryType
+        FROM
+        t_category_type
+        ) t2 ON t1.category = t2.id
         where is_delete != 1
         and t1.typeid = #{typeid}
-        order by sort
+        order by t1.sort
     </select>
 </mapper>
