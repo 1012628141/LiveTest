@@ -103,4 +103,15 @@
         and t1.typeid = #{typeid}
         order by t1.sort
     </select>
+    <select id="selectTvShowByChannelId" parameterType="java.lang.Integer" resultMap="newChannel">
+        select
+        t1.id as i
+        ,t1.movieName as c
+        ,t1.id as s
+        from
+        t_lunbo_billfrom t1
+        where is_delete != 1
+        and t1.parentId = #{channelId}
+        order by t1.sort
+    </select>
 </mapper>

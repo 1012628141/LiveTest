@@ -115,6 +115,11 @@ public interface TvSourceService {
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{channel:{@link com.readyidu.model.NewChannel}}])
      */
     String selectNewChannelInfoByKey(String key);
+    /**
+     * app端根据电视剧id返回电视剧集
+     * @param channelId 电视剧频道id
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{channel:{@link com.readyidu.model.NewChannel}}])
+     */
+    String selectTvShowByChannelId(Integer channelId);
 
 }
-

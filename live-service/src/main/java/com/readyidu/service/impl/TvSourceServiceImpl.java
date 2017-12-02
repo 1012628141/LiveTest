@@ -386,7 +386,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             type = channelService.getTypeById(id);
             type = type.replace("省","").replace("市","").replace("回族自治区","").replace("维吾尔自治区","").replace("自治区","");
             for(int i=0;i<channelTypeList.size();i++){
-               // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
+                // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
                 ChannelType c = channelTypeList.get(i);
                 String p = c.getType();
                 if(type.equals(p)){
@@ -430,6 +430,16 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channels);
         } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String selectTvShowByChannelId(Integer channelId) {
+        try{
+            List<NewChannel> channelList = lunBoFromService.selectTvShowByChannelId(channelId);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList);
+        }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
