@@ -15,5 +15,5 @@ public interface LunBoFromMapper {
     String selectDemandById(Integer id);
     int reportDemand(Integer id);
     List<LunBoBillFrom> selectFileByChannelId(Integer channelId);
-    List<NewDemand>selectDemandByTypeId(Integer typeid);
+    List<NewChannel>selectDemandByTypeId(Integer typeid);
 }

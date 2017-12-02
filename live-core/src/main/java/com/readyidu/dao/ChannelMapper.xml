@@ -392,7 +392,6 @@
         t_channel t1
         LEFT JOIN (
         SELECT
-        count(*) as num,
         resolution,
         response,
         is_self,
@@ -412,7 +411,7 @@
         t_category_type
         ) t3 ON t1.category = t3.id
         WHERE
-        t1.id = #{id}
+        t1.id = #{id} AND t2.id is not null
         ORDER BY
         t1.sort,
         t2.sort

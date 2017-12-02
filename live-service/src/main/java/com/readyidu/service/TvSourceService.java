@@ -97,7 +97,7 @@ public interface TvSourceService {
      * @version 1.1.8
      * @param typeId  频道分类ID
      * @param id  定位的所在区域的id
-     * @return json (code: 200 成功,10000 服务出错;data:[channels:{@link com.readyidu.model.NewChannel}movieList:{@link com.readyidu.model.NewDemand}] 返回所有频道以及节目表)
+     * @return json (code: 200 成功,10000 服务出错;data:[channels:{@link com.readyidu.model.NewChannel}movieList:{@link com.readyidu.model.NewChannel}] 返回所有频道以及节目表)
      */
     String getNewChannelListByTypeId(String typeId,Integer id);
     /**
