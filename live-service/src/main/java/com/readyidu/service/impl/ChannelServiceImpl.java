@@ -429,8 +429,8 @@ public class ChannelServiceImpl extends BaseService implements
         return channelType;
     }
     @Override
-    public List<Integer> selectChannelByTypeId(String typeid) {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid;
+    public List<Integer> selectChannelByTypeId(String typeid,Integer appTypeId) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid+appTypeId.toString();
 
         List<Integer> channelList = null;
         // 优先从缓存中取
@@ -439,7 +439,10 @@ public class ChannelServiceImpl extends BaseService implements
             channelList = JSON.parseArray(cacheObj, Integer.class);
         }else {
             // 若redis中无数据，则查询数据库, 并缓存
-            channelList = channelMapper.selectChannelByTypeId(typeid);
+            NewChannelType newChannelType = new NewChannelType();
+            newChannelType.setAppTypeId(appTypeId);
+            newChannelType.setTypeId(typeid);
+            channelList = channelMapper.selectChannelByTypeId(newChannelType);
             // 信息缓存5分钟
             cacheService.set(cacheKey, JSON.toJSONString(channelList),
                     CacheService.CACHE_TIMEOUT);
@@ -463,7 +466,7 @@ public class ChannelServiceImpl extends BaseService implements
         }
         return channelList;
     }
-
+    @Override
     public String getTypeById(Integer id){
         String cacheKey = SERVICE_RBK + CACHE_NAME + "getTypeById"+id.toString();
         // 优先从缓存中取

@@ -21,6 +21,19 @@ public class NewChannel {
      */
     private String n;
 
+    /**
+     *二级类目
+     */
+    private String g;
+
+    public String getG() {
+        return g;
+    }
+
+    public void setG(String g) {
+        this.g = g;
+    }
+
     public String getN() {
         return n;
     }
