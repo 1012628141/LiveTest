@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertTrue;
 
@@ -216,4 +217,11 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 //        String cacheObj = cacheService.get(cacheKey);
 //        System.out.println(cacheObj);
 //    }
+    @Test
+    public void selectTvShowByChannelId() throws Exception{
+        Integer channelId = 8033;
+        List<NewChannel>channelList = lunBoFromService.selectTvShowByChannelId(channelId);
+        System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList));
+        assertTrue(!channelList.isEmpty());
+    }
 }

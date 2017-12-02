@@ -107,5 +107,11 @@ public interface TvSourceService {
      * category:客户端渲染方式0：央视、卫视、地方 无二级分类1：热播、家庭、古装剧、军旅剧、情感剧、青春剧、少儿、电影 分点播直播 2：地方台：包含各个地方)
      */
     String getTypeList(Integer id);
+    /**
+     * app端根据电视剧id返回电视剧集
+     * @param channelId 电视剧频道id
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{channel:{@link com.readyidu.model.NewChannel}}])
+     */
+    String selectTvShowByChannelId(Integer channelId);
 
 }

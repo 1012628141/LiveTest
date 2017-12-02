@@ -403,4 +403,14 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
+    @Override
+    public String selectTvShowByChannelId(Integer channelId) {
+        try {
+            List<NewChannel>channelList = lunBoFromService.selectTvShowByChannelId(channelId);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
 }
