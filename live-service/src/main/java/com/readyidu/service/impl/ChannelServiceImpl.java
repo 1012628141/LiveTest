@@ -460,8 +460,14 @@ public class ChannelServiceImpl extends BaseService implements
         }else {
             // 若redis中无数据，则查询数据库, 并缓存
             NewChannelType newChannelType = new NewChannelType();
-            newChannelType.setAppTypeId(appTypeId);
-            newChannelType.setTypeId(typeid);
+            newChannelType.setAppTypeId(Integer.parseInt(typeid));
+            //根据定位获取当前省份id
+            String typeId = (channelTypeMapper.getTypeIdById(appTypeId)).toString();
+            if (!typeId.equals(typeid)){
+                newChannelType.setTypeId(typeId);
+            }else {
+                newChannelType.setTypeId("62");
+            }
             channelList = channelMapper.selectChannelByTypeId(newChannelType);
             // 信息缓存5分钟
             cacheService.set(cacheKey, JSON.toJSONString(channelList),

@@ -26,6 +26,18 @@ public class NewChannel {
      *二级类目
      */
     private String g;
+    /**
+     * 父ID
+     */
+    private Integer p;
+
+    public Integer getP() {
+        return p;
+    }
+
+    public void setP(Integer p) {
+        this.p = p;
+    }
 
 
     public String getG() {

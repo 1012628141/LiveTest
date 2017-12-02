@@ -64,10 +64,13 @@
   </update>
     <select id="getTypeList" resultType="com.readyidu.model.ChannelType">
         select
-        <include refid="Base_Column_List"/>
+        id,type,categoryId
         from t_channel_appType ORDER BY sort
     </select>
     <select id="getTypeById" parameterType="java.lang.Integer" resultType="java.lang.String">
         SELECT province FROM t_area_code WHERE id=#{id}
+    </select>
+    <select id="getTypeIdById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT typeid FROM t_area_code WHERE id=#{id}
     </select>
 </mapper>
