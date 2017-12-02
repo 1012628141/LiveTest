@@ -381,9 +381,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     ChannelType temp = channelTypeList.get(i);
                     channelTypeList.set(i,channelTypeList.get(2)) ;
                     channelTypeList.set(2,temp);
+                    channelTypeList.get(2).setCategoryId(0);
+                    break;
                 }
             }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
+            List<ChannelType> newChannelTypeList = channelTypeList.subList(0,12);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, newChannelTypeList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }

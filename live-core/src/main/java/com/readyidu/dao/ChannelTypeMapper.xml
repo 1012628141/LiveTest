@@ -64,7 +64,7 @@
   </update>
     <select id="getTypeList" resultType="com.readyidu.model.ChannelType">
         select
-        <include refid="Base_Column_List"/>
+        id,type,categoryId
         from t_channel_appType ORDER BY sort
     </select>
     <select id="getTypeById" parameterType="java.lang.Integer" resultType="java.lang.String">

@@ -100,7 +100,8 @@ public interface TvSourceService {
     /**
      * 新增按sort排序的频道分类接口
      * @param id  定位的所在区域的id
-     * @return json (code: 200 成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
+     * @return json (code: 200 成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type,
+     * category:客户端渲染方式0：央视、卫视、地方 无二级分类1：热播、家庭、古装剧、军旅剧、情感剧、青春剧、少儿、电影 分点播直播 2：地方台：包含各个地方)
      */
     String getTypeList(Integer id);
 
