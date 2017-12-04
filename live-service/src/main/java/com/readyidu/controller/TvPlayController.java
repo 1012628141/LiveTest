@@ -59,11 +59,11 @@ public class TvPlayController {
     @ResponseBody
     @RequestMapping(value = "tvsource", produces = "application/json; charset=utf-8")
     public String tvsource(String source) {
-        return tvSourceService.selectNewChannelInfoByKey("重庆");
+            return tvSourceService.selectChannelInfoByKey(source);
     }
     @ResponseBody
     @RequestMapping(value = "test", produces = "application/json; charset=utf-8")
     public String test(String source,Integer id) {
-        return tvSourceService.getNewChannelListByTypeId(source,id);
+        return tvSourceService.selectNewChannelInfoByKey(source);
     }
 }

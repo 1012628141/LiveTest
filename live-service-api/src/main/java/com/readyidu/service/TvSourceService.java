@@ -67,13 +67,13 @@ public interface TvSourceService {
      */
     String insertReport(String source);
     /**
-     * 获取所有的频道源
+     * 获取所有的频道源 1.12tv端调用此接口
      * @param platformName 用户使用平台
      * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
      */
     String getChannelList(String platformName);
     /**
-     * 获取直播源的播放地址
+     * 获取直播源的播放地址 1.12tv端调用此接口
      * @param id
      * @param ipAdress 用户的ip
      * @return json(code: 200 成功,11000 无可播放地址，10000 服务出错;data：播放地址)
@@ -103,13 +103,13 @@ public interface TvSourceService {
     String getNewChannelListByTypeId(String typeId,Integer id);
 
     /**
-     * 新增按sort排序的频道分类接口
+     * 新增按sort排序的频道分类接口  //1.1.3后app端调用此接口，传递一个分类id获取频道分类列表
      * @param id  定位的所在区域的id
      * @return json (code: 200 成功,10000服务出错;data:[{@link com.readyidu.model.ChannelType}] 频道分类列表,返回id，type)
      */
     String getTypeList(Integer id);
     /**
-     * app端通过key搜索频道源
+     * app端通过key搜索频道源  //1.1.3后app端调用此接口,获取频道列表
      * @param key 语音的频道识别结果
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{channel:{@link com.readyidu.model.NewChannel}}])
      */
