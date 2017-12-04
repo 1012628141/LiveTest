@@ -96,14 +96,14 @@ public class ICanStvSource extends Source {
             Matcher matcher3 = pattern3.matcher(content);
 
             if (matcher.find()){
-                result = matcher.group().replace("a: '","").replace("\"","");
-                return result;
+                result = matcher.group().replace("a: '","").replace("\'","");
+
             }else if(matcher2.find()){
-                result = matcher2.group().replace("f:'","").replace("\"","");
-                return result ;
+                result = matcher2.group().replace("f:'","").replace("\'","");
+
             }else if (matcher3.find()){
-                result = matcher2.group().replace("f:'","").replace("\"","");
-                return result ;
+                result = matcher2.group().replace("f:'","").replace("\'","");
+
             }else {
                 return null;
             }
