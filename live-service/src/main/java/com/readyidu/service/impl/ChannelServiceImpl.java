@@ -248,18 +248,18 @@ public class ChannelServiceImpl extends BaseService implements
     }
 
     @Override
-    public List<Channel> getMovieToSource() {
+    public List<DemandChannel> getMovieToSource() {
         String cacheKey = SERVICE_RBK + CACHE_NAME + "movielList";
         String cacheObj = cacheService.get(cacheKey);
-        List<Channel> channelList = null;
+        List<DemandChannel> channelList = null;
         if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, Channel.class);
+            channelList = JSON.parseArray(cacheObj, DemandChannel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             List<Movie> movieList = movieService.selectAllMovie();
             channelList = new ArrayList<>();
             for (Movie movie : movieList) {
-                Channel channel = new Channel();
+                DemandChannel channel = new DemandChannel();
                 ChannelSource channelSource = new ChannelSource();
                 channel.setId(movie.getId() + 10000);
                 channel.setChannel(movie.getTitle());

@@ -2,6 +2,7 @@ package com.readyidu.service;
 
 
 import com.readyidu.model.Channel;
+import com.readyidu.model.DemandChannel;
 import com.readyidu.model.NewChannel;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface LunBoFromService {
     boolean refreshChannelBill(Integer channelId);
 
     String getDemandListByChannelId( );
-    List<Channel> getDemandList();
+    List<DemandChannel> getDemandList();
 
     Map<String, Object> getChannelBill(Integer channelId);
     String selectDemandById(Integer id);
