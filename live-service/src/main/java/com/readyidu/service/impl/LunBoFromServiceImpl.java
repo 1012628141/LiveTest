@@ -213,4 +213,19 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         return channelList;
     }
 
+    @Override
+    public List<NewChannel> selectTvShowByChannelId(Integer channelId) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectTvShowByChannelId"+channelId.toString();
+        String cacheObj = cacheService.get(cacheKey);
+        List<NewChannel> channelList = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, NewChannel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList= lunBoFromMapper.selectTvShowByChannelId(channelId);
+            // 信息缓存5分钟
+            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
 }

@@ -21,6 +21,7 @@ public class NewChannel {
      */
     private String n;
 
+
     /**
      *二级类目
      */
@@ -37,6 +38,7 @@ public class NewChannel {
     public void setP(Integer p) {
         this.p = p;
     }
+
 
     public String getG() {
         return g;
