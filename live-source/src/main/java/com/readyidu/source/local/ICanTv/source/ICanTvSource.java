@@ -148,11 +148,14 @@ public class ICanTvSource extends Source {
             Matcher matcher3 = pattern3.matcher(content);
 
             if (matcher.find()){
-                result = matcher.group().replace("a: '","").replace("\"","");
+                result = matcher.group().replace("a: '","").replace("\'","").replace("%26","&");
+
             }else if(matcher2.find()){
-                result = matcher2.group().replace("f:'","").replace("\"","");
+                result = matcher2.group().replace("f:'","").replace("\'","").replace("%26","&");
+
             }else if (matcher3.find()){
-                result = matcher2.group().replace("f:'","").replace("\"","");
+                result = matcher3.group().replace("f:'","").replace("\'","").replace("%26","&");
+
             }else {
                 return null;
             }

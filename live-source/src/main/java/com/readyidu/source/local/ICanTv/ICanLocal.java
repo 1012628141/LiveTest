@@ -13,7 +13,7 @@ public class ICanLocal extends Local {
     public ICanLocal(){
         managerId = MANAGER_ID;
         channels = new HashMap<String, Channel>();
-        Channel iCanTVChannel = new ICanStvChannel();
+        Channel iCanTVChannel = new ICanTvChannel();
         channels.put(iCanTVChannel.getId(),iCanTVChannel);
     }
 

@@ -390,6 +390,10 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 ChannelType c = channelTypeList.get(i);
                 String p = c.getType();
                 if(type.equals(p)){
+                    if(i==2){
+                        channelTypeList.get(2).setCategoryId(0);
+                        break;
+                    }
                     ChannelType temp = channelTypeList.get(i);
                     channelTypeList.set(i,channelTypeList.get(2)) ;
                     channelTypeList.set(2,temp);
