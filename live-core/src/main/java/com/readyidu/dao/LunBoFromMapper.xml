@@ -27,6 +27,7 @@
         <result property="c" column="c"/>
         <result property="p" column="p"/>
         <result property="g" column="g"/>
+        <result property="s" column="source"/>
         <collection property="o" ofType="com.readyidu.model.NewChannelSource">
             <result property="i"  column="s" />
         </collection>
@@ -87,7 +88,6 @@
         select
         t1.id as i
         ,t1.movieName as c
-        ,t1.parentid as p
         ,t1.id as s
         ,t2.categoryType as g
         from
@@ -100,16 +100,15 @@
         t_category_type
         ) t2 ON t1.category = t2.id
         where is_delete != 1
-        and t1.typeid = #{typeid}
+        and t1.appTypeId = #{typeid}
         order by t1.sort
     </select>
     <select id="selectTvShowByChannelId" parameterType="java.lang.Integer" resultMap="newChannel">
         select
-        t1.id as i
+        t1.source
         ,t1.movieName as c
-        ,t1.id as s
         from
-        t_lunbo_billfrom t1
+        t_demand_file t1
         where is_delete != 1
         and t1.parentId = #{channelId}
         order by t1.sort

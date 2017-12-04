@@ -30,6 +30,18 @@ public class NewChannel {
      * 父ID
      */
     private Integer p;
+    /**
+     * source地址
+     */
+    private  String s;
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
 
     public Integer getP() {
         return p;

@@ -219,7 +219,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 //    }
     @Test
     public void selectTvShowByChannelId() throws Exception{
-        Integer channelId = 8033;
+        Integer channelId = 4133;
         List<NewChannel>channelList = lunBoFromService.selectTvShowByChannelId(channelId);
         System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList));
         assertTrue(!channelList.isEmpty());
