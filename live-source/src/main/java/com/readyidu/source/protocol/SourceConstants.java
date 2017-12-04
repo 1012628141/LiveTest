@@ -1015,7 +1015,8 @@ public class SourceConstants {
 //    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
 
     //IcanTv
-    public static final String SOURCE_ICAN_STV_HNWS = "source_ican_stv_hnwws";  //湖南
+    //stv
+    public static final String SOURCE_ICAN_STV_HNWS = "source_ican_stv_hnws";  //湖南
     public static final String SOURCE_ICAN_STV_JSWS = "source_ican_stv_jsws";   //江苏
     public static final String SOURCE_ICAN_STV_ZJWS = "source_ican_stv_zjws";   //浙江
     public static final String SOURCE_ICAN_STV_AHWS = "source_ican_stv_anws";   //安徽
@@ -1034,5 +1035,58 @@ public class SourceConstants {
     public static final String SOURCE_ICAN_STV_BTWS = "source_ican_stv_btws";   //兵团
     public static final String SOURCE_ICAN_STV_LYWS = "source_ican_stv_lyws";   //旅游
     public static final String SOURCE_ICAN_STV_SSWS = "source_ican_stv_ssws";   //三沙
+
+    //icantv地方台
+    //广东
+    public static final String SOURCE_ICAN_GD_GDZJ = "source_ican_gd_gdzj"; //广东珠江
+    public static final String SOURCE_ICAN_GD_GDTY = "source_ican_gd_gdty"; //广东体育
+    public static final String SOURCE_ICAN_GD_GDGG = "source_ican_gd_gdgg"; //广东公共
+    public static final String SOURCE_ICAN_GD_GDXW = "source_ican_gd_gdxw"; //广东新闻
+    public static final String SOURCE_ICAN_GD_GDGJ = "source_ican_gd_gdgj"; //广东国际
+    public static final String SOURCE_ICAN_GD_NFJJ = "source_ican_gd_nfjj"; //南方经济
+    public static final String SOURCE_ICAN_GD_NFZY = "source_ican_gd_nfzy"; //南方综艺
+    public static final String SOURCE_ICAN_GD_NFYS = "source_ican_gd_nfys"; //南方影视
+    public static final String SOURCE_ICAN_GD_JJKT = "source_ican_gd_jjkt"; //嘉佳卡通
+    public static final String SOURCE_ICAN_GD_GDFC = "source_ican_gd_gdfc"; //广东房产
+    public static final String SOURCE_ICAN_GD_NFGW = "source_ican_gd_nfgw"; //广东购物
+    public static final String SOURCE_ICAN_GD_GDSE = "source_ican_gd_gdse"; //广东少儿
+    public static final String SOURCE_ICAN_GD_FSZH = "source_ican_gd_fszh"; //佛山综合
+    public static final String SOURCE_ICAN_GD_DGZH = "source_ican_gd_dgzh"; //东莞综合
+    public static final String SOURCE_ICAN_GD_HZZH = "source_ican_gd_hzzh"; //惠州综合
+    public static final String SOURCE_ICAN_GD_CZZH = "source_ican_gd_czzh"; //潮州综合
+    public static final String SOURCE_ICAN_GD_STZH = "source_ican_gd_stzh"; //汕头综合
+    public static final String SOURCE_ICAN_GD_JYZH = "source_ican_gd_jyzh"; //揭阳综合
+    public static final String SOURCE_ICAN_GD_QYZH = "source_ican_gd_qyzh"; //清远综合
+    public static final String SOURCE_ICAN_GD_MZZH = "source_ican_gd_mzzh"; //梅州综合
+    public static final String SOURCE_ICAN_GD_ZSZH = "source_ican_gd_zszh"; //中山综合
+    public static final String SOURCE_ICAN_GD_ZJZH = "source_ican_gd_zjzh"; //湛江综合
+    public static final String SOURCE_ICAN_GD_MMZH = "source_ican_gd_mmzh"; //茂名综合
+    public static final String SOURCE_ICAN_GD_JMZH = "source_ican_gd_jmzh"; //江门综合
+    public static final String SOURCE_ICAN_GD_ZHZH = "source_ican_gd_zhzh"; //珠海综合
+    public static final String SOURCE_ICAN_GD_ZQZH = "source_ican_gd_zqzh"; //肇庆综合
+    public static final String SOURCE_ICAN_GD_YJZH = "source_ican_gd_yjzh"; //阳江综合
+    public static final String SOURCE_ICAN_GD_SGZH = "source_ican_gd_sgzh"; //韶关综合
+    public static final String SOURCE_ICAN_GD_HYZH = "source_ican_gd_hyzh"; //河源综合
+    public static final String SOURCE_ICAN_GD_YFZH = "source_ican_gd_yfzh"; //云浮综合
+    public static final String SOURCE_ICAN_GD_SWZH = "source_ican_gd_swzh"; //云浮综合
+
+
+    //上海地方
+    public static final String SOURCE_ICAN_SH_XWZH = "source_ican_sh_xwzh"; //新闻综合
+
+    //黑龙江地方
+    public static final String SOURCE_ICAN_HLJ_HLJWT = "source_ican_hlj_hljwt"; //黑龙江文体
+    public static final String SOURCE_ICAN_HLJ_HLJYS = "source_ican_hlj_hljys"; //黑龙江影视
+    public static final String SOURCE_ICAN_HLJ_HLJXW = "source_ican_hlj_hljxw"; //黑龙江新闻
+    public static final String SOURCE_ICAN_HLJ_HLJDS = "source_ican_hlj_hljds"; //黑龙江都市
+    public static final String SOURCE_ICAN_HLJ_HLJNY = "source_ican_hlj_hljny"; //黑龙江农业
+    public static final String SOURCE_ICAN_HLJ_HLJSE = "source_ican_hlj_hljse"; //黑龙江少儿
+    public static final String SOURCE_ICAN_HLJ_HLJNK = "source_ican_hlj_hljnk"; //黑龙江农垦
+
+
+
+
+
+
 
 }
