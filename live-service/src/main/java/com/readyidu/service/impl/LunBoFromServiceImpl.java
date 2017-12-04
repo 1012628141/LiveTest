@@ -91,12 +91,12 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
 
 
     @Override
-    public List<Channel> getDemandList() {
+    public List<DemandChannel> getDemandList() {
         String cacheKey = SERVICE_RBK + CACHE_NAME + "DemandlList";
         String cacheObj = cacheService.get(cacheKey);
-        List<Channel> channelList = null;
+        List<DemandChannel> channelList = null;
         if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, Channel.class);
+            channelList = JSON.parseArray(cacheObj, DemandChannel.class);
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectIntoChannel();

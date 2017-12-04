@@ -120,7 +120,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         try {
             Map<String, Object> dataJson = new HashMap<>();
             List<Channel> channelList = channelService.selectAllNew();
-            List<Channel> movieList = channelService.getMovieToSource();
+            List<DemandChannel> movieList = channelService.getMovieToSource();
             dataJson.put("channels", channelList);
             dataJson.put("movieList", movieList);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
@@ -214,7 +214,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
         try {
             Map<String, Object> dataJson = new HashMap<>();
             List<Channel> channelList = null;
-            List<Channel> movieList = null;
+            List<DemandChannel> movieList = null;
             if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
                 channelList = channelService.getChannelWithoutSource();
 //                movieList = channelService.getMovieToSource();
