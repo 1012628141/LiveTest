@@ -8,13 +8,19 @@
         ,t1.id as sourceid
         ,t1.parentid as parentid
         ,t1.sort as sort
+        ,t1.isFengmi as isFengmi
+        ,t1.fengmiId as fengmiId
+        ,t1.orderIndex as orderIndex
     </sql>
 
-    <resultMap id="channelInfoNew" type="com.readyidu.model.Channel">
+    <resultMap id="channelInfoNew" type="com.readyidu.model.DemandChannel">
         <id property = "id" column="id"/>
         <result property="channel" column="channel"/>
         <result property="typeid" column="typeid"/>
         <result property="parentid" column="parentid"/>
+        <result property="isFengmi" column="isFengmi"/>
+        <result property="fengmiId" column="fengmiId"/>
+        <result property="orderIndex" column="orderIndex"/>
         <collection property="sources" ofType="com.readyidu.model.ChannelSource">
             <result property="sourceId"  column="sourceId" />
             <result property="resolve" column="resolve" />
