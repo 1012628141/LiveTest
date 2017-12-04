@@ -469,9 +469,10 @@ public class ChannelServiceImpl extends BaseService implements
                 newChannelType.setTypeId("62");
             }
             channelList = channelMapper.selectChannelByTypeId(newChannelType);
-            // 信息缓存5分钟
-            cacheService.set(cacheKey, JSON.toJSONString(channelList),
-                    CacheService.CACHE_TIMEOUT);
+            if (!channelList.isEmpty())
+                // 信息缓存5分钟
+                cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                        CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -486,9 +487,10 @@ public class ChannelServiceImpl extends BaseService implements
         }else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList = channelMapper.selectNewChannelById(id);
-            // 信息缓存5分钟
-            cacheService.set(cacheKey, JSON.toJSONString(channelList),
-                    CacheService.CACHE_TIMEOUT);
+            if (!NullUtil.isNullObject(channelList))
+                // 信息缓存5分钟
+                cacheService.set(cacheKey, JSON.toJSONString(channelList),
+                        CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -503,9 +505,10 @@ public class ChannelServiceImpl extends BaseService implements
         }else {
             // 若redis中无数据，则查询数据库, 并缓存
             type = channelTypeMapper.getTypeById(id);
-            // 信息缓存5分钟
-            cacheService.set(cacheKey, type,
-                    CacheService.CACHE_TIMEOUT);
+            if (!NullUtil.isNullObject(type))
+                // 信息缓存5分钟
+                cacheService.set(cacheKey, type,
+                        CacheService.CACHE_TIMEOUT);
         }
         return type;
     }

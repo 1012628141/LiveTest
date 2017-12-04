@@ -207,8 +207,9 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectDemandByTypeId(typeid);
-            // 信息缓存5分钟
-            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+            if (!channelList.isEmpty())
+                // 信息缓存5分钟
+                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -223,8 +224,9 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectTvShowByChannelId(channelId);
-            // 信息缓存5分钟
-            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+            if (!channelList.isEmpty())
+                // 信息缓存5分钟
+                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
