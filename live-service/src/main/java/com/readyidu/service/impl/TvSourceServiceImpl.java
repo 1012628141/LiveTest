@@ -394,6 +394,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     channelTypeList.set(i,channelTypeList.get(2)) ;
                     channelTypeList.set(2,temp);
                     channelTypeList.get(2).setCategoryId(0);
+                    channelTypeList.get(i).setCategoryId(1);
                     break;
                 }
             }

@@ -16,9 +16,8 @@ import org.junit.Before;
 import org.junit.After;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static org.junit.Assert.assertTrue;
 
@@ -182,6 +181,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
                 channelTypeList.set(i, channelTypeList.get(2));
                 channelTypeList.set(2, temp);
                 channelTypeList.get(2).setCategoryId(0);
+                channelTypeList.get(i).setCategoryId(1);
                 break;
             }
         }
@@ -209,11 +209,55 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
         }
         return operator;
     }
+    @Test
+    public void testGetNewChannelListByTypeId() throws Exception{
+//        String cacheKey = "channel_" + "1"+"_date" ;
+        String cacheKey = "channel_675_date";
+        String cacheObj = cacheService.get(cacheKey);
+        System.out.println(cacheObj);
 
-//    public void testGetNewChannelListByTypeId() throws Exception{
-////        String cacheKey = "channel_" + "1"+"_date" ;
-//        String cacheKey = "channel_675_date";
-//        String cacheObj = cacheService.get(cacheKey);
-//        System.out.println(cacheObj);
-//    }
+        String typeId = "509";
+        Integer id = 2 ;
+        //获取直播播放列表根据typeid
+        List<Integer> channelList = channelService.selectChannelByTypeId(typeId,id);
+
+        //获取点播播放列表根据typeid
+        List<NewChannel> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
+        System.out.println("movieList:"+JsonResult.toString(NetworkCode.CODE_SUCCESS, movieList));
+        List<NewChannel> channelsList = new ArrayList<NewChannel>();
+
+        Map<String, Object> dataJson = new HashMap<>();
+//        String cacheAllkey = SERVICE_RBK + CACHE_NAME + "getNewChannelListByTypeId"+id.toString()+typeId;
+//        String cacheAll = cacheService.get(cacheAllkey);
+//        dataJson = JSON.parseObject(cacheAll,Map.class);
+//        String cacheKey =null;
+        NewChannel newChannel =null;
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd");
+        String nowTime = df.format(new Date());
+//        String cacheObj = null;
+        for (Integer channelId:channelList) {
+            cacheKey = "channel_playbill_"+channelId.toString()+"_"+nowTime;
+            //获取redis缓存数据
+            cacheObj = cacheService.get(cacheKey);
+            if (!NullUtil.isNullObject(cacheObj)){
+                newChannel = JSON.parseObject(cacheObj,NewChannel.class);
+                channelsList.add(newChannel);
+
+            }else {
+                //获取部分没有节目表的频道
+                newChannel = channelService.selectNewChannelById(channelId);
+                if (!NullUtil.isNullObject(newChannel)){
+                    channelsList.add(newChannel);
+                }
+            }
+        }
+        dataJson.put("channels", channelsList);
+        dataJson.put("movieList", movieList);
+        // 信息缓存5分钟
+//        cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
+        System.out.println("channelList:"+JsonResult.toString(NetworkCode.CODE_SUCCESS, channelsList));
+        System.out.println("movieList:"+JsonResult.toString(NetworkCode.CODE_SUCCESS, movieList));
+        System.out.println("dataJson"+JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson));
+        assertTrue(dataJson.size()==2);
+    }
 }
