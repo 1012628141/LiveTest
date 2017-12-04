@@ -9,7 +9,7 @@ import com.readyidu.util.NullUtil;
 
 public class ICanTvChannel extends Channel{
     public ICanTvChannel(){
-        channelId = "iCanTV";
+        channelId = "icantv";
     }
     @Override
     public Source getSource(SourceUri uri) {
