@@ -1014,5 +1014,25 @@ public class SourceConstants {
 //    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
 //    public static final String SOURCE_FENGCAI_STV_ = "source_fengcai_stv_";
 
+    //IcanTv
+    public static final String SOURCE_ICAN_STV_HNWS = "source_ican_stv_hnwws";  //湖南
+    public static final String SOURCE_ICAN_STV_JSWS = "source_ican_stv_jsws";   //江苏
+    public static final String SOURCE_ICAN_STV_ZJWS = "source_ican_stv_zjws";   //浙江
+    public static final String SOURCE_ICAN_STV_AHWS = "source_ican_stv_anws";   //安徽
+    public static final String SOURCE_ICAN_STV_DFWS = "source_ican_stv_dfws";   //东方
+    public static final String SOURCE_ICAN_STV_GDWS = "source_ican_stv_gdws";   //广东
+    public static final String SOURCE_ICAN_STV_HLJWS = "source_ican_stv_hljws";   //黑龙江
+    public static final String SOURCE_ICAN_STV_HBWS = "source_ican_stv_hbws";   //湖北
+    public static final String SOURCE_ICAN_STV_NMGWS = "source_ican_stv_nmgws";   //内蒙古
+    public static final String SOURCE_ICAN_STV_SCWS = "source_ican_stv_scws";   //四川
+    public static final String SOURCE_ICAN_STV_GXWS = "source_ican_stv_gxws";   //广西
+    public static final String SOURCE_ICAN_STV_YNWS = "source_ican_stv_ynws";   //云南
+    public static final String SOURCE_ICAN_STV_GZWS = "source_ican_stv_gzws";   //贵州
+    public static final String SOURCE_ICAN_STV_QHWS = "source_ican_stv_qhws";   //青海
+    public static final String SOURCE_ICAN_STV_SHANXIWS = "source_ican_stv_shanxiws";   //陕西
+    public static final String SOURCE_ICAN_STV_GDNFWS = "source_ican_stv_gdnfws";   //广东南方
+    public static final String SOURCE_ICAN_STV_BTWS = "source_ican_stv_btws";   //兵团
+    public static final String SOURCE_ICAN_STV_LYWS = "source_ican_stv_lyws";   //旅游
+    public static final String SOURCE_ICAN_STV_SSWS = "source_ican_stv_ssws";   //三沙
 
 }

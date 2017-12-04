@@ -144,4 +144,16 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
+    @RequestMapping(value = "/channelTypeBySort.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String getChannelTypeBySort(HttpServletRequest request,
+                                 HttpServletResponse response) {
+        try {
+            List<ChannelType> channelInfoType = channelService
+                    .getTypeList();
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfoType);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
 }

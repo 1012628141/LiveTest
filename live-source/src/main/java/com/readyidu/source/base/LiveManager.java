@@ -1,5 +1,6 @@
 package com.readyidu.source.base;
 
+import com.readyidu.source.local.ICanTv.ICanLocal;
 import com.readyidu.source.local.carousel.CarouselLocal;
 import com.readyidu.source.local.anhui.AnhuiLocal;
 import com.readyidu.source.local.cctv.CCTVLocal;
@@ -251,6 +252,10 @@ public class LiveManager {
         //天翼电影
         TianyiLocal tianyiLocal =new TianyiLocal();
         locals.put(tianyiLocal.getId(),tianyiLocal);
+
+        //IcanTV地方台
+        ICanLocal iCanLocal = new ICanLocal();
+        locals.put(iCanLocal.getId(),iCanLocal);
     }
 
     public String getChannelSource(String sourceUri) {
