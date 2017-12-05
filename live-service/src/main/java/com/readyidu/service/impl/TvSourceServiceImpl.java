@@ -353,7 +353,8 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 dataJson.put("channels", channelsList);
                 dataJson.put("movieList", movieList);
                 // 信息缓存5分钟
-                cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
+                if (!NullUtil.isNullObject(dataJson))
+                    cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
         }catch (Exception e){

@@ -70,7 +70,7 @@
     <select id="getTypeById" parameterType="java.lang.Integer" resultType="java.lang.String">
         SELECT province FROM t_area_code WHERE id=#{id}
     </select>
-    <select id="getTypeIdById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-        SELECT typeid FROM t_area_code WHERE id=#{id}
+    <select id="getCategoryById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT category FROM t_area_code WHERE id=#{id}
     </select>
 </mapper>

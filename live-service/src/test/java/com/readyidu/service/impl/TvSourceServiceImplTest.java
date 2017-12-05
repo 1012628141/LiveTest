@@ -105,7 +105,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     public void testGetChannelList() throws Exception {
         List<Channel> channelList = channelService.selectAllNew();
         assertTrue(!channelList.isEmpty());
-        List<Channel> movieList = channelService.getMovieToSource();
+        List<DemandChannel> movieList = channelService.getMovieToSource();
         assertTrue(!movieList.isEmpty());
     }
 
@@ -224,7 +224,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 //    }
     @Test
     public void selectTvShowByChannelId() throws Exception{
-        Integer channelId = 4133;
+        Integer channelId = 8033;
         List<NewChannel>channelList = lunBoFromService.selectTvShowByChannelId(channelId);
         System.out.println(JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList));
         assertTrue(!channelList.isEmpty());

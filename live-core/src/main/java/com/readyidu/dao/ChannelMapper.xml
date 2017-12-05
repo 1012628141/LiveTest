@@ -382,8 +382,13 @@
         id
         from t_channel
         where
-        appTypeId = #{appTypeId}
-        and typeid != #{typeId}
+        <if test="appTypeId == null">
+            category = #{category}
+        </if>
+        <if test="appTypeId != null">
+            appTypeId = #{appTypeId}
+            and category != #{category}
+        </if>
         order by sort
     </select>
     <select id="selectAppChannelByKey" parameterType="java.lang.String" resultType="com.readyidu.model.NewChannel">

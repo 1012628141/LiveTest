@@ -451,24 +451,23 @@ public class ChannelServiceImpl extends BaseService implements
     @Override
     public List<Integer> selectChannelByTypeId(String typeid,Integer appTypeId) {
         String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid+appTypeId.toString();
-
         List<Integer> channelList = null;
         // 优先从缓存中取
         String cacheObj = cacheService.get(cacheKey);
         if (!NullUtil.isNullObject(cacheObj)) {
             channelList = JSON.parseArray(cacheObj, Integer.class);
         }else {
-            // 若redis中无数据，则查询数据库, 并缓存
             NewChannelType newChannelType = new NewChannelType();
-            newChannelType.setAppTypeId(Integer.parseInt(typeid));
-            //根据定位获取当前省份id
-            String typeId = (channelTypeMapper.getTypeIdById(appTypeId)).toString();
-            if (!typeId.equals(typeid)){
-                newChannelType.setTypeId(typeId);
+            // 若redis中无数据，则查询数据库, 并缓存
+            //根据定位获取当前省份category
+            Integer category = (channelTypeMapper.getCategoryById(appTypeId));
+            newChannelType.setCategory(category);
+            if (typeid.equals("400")){
+                channelList = channelMapper.selectChannelByTypeId(newChannelType);
             }else {
-                newChannelType.setTypeId("62");
+                newChannelType.setAppTypeId(Integer.parseInt(typeid));
+                channelList = channelMapper.selectChannelByTypeId(newChannelType);
             }
-            channelList = channelMapper.selectChannelByTypeId(newChannelType);
             if (!channelList.isEmpty())
                 // 信息缓存5分钟
                 cacheService.set(cacheKey, JSON.toJSONString(channelList),
