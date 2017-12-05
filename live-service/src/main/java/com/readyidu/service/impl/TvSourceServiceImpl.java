@@ -353,7 +353,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 dataJson.put("channels", channelsList);
                 dataJson.put("movieList", movieList);
                 // 信息缓存5分钟
-                if (!NullUtil.isNullObject(dataJson))
+                if (!channelsList.isEmpty()||!movieList.isEmpty())
                     cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
@@ -391,15 +391,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 ChannelType c = channelTypeList.get(i);
                 String p = c.getType();
                 if(type.equals(p)){
-                    if(i==2){
-                        channelTypeList.get(2).setCategoryId(0);
-                        break;
-                    }
                     ChannelType temp = channelTypeList.get(i);
                     channelTypeList.set(i,channelTypeList.get(2)) ;
                     channelTypeList.set(2,temp);
-                    channelTypeList.get(2).setCategoryId(0);
                     channelTypeList.get(i).setCategoryId(1);
+                    channelTypeList.get(2).setCategoryId(0);
+                    channelTypeList.get(2).setId(400);
                     break;
                 }
             }
