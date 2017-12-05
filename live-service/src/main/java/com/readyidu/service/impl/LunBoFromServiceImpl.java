@@ -101,7 +101,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectIntoChannel();
             // 信息缓存5分钟
-            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }

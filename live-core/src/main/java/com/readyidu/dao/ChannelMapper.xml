@@ -20,6 +20,7 @@
         t1.id as id
         ,t1.channel as channel
         ,t1.typeid as typeid
+        ,t1.playType as playType
         ,t2.sourceid as sourceid
     </sql>
 
@@ -50,6 +51,7 @@
         <id property = "id" column="id"/>
         <result property="channel" column="channel"/>
         <result property="typeid" column="typeid"/>
+        <result property="playType" column="playType"/>
         <collection property="sources" ofType="com.readyidu.model.ChannelSource">
             <result property="sourceId"  column="sourceId" />
             <result property="resolve" column="resolve" />
