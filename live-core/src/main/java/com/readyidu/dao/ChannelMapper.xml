@@ -16,6 +16,19 @@
         ,t1.typeid as typeid
         ,t2.source as source
     </sql>
+    <sql id="third_Column_List">
+        t1.id as id
+        ,t1.channel as channel
+        ,t1.typeid as typeid
+        ,t2.sourceid as sourceid
+    </sql>
+
+    <sql id="app_Column_List">
+        t1.id as id
+        ,t1.channel as channel
+        ,t1.appTypeId as typeid
+        ,t2.source as source
+    </sql>
 
     <!--<select id="selectAll" resultType="com.readyidu.model.Channel" >-->
     <!--select-->
@@ -31,6 +44,29 @@
             <result property="resolve" column="resolve" />
             <result property="responseTime" column="responseTime" />
             <result column="isSelf" property="isSelf"/>
+        </collection>
+    </resultMap>
+    <resultMap id="channelInfoNew" type="com.readyidu.model.Channel">
+        <id property = "id" column="id"/>
+        <result property="channel" column="channel"/>
+        <result property="typeid" column="typeid"/>
+        <collection property="sources" ofType="com.readyidu.model.ChannelSource">
+            <result property="sourceId"  column="sourceId" />
+            <result property="resolve" column="resolve" />
+            <result property="responseTime" column="responseTime" />
+            <result column="isSelf" property="isSelf"/>
+        </collection>
+    </resultMap>
+    <resultMap id="newChannel" type="com.readyidu.model.NewChannel">
+        <id property = "i" column="i"/>
+        <result property="c" column="c"/>
+        <result property="t" column="t"/>
+        <result property="g" column="g"/>
+        <collection property="o" ofType="com.readyidu.model.NewChannelSource">
+            <result property="i"  column="s" />
+            <result property="r" column="r" />
+            <result property="m" column="m" />
+            <result column="f" property="f"/>
         </collection>
     </resultMap>
 
@@ -60,6 +96,27 @@
         (select
         parentid
         ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
+        ) t2
+        on t1.id=t2.parentid
+        order by t1.id,t2.sort
+    </select>
+    <select id="selectWithoutSource" resultMap="channelInfoNew">
+        select
+        <include refid="third_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
+        from t_channel t1
+        left join
+        (select
+        parentid
+        ,id as sourceId
         ,source_px as resolve
         ,response_time as responseTime
         ,is_self as isSelf
@@ -319,5 +376,74 @@
         on t1.channel = t3.value
         where t1.channel is not null
         order by t1.id
+    </select>
+    <select id="selectChannelByTypeId" parameterType="com.readyidu.model.NewChannelType" resultType="java.lang.Integer">
+        select
+        id
+        from t_channel
+        where
+        <if test="appTypeId == null">
+            category = #{category}
+        </if>
+        <if test="appTypeId != null">
+            appTypeId = #{appTypeId}
+            and category != #{category}
+        </if>
+        order by sort
+    </select>
+    <select id="selectAppChannelByKey" parameterType="java.lang.String" resultType="com.readyidu.model.NewChannel">
+        select
+        t1.id as i
+        ,t1.channel as c
+        ,t1.appTypeId as t
+        from t_channel t1
+        right join
+        (select
+        `value`
+        ,`key`
+        from t_channel_mapping
+        where `key` like CONCAT(CONCAT('%',#{key}), '%')
+        group by `value`
+        ) t3
+        on t1.channel = t3.value
+        where t1.channel is not null
+        order by t1.id
+    </select>
+    <select id="selectNewChannelById" parameterType="java.lang.Integer" resultMap="newChannel">
+        SELECT
+        t1.id AS i,
+        t1.channel AS c,
+        t2.resolution AS r,
+        t2.response AS m,
+        t2.is_self AS f,
+        t2.id AS s,
+        t3.categoryType as g
+        FROM
+        t_channel t1
+        LEFT JOIN (
+        SELECT
+        resolution,
+        response,
+        is_self,
+        id,
+        parentid,
+        sort
+        FROM
+        t_channel_source
+        WHERE
+        is_delete != 1
+        ) t2 ON t1.id = t2.parentid
+        LEFT JOIN(
+        SELECT
+        id,
+        categoryType
+        FROM
+        t_category_type
+        ) t3 ON t1.category = t3.id
+        WHERE
+        t1.id = #{id} AND t2.id is not null
+        ORDER BY
+        t1.sort,
+        t2.sort
     </select>
 </mapper>

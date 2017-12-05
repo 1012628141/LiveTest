@@ -20,40 +20,50 @@ import java.util.Map;
 @Controller
 @RequestMapping("/play")
 public class TvPlayController {
-    private static final String MASTER_SECRET="42cd72a24310d452da54caab";
-    private static final String APP_KEY="d351b43f6d69a55687f27c1f";
+//    private static final String MASTER_SECRET = "42cd72a24310d452da54caab";
+//    private static final String APP_KEY = "d351b43f6d69a55687f27c1f";
+    private static final String MASTER_SECRET = "ef9f38dadd725270fea9e65b";
+    private static final String APP_KEY = "6d798d4905318ea41b80f3e3";
 
-    private static final String MESSAGE="切换TV";
+    private static final String MESSAGE = "切换TV";
     @Autowired
     private PlayTypeService playTypeService;
 
     @Autowired
     private TvSourceService tvSourceService;
+
     @ResponseBody
-    @RequestMapping(value = "pushPlayType.do",produces = "application/json; charset=utf-8")
-    public String pushPlayType(){
+    @RequestMapping(value = "pushPlayType.do", produces = "application/json; charset=utf-8")
+    public String pushPlayType() {
         try {
-            JPushTool.sendPush(MASTER_SECRET,APP_KEY,MESSAGE,NetworkCode.TYPE_CHANGE);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
     @ResponseBody
-    @RequestMapping(value = "tvPlayType.do",produces = "application/json; charset=utf-8")
-    public String tvPlayType(){
-        Map<String,Integer> map = new HashMap<>();
+    @RequestMapping(value = "tvPlayType.do", produces = "application/json; charset=utf-8")
+    public String tvPlayType() {
+        Map<String, Integer> map = new HashMap<>();
         try {
             int playType = playTypeService.getPlayType();
-            map.put("playType",playType);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,map);
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            map.put("playType", playType);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, map);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
     @ResponseBody
-    @RequestMapping(value = "tvsource",produces = "application/json; charset=utf-8")
-    public String tvsource(String source){
-        return  tvSourceService.getChannelList();
+    @RequestMapping(value = "tvsource", produces = "application/json; charset=utf-8")
+    public String tvsource(String source) {
+            return tvSourceService.getChannelList("tv");
+    }
+    @ResponseBody
+    @RequestMapping(value = "test", produces = "application/json; charset=utf-8")
+    public String test(String source,Integer id) {
+        return tvSourceService.getNewChannelListByTypeId(source,id);
     }
 }

@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.readyidu.mapper.LunBoFromMapper">
+    <sql id="third_Column_List">
+        t1.id as id
+        ,t1.movieName as channel
+        ,t1.typeid as typeid
+        ,t1.id as sourceid
+        ,t1.parentid as parentid
+        ,t1.sort as sort
+        ,t1.isFengmi as isFengmi
+        ,t1.fengmiId as fengmiId
+        ,t1.orderIndex as orderIndex
+    </sql>
 
+    <resultMap id="channelInfoNew" type="com.readyidu.model.DemandChannel">
+        <id property = "id" column="id"/>
+        <result property="channel" column="channel"/>
+        <result property="typeid" column="typeid"/>
+        <result property="parentid" column="parentid"/>
+        <result property="isFengmi" column="isFengmi"/>
+        <result property="fengmiId" column="fengmiId"/>
+        <result property="orderIndex" column="orderIndex"/>
+        <collection property="sources" ofType="com.readyidu.model.ChannelSource">
+            <result property="sourceId"  column="sourceId" />
+            <result property="resolve" column="resolve" />
+            <result property="responseTime" column="responseTime" />
+            <result column="isSelf" property="isSelf"/>
+        </collection>
+    </resultMap>
+    <resultMap id="newChannel" type="com.readyidu.model.NewChannel">
+        <id property = "i" column="i"/>
+        <result property="c" column="c"/>
+        <result property="p" column="p"/>
+        <result property="g" column="g"/>
+        <result property="s" column="source"/>
+        <collection property="o" ofType="com.readyidu.model.NewChannelSource">
+            <result property="i"  column="s" />
+        </collection>
+    </resultMap>
     <select id="getFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
         select
         playTime,
@@ -10,7 +46,7 @@
         from
         t_lunbo_billfrom
         where
-        parentId = #{parentId}
+        channelId = #{ChannelId}
         order by
         sort
     </select>
@@ -23,9 +59,64 @@
         parentId
         from
         t_lunbo_billfrom
-
+    </select>
+    <select id="selectFileByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
+        select
+        fileName,
+        playTime,
+        movieName
+        from
+        t_lunbo_billfrom
+        where is_delete = 0 and parentId = #{ChannelId}
+        order by sort
     </select>
 
+    <select id="selectIntoChannel" resultMap="channelInfoNew">
+        select
+        <include refid="third_Column_List"/>
+        from
+        t_lunbo_billfrom t1
+        where is_delete != 1
+        order by sort
+    </select>
+    <select id="selectDemandById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select
+        source
+        from
+        t_lunbo_billfrom
+        where id = #{id}
 
-
+    </select>
+    <update id="reportDemand" parameterType="java.lang.Integer">
+        update  t_lunbo_billfrom set is_delete=2,modify_time=now() where id=#{id} and is_delete != 1
+    </update>
+    <select id="selectDemandByTypeId" parameterType="java.lang.Integer" resultMap="newChannel">
+        select
+        t1.id as i
+        ,t1.movieName as c
+        ,t1.id as s
+        ,t2.categoryType as g
+        from
+        t_lunbo_billfrom t1
+        LEFT JOIN(
+        SELECT
+        id,
+        categoryType
+        FROM
+        t_category_type
+        ) t2 ON t1.category = t2.id
+        where is_delete != 1
+        and t1.appTypeId = #{typeid}
+        order by t1.sort
+    </select>
+    <select id="selectTvShowByChannelId" parameterType="java.lang.Integer" resultMap="newChannel">
+        select
+        t1.source
+        ,t1.movieName as c
+        from
+        t_demand_file t1
+        where is_delete != 1
+        and t1.parentId = #{channelId}
+        order by t1.sort
+    </select>
 </mapper>

@@ -15,22 +15,29 @@ public class CarouselSelfSource extends Source {
     @Override
     protected String source() {
         String channelName = null;
-        switch (sourceId)
-        {
-            case SourceConstants.SOURCE_LZD_ZXDP:
-                channelName = "lunbo";
-                break;
-            case SourceConstants.SOURCE_LZD_GNWJDDY:
-                channelName = "gnwjddy";
-                break;
-            case SourceConstants.SOURCE_LZD_DHDY:
-                channelName = "dhdy";
-                break;
+        try {
+            channelName = sourceId.substring(sourceId.indexOf("_")+1);
+//        switch (sourceId)
+//        {
+//            case SourceConstants.SOURCE_LZD_ZXDP:
+//                channelName = "lunbo";
+//                break;
+//            case SourceConstants.SOURCE_LZD_GNWJDDY:
+//                channelName = "gnwjddy";
+//                break;
+//            case SourceConstants.SOURCE_LZD_DHDY:
+//                channelName = "dhdy";
+//                break;
+//        }
+            //http://114.113.90.49:5912/lvds/live/cctv-2/live.m3u8
+            if (!NullUtil.isNullObject(channelName))
+            {
+                return "http://124.160.117.35/vod/" + channelName + "/index.m3u8$3";
+            }
         }
-        //http://114.113.90.49:5912/lvds/live/cctv-2/live.m3u8
-        if (!NullUtil.isNullObject(channelName))
+        catch (Exception e)
         {
-            return "http://60.190.249.8/vod/" + channelName + "/index.m3u8$3";
+            e.printStackTrace();
         }
         return null;
     }

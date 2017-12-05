@@ -16,8 +16,9 @@ public class NetworkCode {
     public static final int ERROR_CODE_400 = 400; //参数错误
 
     public static final int ERROR_CODE_412 = 412;
-    public static final int CACHE_EXPIRE = 12000; //缓存过期
-//    public static final int CACHE_EXPIRE = 12001; //线下缓存过期
+//    public static final int CACHE_EXPIRE = 12000; //缓存过期
+    public static final int CACHE_EXPIRE = 12001; //线下缓存过期
+    public static final int CODE_SOURCE_ZERO = 11000; //无可用地址
     public static final int TYPE_CHANGE = 12100; //播放器切换
 
 }

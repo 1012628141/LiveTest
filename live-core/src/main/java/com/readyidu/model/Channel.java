@@ -19,20 +19,14 @@ public class Channel {
 
     private String typeid;
 
+    private Integer parentid;
+
+
+
     /**
      * 频道源
      */
     private List<ChannelSource> sources;
-
-    private Integer sourceId;
-
-    public Integer getSourceId() {
-        return sourceId;
-    }
-
-    public void setSourceId(Integer sourceId) {
-        this.sourceId = sourceId;
-    }
 
     public Channel(){
 
@@ -90,4 +84,11 @@ public class Channel {
         this.typeid = typeid == null ? null : typeid.trim();
     }
 
+    public Integer getParentid() {
+        return parentid;
+    }
+
+    public void setParentid(Integer parentid) {
+        this.parentid = parentid;
+    }
 }

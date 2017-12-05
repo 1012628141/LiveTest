@@ -2,22 +2,24 @@ package com.readyidu.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ChannelMapper;
 import com.readyidu.model.*;
 import com.readyidu.service.*;
+import com.readyidu.source.base.LiveManager;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import org.apache.commons.jexl2.UnifiedJEXL;
 import org.apache.http.util.TextUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.awt.event.MouseAdapter;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by 123 on 2017/9/30.
@@ -43,11 +45,16 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Resource(name = "ipDataService")
     IpDataService ipDataService;
 
+    @Resource(name = "lunBoFromService")
+    LunBoFromService lunBoFromService;
+
+    @Resource(name = "liveManager")
+    LiveManager liveManager;
+
     @Resource(name = "cacheService")
     CacheService cacheService;
 
-    private static final String CACHE_NAME = "channel_";
-
+    private static final String CACHE_NAME = "tv_source";
 
 
     @Override
@@ -58,7 +65,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channels);
-        }catch (Exception e){
+        } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
@@ -70,26 +77,22 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (NullUtil.isNullObject(source)) {
                 return JsonResult.toString(NetworkCode.CODE_FAIL, "");
             }
-            if (source.contains("60.190.249.8"))
-            {
+            if (source.contains("124.160.117.35")) {
                 String ip = IpAdress;
                 String operator = null;
-                if (!NullUtil.isNullObject(ip))
-                {
+                if (!NullUtil.isNullObject(ip)) {
                     operator = checkOperator(ip);
                 }
-                if (NullUtil.isNullObject(operator))
-                {
+                if (NullUtil.isNullObject(operator)) {
                     operator = "联通";
                 }
-                switch (operator){
+                switch (operator) {
                     case "电信":
+                        source = source.replace("124.160.117.35", "183.134.101.35");
                         break;
                     case "联通":
-                        source = source.replace("60.190.249.8","101.71.36.8");
                         break;
                     case "移动":
-                        source = source.replace("60.190.249.8","218.205.92.189");
                         break;
                 }
             }
@@ -115,15 +118,14 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     @Override
     public String getChannelList() {
         try {
-            Map<String,Object> dataJson = new HashMap<>();
+            Map<String, Object> dataJson = new HashMap<>();
             List<Channel> channelList = channelService.selectAllNew();
-            List<Channel> movieList = channelService.getMovieToSource();
-            dataJson.put("channels",channelList);
-            dataJson.put("movieList",movieList);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,dataJson);
-        }catch (Exception e)
-        {
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            List<DemandChannel> movieList = channelService.getMovieToSource();
+            dataJson.put("channels", channelList);
+            dataJson.put("movieList", movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
@@ -131,13 +133,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     public String channelPlaybill(String channelId) {
         try {
             Map<String, Object> playBill = channelService.channelPlaybill(channelId);
-            if (NullUtil.isNullObject(playBill))
-            {
-                return JsonResult.toString(NetworkCode.ERROR_CODE_400,playBill);
+            if (NullUtil.isNullObject(playBill)) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, playBill);
             }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,playBill);
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, playBill);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
@@ -146,48 +147,44 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
     public String channelType() {
         try {
             List<ChannelType> channelTypeList = channelService.getChannelType();
-            for(ChannelType channelType :channelTypeList)
-            {
-                if (channelType.getId()==100)
-                {
+            for (ChannelType channelType : channelTypeList) {
+                if (channelType.getId() == 100) {
                     channelTypeList.remove(channelType);
                     break;
                 }
             }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,channelTypeList);
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
     @Override
     public String selectChannelInfoByKey(String key) {
         try {
-//            String cacheKey = SERVICE_RBK + CACHE_NAME + "INFO_"+key;
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "INFO_" + key;
             List<Object> channelInfo = new ArrayList<>();
-//            String channelObj = cacheService.get(cacheKey);
-//            if (!NullUtil.isNullObject(channelObj)){
-//                channelInfo = JSON.parseArray(channelObj,Object.class);
-//                return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo    );
-//            }
+            String channelObj = cacheService.get(cacheKey);
+            if (!NullUtil.isNullObject(channelObj)) {
+                channelInfo = JSON.parseArray(channelObj, Object.class);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
+            }
             List<Channel> channels = channelService.selectChannelByKey(key);
             if (channels.size() == 0) {
                 return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
             }
-            for (Channel channel : channels)
-            {
-                Map<String,Object> dataMap = new HashMap<>();
+            for (Channel channel : channels) {
+                Map<String, Object> dataMap = new HashMap<>();
                 Map<String, Object> playBill = channelService.channelPlaybill(channel.getId().toString());
-                dataMap.put("channel",channel);
-                dataMap.put("playBill",playBill);
+                dataMap.put("channel", channel);
+                dataMap.put("playBill", playBill);
                 channelInfo.add(dataMap);
             }
-//            if (!NullUtil.isNullObject(channelInfo))
-//            {
-//                cacheService.set(cacheKey,JSON.toJSONString(channelInfo),CacheService.CACHE_TIMEOUT);
-//            }
+            if (!NullUtil.isNullObject(channelInfo)) {
+                cacheService.set(cacheKey, JSON.toJSONString(channelInfo), CacheService.CACHE_TIMEOUT);
+            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
-        }catch (Exception e){
+        } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
@@ -200,61 +197,253 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 ChannelSource channelDeath = channelSourceService.getDeathBySource(source);
                 if (channelDeath != null) {
                     return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
-                }
-                else {
+                } else {
                     if (channelSourceService.updateIsDelete(source) != 0) {
                         return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
                     }
                 }
             }
             return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
+    @Override
+    public String getChannelList(String platformName) {
+        try {
+            Map<String, Object> dataJson = new HashMap<>();
+            List<Channel> channelList = null;
+            List<DemandChannel> movieList = null;
+            if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
+                channelList = channelService.getChannelWithoutSource();
+//                movieList = channelService.getMovieToSource();
+                movieList = lunBoFromService.getDemandList();
+
+            } else {
+                channelList = channelService.selectAllNew();
+                movieList = channelService.getMovieToSource();
+            }
+            dataJson.put("channels", channelList);
+            dataJson.put("movieList", movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String getSourceById(Integer id, String IpAdress) {
+        try {
+            String source = channelSourceService.selectSourceById(id);
+            if (NullUtil.isNullObject(source)) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+            if (source.startsWith("sourceUri://")) {
+                source = sourceService.getSource(source);
+            }
+            if (source.contains("124.160.117.35")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        break;
+                }
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String getDemandById(Integer id, String IpAdress) {
+        try {
+            String source = lunBoFromService.selectDemandById(id);
+            if (NullUtil.isNullObject(source)) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+            if (source.startsWith("sourceUri://")) {
+                source = liveManager.getChannelSource(source);
+            }
+            if (source.contains("124.160.117.35")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        break;
+                }
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String insertReport(Integer sourceId, Boolean isLive) {
+        try {
+            if (isLive && channelSourceService.reportSourceByid(sourceId) != 0) {
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+            } else if (!isLive && lunBoFromService.reportDemand(sourceId) != 0) {
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+            }
+            return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String getNewChannelListByTypeId(String typeId,Integer id) {
+        try {
+            Map<String, Object> dataJson = new HashMap<>();
+            String cacheAllkey = SERVICE_RBK + CACHE_NAME + "getNewChannelListByTypeId"+id.toString()+typeId;
+            String cacheAll = cacheService.get(cacheAllkey);
+            if (!NullUtil.isNullObject(cacheAll)){
+                dataJson = JSON.parseObject(cacheAll,Map.class);
+            }else {
+                //获取直播播放列表根据typeid
+                List<Integer>channelList = channelService.selectChannelByTypeId(typeId,id);
+                //获取点播播放列表根据typeid
+                List<NewChannel> movieList = lunBoFromService.selectDemandByTypeId(Integer.parseInt(typeId));
+                List<NewChannel> channelsList = new ArrayList<NewChannel>();
+                String cacheKey =null;
+                NewChannel newChannel =null;
+                SimpleDateFormat df = new SimpleDateFormat("MM-dd");
+                String nowTime = df.format(new Date());
+                String cacheObj = null;
+                for (Integer channelId:channelList) {
+                    cacheKey = "channel_playbill_"+channelId.toString()+"_"+nowTime;
+                    //获取redis缓存数据
+                    cacheObj = cacheService.get(cacheKey);
+                    if (!NullUtil.isNullObject(cacheObj)){
+                        newChannel = JSON.parseObject(cacheObj,NewChannel.class);
+                        channelsList.add(newChannel);
+                    }else {
+                        //获取部分没有节目表的频道
+                        newChannel = channelService.selectNewChannelById(channelId);
+                        if (!NullUtil.isNullObject(newChannel)){
+                            channelsList.add(newChannel);
+                        }
+                    }
+                }
+                dataJson.put("channels", channelsList);
+                dataJson.put("movieList", movieList);
+                // 信息缓存5分钟
+                if (!channelsList.isEmpty()||!movieList.isEmpty())
+                    cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
     public String checkOperator(String IpAdress) {
         IpData ipData = new IpData(IpAdress);
-        try {
-            String searchResult = ipDataService.SelectIpOperator(ipData);
-            if (!NullUtil.isNullObject(searchResult))
-            {
-                return searchResult;
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
+        String searchResult = ipDataService.SelectIpOperator(ipData);
+        if (!NullUtil.isNullObject(searchResult)) {
+            return searchResult;
         }
         String httpResult = HttpUtil.httpGet("http://ipapi.ipip.net/find?addr=" + IpAdress, IPIP_TOKEN);
         JSONObject jsonResult = JSON.parseObject(httpResult);
         String data = jsonResult.getString("data");
         String[] info = data.split(",");
         String operator = info[4].replace("\"", "");
-        if (!NullUtil.isNullObject(operator))
-        {
+        if (!NullUtil.isNullObject(operator)) {
             ipData.setOperator(operator);
             ipDataService.insertIpData(ipData);
         }
         return operator;
     }
     @Override
-    public String getChannelList(String platformName) {
+    public String getTypeList(Integer id) {
         try {
-            Map<String,Object> dataJson = new HashMap<>();
-            List<Channel> channelList = channelService.selectAllNew();
-            List<Channel> movieList = null;
-            if(platformName=="Tv") {
-                 movieList = channelService.getMovieToSource();
-            }else {
-                 movieList = channelService.getMovieToSourceNotTv();
+            String type = null ;
+            List<ChannelType> channelTypeList = channelService.getTypeList();
+            type = channelService.getTypeById(id);
+            type = type.replace("省","").replace("市","").replace("回族自治区","").replace("维吾尔自治区","").replace("自治区","");
+            for(int i=0;i<channelTypeList.size();i++){
+                // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
+                ChannelType c = channelTypeList.get(i);
+                String p = c.getType();
+                if(type.equals(p)){
+                    ChannelType temp = channelTypeList.get(i);
+                    channelTypeList.set(i,channelTypeList.get(2)) ;
+                    channelTypeList.set(2,temp);
+                    channelTypeList.get(i).setCategoryId(1);
+                    channelTypeList.get(2).setCategoryId(0);
+                    channelTypeList.get(2).setId(400);
+                    break;
+                }
             }
-            dataJson.put("channels",channelList);
-            dataJson.put("movieList",movieList);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,dataJson);
-        }catch (Exception e)
-        {
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            List<ChannelType> newChannelTypeList = channelTypeList.subList(0,12);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, newChannelTypeList);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
 
+    @Override
+    public String selectNewChannelInfoByKey(String key) {
+        try {
+            String cacheKey = SERVICE_RBK + CACHE_NAME + "APP_INFO_" + key;
+            List<Object> channelInfo = new ArrayList<>();
+            String channelObj = cacheService.get(cacheKey);
+            if (!NullUtil.isNullObject(channelObj)) {
+                channelInfo = JSON.parseArray(channelObj, Object.class);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelInfo);
+            }
+            List<NewChannel> channels = channelService.selectAppChannelByKey(key);
+            if (channels.size() == 0) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            }
+//            for (Channel channel : channels) {
+//                Map<String, Object> dataMap = new HashMap<>();
+//                Map<String, Object> playBill = channelService.channelPlaybill(channel.getId().toString());
+//                dataMap.put("channel", channel);
+//                dataMap.put("playBill", playBill);
+//                channelInfo.add(dataMap);
+//            }
+            if (!NullUtil.isNullObject(channels)) {
+                cacheService.set(cacheKey, JSON.toJSONString(channels), CacheService.CACHE_TIMEOUT);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channels);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String selectTvShowByChannelId(Integer channelId) {
+        try{
+            List<NewChannel> channelList = lunBoFromService.selectTvShowByChannelId(channelId);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList);
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
 }

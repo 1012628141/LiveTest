@@ -18,4 +18,10 @@ public interface ChannelTypeMapper {
     int updateByPrimaryKey(ChannelType record);
 
     List<ChannelType> selectAll();
+
+    List<ChannelType> getTypeList();
+
+    String getTypeById(Integer id);
+
+    Integer getCategoryById(Integer id);
 }

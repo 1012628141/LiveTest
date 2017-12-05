@@ -1,6 +1,8 @@
 package com.readyidu.mapper;
 
 import com.readyidu.model.Channel;
+import com.readyidu.model.NewChannel;
+import com.readyidu.model.NewChannelType;
 
 import java.util.List;
 import java.util.Map;
@@ -30,10 +32,16 @@ public interface ChannelMapper {
 
     List<String> selectCCTV();
     List<String> selectSatellite();
+    List<Channel> selectWithoutSource();
+
     //由于以下方法均是页面加载完成后使用的返回POJO页面无法识别所以使用Map对象返回
     List<Map> selectUrlByClassName(String TvName);
     List<Map> selectUrlByChannel(String TvName);
     List<Map> selectUrlByChannelName(String search);
     List<Map> selectAllChannel();
+    //根据typeID查询频道list
+    List<Integer> selectChannelByTypeId(NewChannelType newChannelType);
+    NewChannel selectNewChannelById(Integer id);
+    List<NewChannel> selectAppChannelByKey(String key);
 
 }
