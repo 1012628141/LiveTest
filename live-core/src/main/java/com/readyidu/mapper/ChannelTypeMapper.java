@@ -23,5 +23,5 @@ public interface ChannelTypeMapper {
 
     String getTypeById(Integer id);
 
-    Integer getTypeIdById(Integer id);
+    Integer getCategoryById(Integer id);
 }

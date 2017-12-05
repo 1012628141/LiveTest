@@ -105,7 +105,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     public void testGetChannelList() throws Exception {
         List<Channel> channelList = channelService.selectAllNew();
         assertTrue(!channelList.isEmpty());
-        List<Channel> movieList = channelService.getMovieToSource();
+        List<DemandChannel> movieList = channelService.getMovieToSource();
         assertTrue(!movieList.isEmpty());
     }
 
