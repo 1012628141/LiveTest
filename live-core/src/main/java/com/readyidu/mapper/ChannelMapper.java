@@ -43,5 +43,7 @@ public interface ChannelMapper {
     List<Integer> selectChannelByTypeId(NewChannelType newChannelType);
     NewChannel selectNewChannelById(Integer id);
     List<NewChannel> selectAppChannelByKey(String key);
+    List<String>selectChannelIdByKey(String key);
+    Channel selectChannelByChannelName(String channelName);
 
 }

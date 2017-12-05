@@ -96,6 +96,7 @@
         ,t1.movieName as c
         ,t1.id as s
         ,t2.categoryType as g
+        ,t1.parentId as p
         from
         t_lunbo_billfrom t1
         LEFT JOIN(
