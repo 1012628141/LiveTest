@@ -105,7 +105,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
     public void testGetChannelList() throws Exception {
         List<Channel> channelList = channelService.selectAllNew();
         assertTrue(!channelList.isEmpty());
-        List<Channel> movieList = channelService.getMovieToSource();
+        List<DemandChannel> movieList = channelService.getMovieToSource();
         assertTrue(!movieList.isEmpty());
     }
 
@@ -170,7 +170,7 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
 
     @Test
     public void testGetTypeList() throws Exception{
-        int id = 702 ;
+        int id = 5520 ;
         List<ChannelType> channelTypeList = channelService.getTypeList();
         String type = channelService.getTypeById(id);
         type = type.replace("省","").replace("市","").replace("自治区","");
@@ -179,15 +179,12 @@ public class TvSourceServiceImplTest extends TestBaseConfig {
             ChannelType c = channelTypeList.get(i);
             String p = c.getType();
             if(type.equals(p)){
-                if(i==2){
-                    channelTypeList.get(2).setCategoryId(0);
-                    break;
-                }
                 ChannelType temp = channelTypeList.get(i);
                 channelTypeList.set(i,channelTypeList.get(2)) ;
                 channelTypeList.set(2,temp);
-                channelTypeList.get(2).setCategoryId(0);
                 channelTypeList.get(i).setCategoryId(1);
+                channelTypeList.get(2).setCategoryId(0);
+                channelTypeList.get(2).setId(400);
                 break;
             }
         }
