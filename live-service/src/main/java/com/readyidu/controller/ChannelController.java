@@ -6,13 +6,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSONReader;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.service.ChannelService;
-import com.readyidu.service.LunBoFromService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
-import com.readyidu.service.TvSourceService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
