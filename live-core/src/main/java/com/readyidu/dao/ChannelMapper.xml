@@ -448,4 +448,42 @@
         t1.sort,
         t2.sort
     </select>
+    <select id="selectChannelIdByKey" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+        channel
+        from t_channel t1
+        right join
+        (select
+        `value`
+        ,`key`
+        from t_channel_mapping
+        where `key` like CONCAT(CONCAT('%',#{key}), '%')
+        group by `value`
+        ) t3
+        on t1.channel = t3.value
+        where t1.channel is not null
+        order by t1.id
+    </select>
+    <select id="selectChannelByChannelName" parameterType="java.lang.String" resultMap="channelInfo">
+        select
+        <include refid="Second_Column_List"></include>
+        ,t2.resolve as resolve
+        ,t2.responseTime as responseTime
+        ,t2.isSelf
+        from t_channel t1
+        left join
+        (select
+        parentid
+        ,source
+        ,source_px as resolve
+        ,response_time as responseTime
+        ,is_self as isSelf
+        ,sort
+        from t_channel_source
+        where is_delete != 1
+        ) t2
+        on t1.id=t2.parentid
+        where t1.channel = #{channelName}
+        order by t1.sort
+    </select>
 </mapper>
