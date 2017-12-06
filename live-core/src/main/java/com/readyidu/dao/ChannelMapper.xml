@@ -106,7 +106,7 @@
         where is_delete != 1
         ) t2
         on t1.id=t2.parentid
-        order by t1.id,t2.sort
+        order by t1.sort,t2.sort
     </select>
     <select id="selectWithoutSource" resultMap="channelInfoNew">
         select
@@ -127,7 +127,7 @@
         where is_delete != 1
         ) t2
         on t1.id=t2.parentid
-        order by t1.id,t2.sort
+        order by t1.sort,t2.sort
     </select>
     <select id="selectChannelByChannel" parameterType="java.lang.String" resultMap="channelInfo">
         select
