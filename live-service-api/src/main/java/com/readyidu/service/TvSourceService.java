@@ -121,6 +121,14 @@ public interface TvSourceService {
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{channel:{@link com.readyidu.model.NewChannel}}])
      */
     String selectTvShowByChannelId(Integer channelId);
+    /**
+     * 获取所有的频道源 1.1.3tv端调用此接口
+     * @param platformName 用户使用平台
+     *@param version 版本号
+     *@version 1.1.8
+     * @return json (code: 200 成功,10000 服务出错;data:[{@link com.readyidu.model.Channel}] 所有频道以及其对应所有源)
+     */
+    String selectTvChannelList(String platformName,String version);
 
 }
 

@@ -432,4 +432,29 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
+    @Override
+    public String selectTvChannelList(String platformName, String version) {
+        try {
+            Map<String, Object> dataJson = new HashMap<>();
+            List<Channel> channelList = null;
+            List<DemandChannel> movieList = null;
+            if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
+                if(version.equals("1.1.3")){
+
+                }else {
+                    channelList = channelService.getChannelWithoutSource();
+                    movieList = lunBoFromService.getDemandList();
+                }
+            } else {
+                channelList = channelService.selectAllNew();
+                movieList = channelService.getMovieToSource();
+            }
+            dataJson.put("channels", channelList);
+            dataJson.put("movieList", movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
 }
