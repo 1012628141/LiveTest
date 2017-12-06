@@ -25,4 +25,13 @@
         where
         `date` = #{date} and channelId = #{channelId}
     </select>
+    <select id="selectBillProgram" parameterType="com.readyidu.model.Program" resultType="com.readyidu.model.Program">
+        select
+        playontime as showTime,
+        showname as channelName
+        from
+        t_billfrom_info
+        where
+        `date` = #{date} and channelId = #{channelId}
+    </select>
 </mapper>

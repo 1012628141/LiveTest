@@ -71,4 +71,9 @@ public class TvPlayController {
     public String key(String source) {
         return tvSourceService.selectChannelInfoByKey(source);
     }
+    @ResponseBody
+    @RequestMapping(value = "channelPlaybill", produces = "application/json; charset=utf-8")
+    public String channelPlaybill(String source) {
+        return tvSourceService.channelPlaybill(source);
+    }
 }
