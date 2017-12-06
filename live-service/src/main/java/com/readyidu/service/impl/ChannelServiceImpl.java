@@ -1,16 +1,14 @@
 package com.readyidu.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import com.alibaba.fastjson.JSONObject;
 import com.readyidu.mapper.*;
 import com.readyidu.model.*;
 import com.readyidu.model.Channel;
 import com.readyidu.playbill.base.OriginManager;
-import com.readyidu.playbill.model.Program;
+import com.readyidu.model.Program;
 import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
 import com.readyidu.source.base.*;
@@ -19,6 +17,7 @@ import com.readyidu.util.NullUtil;
 import com.readyidu.util.PageUtil;
 import com.readyidu.util.SourceCheck;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -58,6 +57,9 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "lunBoFromService")
     private LunBoFromService lunBoFromService;
+
+    @Resource(name = "playBillInfoMapper")
+    private PlayBillInfoMapper playBillInfoMapper;
 
     private static final String CACHE_NAME = "channel_";
 
@@ -279,20 +281,36 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public Map<String, Object> channelPlaybill(String channelId) {
-        Map<String, Object> programMap = null;
+        Map<String, Object> programMap = new HashMap<>();
         String cacheKey = SERVICE_RBK + CACHE_NAME + "channelPlaybill"+channelId;
         String cacheObj = cacheService.get(cacheKey);
         if (!NullUtil.isNullObject(cacheObj)) {
             programMap = JSON.parseObject(cacheObj,Map.class);
         }else {
-            BillFromInfo billFromInfo = billFromMapper.
-                    selectBillFromInfoByChannelId(
-                            Integer.valueOf(channelId));
-            if (!NullUtil.isNullObject(billFromInfo)) {
-                programMap = originManager.getPlaybill(
-                        billFromInfo.getFromUrl(),
-                        billFromInfo.getOrigin());
-            }
+            Date date = new Date();
+            Program program = new Program();
+            program.setChannelId(Integer.parseInt(channelId));
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String nowTime = df.format(date);
+            program.setDate(nowTime);
+            List<Program> todayProgram = playBillInfoMapper.selectBillProgram(program);
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(date);
+            calendar.add(calendar.DATE,1);
+            date=calendar.getTime();
+            String tommorrowTime = df.format(date);
+            program.setDate(tommorrowTime);
+            List<Program> tommorrowProgram = playBillInfoMapper.selectBillProgram(program);
+            programMap.put("todayProgram", todayProgram);
+            programMap.put("tommorrowProgram", tommorrowProgram);
+//            BillFromInfo billFromInfo = billFromMapper.
+//                    selectBillFromInfoByChannelId(
+//                            Integer.valueOf(channelId));
+//            if (!NullUtil.isNullObject(billFromInfo)) {
+//                programMap = originManager.getPlaybill(
+//                        billFromInfo.getFromUrl(),
+//                        billFromInfo.getOrigin());
+//            }
             if (NullUtil.isNullObject(programMap) || programMap.size() == 0) {
                 programMap = lunBoFromService.getChannelBill(Integer.valueOf(channelId));
             }
