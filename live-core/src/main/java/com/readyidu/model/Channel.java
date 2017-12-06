@@ -21,6 +21,8 @@ public class Channel {
 
     private Integer parentid;
 
+    private Integer playType;
+
 
 
     /**
@@ -90,5 +92,13 @@ public class Channel {
 
     public void setParentid(Integer parentid) {
         this.parentid = parentid;
+    }
+
+    public Integer getPlayType() {
+        return playType;
+    }
+
+    public void setPlayType(Integer playType) {
+        this.playType = playType;
     }
 }
