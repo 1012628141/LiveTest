@@ -15,7 +15,7 @@
     <!--<dubbo:service interface="com.readyidu.service.ApiBaiduKeyService" ref="apiBaiduKeyService" version="1.0.0"-->
                    <!--timeout="5000"/>-->
     <!--<bean id="apiBaiduKeyService" class="com.readyidu.service.impl.ApiBaiduKeyServiceImpl"/>-->
-    <dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000" group="pre"/>
-    <!--<dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000"/>-->
+    <!--<dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000" group="pre"/>-->
+    <dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000"/>
     <bean id="tvSourceService" class="com.readyidu.service.impl.TvSourceServiceImpl"/>
 </beans>

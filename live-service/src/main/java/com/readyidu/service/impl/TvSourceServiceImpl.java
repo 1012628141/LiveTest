@@ -93,6 +93,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -221,7 +222,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
 //                movieList = channelService.getMovieToSource();
                 movieList = lunBoFromService.getDemandList();
 
-            } else {
+            }if (!NullUtil.isNullObject(platformName) && platformName.equals("tv_version_1.2")) {
+                channelList = channelService.getChannelWithoutSource();
+//                movieList = channelService.getMovieToSource();
+                movieList = lunBoFromService.getDemandList();
+            }
+            else {
                 channelList = channelService.selectAllNew();
                 movieList = channelService.getMovieToSource();
             }
@@ -259,6 +265,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -294,6 +301,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
