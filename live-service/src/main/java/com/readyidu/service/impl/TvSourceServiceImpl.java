@@ -220,7 +220,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
                 channelList = channelService.getChannelWithoutSource();
 //                movieList = channelService.getMovieToSource();
-                movieList = lunBoFromService.getDemandList();
+                movieList = lunBoFromService.selectIntoChannelWithOutFengmi();
 
             }if (!NullUtil.isNullObject(platformName) && platformName.equals("tv_version_1.2")) {
                 channelList = channelService.getChannelWithoutSource();
@@ -437,6 +437,27 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             List<NewChannel> channelList = lunBoFromService.selectTvShowByChannelId(channelId);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList);
         }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String selectTvChannelList(String platformName) {
+        try {
+            Map<String, Object> dataJson = new HashMap<>();
+            List<Channel> channelList = null;
+            List<DemandChannel> movieList = null;
+            if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
+                channelList = channelService.getChannelWithoutSource();
+                movieList = lunBoFromService.getDemandList();
+            } else {
+                channelList = channelService.selectAllNew();
+                movieList = channelService.getMovieToSource();
+            }
+            dataJson.put("channels", channelList);
+            dataJson.put("movieList", movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
