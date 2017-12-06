@@ -21,4 +21,5 @@ public interface LunBoFromService {
     boolean checkLunboBill(Integer channelId,String fileName);
     List<NewChannel>selectDemandByTypeId(Integer typeid);
     List<NewChannel>selectTvShowByChannelId(Integer channelId);
+    List<DemandChannel>selectIntoChannelWithOutFengmi();
 }
