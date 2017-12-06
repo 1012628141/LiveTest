@@ -93,6 +93,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -259,6 +260,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -294,6 +296,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
