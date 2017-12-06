@@ -508,6 +508,9 @@ public class ChannelServiceImpl extends BaseService implements
                 // 信息缓存5分钟
                 cacheService.set(cacheKey, type,
                         CacheService.CACHE_TIMEOUT);
+            else{
+                type = "浙江";
+            }
         }
         return type;
     }

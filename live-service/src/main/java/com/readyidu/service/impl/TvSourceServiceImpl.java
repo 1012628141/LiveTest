@@ -385,23 +385,8 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             String type = null ;
             List<ChannelType> channelTypeList = channelService.getTypeList();
             type = channelService.getTypeById(id);
-            type = type.replace("省","").replace("市","").replace("回族自治区","").replace("维吾尔自治区","").replace("自治区","");
-            for(int i=0;i<channelTypeList.size();i++){
-                // 遍历集合，若找到城市则将该城市的频道分类与浙江交换
-                ChannelType c = channelTypeList.get(i);
-                String p = c.getType();
-                if(type.equals(p)){
-                    ChannelType temp = channelTypeList.get(i);
-                    channelTypeList.set(i,channelTypeList.get(2)) ;
-                    channelTypeList.set(2,temp);
-                    channelTypeList.get(i).setCategoryId(1);
-                    channelTypeList.get(2).setCategoryId(0);
-                    channelTypeList.get(2).setId(400);
-                    break;
-                }
-            }
-            List<ChannelType> newChannelTypeList = channelTypeList.subList(0,12);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, newChannelTypeList);
+            channelTypeList.get(2).setType(type);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelTypeList);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
