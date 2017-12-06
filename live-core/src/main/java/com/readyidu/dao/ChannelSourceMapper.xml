@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.readyidu.mapper.ChannelSourceMapper" >
   <sql id="Base_Column_List">
-    id,parentid,source,sort,is_delete as isDelete
+    id as sourceId,parentid,source,sort,is_delete as isDelete
   </sql>
   <insert id="importData" parameterType="com.readyidu.model.ChannelSource">
     insert into t_channel_source
@@ -16,7 +16,7 @@
   <update id="modifySource" parameterType="com.readyidu.model.ChannelSource">
     update t_channel_source
     set source = #{source}
-    where parentid = #{parentid} and id = #{id}
+    where parentid = #{parentid} and id = #{sourceId}
   </update>
   <select id="selectSourceByParentId" parameterType="java.lang.Integer" resultType="com.readyidu.model.ChannelSource">
     select
