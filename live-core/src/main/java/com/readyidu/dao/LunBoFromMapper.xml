@@ -79,6 +79,15 @@
         where is_delete != 1
         order by sort
     </select>
+
+    <select id="selectIntoChannelWithOutFengmi" resultMap="channelInfoNew">
+        select
+        <include refid="third_Column_List"/>
+        from
+        t_lunbo_billfrom t1
+        where is_delete != 1 and isFengmi = 0
+        order by sort
+    </select>
     <select id="selectDemandById" parameterType="java.lang.Integer" resultType="java.lang.String">
         select
         source

@@ -121,5 +121,4 @@ public interface TvSourceService {
      * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{channel:{@link com.readyidu.model.NewChannel}}])
      */
     String selectTvShowByChannelId(Integer channelId);
-
 }

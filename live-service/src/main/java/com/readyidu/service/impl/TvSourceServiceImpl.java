@@ -222,7 +222,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
 //                movieList = channelService.getMovieToSource();
                 movieList = lunBoFromService.getDemandList();
 
-            } else {
+            }if (!NullUtil.isNullObject(platformName) && platformName.equals("tv_version_1.2")) {
+                channelList = channelService.getChannelWithoutSource();
+//                movieList = channelService.getMovieToSource();
+                movieList = lunBoFromService.getDemandList();
+            }
+            else {
                 channelList = channelService.selectAllNew();
                 movieList = channelService.getMovieToSource();
             }
