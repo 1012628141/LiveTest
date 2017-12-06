@@ -474,7 +474,13 @@ public class ChannelServiceImpl extends BaseService implements
             List<Integer> channelList_1 = channelMapper.selectChannelByTypeId(newChannelType);
             if (typeid.equals("400")){
                 //匹配本地则返回本地频道
-                channelList = channelList_1;
+                //当前本地频道为空则返回浙江频道
+                if(channelList_1.isEmpty()){
+                    newChannelType.setCategory(33);
+                    channelList = channelMapper.selectChannelByTypeId(newChannelType);
+                }else {
+                    channelList = channelList_1;
+                }
             }else if (typeid.equals("4000")){
                 //匹配地方则先查询除本地外频道再最后加入本地频道
                 newChannelType.setAppTypeId(Integer.parseInt(typeid));
