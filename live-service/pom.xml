@@ -31,6 +31,16 @@
     </repositories>
 
     <dependencies>
+        <!--七牛-->
+
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.2.6</version>
+            <scope>compile</scope>
+        </dependency>
+
+
         <dependency>
             <groupId>com.iheartradio.m3u8</groupId>
             <artifactId>open-m3u8</artifactId>

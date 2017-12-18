@@ -77,7 +77,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (NullUtil.isNullObject(source)) {
                 return JsonResult.toString(NetworkCode.CODE_FAIL, "");
             }
-            if (source.contains("124.160.117.35")) {
+            if (source.contains("124.160.117.36")) {
                 String ip = IpAdress;
                 String operator = null;
                 if (!NullUtil.isNullObject(ip)) {
@@ -88,12 +88,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 }
                 switch (operator) {
                     case "电信":
-                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        source = source.replace("124.160.117.36", "183.134.101.36");
                         break;
                     case "联通":
                         break;
                     case "移动":
-                        source = source.replace("124.160.117.35", "218.205.92.124");
+                        source = source.replace("124.160.117.36", "218.205.92.125");
                         break;
                 }
             }
@@ -222,10 +222,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
 //                movieList = channelService.getMovieToSource();
                 movieList = lunBoFromService.selectIntoChannelWithOutFengmi();
 
-            }if (!NullUtil.isNullObject(platformName) && platformName.equals("tv_version_1.2")) {
-                channelList = channelService.getChannelWithoutSource();
-//                movieList = channelService.getMovieToSource();
-                movieList = lunBoFromService.getDemandList();
             }
             else {
                 channelList = channelService.selectAllNew();
@@ -249,7 +245,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (source.startsWith("sourceUri://")) {
                 source = sourceService.getSource(source);
             }
-            if (source.contains("124.160.117.35")) {
+            if (source.contains("124.160.117.36")) {
                 String ip = IpAdress;
                 String operator = null;
                 if (!NullUtil.isNullObject(ip)) {
@@ -260,12 +256,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 }
                 switch (operator) {
                     case "电信":
-                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        source = source.replace("124.160.117.36", "183.134.101.36");
                         break;
                     case "联通":
                         break;
                     case "移动":
-                        source = source.replace("124.160.117.35", "218.205.92.124");
+                        source = source.replace("124.160.117.36", "218.205.92.125");
                         break;
                 }
             }
@@ -296,12 +292,12 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 }
                 switch (operator) {
                     case "电信":
-                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        source = source.replace("124.160.117.36", "183.134.101.36");
                         break;
                     case "联通":
                         break;
                     case "移动":
-                        source = source.replace("124.160.117.35", "218.205.92.124");
+                        source = source.replace("124.160.117.36", "218.205.92.125");
                         break;
                 }
             }
