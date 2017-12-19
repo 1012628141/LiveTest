@@ -9,6 +9,7 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 
+import javax.security.auth.x500.X500Principal;
 import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -21,7 +22,7 @@ public class QiNiuUploadTool {
     private static String accessKey = "8qXT7YOMZ-GtjM36rtkzKMEuZSaDrtbSPetdXYIf";
     private static String secretKey = "zbp-eUwRuMzucnYr37u_zXyNsiKkxBrTB84CmmSu";
     private static String bucket = "com-live";
-    private static String zipPath = "~/livedata/";
+    public static String zipPath = "/Users/livedata/";
     private static String key = null;
     public static String getToken(){
         Auth auth = Auth.create(accessKey, secretKey);
@@ -38,6 +39,7 @@ public class QiNiuUploadTool {
             DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             System.out.println(putRet.key);
             System.out.println(putRet.hash);
+            return putRet.hash;
         } catch (QiniuException ex) {
             Response r = ex.response;
             System.err.println(r.toString());
@@ -49,7 +51,7 @@ public class QiNiuUploadTool {
         }
         return null;
     }
-    public boolean createCardImgZip(String sourcePath, String zipName) {
+    public static boolean createCardImgZip(String sourcePath, String zipName) {
         boolean result = false;
         File sourceFile = new File(sourcePath);
         FileInputStream fis = null;
@@ -68,24 +70,21 @@ public class QiNiuUploadTool {
                 if (zipFile.exists()) {
                     System.out.println(zipPath + "Catalog File: " + zipName + ".zip" + "pack file.");
                 } else {
-                    File[] sourceFiles = sourceFile.listFiles();
-                    if (null == sourceFiles || sourceFiles.length < 1) {
+                    File sourceFiles = new File(sourcePath);
+                    if (null == sourceFiles ) {
                         System.out.println("File Catalog:" + sourcePath + "nothing in there,don't hava to compress!");
                     } else {
                         fos = new FileOutputStream(zipFile);
                         zos = new ZipOutputStream(new BufferedOutputStream(fos));
                         byte[] bufs = new byte[1024 * 10];
-                        for (int i = 0; i < sourceFiles.length; i++) {
-                            // create .zip and put pictures in
-                            ZipEntry zipEntry = new ZipEntry(sourceFiles[i].getName());
-                            zos.putNextEntry(zipEntry);
-                            // read documents and put them in the zip
-                            fis = new FileInputStream(sourceFiles[i]);
-                            bis = new BufferedInputStream(fis, 1024 * 10);
-                            int read = 0;
-                            while ((read = bis.read(bufs, 0, 1024 * 10)) != -1) {
-                                zos.write(bufs, 0, read);
-                            }
+                        ZipEntry zipEntry = new ZipEntry(sourceFiles.getName());
+                        zos.putNextEntry(zipEntry);
+                        // read documents and put them in the zip
+                        fis = new FileInputStream(sourceFiles);
+                        bis = new BufferedInputStream(fis, 1024 * 10);
+                        int read = 0;
+                        while ((read = bis.read(bufs, 0, 1024 * 10)) != -1) {
+                            zos.write(bufs, 0, read);
                         }
                         result = true;
                     }
