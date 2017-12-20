@@ -22,7 +22,7 @@ public class QiNiuUploadTool {
     private static String accessKey = "8qXT7YOMZ-GtjM36rtkzKMEuZSaDrtbSPetdXYIf";
     private static String secretKey = "zbp-eUwRuMzucnYr37u_zXyNsiKkxBrTB84CmmSu";
     private static String bucket = "com-live";
-    public static String zipPath = "/Users/livedata/";
+    public static String zipPath = "/C:/Users/Administrator/Desktop/";
     private static String key = null;
     public static String getToken(){
         Auth auth = Auth.create(accessKey, secretKey);
@@ -68,26 +68,26 @@ public class QiNiuUploadTool {
                 }
                 File zipFile = new File(zipPath + "/" + zipName + ".zip");
                 if (zipFile.exists()) {
-                    System.out.println(zipPath + "Catalog File: " + zipName + ".zip" + "pack file.");
+                    zipFile.delete();
+                }
+                zipFile.createNewFile();
+                File sourceFiles = new File(sourcePath);
+                if (null == sourceFiles ) {
+                    System.out.println("File Catalog:" + sourcePath + "nothing in there,don't hava to compress!");
                 } else {
-                    File sourceFiles = new File(sourcePath);
-                    if (null == sourceFiles ) {
-                        System.out.println("File Catalog:" + sourcePath + "nothing in there,don't hava to compress!");
-                    } else {
-                        fos = new FileOutputStream(zipFile);
-                        zos = new ZipOutputStream(new BufferedOutputStream(fos));
-                        byte[] bufs = new byte[1024 * 10];
-                        ZipEntry zipEntry = new ZipEntry(sourceFiles.getName());
-                        zos.putNextEntry(zipEntry);
-                        // read documents and put them in the zip
-                        fis = new FileInputStream(sourceFiles);
-                        bis = new BufferedInputStream(fis, 1024 * 10);
-                        int read = 0;
-                        while ((read = bis.read(bufs, 0, 1024 * 10)) != -1) {
-                            zos.write(bufs, 0, read);
-                        }
-                        result = true;
+                    fos = new FileOutputStream(zipFile);
+                    zos = new ZipOutputStream(new BufferedOutputStream(fos));
+                    byte[] bufs = new byte[1024 * 10];
+                    ZipEntry zipEntry = new ZipEntry(sourceFiles.getName());
+                    zos.putNextEntry(zipEntry);
+                    // read documents and put them in the zip
+                    fis = new FileInputStream(sourceFiles);
+                    bis = new BufferedInputStream(fis, 1024 * 10);
+                    int read = 0;
+                    while ((read = bis.read(bufs, 0, 1024 * 10)) != -1) {
+                        zos.write(bufs, 0, read);
                     }
+                    result = true;
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

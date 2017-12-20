@@ -350,7 +350,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     }else {
                         //获取部分没有节目表的频道
                         newChannel = channelService.selectNewChannelById(channelId);
-                        if (!NullUtil.isNullObject(newChannel)){
+                        if (!NullUtil.isNullObject(newChannel.getC())){
                             channelsList.add(newChannel);
                         }
                     }
