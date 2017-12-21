@@ -1,17 +1,24 @@
 package com.readyidu.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import com.readyidu.mapper.*;
 import com.readyidu.model.*;
 import com.readyidu.model.Channel;
 import com.readyidu.playbill.base.OriginManager;
+import com.readyidu.playbill.model.Program;
+import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
 import com.readyidu.source.base.*;
+import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.readyidu.util.PageUtil;
+import com.readyidu.util.SourceCheck;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -256,7 +263,6 @@ public class ChannelServiceImpl extends BaseService implements
                 ChannelSource channelSource = new ChannelSource();
                 channel.setId(movie.getId() + 10000);
                 channel.setChannel(movie.getTitle());
-
                 channelSource.setSource("sourceUri://movie/tianyi/" + movie.getContid());
                 List<ChannelSource> sources = new ArrayList<>();
                 sources.add(channelSource);
@@ -266,34 +272,6 @@ public class ChannelServiceImpl extends BaseService implements
             }
             // 信息缓存5分钟
             cacheService.set(cacheKey, JSON.toJSONString(channelList), CacheService.CACHE_TIMEOUT);
-        }
-        return channelList;
-    }
-    @Override
-    public List<Channel> getMovieToSourceNotTv() {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "movielListNotTv";
-        String cacheObj = cacheService.get(cacheKey);
-        List<Channel> channelList = null;
-        if (!NullUtil.isNullObject(cacheObj)) {
-            channelList = JSON.parseArray(cacheObj, Channel.class);
-        } else {
-            // 若redis中无数据，则查询数据库, 并缓存
-            List<Movie> movieList = movieService.selectAllMovie();
-            channelList = new ArrayList<>();
-            for (Movie movie: movieList) {
-                Channel channel = new Channel();
-                ChannelSource channelSource = new ChannelSource();
-                channel.setId(movie.getId() + 10000);
-                channel.setChannel(movie.getTitle());
-                channel.setSourceId(movie.getSourceId());
-                List<ChannelSource> sources = new ArrayList<>();
-                sources.add(channelSource);
-                channel.setSources(sources);
-                channel.setTypeid(movie.getSubCategoryId());
-                channelList.add(channel);
-            }
-            // 信息缓存5分钟
-            cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
         }
         return channelList;
     }
@@ -534,67 +512,4 @@ public class ChannelServiceImpl extends BaseService implements
         return type;
     }
 
-    /**
-     * Created by 123 on 2017/7/26.
-     */
-    @Service("channelSourceService")
-    public static class ChannelSourceServiceImpl extends BaseService implements ChannelSourceService {
-        @Autowired
-        private ChannelSourceMapper channelSourceMapper;
-        @Autowired
-        private CacheService cacheService;
-
-        private static final String CACHE_NAME = "channelSource_";
-
-        @Override
-        public void importData(ChannelSource channelSource) {
-            channelSourceMapper.importData(channelSource);
-        }
-
-        @Override
-        public List<CheckableChannel> selectDeathSource() {
-            return channelSourceMapper.selectDeathSource();
-        }
-
-        @Override
-        public int delectSourceByid(Integer id) {
-            return channelSourceMapper.delectSourceByid(id);
-        }
-
-        @Override
-        public int reportSourceByid(Integer id) {
-            return channelSourceMapper.reportSourceByid(id);
-        }
-
-        @Override
-        public int updateIsDelete(String source) {
-            return channelSourceMapper.updateIsDelete(source);
-        }
-
-        @Override
-        public int reductionSourceByid(Integer id) {
-            return channelSourceMapper.reductionSourceByid(id);
-        }
-
-        @Override
-        public ChannelSource getDeathBySource(String source) {
-            return channelSourceMapper.getDeathBySource(source);
-        }
-
-        @Override
-        public int updateSort(ChannelSource source) { return channelSourceMapper.updateSort(source);}
-
-        @Override
-        public int modifySource(ChannelSource source) {return channelSourceMapper.modifySource(source);}
-
-        @Override
-        public List<ChannelSource> selectSourceByParentId(Integer id) {
-            cacheService.del(SERVICE_RBK + "channel_" + "channelList");
-            return channelSourceMapper.selectSourceByParentId(id);}
-
-        @Override
-        public String selectSourceById(Integer id) {
-            return channelSourceMapper.selectSourceById(id);
-        }
-    }
 }
