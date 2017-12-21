@@ -6,4 +6,5 @@
 target/
 classes/
 out/
+.DS_Store
 projectFilesBackup/

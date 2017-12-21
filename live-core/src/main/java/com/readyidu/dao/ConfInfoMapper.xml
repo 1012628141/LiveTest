@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.readyidu.mapper.ConfInfoMapper" >
+    <select id="selectChannelInfo" resultType="com.readyidu.model.ConfInfo" parameterType="java.lang.Integer">
+        select
+        confName,
+        version,
+        confUrl,
+        hash
+        from
+        t_service_conf
+        where version &lt;= #{version} and confName="channelInfo"
+    </select>
+</mapper>

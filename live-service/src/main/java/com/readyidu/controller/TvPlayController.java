@@ -59,11 +59,21 @@ public class TvPlayController {
     @ResponseBody
     @RequestMapping(value = "tvsource", produces = "application/json; charset=utf-8")
     public String tvsource(String source) {
-            return tvSourceService.getChannelList("tv");
+            return tvSourceService.channelType();
     }
     @ResponseBody
     @RequestMapping(value = "test", produces = "application/json; charset=utf-8")
     public String test(String source,Integer id) {
         return tvSourceService.getNewChannelListByTypeId(source,id);
+    }
+    @ResponseBody
+    @RequestMapping(value = "key", produces = "application/json; charset=utf-8")
+    public String key(String source) {
+        return tvSourceService.selectChannelInfoByKey(source);
+    }
+    @ResponseBody
+    @RequestMapping(value = "channelPlaybill", produces = "application/json; charset=utf-8")
+    public String channelPlaybill(String source) {
+        return tvSourceService.channelPlaybill(source);
     }
 }

@@ -6,6 +6,7 @@ import com.readyidu.model.ChannelSource;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.ChannelService;
 import com.readyidu.service.ChannelSourceService;
+import com.readyidu.tools.QiNiuUploadTool;
 import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import org.apache.http.util.TextUtils;
@@ -41,6 +42,17 @@ public class WebChannelController {
 
     @Resource(name = "channelSourceService")
     private ChannelSourceService channelSourceService;
+
+    @RequestMapping(value = "/upLoadChannelList", method = RequestMethod.GET)
+    @ResponseBody
+    public String upLoadChannelList(){
+        String zipName = "playChannel";
+        if (QiNiuUploadTool.createCardImgZip("/Users/playChannel.json",zipName))
+        {
+            String fileName = QiNiuUploadTool.upLoad(QiNiuUploadTool.zipPath + zipName + ".zip");
+        }
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+    }
 
     @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.GET)
     @ResponseBody

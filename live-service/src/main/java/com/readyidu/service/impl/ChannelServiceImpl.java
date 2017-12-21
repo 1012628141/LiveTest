@@ -1,16 +1,14 @@
 package com.readyidu.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import com.alibaba.fastjson.JSONObject;
 import com.readyidu.mapper.*;
 import com.readyidu.model.*;
 import com.readyidu.model.Channel;
 import com.readyidu.playbill.base.OriginManager;
-import com.readyidu.playbill.model.Program;
+import com.readyidu.model.Program;
 import com.readyidu.pojo.SourceCheckResult;
 import com.readyidu.service.*;
 import com.readyidu.source.base.*;
@@ -19,6 +17,7 @@ import com.readyidu.util.NullUtil;
 import com.readyidu.util.PageUtil;
 import com.readyidu.util.SourceCheck;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -58,6 +57,9 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Resource(name = "lunBoFromService")
     private LunBoFromService lunBoFromService;
+
+    @Resource(name = "playBillInfoMapper")
+    private PlayBillInfoMapper playBillInfoMapper;
 
     private static final String CACHE_NAME = "channel_";
 
@@ -279,18 +281,43 @@ public class ChannelServiceImpl extends BaseService implements
 
     @Override
     public Map<String, Object> channelPlaybill(String channelId) {
-        Map<String, Object> programMap = null;
-        // TODO: 2017/11/28 加缓存
-        BillFromInfo billFromInfo = billFromMapper.
-                selectBillFromInfoByChannelId(
-                        Integer.valueOf(channelId));
-        if (!NullUtil.isNullObject(billFromInfo)) {
-            programMap = originManager.getPlaybill(
-                    billFromInfo.getFromUrl(),
-                    billFromInfo.getOrigin());
-        }
-        if (NullUtil.isNullObject(programMap) || programMap.size() == 0) {
-            programMap = lunBoFromService.getChannelBill(Integer.valueOf(channelId));
+        Map<String, Object> programMap = new HashMap<>();
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "channelPlaybill"+channelId;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            programMap = JSON.parseObject(cacheObj,Map.class);
+        }else {
+            Date date = new Date();
+            Program program = new Program();
+            program.setChannelId(Integer.parseInt(channelId));
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String nowTime = df.format(date);
+            program.setDate(nowTime);
+            List<Program> todayProgram = playBillInfoMapper.selectBillProgram(program);
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(date);
+            calendar.add(calendar.DATE,1);
+            date=calendar.getTime();
+            String tommorrowTime = df.format(date);
+            program.setDate(tommorrowTime);
+            List<Program> tommorrowProgram = playBillInfoMapper.selectBillProgram(program);
+            programMap.put("todayProgram", todayProgram);
+            programMap.put("tommorrowProgram", tommorrowProgram);
+//            BillFromInfo billFromInfo = billFromMapper.
+//                    selectBillFromInfoByChannelId(
+//                            Integer.valueOf(channelId));
+//            if (!NullUtil.isNullObject(billFromInfo)) {
+//                programMap = originManager.getPlaybill(
+//                        billFromInfo.getFromUrl(),
+//                        billFromInfo.getOrigin());
+//            }
+            if (NullUtil.isNullObject(programMap) || programMap.size() == 0) {
+                programMap = lunBoFromService.getChannelBill(Integer.valueOf(channelId));
+            }
+            if (!NullUtil.isNullObject(programMap)) {
+                // 信息缓存5分钟
+                cacheService.set(cacheKey, JSON.toJSONString(programMap), CacheService.CACHE_TIMEOUT);
+            }
         }
         return programMap;
     }
@@ -460,11 +487,25 @@ public class ChannelServiceImpl extends BaseService implements
             NewChannelType newChannelType = new NewChannelType();
             // 若redis中无数据，则查询数据库, 并缓存
             //根据定位获取当前省份category
-            Integer category = (channelTypeMapper.getCategoryById(appTypeId));
+            Integer category = channelTypeMapper.getCategoryById(appTypeId);
             newChannelType.setCategory(category);
+            List<Integer> channelList_1 = channelMapper.selectChannelByTypeId(newChannelType);
             if (typeid.equals("400")){
+                //匹配本地则返回本地频道
+                //当前本地频道为空则返回浙江频道
+                if(channelList_1.isEmpty()){
+                    newChannelType.setCategory(33);
+                    channelList = channelMapper.selectChannelByTypeId(newChannelType);
+                }else {
+                    channelList = channelList_1;
+                }
+            }else if (typeid.equals("4000")){
+                //匹配地方则先查询除本地外频道再最后加入本地频道
+                newChannelType.setAppTypeId(Integer.parseInt(typeid));
                 channelList = channelMapper.selectChannelByTypeId(newChannelType);
-            }else {
+                channelList.addAll(channelList_1);
+            } else {
+                //匹配其他则查询对应的频道
                 newChannelType.setAppTypeId(Integer.parseInt(typeid));
                 channelList = channelMapper.selectChannelByTypeId(newChannelType);
             }
@@ -500,7 +541,7 @@ public class ChannelServiceImpl extends BaseService implements
         String type = null ;
         String cacheObj = cacheService.get(cacheKey);
         if (!NullUtil.isNullObject(cacheObj)) {
-            type = cacheService.get(cacheKey);
+            type = cacheObj;
         }else {
             // 若redis中无数据，则查询数据库, 并缓存
             type = channelTypeMapper.getTypeById(id);
@@ -508,8 +549,46 @@ public class ChannelServiceImpl extends BaseService implements
                 // 信息缓存5分钟
                 cacheService.set(cacheKey, type,
                         CacheService.CACHE_TIMEOUT);
+            else{
+                type = "浙江";
+            }
         }
         return type;
     }
 
+    @Override
+    public List<String> selectChannelIdByKey(String key) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelIdByKey"+key;
+        // 优先从缓存中取
+        List<String> channelList= null ;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj,String.class);
+        }else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList = channelMapper.selectChannelIdByKey(key);
+            if (!NullUtil.isNullObject(channelList))
+                // 信息缓存5分钟
+                cacheService.set(cacheKey, JSON.toJSONString(channelList), CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+
+    @Override
+    public Channel selectChannelByChannelName(String channelName) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByChannelName"+channelName;
+        // 优先从缓存中取
+        Channel channel= null ;
+        String cacheObj = cacheService.get(cacheKey);
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channel = JSON.parseObject(cacheObj,Channel.class);
+        }else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channel = channelMapper.selectChannelByChannelName(channelName);
+            if (!NullUtil.isNullObject(channel))
+                // 信息缓存5分钟
+                cacheService.set(cacheKey, JSON.toJSONString(channel), CacheService.CACHE_TIMEOUT);
+        }
+        return channel;
+    }
 }

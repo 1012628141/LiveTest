@@ -12,7 +12,7 @@
     <select id="selectAll" resultType="com.readyidu.model.ChannelType">
         select
         <include refid="Base_Column_List"/>
-        from t_channel_type ORDER BY id
+        from t_channel_type ORDER BY sort
     </select>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -68,7 +68,7 @@
         from t_channel_appType ORDER BY sort
     </select>
     <select id="getTypeById" parameterType="java.lang.Integer" resultType="java.lang.String">
-        SELECT province FROM t_area_code WHERE id=#{id}
+        select categoryType from t_category_type where id = (select category from t_area_code where id = #{id})
     </select>
     <select id="getCategoryById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         SELECT category FROM t_area_code WHERE id=#{id}
