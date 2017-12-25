@@ -44,7 +44,13 @@ public class AppChannelController {
      * @return
      */
     @RequestMapping("/bundling")
-    public String bundling(){
+    public String bundling(String token){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        int account = requestParamModel.getAccount();
+        String deviceId = requestParamModel.getDeviceId();
+        if(!NullUtil.isNullObject(cacheService.get(token+deviceId))){
+
+        }
         return null;
     }
 
