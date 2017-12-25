@@ -7,8 +7,8 @@ public class PhoneDevice {
     private Integer id;
     private String phoneName;
     private String phoneId;
-    private Integer tvDeviceId;
     private Integer userId;
+    private String deviceId;
 
     public Integer getId() {
         return id;
@@ -34,19 +34,19 @@ public class PhoneDevice {
         this.phoneId = phoneId;
     }
 
-    public Integer getTvDeviceId() {
-        return tvDeviceId;
-    }
-
-    public void setTvDeviceId(Integer tvDeviceId) {
-        this.tvDeviceId = tvDeviceId;
-    }
-
     public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }

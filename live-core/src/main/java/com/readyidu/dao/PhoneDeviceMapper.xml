@@ -14,4 +14,30 @@
     </select>
 
 
+    <select id="selectDeviceIdByUserId" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select
+        device_id
+        from
+        t_phone_device
+        where
+        user_id = #{userId}
+        and
+        t1.is_delete != 1
+    </select>
+    <update id="delete" parameterType="java.lang.Integer">
+        update t_phone_device
+        set
+        is_delete = 1
+        where userId = #{userId}
+    </update>
+    <select id="getCountByDeviceId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        t_phone_device
+        where
+        device_id = #{deviceId}
+        and
+        t1.is_delete != 1
+    </select>
 </mapper>
