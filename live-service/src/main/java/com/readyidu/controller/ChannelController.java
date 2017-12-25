@@ -40,7 +40,7 @@ public class ChannelController {
     @RequestMapping(value = "/getChannelInfo.do",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     private String getChannelInfo(){
-        return JsonResult.toString(NetworkCode.CODE_SUCCESS,confInfoService.selectChannelInfo(113));
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,confInfoService.selectChannelInfo("113"));
     }
 
     @RequestMapping(value = "/channel.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
