@@ -1,18 +1,11 @@
 package com.readyidu.controller;
 
-import java.util.*;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.model.Channel;
+import com.readyidu.model.ChannelType;
 import com.readyidu.service.ChannelService;
 import com.readyidu.service.ConfInfoService;
 import com.readyidu.service.LunBoFromService;
-import com.readyidu.model.Channel;
-import com.readyidu.model.ChannelType;
-import com.readyidu.service.TvSourceService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -163,4 +162,5 @@ public class ChannelController {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }
+
 }

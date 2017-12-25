@@ -221,7 +221,6 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 channelList = channelService.getChannelWithoutSource();
 //                movieList = channelService.getMovieToSource();
                 movieList = lunBoFromService.selectIntoChannelWithOutFengmi();
-
             }
             else {
                 channelList = channelService.selectAllNew();
