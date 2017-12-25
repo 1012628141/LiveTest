@@ -80,16 +80,4 @@ public class TvPlayController {
     public String channelPlaybill(String source) {
         return tvSourceService.channelPlaybill(source);
     }
-
-
-    @RequestMapping("yanzheng")
-    public void yanzheng(HttpServletResponse response){
-        try {
-            QRCodeUtil.encode("http://www.baidu.com", response.getOutputStream());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }
