@@ -8,6 +8,7 @@ public class ConfInfo {
     private String confUrl;
     private String version;
     private String hash;
+    private String acount;
 
     public String getConfName() {
         return confName;
@@ -39,5 +40,13 @@ public class ConfInfo {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public String getAcount() {
+        return acount;
+    }
+
+    public void setAcount(String acount) {
+        this.acount = acount;
     }
 }

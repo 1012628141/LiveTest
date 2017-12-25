@@ -1,12 +1,19 @@
 package com.readyidu.controller;
 
+
+import com.qiniu.android.http.ResponseInfo;
+import com.qiniu.android.storage.UpCompletionHandler;
+import com.qiniu.storage.UploadManager;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
+import com.readyidu.mapper.ConfInfoMapper;
+import com.readyidu.model.ConfInfo;
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.CacheService;
 import com.readyidu.tools.QiNiuUploadTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +28,8 @@ public class AppChannelController {
 
     @Autowired
     private CacheService cacheService;
+    @Autowired
+    private ConfInfoMapper confInfoMapper;
 
     @RequestMapping("/getQiniuToken")
     public String getQiNiuToken(){
@@ -35,7 +44,29 @@ public class AppChannelController {
      * @return
      */
     @RequestMapping("/callBackUpdate")
-    public String callBackUpdate(){
+    public String callBackUpdate(final RequestParamModel requestParamModel){
+        new UpCompletionHandler(){
+            @Override
+            public void complete(String s, ResponseInfo info, org.json.JSONObject res) {
+                if (info.isOK()){
+                    String version = String.valueOf(requestParamModel.getVersion());
+                    String acount = requestParamModel.getAppId();
+                    String hash = res.getString("hash");
+                    String confUrl = res.getString("callbackUrl") + hash ;
+                    ConfInfo confInfo = new ConfInfo();
+                    confInfo.setAcount(acount);
+                    confInfo.setConfUrl(confUrl);
+                    confInfo.setHash(hash);
+                    confInfo.setVersion(version);
+                    if (NullUtil.isNullObject(confInfoMapper.selectByAcount(acount))){
+                        confInfoMapper.insertConf(confInfo);
+                    }else {
+                        confInfoMapper.updateConfinfo(confInfo);
+                    }
+                }
+            }
+        };
+
         return null;
     }
 

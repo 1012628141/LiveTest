@@ -19,4 +19,13 @@
         </set>
         where version = #{version,jdbcType=VARCHAR}
     </update>
+    <select id="selectByAcount" resultType="com.readyidu.model.ConfInfo" parameterType="java.lang.String">
+        SELECT * FROM t_phone_service WHERE acount = #{acount}
+    </select>
+    <insert id="insertConf" parameterType="com.readyidu.model.ConfInfo">
+        INSERT INTO t_phone_service(confUrl,version,hash,acount,create_time) VALUES (#{confUrl},#{version},#{hash},#{acount},now())
+    </insert>
+    <update id="updateConfinfoByAcount" parameterType="com.readyidu.model.ConfInfo">
+        UPDATE t_phone_service SET confUrl=#{confUrl},version=#{version},hash=#{hash},modify_time=now() WHERE acount=#{acount}
+    </update>
 </mapper>

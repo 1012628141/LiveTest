@@ -1,5 +1,6 @@
 package com.readyidu.controller;
 
+import com.readyidu.pojo.RequestParamModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,7 +42,8 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(){
+    public String bindingReq(RequestParamModel requestParamModel){
+
         return null;
     }
 }
