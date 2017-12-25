@@ -97,6 +97,26 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                         break;
                 }
             }
+            if (source.contains("124.160.117.35")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
+                        break;
+                }
+            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, new Source(source));
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -264,6 +284,26 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                         break;
                 }
             }
+            if (source.contains("124.160.117.35")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
+                        break;
+                }
+            }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, source);
         } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
@@ -280,7 +320,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (source.startsWith("sourceUri://")) {
                 source = liveManager.getChannelSource(source);
             }
-            if (source.contains("124.160.117.35")) {
+            if (source.contains("124.160.117.36")) {
                 String ip = IpAdress;
                 String operator = null;
                 if (!NullUtil.isNullObject(ip)) {
@@ -297,6 +337,26 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                         break;
                     case "移动":
                         source = source.replace("124.160.117.36", "218.205.92.125");
+                        break;
+                }
+            }
+            if (source.contains("124.160.117.35")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.35", "183.134.101.35");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -349,7 +409,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     }else {
                         //获取部分没有节目表的频道
                         newChannel = channelService.selectNewChannelById(channelId);
-                        if (!NullUtil.isNullObject(newChannel)){
+                        if (!NullUtil.isNullObject(newChannel.getC())){
                             channelsList.add(newChannel);
                         }
                     }

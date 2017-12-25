@@ -7,8 +7,9 @@
         `date`,
         playontime,
         showname,
-        channelId)
-        value(#{date},#{playontime},#{showname},#{channelId})
+        channelId,
+        lunboId)
+        value(#{date},#{playontime},#{showname},#{channelId},#{lunboId})
     </insert>
     <delete id="cleanBillInfo" parameterType="java.lang.Integer">
         delete
@@ -33,5 +34,28 @@
         t_billfrom_info
         where
         `date` = #{date} and channelId = #{channelId}
+    </select>
+    <select id="selectBillProgramByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.PlayBillInfo">
+        select
+        t1.playontime,
+        t1.showname,
+        t1.date,
+        t2.isFengmi,
+        t2.fengmiId,
+        t2.orderIndex
+        from
+        t_billfrom_info t1
+        left join
+        (select
+        '1' as isFengmi,
+        lunboId,
+        fengmiId,
+        orderIndex
+        from t_fengmi_lunbo
+        where is_delete != 1
+        ) t2
+        on t1.lunboId=t2.lunboId
+        where
+        channelId = #{channelId}
     </select>
 </mapper>

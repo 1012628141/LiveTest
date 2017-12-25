@@ -1,9 +1,10 @@
 package com.readyidu.mapper;
 
 import com.readyidu.model.ChannelType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public interface ChannelTypeMapper {
     int deleteByPrimaryKey(Integer id);
 

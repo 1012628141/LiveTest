@@ -6,7 +6,7 @@ package com.readyidu.model;
 public class ConfInfo {
     private String confName;
     private String confUrl;
-    private Integer version;
+    private String version;
     private String hash;
 
     public String getConfName() {
@@ -25,11 +25,11 @@ public class ConfInfo {
         this.confUrl = confUrl;
     }
 
-    public Integer getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(String version) {
         this.version = version;
     }
 
