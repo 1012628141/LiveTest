@@ -1,16 +1,21 @@
 package com.readyidu.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.readyidu.mapper.ConfInfoMapper;
 import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.model.ConfInfo;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AppChannelServiceImpl extends BaseService implements AppChannelService{
 
     @Autowired
     private PhoneDeviceMapper phoneDeviceMapper;
+    @Autowired
+    private ConfInfoMapper confInfoMapper;
 
     @Override
     public String checkBinding(int account, String deviceId) {
@@ -30,5 +35,21 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
         }else {
             return "您绑定的手机设备已达上限，请解绑后再重新添加新的手机设备。";
         }
+    }
+
+    @Override
+    public ConfInfo selectByAcount(Integer acount) {
+        return confInfoMapper.selectByAcount(acount);
+    }
+
+    @Transactional
+    @Override
+    public void insertConf(ConfInfo confInfo) {
+        confInfoMapper.insertConf(confInfo);
+    }
+    @Transactional
+    @Override
+    public void updateConfinfo(ConfInfo confInfo) {
+        confInfoMapper.updateConfinfo(confInfo);
     }
 }

@@ -1,5 +1,6 @@
 package com.readyidu.mapper;
 
+import com.readyidu.model.TvDevice;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,4 +8,5 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface TvDeviceMapper {
+
 }

@@ -8,7 +8,7 @@ public class ConfInfo {
     private String confUrl;
     private String version;
     private String hash;
-    private String acount;
+    private int acount;
 
     public String getConfName() {
         return confName;
@@ -42,11 +42,11 @@ public class ConfInfo {
         this.hash = hash;
     }
 
-    public String getAcount() {
+    public Integer getAcount() {
         return acount;
     }
 
-    public void setAcount(String acount) {
+    public void setAcount(Integer acount) {
         this.acount = acount;
     }
 }

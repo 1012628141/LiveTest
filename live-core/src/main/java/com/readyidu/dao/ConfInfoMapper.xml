@@ -19,7 +19,7 @@
         </set>
         where version = #{version,jdbcType=VARCHAR}
     </update>
-    <select id="selectByAcount" resultType="com.readyidu.model.ConfInfo" parameterType="java.lang.String">
+    <select id="selectByAcount" resultType="com.readyidu.model.ConfInfo" parameterType="java.lang.Integer">
         SELECT * FROM t_phone_service WHERE acount = #{acount}
     </select>
     <insert id="insertConf" parameterType="com.readyidu.model.ConfInfo">

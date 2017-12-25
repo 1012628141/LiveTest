@@ -11,6 +11,7 @@ import com.readyidu.service.ChannelSourceService;
 import com.readyidu.service.DeathChannelService;
 import com.readyidu.util.NullUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;

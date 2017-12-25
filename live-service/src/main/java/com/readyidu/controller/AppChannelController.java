@@ -9,7 +9,9 @@ import com.readyidu.filter.HeaderFilter;
 import com.readyidu.mapper.ConfInfoMapper;
 import com.readyidu.model.ConfInfo;
 import com.readyidu.pojo.RequestParamModel;
+import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
+import com.readyidu.service.impl.AppChannelServiceImpl;
 import com.readyidu.tools.QiNiuUploadTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
@@ -28,8 +30,8 @@ public class AppChannelController {
 
     @Autowired
     private CacheService cacheService;
-    @Autowired
-    private ConfInfoMapper confInfoMapper;
+
+    private AppChannelService appChannelService = new AppChannelServiceImpl();
 
     @RequestMapping("/getQiniuToken")
     public String getQiNiuToken(){
@@ -50,7 +52,7 @@ public class AppChannelController {
             public void complete(String s, ResponseInfo info, org.json.JSONObject res) {
                 if (info.isOK()){
                     String version = String.valueOf(requestParamModel.getVersion());
-                    String acount = requestParamModel.getAppId();
+                    int acount = requestParamModel.getAccount();
                     String hash = res.getString("hash");
                     String confUrl = res.getString("callbackUrl") + hash ;
                     ConfInfo confInfo = new ConfInfo();
@@ -58,10 +60,10 @@ public class AppChannelController {
                     confInfo.setConfUrl(confUrl);
                     confInfo.setHash(hash);
                     confInfo.setVersion(version);
-                    if (NullUtil.isNullObject(confInfoMapper.selectByAcount(acount))){
-                        confInfoMapper.insertConf(confInfo);
+                    if (NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
+                        appChannelService.insertConf(confInfo);
                     }else {
-                        confInfoMapper.updateConfinfo(confInfo);
+                        appChannelService.updateConfinfo(confInfo);
                     }
                 }
             }

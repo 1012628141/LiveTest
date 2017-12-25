@@ -1,5 +1,6 @@
 package com.readyidu.mapper;
 
+import com.readyidu.model.PhoneDevice;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,4 +11,5 @@ public interface PhoneDeviceMapper {
     String selectDeviceIdByUserId(int userId);
     void delete(int userId);
     int getCountByDeviceId(String deviceId);
+    void insertDevice(PhoneDevice phoneDevice);
 }

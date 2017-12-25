@@ -27,4 +27,7 @@
         and
         t1.is_delete != 1
     </select>
+    <insert id="insertPhoneDevice" parameterType="com.readyidu.model.PhoneDevice">
+        INSERT INTO t_phone_device (device_id,create_time,user_id) VALUES (#{deviceId},now(),#{userId})
+    </insert>
 </mapper>

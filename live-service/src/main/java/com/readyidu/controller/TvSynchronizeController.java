@@ -1,6 +1,11 @@
 package com.readyidu.controller;
 
+import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.model.PhoneDevice;
 import com.readyidu.pojo.RequestParamModel;
+import com.readyidu.service.TvSynchronizeService;
+import com.readyidu.service.impl.TvSynchronizeServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class TvSynchronizeController {
-
+    private TvSynchronizeService tvSynchronizeService = new TvSynchronizeServiceImpl();
     /**
      * 获取二维码
      * @return
@@ -43,7 +48,12 @@ public class TvSynchronizeController {
      */
     @RequestMapping("/bindingReq")
     public String bindingReq(RequestParamModel requestParamModel){
-
+        int acount = requestParamModel.getAccount();
+        String deviceId = requestParamModel.getDeviceId();
+        PhoneDevice phoneDevice = new PhoneDevice();
+        phoneDevice.setDeviceId(deviceId);
+        phoneDevice.setUserId(acount);
+        tvSynchronizeService.insertPhoneDevice(phoneDevice);
         return null;
     }
 }
