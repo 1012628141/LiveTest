@@ -1,6 +1,7 @@
 package com.readyidu.mapper;
 
 import com.readyidu.model.RouterMapping;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * Created by dylan.
  * Home: http://www.devdylan.cn
  */
+@Component
 public interface RouterMappingMapper {
     int deleteById(Integer id);
     int insert(RouterMapping record);

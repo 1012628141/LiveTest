@@ -8,7 +8,9 @@ import com.alibaba.fastjson.JSONObject;
 //import com.brain.util.*;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
+import com.readyidu.model.PlayBillInfo;
 import com.readyidu.pojo.RequestParamModel;
+import com.readyidu.service.PlayBillInfoService;
 import com.readyidu.service.TvSourceService;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
@@ -16,10 +18,11 @@ import com.readyidu.util.Platform;
 import com.readyidu.util.Version;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * 电视相关接口
@@ -30,10 +33,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TvLiveController {
 
     private final TvSourceService tvSourceService;
+    private final PlayBillInfoService playBillInfoService;
 
     @Autowired
-    public TvLiveController(TvSourceService tvSourceService) {
+    public TvLiveController(TvSourceService tvSourceService, PlayBillInfoService playBillInfoService) {
         this.tvSourceService = tvSourceService;
+        this.playBillInfoService = playBillInfoService;
     }
 
     /**
@@ -239,5 +244,21 @@ public class TvLiveController {
         return jsonObject.toJSONString();
     }
 
-
+    /**
+     * 根据频道id获取频道预约表
+     * @param channelId 的频道id
+     * @return json (code: 200 成功,400 参数错误,10000 服务出错;data:[{@link com.readyidu.model.PlayBillInfo}])
+     */
+    @RequestMapping(value = {"/getPlayBillOrder", "/{liveRule}"  + "/getPlayBillOrder"}, method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String getPlayBillOrder(Integer channelId) {
+        String jsonString;
+        try {
+            List<PlayBillInfo> playBillInfoList = playBillInfoService.selectBillProgramByChannelId(channelId);
+            jsonString = JsonResult.toString(NetworkCode.CODE_SUCCESS, playBillInfoList);
+        } catch (Exception e){
+            jsonString = JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+        return getResult(jsonString);
+    }
 }

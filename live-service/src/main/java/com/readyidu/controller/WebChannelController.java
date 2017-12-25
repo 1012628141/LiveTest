@@ -66,10 +66,10 @@ public class WebChannelController {
     public String upLoadChannelList(String version){
         Map<String, Object> dataJson = new HashMap<>();
         List<Channel> channelList = channelMapper.selectWithoutSource();
-        List<DemandChannel> movieList = lunBoFromMapper.selectIntoChannel();
+//        List<DemandChannel> movieList = lunBoFromMapper.selectIntoChannel();
         List<ChannelType> typeList = channelTypeMapper.selectAll();
         dataJson.put("channels", channelList);
-        dataJson.put("movieList", movieList);
+//        dataJson.put("movieList", movieList);
         dataJson.put("typeList", typeList);
         dataJson.put("version",version);
         String json = JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
