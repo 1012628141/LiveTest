@@ -3,12 +3,14 @@ package com.readyidu.mapper;
 import com.readyidu.model.ChannelSource;
 import com.readyidu.model.CheckableChannel;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by 123 on 2017/7/26.
  */
+@Component
 public interface ChannelSourceMapper {
     int importData(ChannelSource channelSource);
     int delectSourceByid(Integer id);

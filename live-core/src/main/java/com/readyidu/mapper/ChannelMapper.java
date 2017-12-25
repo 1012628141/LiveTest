@@ -3,10 +3,11 @@ package com.readyidu.mapper;
 import com.readyidu.model.Channel;
 import com.readyidu.model.NewChannel;
 import com.readyidu.model.NewChannelType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
-
+@Component
 public interface ChannelMapper {
     int deleteByPrimaryKey(Integer id);
 
