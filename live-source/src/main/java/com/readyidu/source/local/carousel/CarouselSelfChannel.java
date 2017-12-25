@@ -16,7 +16,7 @@ public class CarouselSelfChannel extends Channel {
     }
     @Override
     public Source getSource(SourceUri uri) {
-        Source source = new CarouselSelfSource(uri.getSource());
+        Source source = new CarouselSelfSource(uri.getSource(),uri.getSourceIndex());
         if (NullUtil.isNullObject(source.toString())) {
             return null;
         }

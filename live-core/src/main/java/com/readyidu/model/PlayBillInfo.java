@@ -18,20 +18,58 @@ public class PlayBillInfo {
     @JSONField(name = "channelName")
     private String showname;
     private String date;
+    private int isFengmi;
+    @JSONField(serialize=false)
+    private int lunboId;
+    private int fengmiId;
+    private int orderIndex;
 
     public PlayBillInfo() {
     }
 
-    public PlayBillInfo(String showname, String playontime, String date, Integer channelId) {
+    public PlayBillInfo(String showname, String playontime, String date, Integer channelId,Integer lunboId) {
         this.playontime = playontime;
         this.showname = showname;
         this.date = date;
         this.channelId = channelId;
+        this.lunboId = lunboId;
     }
 
     public PlayBillInfo(String date, Integer channelId) {
         this.date = date;
         this.channelId = channelId;
+    }
+
+    public int getFengmiId() {
+        return fengmiId;
+    }
+
+    public void setFengmiId(int fengmiId) {
+        this.fengmiId = fengmiId;
+    }
+
+    public int getOrderIndex() {
+        return orderIndex;
+    }
+
+    public void setOrderIndex(int orderIndex) {
+        this.orderIndex = orderIndex;
+    }
+
+    public int getLunboId() {
+        return lunboId;
+    }
+
+    public void setLunboId(int lunboId) {
+        this.lunboId = lunboId;
+    }
+
+    public int getIsFengmi() {
+        return isFengmi;
+    }
+
+    public void setIsFengmi(int isFengmi) {
+        this.isFengmi = isFengmi;
     }
 
     public int getId() {

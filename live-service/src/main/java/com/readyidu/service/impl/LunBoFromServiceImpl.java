@@ -55,7 +55,7 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
             for (LunBoBillFrom drame : dramaList){
                 int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
                 long length = (long) drame.getPlaytime() * 1000;
-                playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), TimeUtil.getTargetDayTime(playDate),channelId));
+                playBillInfoMapper.insertBillInfo(new PlayBillInfo(drame.getMovieName(),spd.format(nexttime), TimeUtil.getTargetDayTime(playDate),channelId,drame.getId()));
                 nexttime = nexttime+length;
             }
             return true;
@@ -179,7 +179,8 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
                         new PlayBillInfo(thisObj.getMovieName()
                                 ,spd.format(nexttime)
                                 , todayTime
-                                ,channelId));
+                                ,channelId
+                                ,thisObj.getId()));
                 nexttime = nexttime+(long)thisObj.getPlaytime()*1000;
                 for (LunBoBillFrom drame : dramaList){
                     int playDate = (int) ((nexttime - todayLong) / ONEDAYSTAMP);
@@ -188,7 +189,8 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
                             new PlayBillInfo(drame.getMovieName()
                             ,spd.format(nexttime)
                             , TimeUtil.getTargetDayTime(playDate)
-                            ,channelId));
+                            ,channelId
+                            ,drame.getId()));
                     nexttime = nexttime+length;
                 }
                 return true;
@@ -224,6 +226,23 @@ public class LunBoFromServiceImpl extends BaseService implements LunBoFromServic
         } else {
             // 若redis中无数据，则查询数据库, 并缓存
             channelList= lunBoFromMapper.selectTvShowByChannelId(channelId);
+            if (!channelList.isEmpty())
+                // 信息缓存5分钟
+                cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);
+        }
+        return channelList;
+    }
+
+    @Override
+    public List<DemandChannel> selectIntoChannelWithOutFengmi() {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectIntoChannelWithOutFengmi";
+        String cacheObj = cacheService.get(cacheKey);
+        List<DemandChannel> channelList = null;
+        if (!NullUtil.isNullObject(cacheObj)) {
+            channelList = JSON.parseArray(cacheObj, DemandChannel.class);
+        } else {
+            // 若redis中无数据，则查询数据库, 并缓存
+            channelList= lunBoFromMapper.selectIntoChannelWithOutFengmi();
             if (!channelList.isEmpty())
                 // 信息缓存5分钟
                 cacheService.set(cacheKey,JSON.toJSONString(channelList),CacheService.CACHE_TIMEOUT);

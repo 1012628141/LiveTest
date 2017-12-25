@@ -9,13 +9,13 @@
     <!-- 使用zookeeper注册中心暴露服务地址 -->
     <dubbo:registry address="${dubbo.registry.address}"/>
     <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" host="${dubbo.protocol.host}" iothreads="5" charset="UTF-8"/>
-    <!--<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" iothreads="5" charset="UTF-8"/>-->
+    <!--<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" host="${dubbo.protocol.host}" iothreads="5" charset="UTF-8"/>-->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" iothreads="5" charset="UTF-8"/>
     <dubbo:provider iothreads="5" threadpool="cached" threads="500" ></dubbo:provider>
     <!--<dubbo:service interface="com.readyidu.service.ApiBaiduKeyService" ref="apiBaiduKeyService" version="1.0.0"-->
                    <!--timeout="5000"/>-->
     <!--<bean id="apiBaiduKeyService" class="com.readyidu.service.impl.ApiBaiduKeyServiceImpl"/>-->
-    <dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000" group="pre"/>
-    <!--<dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000"/>-->
+    <!--<dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000" group="pre"/>-->
+    <dubbo:service interface="com.readyidu.service.TvSourceService" ref="tvSourceService" version="1.0.0" timeout="10000"/>
     <bean id="tvSourceService" class="com.readyidu.service.impl.TvSourceServiceImpl"/>
 </beans>

@@ -1084,9 +1084,10 @@ public class SourceConstants {
     public static final String SOURCE_ICAN_HLJ_HLJSE = "source_ican_hlj_hljse"; //黑龙江少儿
 //    public static final String SOURCE_ICAN_HLJ_HLJNK = "source_ican_hlj_hljnk"; //黑龙江农垦
 
-
-
-
+    //轮播源服务器分配
+    public static final int SERVER_NUM_2 = 2;//192.168.1.2
+    public static final int SERVER_NUM_3 = 3;//192.168.1.3
+    public static final int SERVER_NUM_4 = 4;//192.168.1.4
 
 
 

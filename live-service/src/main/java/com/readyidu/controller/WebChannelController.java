@@ -2,20 +2,26 @@ package com.readyidu.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
-import com.readyidu.model.ChannelSource;
-import com.readyidu.service.CacheService;
-import com.readyidu.service.ChannelService;
-import com.readyidu.service.ChannelSourceService;
+import com.readyidu.mapper.ChannelMapper;
+import com.readyidu.mapper.ChannelTypeMapper;
+import com.readyidu.mapper.ConfInfoMapper;
+import com.readyidu.mapper.LunBoFromMapper;
+import com.readyidu.model.*;
+import com.readyidu.service.*;
+import com.readyidu.tools.JsonFileTool;
+import com.readyidu.tools.QiNiuUploadTool;
 import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +38,7 @@ import static java.lang.Thread.sleep;
 @RequestMapping(value = "/webChannel")
 public class WebChannelController {
     private static final Logger logger = LoggerFactory.getLogger(WebChannelController.class);
+    private static final String zipName = "playChannel";
 
     @Resource(name = "channelService")
     private ChannelService channelService;
@@ -41,6 +48,47 @@ public class WebChannelController {
 
     @Resource(name = "channelSourceService")
     private ChannelSourceService channelSourceService;
+
+    @Autowired
+    private ChannelMapper channelMapper;
+
+    @Autowired
+    private LunBoFromMapper lunBoFromMapper;
+
+    @Autowired
+    private ChannelTypeMapper channelTypeMapper;
+
+    @Autowired
+    private ConfInfoMapper confInfoMapper;
+
+    @RequestMapping(value = "/upLoadChannelList", method = RequestMethod.GET)
+    @ResponseBody
+    public String upLoadChannelList(String version){
+        Map<String, Object> dataJson = new HashMap<>();
+        List<Channel> channelList = channelMapper.selectWithoutSource();
+//        List<DemandChannel> movieList = lunBoFromMapper.selectIntoChannel();
+        List<ChannelType> typeList = channelTypeMapper.selectAll();
+        dataJson.put("channels", channelList);
+//        dataJson.put("movieList", movieList);
+        dataJson.put("typeList", typeList);
+        dataJson.put("version",version);
+        String json = JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        String filePath = (new File("")).getAbsolutePath();
+        System.out.println(filePath);
+        if(JsonFileTool.createJsonFile(json,filePath,zipName)){
+            if (QiNiuUploadTool.createCardImgZip(filePath,zipName)) {
+                String hashCode = QiNiuUploadTool.upLoad(QiNiuUploadTool.zipPath + zipName + ".zip");
+                ConfInfo confInfo = new ConfInfo();
+                confInfo.setHash(hashCode);
+                confInfo.setVersion(version);
+                int result = confInfoMapper.updateConfinfo(confInfo);
+                if (result==1){
+                    return JsonResult.toString(NetworkCode.CODE_SUCCESS,"success");
+                }
+            }
+        }
+        return JsonResult.toString(NetworkCode.CODE_FAIL,"fail");
+    }
 
     @RequestMapping(value = "/addChannel/{channelName}", method = RequestMethod.GET)
     @ResponseBody

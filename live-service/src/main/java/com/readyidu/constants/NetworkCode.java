@@ -9,6 +9,8 @@ public class NetworkCode {
 
     public static final int CODE_SUCCESS = 200; //成功
 
+    public static final int CODE_SUCCESS_NULL = 204; //成功但返回为空
+
     public static final int CODE_FAIL = 10000; //请求异常
 
     public static final int CODE_TIME_OUT = 408 ;

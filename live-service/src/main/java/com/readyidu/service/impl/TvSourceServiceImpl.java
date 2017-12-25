@@ -77,6 +77,26 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (NullUtil.isNullObject(source)) {
                 return JsonResult.toString(NetworkCode.CODE_FAIL, "");
             }
+            if (source.contains("124.160.117.36")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.36", "183.134.101.36");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        source = source.replace("124.160.117.36", "218.205.92.125");
+                        break;
+                }
+            }
             if (source.contains("124.160.117.35")) {
                 String ip = IpAdress;
                 String operator = null;
@@ -93,6 +113,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -219,9 +240,10 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
                 channelList = channelService.getChannelWithoutSource();
 //                movieList = channelService.getMovieToSource();
-                movieList = lunBoFromService.getDemandList();
+                movieList = lunBoFromService.selectIntoChannelWithOutFengmi();
 
-            } else {
+            }
+            else {
                 channelList = channelService.selectAllNew();
                 movieList = channelService.getMovieToSource();
             }
@@ -243,6 +265,26 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (source.startsWith("sourceUri://")) {
                 source = sourceService.getSource(source);
             }
+            if (source.contains("124.160.117.36")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.36", "183.134.101.36");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        source = source.replace("124.160.117.36", "218.205.92.125");
+                        break;
+                }
+            }
             if (source.contains("124.160.117.35")) {
                 String ip = IpAdress;
                 String operator = null;
@@ -259,6 +301,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -278,6 +321,26 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             if (source.startsWith("sourceUri://")) {
                 source = liveManager.getChannelSource(source);
             }
+            if (source.contains("124.160.117.36")) {
+                String ip = IpAdress;
+                String operator = null;
+                if (!NullUtil.isNullObject(ip)) {
+                    operator = checkOperator(ip);
+                }
+                if (NullUtil.isNullObject(operator)) {
+                    operator = "联通";
+                }
+                switch (operator) {
+                    case "电信":
+                        source = source.replace("124.160.117.36", "183.134.101.36");
+                        break;
+                    case "联通":
+                        break;
+                    case "移动":
+                        source = source.replace("124.160.117.36", "218.205.92.125");
+                        break;
+                }
+            }
             if (source.contains("124.160.117.35")) {
                 String ip = IpAdress;
                 String operator = null;
@@ -294,6 +357,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     case "联通":
                         break;
                     case "移动":
+                        source = source.replace("124.160.117.35", "218.205.92.124");
                         break;
                 }
             }
@@ -346,7 +410,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                     }else {
                         //获取部分没有节目表的频道
                         newChannel = channelService.selectNewChannelById(channelId);
-                        if (!NullUtil.isNullObject(newChannel)){
+                        if (!NullUtil.isNullObject(newChannel.getC())){
                             channelsList.add(newChannel);
                         }
                     }
@@ -355,7 +419,7 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
                 dataJson.put("movieList", movieList);
                 // 信息缓存5分钟
                 if (!channelsList.isEmpty()||!movieList.isEmpty())
-                    cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), CacheService.CACHE_TIMEOUT);
+                    cacheService.set(cacheAllkey, JSON.toJSONString(dataJson), 60);
             }
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
         }catch (Exception e){
@@ -429,6 +493,27 @@ public class TvSourceServiceImpl extends BaseService implements TvSourceService 
             List<NewChannel> channelList = lunBoFromService.selectTvShowByChannelId(channelId);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS, channelList);
         }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
+
+    @Override
+    public String selectTvChannelList(String platformName) {
+        try {
+            Map<String, Object> dataJson = new HashMap<>();
+            List<Channel> channelList = null;
+            List<DemandChannel> movieList = null;
+            if (!NullUtil.isNullObject(platformName) && platformName.equals("tv")) {
+                channelList = channelService.getChannelWithoutSource();
+                movieList = lunBoFromService.getDemandList();
+            } else {
+                channelList = channelService.selectAllNew();
+                movieList = channelService.getMovieToSource();
+            }
+            dataJson.put("channels", channelList);
+            dataJson.put("movieList", movieList);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, dataJson);
+        } catch (Exception e) {
             return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
     }

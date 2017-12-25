@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.model.ConfInfo;
 import com.readyidu.service.ChannelService;
+import com.readyidu.service.ConfInfoService;
 import com.readyidu.service.LunBoFromService;
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelType;
@@ -34,8 +36,25 @@ public class ChannelController {
 
     @Autowired
     private LunBoFromService lunBoFromService;
+    @Autowired
+    private ConfInfoService confInfoService;
 
-
+    @RequestMapping(value = "/getChannelInfo.do",method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    private String getChannelInfo(HttpServletRequest request){
+//        return JsonResult.toString(NetworkCode.CODE_SUCCESS,confInfoService.selectChannelInfo(113));
+        try {
+            String version = request.getHeader("version");
+            if (version.isEmpty()) {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400, "");
+            } else {
+                ConfInfo confInfo = confInfoService.selectChannelInfo(version);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS, confInfo);
+            }
+        } catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
+    }
 
     @RequestMapping(value = "/channel.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
