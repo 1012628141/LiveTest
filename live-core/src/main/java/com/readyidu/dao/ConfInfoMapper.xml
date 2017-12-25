@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.readyidu.mapper.ConfInfoMapper" >
-    <select id="selectChannelInfo" resultType="com.readyidu.model.ConfInfo" parameterType="java.lang.Integer">
+    <select id="selectChannelInfo" resultType="com.readyidu.model.ConfInfo" parameterType="java.lang.String">
         select
         confName,
         version,
@@ -9,6 +9,14 @@
         hash
         from
         t_service_conf
-        where version &lt;= #{version} and confName="channelInfo"
+        where version = #{version} and confName="channelInfo"
     </select>
+    <update id="updateConfinfo" parameterType="com.readyidu.model.ConfInfo">
+        update t_service_conf
+        <set>
+            confUrl = "http://p15mjwx7g.bkt.clouddn.com/"+#{hash,jdbcType=VARCHAR},
+            hash = #{hash,jdbcType=VARCHAR},
+        </set>
+        where version = #{version,jdbcType=VARCHAR}
+    </update>
 </mapper>

@@ -2,7 +2,6 @@ package com.readyidu.filter;
 
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.util.NullUtil;
-import com.readyidu.util.Platform;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

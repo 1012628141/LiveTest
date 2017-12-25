@@ -2,9 +2,10 @@ package com.readyidu.mapper;
 
 import com.readyidu.model.Channel;
 import com.readyidu.model.ChannelDeath;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public interface ChannelDeathMapper {
     int deleteByPrimaryKey(Integer id);
 

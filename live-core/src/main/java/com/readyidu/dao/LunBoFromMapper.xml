@@ -40,6 +40,7 @@
     </resultMap>
     <select id="getFromByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
         select
+        id,
         playTime,
         movieName,
         sort
@@ -62,6 +63,7 @@
     </select>
     <select id="selectFileByChannelId" parameterType="java.lang.Integer" resultType="com.readyidu.model.LunBoBillFrom">
         select
+        id,
         fileName,
         playTime,
         movieName
