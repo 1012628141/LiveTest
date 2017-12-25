@@ -1,7 +1,14 @@
 package com.readyidu.controller;
 
+import com.readyidu.constants.NetworkCode;
+import com.readyidu.util.JsonResult;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import qiniu.happydns.Network;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by 123 on 2017/12/25.
@@ -31,8 +38,9 @@ public class TvSynchronizeController {
      * 获取绑定设备自定义源列表
      * @return
      */
+    @ResponseBody
     @RequestMapping("/DevicesChannels")
-    public String DevicesChannels(){
+    public String DevicesChannels(HttpServletRequest request){
         return null;
     }
 
