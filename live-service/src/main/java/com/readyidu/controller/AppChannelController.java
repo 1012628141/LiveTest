@@ -1,6 +1,7 @@
 package com.readyidu.controller;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import com.qiniu.util.Auth;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
 import com.readyidu.mapper.ConfInfoMapper;
@@ -9,7 +10,6 @@ import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
 import com.readyidu.tools.QiNiuUploadTool;
-import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * App端数据绑定接口
@@ -48,44 +48,59 @@ public class AppChannelController {
      * @return
      */
     @RequestMapping("/callBackUpdate")
-    public String callBackUpdate(HttpServletResponse response){
-//        String accessKey = response
-//
-//        String secretKey = response.getParameter("QINIU_SECRET_KEY");
-//        Auth auth = Auth.create(accessKey, secretKey);
-//        //回调地址
-//        String callbackUrl = "218.75.36.107:18911/app/callBackUpdate";
-//        //定义回调内容的组织格式，与上传策略中的callbackBodyType要保持一致
-//        //String callbackBodyType = "application/x-www-form-urlencoded"; //回调鉴权的签名包括请求内容callbackBody
-//        String callbackBodyType = "application/json";//回调鉴权的签名不包括请求内容
-//        /**
-//         * 这两个参数根据实际所使用的HTTP框架进行获取
-//         */
-//        //通过获取请求的HTTP头部Authorization字段获得
-//        String callbackAuthHeader = request.getHeader("Authorization");
-//        //通过读取回调POST请求体获得，不要设置为null
-//        byte[] callbackBody =  request.get
-//        boolean validCallback = auth.isValidCallback(callbackAuthHeader, callbackUrl, callbackBody, callbackBodyType);
-//        if(validCallback){
-//            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
-//            String version = String.valueOf(requestParamModel.getVersion());
-//            int acount = requestParamModel.getAccount();
-//            ConfInfo confInfo = new ConfInfo();
-//            confInfo.setAcount(acount);
-//            String confUrl = bucket + hash ;
-//            confInfo.setConfUrl(confUrl);
-//            confInfo.setHash(hash);
-//            confInfo.setVersion(version);
-//            if (NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
-//                appChannelService.insertConf(confInfo);
-//            }else {
-//                appChannelService.updateConfinfo(confInfo);
-//            }
-//            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
-//        }else {
-//            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-//        }
-        return null;
+    public String callBackUpdate(HttpServletRequest request){
+        //回调地址
+        Auth auth = Auth.create(QiNiuUploadTool.accessKey, QiNiuUploadTool.secretKey);
+        String callbackUrl = "http://218.75.36.107:11116/app/callBackUpdate";
+        //定义回调内容的组织格式，与上传策略中的callbackBodyType要保持一致
+        //String callbackBodyType = "application/x-www-form-urlencoded"; //回调鉴权的签名包括请求内容callbackBody
+        String callbackBodyType = "application/x-www-form-urlencoded";//回调鉴权的签名不包括请求内容
+        /**
+         * 这两个参数根据实际所使用的HTTP框架进行获取
+         */
+        //通过获取请求的HTTP头部Authorization字段获得
+        String callbackAuthHeader = request.getHeader("Authorization");
+        System.out.println(request);
+        //通过读取回调POST请求体获得，不要设置为null
+        int contentLength = request.getContentLength();
+        if(contentLength<0){
+            return null;
+        }
+        byte[] callbackBody  = new byte[contentLength];
+        try {
+            for (int i = 0; i < contentLength;) {
+
+                int readlen = request.getInputStream().read(callbackBody, i,
+                        contentLength - i);
+                if (readlen == -1) {
+                    break;
+                }
+                i += readlen;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(new String(callbackBody));
+        boolean validCallback = auth.isValidCallback(callbackAuthHeader, callbackUrl, callbackBody, callbackBodyType);
+        if(validCallback){
+            JSONArray jsonArray = JSONArray.parseArray(new String(callbackBody));
+            int acount = jsonArray.getInteger(3);
+            String hash = jsonArray.getString(1);
+            String bucket = jsonArray.getString(2);
+            String confUrl = bucket + hash ;
+            ConfInfo confInfo = new ConfInfo();
+            confInfo.setHash(hash);
+            confInfo.setVersion("131");
+            confInfo.setConfUrl(confUrl);
+            if(NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
+                appChannelService.insertConf(confInfo);
+            }else {
+                appChannelService.updateConfinfo(confInfo);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        }else {
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
 
     /**

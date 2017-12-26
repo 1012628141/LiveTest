@@ -39,44 +39,44 @@ public class AppChannelControllerTest extends TestBaseConfig {
     /**
      * Method: callBackUpdate(HttpServletRequest request, HttpServletResponse response)
      */
-    @Test
-    public void testCallBackUpdate() throws Exception {
-            UpCompletionHandler upCompletionHandler = new UpCompletionHandler() {
-            RequestParamModel requestParamModel = new RequestParamModel("218.75.36.107:18911","113",null,"10000","123",null,null,null,100014,null);
-            @Override
-            public void complete(String s, ResponseInfo responseInfo, JSONObject jsonObject) {
-                if (responseInfo.isOK()){
-                    System.out.println("*************************************************************");
-                    String version = String.valueOf(requestParamModel.getVersion());
-                    assertTrue(!NullUtil.isNullObject(version));
-                    System.out.println(version);
-                    int acount = requestParamModel.getAccount();
-                    assertTrue(!NullUtil.isNullObject(acount));
-                    System.out.println(acount);
-                    String hash = jsonObject.getString("hash");
-                    assertTrue(!NullUtil.isNullObject(hash));
-                    System.out.println(hash);
-                    String confUrl = jsonObject.getString("callbackUrl") + hash ;
-                    assertTrue(!NullUtil.isNullObject(confUrl));
-                    System.out.println(confUrl);
-                    System.out.println("*************************************************************");
-                    ConfInfo confInfo = new ConfInfo();
-                    confInfo.setAcount(acount);
-                    confInfo.setConfUrl(confUrl);
-                    confInfo.setHash(hash);
-                    confInfo.setVersion(version);
-                    if (NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
-                        appChannelService.insertConf(confInfo);
-                    }else {
-                        appChannelService.updateConfinfo(confInfo);
-                    }
-                }else {
-                    System.out.println("上传失败");
-                }
-            }
-        };
+//    @Test
+//    public void testCallBackUpdate() throws Exception {
+//            UpCompletionHandler upCompletionHandler = new UpCompletionHandler() {
+//            RequestParamModel requestParamModel = new RequestParamModel("218.75.36.107:18911","113",null,"10000","123",null,null,null,100014,null);
+//            @Override
+//            public void complete(String s, ResponseInfo responseInfo, JSONObject jsonObject) {
+//                if (responseInfo.isOK()){
+//                    System.out.println("*************************************************************");
+//                    String version = String.valueOf(requestParamModel.getVersion());
+//                    assertTrue(!NullUtil.isNullObject(version));
+//                    System.out.println(version);
+//                    int acount = requestParamModel.getAccount();
+//                    assertTrue(!NullUtil.isNullObject(acount));
+//                    System.out.println(acount);
+//                    String hash = jsonObject.getString("hash");
+//                    assertTrue(!NullUtil.isNullObject(hash));
+//                    System.out.println(hash);
+//                    String confUrl = jsonObject.getString("callbackUrl") + hash ;
+//                    assertTrue(!NullUtil.isNullObject(confUrl));
+//                    System.out.println(confUrl);
+//                    System.out.println("*************************************************************");
+//                    ConfInfo confInfo = new ConfInfo();
+//                    confInfo.setAcount(acount);
+//                    confInfo.setConfUrl(confUrl);
+//                    confInfo.setHash(hash);
+//                    confInfo.setVersion(version);
+//                    if (NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
+//                        appChannelService.insertConf(confInfo);
+//                    }else {
+//                        appChannelService.updateConfinfo(confInfo);
+//                    }
+//                }else {
+//                    System.out.println("上传失败");
+//                }
+//            }
+//        };
 //       QiNiuUploadTool.upLoad("/Users/zhoujianyu/20E44898430ABB10E4783DECDB8778AA.gif",upCompletionHandler);
 
 
-    }
+//    }
 }

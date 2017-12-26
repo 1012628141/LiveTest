@@ -1,7 +1,6 @@
 package com.readyidu.tools;
 
 import com.google.gson.Gson;
-import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -16,16 +15,16 @@ import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-
 /**
  * Created by 123 on 2017/12/18.
  */
 public class QiNiuUploadTool {
 
-    private static String accessKey = "8qXT7YOMZ-GtjM36rtkzKMEuZSaDrtbSPetdXYIf";
-    private static String secretKey = "zbp-eUwRuMzucnYr37u_zXyNsiKkxBrTB84CmmSu";
+    public static String accessKey = "8qXT7YOMZ-GtjM36rtkzKMEuZSaDrtbSPetdXYIf";
+    public static String secretKey = "zbp-eUwRuMzucnYr37u_zXyNsiKkxBrTB84CmmSu";
     private static String bucket = "com-live";
     public static String zipPath = "/C:/Users/Administrator/Desktop/";
+    public static String CALLBACKURL = "http://218.75.36.107:11116/app/callBackUpdate";
     private static String key = null;
     public static String getToken(){
         Auth auth = Auth.create(accessKey, secretKey);
@@ -54,19 +53,21 @@ public class QiNiuUploadTool {
         }
         return null;
     }
-    public static String upLoadwithCallback(String localFilePath){
+    public static String upLoadWithCallBack(String localFilePath){
         long expireSeconds = 3600;
         Configuration cfg = new Configuration(Zone.zone0());
         UploadManager uploadManager = new UploadManager(cfg);
         StringMap putPolicy = new StringMap();
-        putPolicy.put("callbackBody", "{\"key\":\"$(key)\",\"hash\":\"$(etag)\",\"bucket\":\"$(bucket)\",\"fsize\":$(fsize),\"version\":\"$(x:version)\",\"acount\":$(x:acount)}");
-        putPolicy.put("callbackUrl", "http://api.example.com/qiniu/upload/callback");
-        putPolicy.put("callbackBodyType", "application/json");
+        putPolicy.put("callbackBody", "{\"key\":\"$(key)\",\"hash\":\"$(etag)\",\"bucket\":\"$(bucket)\",\"acount\":\"$(x:acount)\"}");
+        putPolicy.put("callbackUrl", CALLBACKURL);
+        putPolicy.put("callbackBodyType", "application/x-www-form-urlencoded");
         Auth auth = Auth.create(accessKey, secretKey);
-        String upToken = auth.uploadToken(bucket, null, expireSeconds, putPolicy);
+        String upToken = auth.uploadToken(bucket, null, expireSeconds, putPolicy,false);
         try {
             InputStream in = new FileInputStream(localFilePath);
-            Response response = uploadManager.put(in, key, upToken,putPolicy,null);
+            StringMap params = new StringMap();
+            params.put("x:acount","5325253");
+            Response response = uploadManager.put(in, key, upToken,params,null);
             //解析上传成功的结果
             DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             System.out.println(putRet.key);
