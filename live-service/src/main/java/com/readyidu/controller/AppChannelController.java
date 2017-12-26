@@ -1,5 +1,6 @@
 package com.readyidu.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
 import com.readyidu.mapper.ConfInfoMapper;
@@ -8,6 +9,7 @@ import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
 import com.readyidu.tools.QiNiuUploadTool;
+import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * App端数据绑定接口
