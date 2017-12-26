@@ -22,5 +22,8 @@ public class NetworkCode {
     public static final int CACHE_EXPIRE = 12001; //线下缓存过期
     public static final int CODE_SOURCE_ZERO = 11000; //无可用地址
     public static final int TYPE_CHANGE = 12100; //播放器切换
+    public static final int BUNDLING_REPETITION = 13000;//重复绑定
+    public static final int BUNDLING_LIMIT = 13001;//机顶盒绑定数达到上限
+    public static final int BUNDLING_CAN = 13002;//可以绑定
 
 }

@@ -1,5 +1,5 @@
 package com.readyidu.service;
 
 public interface AppChannelService {
-    String checkBinding(int account,String deviceId);
+    void checkBinding(int account,String deviceId,String alias);
 }
