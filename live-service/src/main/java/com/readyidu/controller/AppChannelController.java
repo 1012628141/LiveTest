@@ -1,6 +1,8 @@
 package com.readyidu.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.qiniu.util.Auth;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
@@ -47,60 +49,36 @@ public class AppChannelController {
      * 同步文件上传回调接口
      * @return
      */
+    @ResponseBody
     @RequestMapping("/callBackUpdate")
     public String callBackUpdate(HttpServletRequest request){
-        //回调地址
-        Auth auth = Auth.create(QiNiuUploadTool.accessKey, QiNiuUploadTool.secretKey);
-        String callbackUrl = "http://218.75.36.107:11116/app/callBackUpdate";
-        //定义回调内容的组织格式，与上传策略中的callbackBodyType要保持一致
-        //String callbackBodyType = "application/x-www-form-urlencoded"; //回调鉴权的签名包括请求内容callbackBody
-        String callbackBodyType = "application/x-www-form-urlencoded";//回调鉴权的签名不包括请求内容
-        /**
-         * 这两个参数根据实际所使用的HTTP框架进行获取
-         */
-        //通过获取请求的HTTP头部Authorization字段获得
-        String callbackAuthHeader = request.getHeader("Authorization");
-        System.out.println(request);
-        //通过读取回调POST请求体获得，不要设置为null
-        int contentLength = request.getContentLength();
-        if(contentLength<0){
-            return null;
-        }
-        byte[] callbackBody  = new byte[contentLength];
+        JSONObject callBackObj = null;
         try {
-            for (int i = 0; i < contentLength;) {
-
-                int readlen = request.getInputStream().read(callbackBody, i,
-                        contentLength - i);
-                if (readlen == -1) {
-                    break;
+            callBackObj = QiNiuUploadTool.parseCallBack(request);
+            if(!NullUtil.isNullObject(callBackObj)){
+                int acount = callBackObj.getInteger("acount");
+                String hash = callBackObj.getString("hash");
+                String confUrl = QiNiuUploadTool.CHAINURL + hash ;
+                ConfInfo confInfo = new ConfInfo(acount,hash,confUrl);
+                if(NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
+                    appChannelService.insertConf(confInfo);
+                }else {
+                    appChannelService.updateConfinfo(confInfo);
                 }
-                i += readlen;
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }else {
+                return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        System.out.println(new String(callbackBody));
-        boolean validCallback = auth.isValidCallback(callbackAuthHeader, callbackUrl, callbackBody, callbackBodyType);
-        if(validCallback){
-            JSONArray jsonArray = JSONArray.parseArray(new String(callbackBody));
-            int acount = jsonArray.getInteger(3);
-            String hash = jsonArray.getString(1);
-            String bucket = jsonArray.getString(2);
-            String confUrl = bucket + hash ;
-            ConfInfo confInfo = new ConfInfo();
-            confInfo.setHash(hash);
-            confInfo.setVersion("131");
-            confInfo.setConfUrl(confUrl);
-            if(NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
-                appChannelService.insertConf(confInfo);
-            }else {
-                appChannelService.updateConfinfo(confInfo);
-            }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
-        }else {
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
+    }
+    @ResponseBody
+    @RequestMapping("/updatetest")
+    public String updatetest(){
+        String result = QiNiuUploadTool.upLoadWithCallBack("/Users/Documents/movie.py");
+        return result;
     }
 
     /**
