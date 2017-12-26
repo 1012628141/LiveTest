@@ -19,5 +19,5 @@ public interface PhoneDeviceMapper {
 
     int deleteByUserId(String userId);
 
-    void insertDevice(PhoneDevice phoneDevice);
+    int insertDevice(PhoneDevice phoneDevice);
 }

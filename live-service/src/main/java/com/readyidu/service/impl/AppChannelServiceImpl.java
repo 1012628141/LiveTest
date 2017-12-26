@@ -72,7 +72,7 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
         }
         return false;
     }
-}
+
 
     @Override
     public ConfInfo selectByAcount(Integer acount) {

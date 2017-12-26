@@ -32,7 +32,11 @@ import java.util.List;
 
 public class TvSynchronizeController {
 
+    private static final String MASTER_SECRET = "ef9f38dadd725270fea9e65b";
+    private static final String APP_KEY = "6d798d4905318ea41b80f3e3";
 
+    private static final String MESSAGE = "绑定成功";
+    private static final String FAIL = "绑定失败";
     @Autowired
     private TvSynchronizeService tvSynchronizeService;
 
@@ -97,9 +101,12 @@ public class TvSynchronizeController {
         phoneDevice.setUserId(acount);
         int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
         if (num > 0){
+            JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        }else{
+            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
-        return null;
     }
 
     /**
