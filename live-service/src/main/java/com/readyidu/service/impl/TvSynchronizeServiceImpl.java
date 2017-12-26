@@ -31,7 +31,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
     private CacheService cacheService;
 
     /*app端扫描后该访问的地址*/
-    private static final String QRDecodeUrl = "www.baidu.com";
+    private static final String QRDecodeUrl = "app/bundling";
 
     private static final String BindlingDevice="BindlingDevice";
 
