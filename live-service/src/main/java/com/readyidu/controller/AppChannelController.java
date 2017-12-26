@@ -64,6 +64,7 @@ public class AppChannelController {
      */
     @RequestMapping("/getCustomizedList")
     public String getCustomizedList(){
+
         return null;
     }
 
