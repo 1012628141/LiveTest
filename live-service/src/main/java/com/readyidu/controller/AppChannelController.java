@@ -2,6 +2,8 @@ package com.readyidu.controller;
 
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
+import com.readyidu.mapper.ConfInfoMapper;
+import com.readyidu.model.ConfInfo;
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
@@ -28,6 +30,7 @@ public class AppChannelController {
     @Autowired
     private AppChannelService appChannelService;
 
+
     @RequestMapping("/getQiniuToken")
     public String getQiNiuToken(){
         RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
@@ -41,7 +44,43 @@ public class AppChannelController {
      * @return
      */
     @RequestMapping("/callBackUpdate")
-    public String callBackUpdate(){
+    public String callBackUpdate(HttpServletResponse response){
+//        String accessKey = response
+//
+//        String secretKey = response.getParameter("QINIU_SECRET_KEY");
+//        Auth auth = Auth.create(accessKey, secretKey);
+//        //回调地址
+//        String callbackUrl = "218.75.36.107:18911/app/callBackUpdate";
+//        //定义回调内容的组织格式，与上传策略中的callbackBodyType要保持一致
+//        //String callbackBodyType = "application/x-www-form-urlencoded"; //回调鉴权的签名包括请求内容callbackBody
+//        String callbackBodyType = "application/json";//回调鉴权的签名不包括请求内容
+//        /**
+//         * 这两个参数根据实际所使用的HTTP框架进行获取
+//         */
+//        //通过获取请求的HTTP头部Authorization字段获得
+//        String callbackAuthHeader = request.getHeader("Authorization");
+//        //通过读取回调POST请求体获得，不要设置为null
+//        byte[] callbackBody =  request.get
+//        boolean validCallback = auth.isValidCallback(callbackAuthHeader, callbackUrl, callbackBody, callbackBodyType);
+//        if(validCallback){
+//            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+//            String version = String.valueOf(requestParamModel.getVersion());
+//            int acount = requestParamModel.getAccount();
+//            ConfInfo confInfo = new ConfInfo();
+//            confInfo.setAcount(acount);
+//            String confUrl = bucket + hash ;
+//            confInfo.setConfUrl(confUrl);
+//            confInfo.setHash(hash);
+//            confInfo.setVersion(version);
+//            if (NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
+//                appChannelService.insertConf(confInfo);
+//            }else {
+//                appChannelService.updateConfinfo(confInfo);
+//            }
+//            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+//        }else {
+//            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+//        }
         return null;
     }
 

@@ -13,72 +13,79 @@ public class ICanStvSource extends Source {
         super(sourceId, index);
     }
 
+    public ICanStvSource(String sourceId) {
+        super(sourceId);
+    }
+
     @Override
     protected String source() {
         String content = null ;
         String result = null ;
         switch (sourceId) {
-            case SourceConstants.SOURCE_ICAN_STV_HNWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/habc.php?id=19");
-                break;
-            case SourceConstants.SOURCE_ICAN_STV_JSWS:
-                return "rtmp://202.195.240.8:1935/iptv/jshd";
-//                content = HttpUtil.httpGet("");
+//            case SourceConstants.SOURCE_ICAN_STV_HNWS:
+//                content = HttpUtil.httpGet("http://www.icantv.cn/plus/habc.php?id=19");
 //                break;
-            case SourceConstants.SOURCE_ICAN_STV_ZJWS:
-                return "http://www.icantv.cn/hls/zjtv/zjws.m3u8";
-//                content = HttpUtil.httpGet("");
-//                break;
-            case SourceConstants.SOURCE_ICAN_STV_AHWS:
-                return "http://r.gslb.lecloud.com/live/hls/201704243000000wn19/desc.m3u8";
-//                content = HttpUtil.httpGet("");
-//                break;
+//            case SourceConstants.SOURCE_ICAN_STV_JSWS:
+//                return "rtmp://202.195.240.8:1935/iptv/jshd";
+////                content = HttpUtil.httpGet("");
+////                break;
+//            case SourceConstants.SOURCE_ICAN_STV_ZJWS:
+//                return "http://www.icantv.cn/hls/zjtv/zjws.m3u8";
+////                content = HttpUtil.httpGet("");
+////                break;
+//            case SourceConstants.SOURCE_ICAN_STV_AHWS:
+//                return "http://r.gslb.lecloud.com/live/hls/201704243000000wn19/desc.m3u8";
+////                content = HttpUtil.httpGet("");
+////                break;
             case SourceConstants.SOURCE_ICAN_STV_DFWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/knews.php?id=dfws");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/knews.php?id=dfws");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_GDWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/grtn.php?id=gdws");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/grtn.php?id=gdws");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_HLJWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/hljtv.php?id=hljws");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/hljtv.php?id=hljws");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_HBWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/mg.php?id=624878953");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/mg.php?id=624878953");
+                break;
+            case SourceConstants.SOURCE_ICAN_STV_CQWS:
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/migu.php?id=cqws");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_NMGWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/qqzb.php?id=100103800");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/qqzb.php?id=100103800");
                 break;
-            case SourceConstants.SOURCE_ICAN_STV_SCWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/rtmp.php?streamUrl=rtmp://live2.ycsmcn.com:1935/SRT_Live/SCTV1_9178");
-                break;
+//            case SourceConstants.SOURCE_ICAN_STV_SCWS:
+//                content = HttpUtil.httpGet("http://player.icantv.cn/play.html?id=SCTV1_9178&t=sctv");
+//                break;
             case SourceConstants.SOURCE_ICAN_STV_GXWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/qqzb.php?id=100104000");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/qqzb.php?id=100104000");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_YNWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/qqzb.php?id=100104400");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/qqzb.php?id=100104400");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_GZWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/qqzb.php?id=100102800");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/qqzb.php?id=100102800");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_QHWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/qqzb.php?id=100101600");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/qqzb.php?id=100101600");
                 break;
             case SourceConstants.SOURCE_ICAN_STV_SHANXIWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/plus/qqzb.php?id=100006400");
+                content = HttpUtil.httpGet("http://player.icantv.cn/plus/qqzb.php?id=100006400");
                 break;
 //            case SourceConstants.SOURCE_ICAN_STV_GDNFWS:
 //                content = HttpUtil.httpGet("http://live.tv.sohu.com/live/player_json.jhtml?encoding=utf-8&lid=333&type=1&callback=jsonp");
 //                break;
-            case SourceConstants.SOURCE_ICAN_STV_BTWS:
-                return "http://www.icantv.cn/rtmp.php?streamUrl=rtmp://v.btzx.com.cn/live/weishi.stream";
-//                content = HttpUtil.httpGet("");
+//            case SourceConstants.SOURCE_ICAN_STV_BTWS:
+//                return "http://www.icantv.cn/rtmp.php?streamUrl=rtmp://v.btzx.com.cn/live/weishi.stream";
+////                content = HttpUtil.httpGet("");
+////                break;
+//            case SourceConstants.SOURCE_ICAN_STV_LYWS:
+//                content = HttpUtil.httpGet("http://www.icantv.cn/m3u8.php?streamUrl=http://stream1.hnntv.cn/lyws/sd/live.m3u8");
 //                break;
-            case SourceConstants.SOURCE_ICAN_STV_LYWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/m3u8.php?streamUrl=http://stream1.hnntv.cn/lyws/sd/live.m3u8");
-                break;
-            case SourceConstants.SOURCE_ICAN_STV_SSWS:
-                content = HttpUtil.httpGet("http://www.icantv.cn/m3u8.php?streamUrl=http://stream1.hnntv.cn/ssws/sd/live.m3u8");
-                break;
+//            case SourceConstants.SOURCE_ICAN_STV_SSWS:
+//                content = HttpUtil.httpGet("http://www.icantv.cn/m3u8.php?streamUrl=http://stream1.hnntv.cn/ssws/sd/live.m3u8");
+//                break;
 //            case SourceConstants.SOURCE_ICAN_STV_:
 //                content = HttpUtil.httpGet("");
 //                break;
