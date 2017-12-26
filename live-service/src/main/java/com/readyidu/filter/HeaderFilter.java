@@ -30,16 +30,9 @@ public class HeaderFilter extends OncePerRequestFilter {
         String lon = httpServletRequest.getHeader("lon");
         String platform = httpServletRequest.getHeader("platform");
         String locationId = httpServletRequest.getHeader("locationId");
-        int account =getRequestHeaderByParam(httpServletRequest.getHeader("account"));
+        String account = httpServletRequest.getHeader("account");
         String deviceId = httpServletRequest.getHeader("deviceId");
         paramModel.set(new RequestParamModel(remoteHost,version,lat,appId,password,lon,platform,locationId,account,deviceId));
         filterChain.doFilter(httpServletRequest,httpServletResponse);
-    }
-
-    private int getRequestHeaderByParam(String Param){
-        if(Param != null){
-            return  Integer.valueOf(Param);
-        }
-        return 0;
     }
 }

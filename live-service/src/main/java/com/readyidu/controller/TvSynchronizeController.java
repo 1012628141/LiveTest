@@ -38,10 +38,10 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/getQRCode")
-    public void getQRCode(String deviceId,HttpServletResponse response){
-        if (!NullUtil.isNullObject(deviceId)){
+    public void getQRCode(String deviceId,String tvAlias,HttpServletResponse response){
+        if (!NullUtil.isNullObject(deviceId)&&!NullUtil.isNullObject(tvAlias)){
             try {
-                tvSynchronizeService.getQRCode(deviceId,response.getOutputStream());
+                tvSynchronizeService.getQRCode(deviceId,tvAlias,response.getOutputStream());
             } catch (IOException e) {
                 e.printStackTrace();
             }

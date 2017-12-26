@@ -61,10 +61,11 @@ public class JPushTool {
                         .build())
                 .build();
     }
-    public static void  sendAppointPush(String masterSecret,String appKey,String message,int code,String alias){
+    public static void  sendAppointPush(String masterSecret,String appKey,String message,int code,String alias,String appAlias){
         JPushClient jpushClient = new JPushClient(masterSecret, appKey, null, ClientConfig.getInstance());
         Map map=new HashMap();
         map.put("message",message);
+        map.put("appAlias",appAlias);
         SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = format.format(new Date().getTime());
         map.put("date",time);

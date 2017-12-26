@@ -7,6 +7,10 @@ import java.util.Date;
  */
 public class TvDevice {
     private Integer id;
+    private String tvAlias;
+
+
+
     private String deviceId;
     private Date creareTime;
     private Date modifyTime;
@@ -51,5 +55,12 @@ public class TvDevice {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
+    }
+    public String getTvAlias() {
+        return tvAlias;
+    }
+
+    public void setTvAlias(String tvAlias) {
+        this.tvAlias = tvAlias;
     }
 }
