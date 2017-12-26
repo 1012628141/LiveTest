@@ -63,6 +63,7 @@ public class AppChannelController {
         return null;
     }
 
+
     private int getAccessTimes(String remoteHost,String interFaceName){
         String cacheKey = remoteHost + interFaceName + "countNum";
         String accessTimes = cacheService.get(cacheKey);

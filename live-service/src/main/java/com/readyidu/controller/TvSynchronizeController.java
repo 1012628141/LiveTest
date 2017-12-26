@@ -1,14 +1,18 @@
 package com.readyidu.controller;
 
+import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.PhoneDevice;
+import com.readyidu.model.PhoneService;
 import com.readyidu.service.TvSourceService;
 import com.readyidu.service.TvSynchronizeService;
+import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -57,8 +61,17 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/DevicesChannels")
-    public String DevicesChannels(){
-        return null;
+    public String DevicesChannels(HttpServletRequest request){
+        try{
+            String deviceId = request.getParameter("deviceId");
+            List<PhoneService> phoneServiceList = tvSynchronizeService.getCostomizeSourceList(deviceId);
+            if(!phoneServiceList.isEmpty()){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneServiceList);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,"");
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
 
     /**
