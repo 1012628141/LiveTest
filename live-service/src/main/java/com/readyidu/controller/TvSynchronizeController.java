@@ -1,6 +1,7 @@
 package com.readyidu.controller;
 
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.filter.HeaderFilter;
 import com.readyidu.mapper.PhoneDeviceMapper;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.PhoneDevice;
@@ -93,18 +94,23 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(RequestParamModel requestParamModel){
-        int acount = requestParamModel.getAccount();
-        String deviceId = requestParamModel.getDeviceId();
-        PhoneDevice phoneDevice = new PhoneDevice();
-        phoneDevice.setDeviceId(deviceId);
-        phoneDevice.setUserId(acount);
-        int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
-        if (num > 0){
-            JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
-        }else{
-            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+    public String bindingReq(){
+        try{
+            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+            int acount = requestParamModel.getAccount();
+            String deviceId = requestParamModel.getDeviceId();
+            PhoneDevice phoneDevice = new PhoneDevice();
+            phoneDevice.setDeviceId(deviceId);
+            phoneDevice.setUserId(acount);
+            int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+            if (num > 0){
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }else{
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+                return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            }
+        }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
