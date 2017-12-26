@@ -1,10 +1,13 @@
 package com.readyidu.controller;
 
+import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.PhoneDeviceMapper;
 import com.readyidu.model.PhoneDevice;
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.TvSynchronizeService;
 import com.readyidu.service.impl.TvSynchronizeServiceImpl;
+import com.readyidu.tools.JPushTool;
+import com.readyidu.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +56,10 @@ public class TvSynchronizeController {
         PhoneDevice phoneDevice = new PhoneDevice();
         phoneDevice.setDeviceId(deviceId);
         phoneDevice.setUserId(acount);
-        tvSynchronizeService.insertPhoneDevice(phoneDevice);
+        int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+        if (num > 0){
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        }
         return null;
     }
 }

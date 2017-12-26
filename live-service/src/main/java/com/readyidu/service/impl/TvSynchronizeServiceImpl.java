@@ -103,7 +103,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
 
     @Transactional
     @Override
-    public void insertPhoneDevice(PhoneDevice phoneDevice) {
-        phoneDeviceMapper.insertDevice(phoneDevice);
+    public int insertPhoneDevice(PhoneDevice phoneDevice) {
+        return phoneDeviceMapper.insertDevice(phoneDevice);
     }
 }

@@ -16,6 +16,7 @@ import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+
 /**
  * Created by 123 on 2017/12/18.
  */
@@ -53,14 +54,19 @@ public class QiNiuUploadTool {
         }
         return null;
     }
-    public static String upLoad(String localFilePath, UpCompletionHandler upCompletionHandler){
+    public static String upLoadwithCallback(String localFilePath){
+        long expireSeconds = 3600;
         Configuration cfg = new Configuration(Zone.zone0());
         UploadManager uploadManager = new UploadManager(cfg);
-        StringMap map = new StringMap();
-        map.put("handel",upCompletionHandler);
+        StringMap putPolicy = new StringMap();
+        putPolicy.put("callbackBody", "{\"key\":\"$(key)\",\"hash\":\"$(etag)\",\"bucket\":\"$(bucket)\",\"fsize\":$(fsize),\"version\":\"$(x:version)\",\"acount\":$(x:acount)}");
+        putPolicy.put("callbackUrl", "http://api.example.com/qiniu/upload/callback");
+        putPolicy.put("callbackBodyType", "application/json");
+        Auth auth = Auth.create(accessKey, secretKey);
+        String upToken = auth.uploadToken(bucket, null, expireSeconds, putPolicy);
         try {
             InputStream in = new FileInputStream(localFilePath);
-            Response response = uploadManager.put(in, key, getToken(),map,null);
+            Response response = uploadManager.put(in, key, upToken,putPolicy,null);
             //解析上传成功的结果
             DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             System.out.println(putRet.key);

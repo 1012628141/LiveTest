@@ -16,6 +16,6 @@ public interface TvSynchronizeService {
     /*参数deviceId 机顶盒设备ID  返回值 绑定设备的id*/
     String getDevices(String deviceId);
 
-    void insertPhoneDevice(PhoneDevice phoneDevice);
+    int insertPhoneDevice(PhoneDevice phoneDevice);
 }
-}
+
