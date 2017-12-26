@@ -24,7 +24,7 @@ public class RequestParamModel {
     //机顶盒设备id
     private String deviceId;
 
-    public RequestParamModel(String remoteHost, String version, String lat, String appId, String password, String lon, String platform, String locationId,int account,String deviceId) {
+    public RequestParamModel(String remoteHost, String version, String lat, String appId, String password, String lon, String platform, String locationId,String account,String deviceId) {
         this.remoteHost = remoteHost;
         if (!NullUtil.isNullObject(version)) {
             this.version = Integer.valueOf(version);
@@ -38,7 +38,10 @@ public class RequestParamModel {
         {
             this.locationId = Integer.valueOf(locationId);
         }
-        this.account = account;
+        if (!NullUtil.isNullObject(account))
+        {
+            this.account = Integer.valueOf(account);
+        }
         this.deviceId = deviceId;
     }
 
