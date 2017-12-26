@@ -3,8 +3,10 @@ package com.readyidu.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.mapper.PhoneServiceMapper;
 import com.readyidu.mapper.TvDeviceMapper;
 import com.readyidu.model.PhoneDevice;
+import com.readyidu.model.PhoneService;
 import com.readyidu.model.TvDevice;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.TvSynchronizeService;
@@ -29,6 +31,9 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
 
     @Autowired
     private CacheService cacheService;
+
+    @Autowired
+    private  PhoneServiceMapper phoneServiceMapper;
 
     /*app端扫描后该访问的地址*/
     private static final String QRDecodeUrl = "app/bundling";
@@ -56,6 +61,12 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         }
         cacheService.set(BindlingDevice+deviceId,JSON.toJSONString(phoneDevices),cacheService.CACHE_TIMEOUT30);
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneDevices);
+    }
+
+    /*获得自定义源*/
+    @Override
+    public List<PhoneService> getCostomizeSourceList(String deviceId) {
+        return phoneServiceMapper.getConfUrlAndUserIdByDeviceId(deviceId);
     }
 
 

@@ -1,5 +1,7 @@
 package com.readyidu.service;
 
+import com.readyidu.model.PhoneService;
+
 import javax.servlet.ServletOutputStream;
 import java.util.List;
 
@@ -13,4 +15,7 @@ public interface TvSynchronizeService {
 
     /*参数deviceId 机顶盒设备ID  返回值 绑定设备的id*/
     String getDevices(String deviceId);
+
+    /*参数deviceId机顶盒设备ID 返回值 绑定设备下不同账号的自定义源*/
+    List<PhoneService> getCostomizeSourceList(String deviceId);
 }
