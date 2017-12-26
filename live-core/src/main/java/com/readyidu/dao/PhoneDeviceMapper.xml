@@ -43,4 +43,10 @@
     <insert id="insertPhoneDevice" parameterType="com.readyidu.model.PhoneDevice">
         INSERT INTO t_phone_device (device_id,create_time,user_id) VALUES (#{deviceId},now(),#{userId})
     </insert>
+
+    <update id="deleteByUserId" parameterType="java.lang.String" >
+        UPDATE t_phone_device
+         SET is_delete=1
+         WHERE user_Id=#{userId}
+    </update>
 </mapper>

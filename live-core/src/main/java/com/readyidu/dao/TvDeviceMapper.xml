@@ -3,19 +3,20 @@
 <mapper namespace="com.readyidu.mapper.TvDeviceMapper">
     <sql id="Base_Column_List">
         d.id as id,
-        d.device_id as deviceId
+        d.device_id as deviceId,
+        d.tv_Alias as tvAlias
     </sql>
 
     <select id="getByDeviceId" parameterType="java.lang.String" resultType="com.readyidu.model.TvDevice">
         select
         <include refid="Base_Column_List"/>
         from t_tv_device d
-        where d.device_id = #{tvDeviceId}
+        where d.device_id = #{tvDeviceId} and is_delete=0
     </select>
      
     <insert id="insertTvDevice" parameterType="com.readyidu.model.TvDevice">
         INSERT INTO
-         t_tv_device(device_id,CREATE_time,is_delete) values(#{deviceId},#{creareTime},#{isDelete})
+         t_tv_device(device_id,CREATE_time,is_delete,tv_alias) values(#{deviceId},#{creareTime},#{isDelete},#{tvAlias})
     </insert>
 
 

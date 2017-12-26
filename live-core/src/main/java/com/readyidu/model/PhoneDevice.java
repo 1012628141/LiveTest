@@ -9,6 +9,15 @@ public class PhoneDevice {
     private String phoneId;
     private Integer userId;
     private String deviceId;
+    private String phoneAlias;
+
+    public String getPhoneAlias() {
+        return phoneAlias;
+    }
+
+    public void setPhoneAlias(String phoneAlias) {
+        this.phoneAlias = phoneAlias;
+    }
 
     public Integer getId() {
         return id;

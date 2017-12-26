@@ -3,8 +3,10 @@ package com.readyidu.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.mapper.PhoneServiceMapper;
 import com.readyidu.mapper.TvDeviceMapper;
 import com.readyidu.model.PhoneDevice;
+import com.readyidu.model.PhoneService;
 import com.readyidu.model.TvDevice;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.TvSynchronizeService;
@@ -30,11 +32,11 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
     @Autowired
     private CacheService cacheService;
 
+    @Autowired
+    private  PhoneServiceMapper phoneServiceMapper;
+
     /*app端扫描后该访问的地址*/
-    private static final String QRDecodeUrl = "www.baidu.com";
-
-    private static final String BindlingDevice="BindlingDevice";
-
+    private static final String QRDecodeUrl = "app/bundling";
 
     /*获取绑定的设备列表*/
     @Override
@@ -43,58 +45,71 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         if (NullUtil.isNullObject(deviceId)){
             return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, "");
         }
-        /*查询缓存服务器  如果有 直接返回 如果没有查询数据库*/
-        String bindlingJson = cacheService.get(BindlingDevice + deviceId);
-        if (!NullUtil.isNullObject(bindlingJson)){
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, JSON.parseArray(bindlingJson,List.class));
-        }
         List<PhoneDevice> phoneDevices = phoneDeviceMapper.listByDeviceId(deviceId);
-        /*存入缓存数据库*/
         System.out.println(phoneDevices);
-        if (phoneDevices.size()==0){
+        if (phoneDevices.isEmpty()){
            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, "");
         }
-        cacheService.set(BindlingDevice+deviceId,JSON.toJSONString(phoneDevices),cacheService.CACHE_TIMEOUT30);
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneDevices);
+    }
+
+    /*通过穿过来的小益账号 解绑机顶盒*/
+    @Transactional
+    @Override
+    public String removePhoneByDeviceId(String userId) {
+        int i= phoneDeviceMapper.deleteByUserId(userId);
+        if (i==0){
+          return   JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+    }
+
+    /*获得自定义源*/
+    @Override
+    public List<PhoneService> getCostomizeSourceList(String deviceId) {
+        return phoneServiceMapper.getConfUrlAndUserIdByDeviceId(deviceId);
     }
 
 
     /*获取二维码*/
     @Override
-    public void getQRCode(String tvDeviceId, ServletOutputStream outputStream) {
+    public void getQRCode(String tvDeviceId,String tvAlias,ServletOutputStream outputStream) {
        /*1.业务要求：判断数据库是否存在该机顶盒数据  如果没有新增*/
         TvDevice tvDevice=tvDeviceMapper.getByDeviceId(tvDeviceId);
 
-        System.out.println(tvDevice);
-
         if (NullUtil.isNullObject(tvDevice)){
           /*2.如果为空调用 其他接口方法生成新的设备数据*/
-            int i = addTvDevice(tvDeviceId);
+            int i = addTvDevice(tvDeviceId,tvAlias);
         }
+        /*判断获取设备的别名是否与传递的一致，一致才继续执行*/
+        if (tvAlias.equals(tvDevice.getTvAlias())) {
         /*3.标识唯一性，生成令牌*/
-        String token = UUID.randomUUID().toString();
-        Map<String,String> map=new HashMap<>();
-        map.put("QRDecodeUrl",QRDecodeUrl);
-        map.put("token",token);
-        map.put("tvDeviceId",tvDeviceId);
-        String tvDeviceContent = JSON.toJSONString(map);
+            String token = UUID.randomUUID().toString();
+            Map<String, String> map = new HashMap<>();
+            map.put("QRDecodeUrl", QRDecodeUrl);
+            map.put("token", token);
+            map.put("tvDeviceId", tvDeviceId);
+            map.put("tvAlias", tvAlias);
+            String tvDeviceContent = JSON.toJSONString(map);
         /*4.redis 作为定时器  设置为30 分钟 客户端扫描二维码后 获取令牌 后台验证如果存在此令牌则验证通过*/
-        cacheService.set(token+tvDeviceId,"1",CacheService.CACHE_TIMEOUT30);
-        try {
-            QRCodeUtil.encode(tvDeviceContent,outputStream);
-        } catch (Exception e) {
-            e.printStackTrace();
+            cacheService.set(token + tvDeviceId, "1", CacheService.CACHE_TIMEOUT30);
+            try {
+                QRCodeUtil.encode(tvDeviceContent, outputStream);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
 
     @Transactional
     @Override
-    public int addTvDevice(String tvDeviceId) {
+    public int addTvDevice(String tvDeviceId,String tvAlias) {
         if (NullUtil.isNullObject(tvDeviceId)){
             return 0;
         }
         TvDevice tvDevice=new TvDevice();
+        tvDevice.setTvAlias(tvAlias);
         tvDevice.setDeviceId(tvDeviceId);
         tvDevice.setCreareTime(new Date());
         tvDevice.setIsDelete(0);

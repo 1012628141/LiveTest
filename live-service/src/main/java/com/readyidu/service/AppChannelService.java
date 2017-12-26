@@ -10,4 +10,6 @@ public interface AppChannelService {
     void insertConf(ConfInfo confInfo);
 
     void updateConfinfo(ConfInfo confInfo);
+    int checkBinding(int account,String deviceId,String tvAlias,String appAlias);
+    boolean checkUserId(int userId);
 }

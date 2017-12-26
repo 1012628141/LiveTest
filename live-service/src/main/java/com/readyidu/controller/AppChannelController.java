@@ -1,12 +1,6 @@
 package com.readyidu.controller;
 
-
-import com.google.gson.Gson;
-import com.qiniu.android.http.ResponseInfo;
-import com.qiniu.android.storage.UpCompletionHandler;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
-import com.qiniu.util.Auth;
+import com.alibaba.fastjson.JSONObject;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
 import com.readyidu.mapper.ConfInfoMapper;
@@ -14,18 +8,15 @@ import com.readyidu.model.ConfInfo;
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
-import com.readyidu.service.impl.AppChannelServiceImpl;
 import com.readyidu.tools.QiNiuUploadTool;
+import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * App端数据绑定接口
@@ -99,13 +90,17 @@ public class AppChannelController {
      * @return
      */
     @RequestMapping("/bundling")
-    public String bundling(String token,String alias){
+    public String bundling(String token,String appAlias,String tvAlias){
         RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
         int account = requestParamModel.getAccount();
+        if(!appChannelService.checkUserId(account)){
+            return JsonResult.toString(NetworkCode.ACCOUNT_NOT_EXIST,"");
+        }
         String deviceId = requestParamModel.getDeviceId();
-        if(!NullUtil.isNullObject(cacheService.get(token+deviceId))){
-            appChannelService.checkBinding(account,deviceId,alias);
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+        String cache = cacheService.get(token+deviceId);
+        if(!NullUtil.isNullObject(cache)){
+            int code = appChannelService.checkBinding(account,deviceId,tvAlias,appAlias);
+            return JsonResult.toString(code,"");
         }
         return JsonResult.toString(NetworkCode.CODE_FAIL,"");
     }
@@ -116,8 +111,10 @@ public class AppChannelController {
      */
     @RequestMapping("/getCustomizedList")
     public String getCustomizedList(){
+
         return null;
     }
+
 
     private int getAccessTimes(String remoteHost,String interFaceName){
         String cacheKey = remoteHost + interFaceName + "countNum";
