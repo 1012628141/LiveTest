@@ -33,9 +33,6 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
     /*app端扫描后该访问的地址*/
     private static final String QRDecodeUrl = "app/bundling";
 
-    private static final String BindlingDevice="BindlingDevice";
-
-
     /*获取绑定的设备列表*/
     @Override
     public String getDevices(String deviceId) {
@@ -43,19 +40,23 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         if (NullUtil.isNullObject(deviceId)){
             return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, "");
         }
-        /*查询缓存服务器  如果有 直接返回 如果没有查询数据库*/
-        String bindlingJson = cacheService.get(BindlingDevice + deviceId);
-        if (!NullUtil.isNullObject(bindlingJson)){
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS, JSON.parseArray(bindlingJson,PhoneDevice.class));
-        }
         List<PhoneDevice> phoneDevices = phoneDeviceMapper.listByDeviceId(deviceId);
-        /*存入缓存数据库*/
         System.out.println(phoneDevices);
-        if (phoneDevices.size()==0){
+        if (phoneDevices.isEmpty()){
            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, "");
         }
-        cacheService.set(BindlingDevice+deviceId,JSON.toJSONString(phoneDevices),cacheService.CACHE_TIMEOUT30);
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneDevices);
+    }
+
+    /*通过穿过来的小益账号 解绑机顶盒*/
+    @Transactional
+    @Override
+    public String removePhoneByDeviceId(String userId) {
+        int i= phoneDeviceMapper.deleteByUserId(userId);
+        if (i==0){
+          return   JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
     }
 
 

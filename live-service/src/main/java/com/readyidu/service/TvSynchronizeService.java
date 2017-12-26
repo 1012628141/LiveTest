@@ -13,4 +13,6 @@ public interface TvSynchronizeService {
 
     /*参数deviceId 机顶盒设备ID  返回值 绑定设备的id*/
     String getDevices(String deviceId);
+
+    String removePhoneByDeviceId(String userId);
 }

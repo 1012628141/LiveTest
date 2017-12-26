@@ -69,4 +69,14 @@ public class TvSynchronizeController {
     public String bindingReq(){
         return null;
     }
+
+    /**
+     * tv端解除绑定确认接口
+     * @return String 状态码
+     */
+    @ResponseBody
+    @RequestMapping("/unBind")
+     public String unBind(String userId){
+        return  tvSynchronizeService.removePhoneByDeviceId(userId);
+     }
 }
