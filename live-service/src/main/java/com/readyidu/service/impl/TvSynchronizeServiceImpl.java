@@ -115,4 +115,10 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         tvDevice.setIsDelete(0);
         return tvDeviceMapper.insertTvDevice(tvDevice);
     }
+
+    @Transactional
+    @Override
+    public int insertPhoneDevice(PhoneDevice phoneDevice) {
+        return phoneDeviceMapper.insertDevice(phoneDevice);
+    }
 }

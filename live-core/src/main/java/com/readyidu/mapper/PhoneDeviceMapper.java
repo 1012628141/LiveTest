@@ -19,4 +19,5 @@ public interface PhoneDeviceMapper {
 
     int deleteByUserId(String userId);
 
+    int insertDevice(PhoneDevice phoneDevice);
 }

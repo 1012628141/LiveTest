@@ -1,6 +1,7 @@
 package com.readyidu.tools;
 
 import com.google.gson.Gson;
+import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -8,11 +9,13 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
 
 import javax.security.auth.x500.X500Principal;
 import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
 
 /**
  * Created by 123 on 2017/12/18.
@@ -48,6 +51,37 @@ public class QiNiuUploadTool {
             } catch (QiniuException ex2) {
                 //ignore
             }
+        }
+        return null;
+    }
+    public static String upLoadwithCallback(String localFilePath){
+        long expireSeconds = 3600;
+        Configuration cfg = new Configuration(Zone.zone0());
+        UploadManager uploadManager = new UploadManager(cfg);
+        StringMap putPolicy = new StringMap();
+        putPolicy.put("callbackBody", "{\"key\":\"$(key)\",\"hash\":\"$(etag)\",\"bucket\":\"$(bucket)\",\"fsize\":$(fsize),\"version\":\"$(x:version)\",\"acount\":$(x:acount)}");
+        putPolicy.put("callbackUrl", "http://api.example.com/qiniu/upload/callback");
+        putPolicy.put("callbackBodyType", "application/json");
+        Auth auth = Auth.create(accessKey, secretKey);
+        String upToken = auth.uploadToken(bucket, null, expireSeconds, putPolicy);
+        try {
+            InputStream in = new FileInputStream(localFilePath);
+            Response response = uploadManager.put(in, key, upToken,putPolicy,null);
+            //解析上传成功的结果
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            System.out.println(putRet.key);
+            System.out.println(putRet.hash);
+            return putRet.hash;
+        } catch (QiniuException ex) {
+            Response r = ex.response;
+            System.err.println(r.toString());
+            try {
+                System.err.println(r.bodyString());
+            } catch (QiniuException ex2) {
+                //ignore
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
