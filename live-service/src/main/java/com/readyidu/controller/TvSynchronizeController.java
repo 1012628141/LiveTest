@@ -32,8 +32,8 @@ import java.util.List;
 
 public class TvSynchronizeController {
 
-    private static final String MASTER_SECRET = "ef9f38dadd725270fea9e65b";
-    private static final String APP_KEY = "6d798d4905318ea41b80f3e3";
+    private static final String MASTER_SECRET = "58a7d407914ec1e6d21f9ee2";
+    private static final String APP_KEY = "392671d7ee2901353acdc13e";
 
     private static final String MESSAGE = "绑定成功";
     private static final String FAIL = "绑定失败";
