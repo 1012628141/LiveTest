@@ -103,7 +103,6 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
         }
         return sourceList;
     }
-}
 
     @Transactional
     @Override
