@@ -1,6 +1,7 @@
 package com.readyidu.tools;
 
 import com.google.gson.Gson;
+import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -8,6 +9,7 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
 
 import javax.security.auth.x500.X500Principal;
 import java.io.*;
@@ -48,6 +50,32 @@ public class QiNiuUploadTool {
             } catch (QiniuException ex2) {
                 //ignore
             }
+        }
+        return null;
+    }
+    public static String upLoad(String localFilePath, UpCompletionHandler upCompletionHandler){
+        Configuration cfg = new Configuration(Zone.zone0());
+        UploadManager uploadManager = new UploadManager(cfg);
+        StringMap map = new StringMap();
+        map.put("handel",upCompletionHandler);
+        try {
+            InputStream in = new FileInputStream(localFilePath);
+            Response response = uploadManager.put(in, key, getToken(),map,null);
+            //解析上传成功的结果
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            System.out.println(putRet.key);
+            System.out.println(putRet.hash);
+            return putRet.hash;
+        } catch (QiniuException ex) {
+            Response r = ex.response;
+            System.err.println(r.toString());
+            try {
+                System.err.println(r.bodyString());
+            } catch (QiniuException ex2) {
+                //ignore
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
