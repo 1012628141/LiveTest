@@ -22,7 +22,7 @@
         where
         user_id = #{userId}
         and
-        t1.is_delete != 1
+        is_delete != 1
     </select>
     <update id="delete" parameterType="java.lang.Integer">
         update t_phone_device
@@ -38,7 +38,7 @@
         where
         device_id = #{deviceId}
         and
-        t1.is_delete != 1
+        is_delete != 1
     </select>
     <insert id="insertPhoneDevice" parameterType="com.readyidu.model.PhoneDevice">
         INSERT INTO t_phone_device (device_id,create_time,user_id) VALUES (#{deviceId},now(),#{userId})

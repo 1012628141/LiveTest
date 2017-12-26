@@ -10,13 +10,15 @@ import com.readyidu.service.AppChannelService;
 import com.readyidu.service.BaseService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.tools.WebHttpTool;
+import com.readyidu.util.HttpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service(value = "appChannelService")
 public class AppChannelServiceImpl extends BaseService implements AppChannelService{
@@ -84,6 +86,24 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
     public void insertConf(ConfInfo confInfo) {
         confInfoMapper.insertConf(confInfo);
     }
+
+    @Override
+    public List<String> getSourceList(String url) {
+        List<String> sourceList = new ArrayList<>();
+        try {
+            String html = HttpUtil.httpGet(url);
+            Pattern pattern = Pattern.compile("http://[a-zA-Z0-9./_]+m3u8");
+            Matcher matcher = pattern.matcher(html);
+            while (matcher.find()){
+                sourceList.add(matcher.group());
+            }
+            sourceList = new ArrayList(new HashSet(sourceList));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sourceList;
+    }
+}
 
     @Transactional
     @Override
