@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.readyidu.mapper.TvDeviceMapper">
+    <sql id="Base_Column_List">
+        d.id as id,
+        d.device_id as deviceId
+    </sql>
+
+    <select id="getByDeviceId" parameterType="java.lang.String" resultType="com.readyidu.model.TvDevice">
+        select
+        <include refid="Base_Column_List"/>
+        from t_tv_device d
+        where d.device_id = #{tvDeviceId}
+    </select>
+     
+    <insert id="insertTvDevice" parameterType="com.readyidu.model.TvDevice">
+        INSERT INTO
+         t_tv_device(device_id,CREATE_time,is_delete) values(#{deviceId},#{creareTime},#{isDelete})
+    </insert>
+
+
+
 </mapper>
+
