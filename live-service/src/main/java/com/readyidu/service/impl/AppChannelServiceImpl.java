@@ -1,12 +1,12 @@
 package com.readyidu.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.PhoneDeviceMapper;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.BaseService;
 import com.readyidu.tools.JPushTool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service("appChannelService")
 public class AppChannelServiceImpl extends BaseService implements AppChannelService{

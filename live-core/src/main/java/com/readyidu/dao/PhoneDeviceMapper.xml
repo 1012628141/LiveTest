@@ -5,7 +5,7 @@
 
     <select id="listByDeviceId" parameterType="java.lang.String" resultType="com.readyidu.model.PhoneDevice">
         SELECT
-         id,phone_name AS phoneName,
+         id,phone_name as phoneName,
          phone_id as phoneId,
          device_id as deviceId,
          user_id as userId

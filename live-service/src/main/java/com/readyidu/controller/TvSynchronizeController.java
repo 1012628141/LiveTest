@@ -8,8 +8,10 @@ import com.readyidu.service.TvSynchronizeService;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,7 @@ import java.util.List;
  * Created by 123 on 2017/12/25.
  */
 @Controller
+
 public class TvSynchronizeController {
 
 
@@ -51,7 +54,7 @@ public class TvSynchronizeController {
      * @param  deviceId 设备Id
      */
     @ResponseBody
-    @RequestMapping("/getDevices")
+    @RequestMapping(value="/getDevices" )
     public String getDevices(String deviceId){
         return tvSynchronizeService.getDevices(deviceId);
     }
@@ -60,7 +63,8 @@ public class TvSynchronizeController {
      * 获取绑定设备自定义源列表
      * @return
      */
-    @RequestMapping("/DevicesChannels")
+    @ResponseBody
+    @RequestMapping(value = "/DevicesChannels",method= RequestMethod.GET, produces = "application/json; charset=utf-8")
     public String DevicesChannels(HttpServletRequest request){
         try{
             String deviceId = request.getParameter("deviceId");
