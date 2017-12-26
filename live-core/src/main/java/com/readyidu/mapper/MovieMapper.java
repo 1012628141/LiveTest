@@ -12,5 +12,6 @@ import java.util.List;
 public interface MovieMapper
 {
     List<Movie> selectAllMovie();
+    List<Movie> selcetAllMovieToSourceId();
     List<Movie> selectAllTrailer();
 }

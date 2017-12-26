@@ -9,9 +9,15 @@ public class Movie {
     private String countryName;
     private String contid;
     private String subCategoryId;
+    private Integer sourceId;
 
+    public Integer getSourceId() {
+        return sourceId;
+    }
 
-
+    public void setSourceId(Integer sourceId) {
+        this.sourceId = sourceId;
+    }
 
     public Integer getId() {
         return id;

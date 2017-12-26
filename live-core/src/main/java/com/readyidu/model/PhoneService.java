@@ -9,6 +9,7 @@ public class PhoneService {
     private String confUrl;
     private String version;
     private String hash;
+    private String userId;
 
     public Integer getId() {
         return id;
@@ -48,5 +49,13 @@ public class PhoneService {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
