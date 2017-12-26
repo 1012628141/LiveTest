@@ -1,7 +1,11 @@
 package com.readyidu.controller;
 
+import com.readyidu.constants.NetworkCode;
+import com.readyidu.model.PhoneDevice;
 import com.readyidu.service.TvSynchronizeService;
+import com.readyidu.tools.JPushTool;
 import com.readyidu.tools.TestBaseConfig;
+import com.readyidu.util.JsonResult;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +17,11 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 public class TvSynchronizeControllerTest extends TestBaseConfig {
+    private static final String MASTER_SECRET = "ef9f38dadd725270fea9e65b";
+    private static final String APP_KEY = "6d798d4905318ea41b80f3e3";
+
+    private static final String MESSAGE = "绑定成功";
+    private static final String FAIL = "绑定失败";
     @Autowired
     private TvSynchronizeController tvSynchronizeController;
 
@@ -36,5 +45,19 @@ public class TvSynchronizeControllerTest extends TestBaseConfig {
         }
         tvSynchronizeService.getQRCode("1012628141", (ServletOutputStream) outputStream);
     }*/
+   @Test
+   public void testbindingReq(){
+       int acount = 123456;
+       String deviceId = "abc";
+       PhoneDevice phoneDevice = new PhoneDevice();
+       phoneDevice.setDeviceId(deviceId);
+       phoneDevice.setUserId(acount);
+       int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+       if (num > 0){
+           JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+       }else{
+           JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+       }
+   }
 
 }
