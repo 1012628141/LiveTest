@@ -77,6 +77,7 @@ public class JstvSource extends Source {
             hex += String.valueOf(hexStr.charAt(bytes[i] & 0x0F));
             result += hex + "";
         }
+
         return result;
     }
 

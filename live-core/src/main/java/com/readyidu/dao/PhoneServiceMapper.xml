@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readyidu.mapper.PhoneServiceMapper">
+
+    <select id="getConfUrlAndUserIdByDeviceId" parameterType="java.lang.Integer"  resultType="com.readyidu.model.PhoneService">
+        SELECT
+        t2.confUrl as confUrl,
+        t2.user_id as userId
+        FROM
+        t_phone_device t1,
+        t_phone_service t2
+        WHERE
+        t1.user_id = t2.user_id
+        AND t1.device_id = #{deviceId}
+    </select>
+
+</mapper>

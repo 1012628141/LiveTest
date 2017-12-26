@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readyidu.mapper.PhoneDeviceMapper">
+
+
+    <select id="listByDeviceId" parameterType="java.lang.String" resultType="com.readyidu.model.PhoneDevice">
+        SELECT
+         id,phone_name AS phoneName,
+         phone_alias as phoneAlias,
+         phone_id as phoneId,
+         device_id as deviceId,
+         user_id as userId
+         FROM t_phone_device
+         WHERE device_id = #{deviceId} AND is_delete=0
+    </select>
+
+
+    <select id="selectDeviceIdByUserId" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select
+        device_id
+        from
+        t_phone_device
+        where
+        user_id = #{userId}
+        and
+        is_delete != 1
+    </select>
+    <update id="delete" parameterType="java.lang.Integer">
+        update t_phone_device
+        set
+        is_delete = 1
+        where userId = #{userId}
+    </update>
+    <select id="getCountByDeviceId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        count(1)
+        from
+        t_phone_device
+        where
+        device_id = #{deviceId}
+        and
+        is_delete != 1
+    </select>
+
+    <update id="deleteByUserId" parameterType="java.lang.String" >
+        UPDATE t_phone_device
+         SET is_delete=1
+         WHERE user_Id=#{userId}
+    </update>
+</mapper>
