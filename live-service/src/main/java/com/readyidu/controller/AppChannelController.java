@@ -1,20 +1,19 @@
 package com.readyidu.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
 import com.readyidu.tools.QiNiuUploadTool;
-import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * App端数据绑定接口
@@ -50,30 +49,40 @@ public class AppChannelController {
      * app端手机绑定
      * @return
      */
+    @ResponseBody
     @RequestMapping("/bundling")
     public String bundling(String token,String appAlias,String tvAlias){
-        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
-        int account = requestParamModel.getAccount();
-        if(!appChannelService.checkUserId(account)){
-            return JsonResult.toString(NetworkCode.ACCOUNT_NOT_EXIST,"");
+        try {
+            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+            int account = requestParamModel.getAccount();
+            if(!appChannelService.checkUserId(account)){
+                return JsonResult.toString(NetworkCode.ACCOUNT_NOT_EXIST,"");
+            }
+            String deviceId = requestParamModel.getDeviceId();
+            String cache = cacheService.get(token+deviceId);
+            if(!NullUtil.isNullObject(cache)){
+                int code = appChannelService.checkBinding(account,deviceId,tvAlias,appAlias);
+                return JsonResult.toString(code,"");
+            }
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        } catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
-        String deviceId = requestParamModel.getDeviceId();
-        String cache = cacheService.get(token+deviceId);
-        if(!NullUtil.isNullObject(cache)){
-            int code = appChannelService.checkBinding(account,deviceId,tvAlias,appAlias);
-            return JsonResult.toString(code,"");
-        }
-        return JsonResult.toString(NetworkCode.CODE_FAIL,"");
     }
 
     /**
      * app端获取自定义频道列表
      * @return
      */
+    @ResponseBody
     @RequestMapping("/getCustomizedList")
-    public String getCustomizedList(){
-
-        return null;
+    public String getCustomizedList(String url){
+        try {
+            List<String> customizedList = appChannelService.getSourceList(url);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,customizedList);
+        } catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
 
 
