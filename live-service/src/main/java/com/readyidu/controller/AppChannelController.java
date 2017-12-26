@@ -72,8 +72,10 @@ public class AppChannelController {
      */
     @RequestMapping("/getCustomizedList")
     public String getCustomizedList(){
+
         return null;
     }
+
 
     private int getAccessTimes(String remoteHost,String interFaceName){
         String cacheKey = remoteHost + interFaceName + "countNum";
