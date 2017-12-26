@@ -30,6 +30,8 @@ public class AppChannelController {
 
     @Autowired
     private CacheService cacheService;
+    @Autowired
+    private AppChannelService appChannelService;
 
     private AppChannelService appChannelService = new AppChannelServiceImpl();
 
@@ -77,14 +79,15 @@ public class AppChannelController {
      * @return
      */
     @RequestMapping("/bundling")
-    public String bundling(String token){
+    public String bundling(String token,String alias){
         RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
         int account = requestParamModel.getAccount();
         String deviceId = requestParamModel.getDeviceId();
         if(!NullUtil.isNullObject(cacheService.get(token+deviceId))){
-
+            appChannelService.checkBinding(account,deviceId,alias);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
         }
-        return null;
+        return JsonResult.toString(NetworkCode.CODE_FAIL,"");
     }
 
     /**

@@ -9,4 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface TvDeviceMapper {
 
+    TvDevice getByDeviceId(String deviceId);
+
+    int insertTvDevice(TvDevice tvDevice);
 }
