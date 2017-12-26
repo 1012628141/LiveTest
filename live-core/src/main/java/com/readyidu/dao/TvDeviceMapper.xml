@@ -11,7 +11,7 @@
         select
         <include refid="Base_Column_List"/>
         from t_tv_device d
-        where d.device_id = #{tvDeviceId}
+        where d.device_id = #{tvDeviceId} and is_delete=0
     </select>
      
     <insert id="insertTvDevice" parameterType="com.readyidu.model.TvDevice">

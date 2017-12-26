@@ -11,7 +11,7 @@
          device_id as deviceId,
          user_id as userId
          FROM t_phone_device
-         WHERE device_id = #{deviceId}
+         WHERE device_id = #{deviceId} AND is_delete=0
     </select>
 
 
@@ -33,7 +33,7 @@
     </update>
     <select id="getCountByDeviceId" parameterType="java.lang.String" resultType="java.lang.Integer">
         select
-        count(*)
+        count(1)
         from
         t_phone_device
         where
@@ -41,4 +41,10 @@
         and
         t1.is_delete != 1
     </select>
+
+    <update id="deleteByUserId" parameterType="java.lang.String" >
+        UPDATE t_phone_device
+         SET is_delete=1
+         WHERE user_Id=#{userId}
+    </update>
 </mapper>
