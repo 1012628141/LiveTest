@@ -28,4 +28,5 @@ public class NetworkCode {
     public static final int ACCOUNT_NOT_EXIST = 13003;//账号不存在
     public static final int BUNDLING_SUCCESS = 13004;//绑定成功
     public static final int BUNDLING_FAIL = 13005;//绑定失败
+    public static final int CODE_NOTOKEN = 14000; //token失效
 }
