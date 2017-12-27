@@ -31,11 +31,11 @@ public class TvSynchronizeControllerTest extends TestBaseConfig {
     @Autowired
     private TvSynchronizeService tvSynchronizeService;
 
-    @Test
+   /* @Test
     public void getDevicesTest(){
         String devices = tvSynchronizeController.getDevices("1012628141");
         System.out.println(devices);
-    }
+    }*/
 
     @Test
     public void unBindTest(){
