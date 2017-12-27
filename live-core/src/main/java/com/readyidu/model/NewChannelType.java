@@ -3,7 +3,7 @@ package com.readyidu.model;
 public class NewChannelType {
     private Integer appTypeId;
     private String typeId;
-    private Integer category;
+    private Integer category ;
 
     public Integer getCategory() {
         return category;

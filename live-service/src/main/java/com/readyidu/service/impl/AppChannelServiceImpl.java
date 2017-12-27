@@ -9,9 +9,10 @@ import com.readyidu.mapper.PhoneServiceMapper;
 import com.readyidu.model.ConfInfo;
 import com.readyidu.model.PhoneDevice;
 import com.readyidu.model.PhoneService;
+import com.readyidu.pojo.BbsChannel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.BaseService;
-import com.readyidu.tools.JPushTool;
+import com.readyidu.tools.QiNiuUploadTool;
 import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
@@ -25,6 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -104,18 +106,36 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
     }
 
     @Override
-    public List<String> getSourceList(String url) {
-        List<String> sourceList = new ArrayList<>();
-        try {
-            String html = HttpUtil.httpGet(url);
-            Pattern pattern = Pattern.compile("http://[a-zA-Z0-9./_]+m3u8");
-            Matcher matcher = pattern.matcher(html);
-            while (matcher.find()){
-                sourceList.add(matcher.group());
+    public List<BbsChannel> getSourceList(String url) {
+        List<BbsChannel> sourceList = new ArrayList<>();
+        synchronized (url){
+            String startStr =  "<div class=\"f14 mb10\" id=\"read_tpc\">";
+            String content = HttpUtil.httpGet(url);
+            String[] channels = null;
+            int startIndex = content.indexOf(startStr);
+            if (startIndex != -1) {
+                content = content.substring(startIndex).replace(startStr,"").replace(" ","").replace("\n","");
+                content = content.substring(0,content.indexOf("</div>"));
+                channels = content.split("<br/>");
             }
-            sourceList = new ArrayList(new HashSet(sourceList));
-        } catch (Exception e) {
-            e.printStackTrace();
+            for (String channel : channels){
+                String channelName = channel.substring(0, channel.indexOf(",<"));
+                Pattern pattern = Pattern.compile("http://[A-Za-z0-9./_]+.m3u8");
+                Matcher matcher = pattern.matcher(channel);
+                String playUrl = null;
+                if (matcher.find())
+                {
+                    playUrl = matcher.group();
+                }
+                sourceList.add(new BbsChannel(channelName,playUrl));
+            }
+            String fileDate = JsonResult.toString(NetworkCode.CODE_SUCCESS, sourceList);
+            try {
+                String resultKey = QiNiuUploadTool.byteUpdate(fileDate.getBytes("utf-8"));
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
         return sourceList;
     }

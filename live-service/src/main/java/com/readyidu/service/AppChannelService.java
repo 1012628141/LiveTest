@@ -3,6 +3,7 @@ package com.readyidu.service;
 import java.util.List;
 
 import com.readyidu.model.ConfInfo;
+import com.readyidu.pojo.BbsChannel;
 
 public interface AppChannelService {
 
@@ -13,7 +14,7 @@ public interface AppChannelService {
     void updateConfinfo(ConfInfo confInfo);
     int checkBinding(int account,String TvDeviceId);
     boolean checkUserId(int userId);
-    List<String> getSourceList(String url);
+    List<BbsChannel> getSourceList(String url);
 
     /*判定用户是否绑定  如果绑定获取自定义源*/
     String checkByUserId(int userId);

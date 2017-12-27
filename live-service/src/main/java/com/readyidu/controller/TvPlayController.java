@@ -63,7 +63,7 @@ public class TvPlayController {
     @ResponseBody
     @RequestMapping(value = "tvsource", produces = "application/json; charset=utf-8")
     public String tvsource(String source) {
-            return tvSourceService.channelType();
+            return tvSourceService.getChannelList("tv");
     }
     @ResponseBody
     @RequestMapping(value = "test", produces = "application/json; charset=utf-8")

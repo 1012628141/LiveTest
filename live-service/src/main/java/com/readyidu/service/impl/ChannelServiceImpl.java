@@ -476,8 +476,8 @@ public class ChannelServiceImpl extends BaseService implements
     }
 
     @Override
-    public List<Integer> selectChannelByTypeId(String typeid,Integer appTypeId) {
-        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid+appTypeId.toString();
+    public List<Integer> selectChannelByTypeId(String typeid,Integer LocaltionId) {
+        String cacheKey = SERVICE_RBK + CACHE_NAME + "selectChannelByKey"+typeid+LocaltionId.toString();
         List<Integer> channelList = null;
         // 优先从缓存中取
         String cacheObj = cacheService.get(cacheKey);
@@ -487,7 +487,7 @@ public class ChannelServiceImpl extends BaseService implements
             NewChannelType newChannelType = new NewChannelType();
             // 若redis中无数据，则查询数据库, 并缓存
             //根据定位获取当前省份category
-            Integer category = channelTypeMapper.getCategoryById(appTypeId);
+            Integer category = channelTypeMapper.getCategoryById(LocaltionId);
             newChannelType.setCategory(category);
             List<Integer> channelList_1 = channelMapper.selectChannelByTypeId(newChannelType);
             if (typeid.equals("400")){
