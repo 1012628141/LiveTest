@@ -110,6 +110,17 @@ public class QRCodeUtil {
         ImageIO.write(image, FORMAT_NAME, new File(destPath+"/"+file));
     }
 
+    /*生成自定义名的二维码*/
+    public static void encode(String content, String imgPath, String destPath,
+                              boolean needCompress,String name) throws Exception {
+        BufferedImage image = QRCodeUtil.createImage(content, imgPath,
+                needCompress);
+        mkdirs(destPath);
+        String file =name+".jpg";
+        ImageIO.write(image, FORMAT_NAME, new File(destPath+"/"+file));
+    }
+
+
     /*将创建文件夹，destPath生成二维码的目标文件地址*/
     public static void mkdirs(String destPath) {
         File file =new File(destPath);

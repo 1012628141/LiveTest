@@ -37,6 +37,13 @@ public class TvSynchronizeControllerTest extends TestBaseConfig {
         System.out.println(devices);
     }
 
+    @Test
+    public void unBindTest(){
+        String s = tvSynchronizeController.unBind("11");
+        System.out.println(s);
+
+    }
+
     /*后台直接返回流给前台，需要的参数我拿不到  单元测试鄙人技术短浅，不会写 此注释警示*/
    /* @Test
     public void getQRCodeTest(){

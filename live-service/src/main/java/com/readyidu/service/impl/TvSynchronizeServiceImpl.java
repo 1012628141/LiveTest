@@ -10,14 +10,17 @@ import com.readyidu.model.PhoneService;
 import com.readyidu.model.TvDevice;
 import com.readyidu.service.CacheService;
 import com.readyidu.service.TvSynchronizeService;
+import com.readyidu.tools.QiNiuUploadTool;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import com.readyidu.util.QRCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.security.provider.MD5;
 
 import javax.servlet.ServletOutputStream;
+import java.io.File;
 import java.util.*;
 
 
@@ -73,20 +76,21 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
 
     /*获取二维码*/
     @Override
-    public void getQRCode(String tvDeviceId,String tvAlias,ServletOutputStream outputStream) {
+    public String getQRCode(String tvDeviceId,String tvAlias,String contextPath) {
        /*1.业务要求：判断数据库是否存在该机顶盒数据  如果没有新增*/
         TvDevice tvDevice=tvDeviceMapper.getByDeviceId(tvDeviceId);
-
         if (NullUtil.isNullObject(tvDevice)){
           /*2.如果为空调用 其他接口方法生成新的设备数据*/
             int i = addTvDevice(tvDeviceId,tvAlias);
         }
+        tvDevice=tvDeviceMapper.getByDeviceId(tvDeviceId);
         /*判断获取设备的别名是否与传递的一致，一致才继续执行*/
         if (tvAlias.equals(tvDevice.getTvAlias())) {
         /*3.标识唯一性，生成令牌*/
             String token = UUID.randomUUID().toString();
+            System.out.println(token);
             Map<String, String> map = new HashMap<>();
-            map.put("QRDecodeUrl", QRDecodeUrl);
+            map.put("qRDecodeUrl", QRDecodeUrl);
             map.put("token", token);
             map.put("tvDeviceId", tvDeviceId);
             map.put("tvAlias", tvAlias);
@@ -94,11 +98,19 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         /*4.redis 作为定时器  设置为30 分钟 客户端扫描二维码后 获取令牌 后台验证如果存在此令牌则验证通过*/
             cacheService.set(token + tvDeviceId, "1", CacheService.CACHE_TIMEOUT30);
             try {
-                QRCodeUtil.encode(tvDeviceContent, outputStream);
+                QRCodeUtil.encode(tvDeviceContent,null,contextPath+"/img/",false,tvDeviceId);
+                String data = QiNiuUploadTool.upLoad(contextPath +"/img/"+ tvDeviceId + ".jpg", "y"+tvDeviceId + "d.jpg");
+                System.out.println(data);
+                File file=new File(contextPath+"/img/"+tvDeviceId+".jpg");
+                if (file.exists()){
+                    file.delete();
+                }
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,data+"?"+new Random().nextInt(99999));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        return JsonResult.toString(NetworkCode.CODE_FAIL,"");
     }
 
 
