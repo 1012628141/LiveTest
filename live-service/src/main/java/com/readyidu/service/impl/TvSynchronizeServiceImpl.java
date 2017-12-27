@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.ServletOutputStream;
 import java.util.*;
 
+import static com.readyidu.service.BaseService.SERVICE_RBK;
+
 
 @Service(value = "tvSynchronizeService")
 public class TvSynchronizeServiceImpl implements TvSynchronizeService{
@@ -65,8 +67,16 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
 
     /*获得自定义源*/
     @Override
-    public List<PhoneService> getCostomizeSourceList(String deviceId) {
-        return phoneServiceMapper.getConfUrlAndUserIdByDeviceId(deviceId);
+    public String getCostomizeSourceList(String deviceId) {
+        try{
+            List<PhoneService> phoneServiceList = phoneServiceMapper.getConfUrlAndUserIdByDeviceId(deviceId);
+            if(!phoneServiceList.isEmpty()){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneServiceList);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,"");
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
 
 

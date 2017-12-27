@@ -17,5 +17,6 @@ public interface TvSynchronizeService {
     String getDevices(String deviceId);
 
     /*参数deviceId机顶盒设备ID 返回值 绑定设备下不同账号的自定义源*/
-    List<PhoneService> getCostomizeSourceList(String deviceId);
+    String getCostomizeSourceList(String deviceId);
+
 }
