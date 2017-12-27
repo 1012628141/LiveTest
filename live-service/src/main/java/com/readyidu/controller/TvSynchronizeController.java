@@ -94,14 +94,13 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(String phoneAlias){
+    public String bindingReq(String phoneAlias,Integer userId){
         try{
             RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
-            int acount = requestParamModel.getAccount();
             String deviceId = requestParamModel.getDeviceId();
             PhoneDevice phoneDevice = new PhoneDevice();
             phoneDevice.setDeviceId(deviceId);
-            phoneDevice.setUserId(acount);
+            phoneDevice.setUserId(userId);
             phoneDevice.setPhoneAlias(phoneAlias);
             int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
             if (num > 0){
