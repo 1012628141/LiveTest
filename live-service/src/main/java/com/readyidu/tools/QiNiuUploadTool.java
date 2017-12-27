@@ -39,6 +39,53 @@ public class QiNiuUploadTool {
         return upToken;
     }
 
+    public static String getOverrideToken(String key) {
+        Auth auth = Auth.create(accessKey, secretKey);
+        String upToken = auth.uploadToken(bucket, key, 3600, new StringMap().put("insertOnly", 0));
+        System.out.println(upToken);
+        return upToken;
+    }
+
+    public static String upLoad(String path,String key) {
+               Configuration cfg = new Configuration(Zone.zone0());
+               UploadManager uploadManager = new UploadManager(cfg);
+                try {
+                       String token = getOverrideToken(key);//获取 token
+                       Response response = uploadManager.put(path, key, token);//执行上传，通过token来识别 该上传是“覆盖上传”
+                       System.out.println(response.toString());
+                       return CHAINURL+key;
+                  } catch (QiniuException e) {
+                       System.out.println(e.response.statusCode);
+                      e.printStackTrace();
+                 }
+                 return null;
+    }
+
+
+
+
+    /*public static String upLoad(String localFilePath,String key) {
+        Configuration cfg = new Configuration(Zone.zone0());
+        UploadManager uploadManager = new UploadManager(cfg);
+        try {
+            Response response = uploadManager.put(localFilePath, key, getOverrideToken(key));
+            //解析上传成功的结果
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            System.out.println(putRet.key);
+            System.out.println(putRet.hash);
+            return CHAINURL+key;
+        } catch (QiniuException ex) {
+            Response r = ex.response;
+            System.err.println(r.toString());
+            try {
+                System.err.println(r.bodyString());
+            } catch (QiniuException ex2) {
+                //ignore
+            }
+        }
+        return null;
+    }*/
+
     public static String upLoad(String localFilePath) {
         Configuration cfg = new Configuration(Zone.zone0());
         UploadManager uploadManager = new UploadManager(cfg);

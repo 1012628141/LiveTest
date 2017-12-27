@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -48,15 +49,17 @@ public class TvSynchronizeController {
      * @param deviceId 机顶盒识别id
      * @return
      */
+    @ResponseBody
     @RequestMapping("/getQRCode")
-    public void getQRCode(String deviceId,String tvAlias,HttpServletResponse response){
+    public String getQRCode(String tvAlias, HttpServletRequest request){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        String deviceId = requestParamModel.getDeviceId();
         if (!NullUtil.isNullObject(deviceId)&&!NullUtil.isNullObject(tvAlias)){
-            try {
-                tvSynchronizeService.getQRCode(deviceId,tvAlias,response.getOutputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            String contextPath = request.getSession().getServletContext().getRealPath("/");
+            return tvSynchronizeService.getQRCode(deviceId,tvAlias,contextPath);
+
         }
+        return JsonResult.toString(NetworkCode.CODE_FAIL,"");
     }
 
     /**
@@ -66,7 +69,9 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping(value="/getDevices" )
-    public String getDevices(String deviceId){
+    public String getDevices(){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        String deviceId = requestParamModel.getDeviceId();
         return tvSynchronizeService.getDevices(deviceId);
     }
 
@@ -82,28 +87,28 @@ public class TvSynchronizeController {
     }
 
     /**
-     * tv端绑定确认接口
+     * tv端绑定确认接口-
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(String phoneAlias){
+    public String bindingReq(String phoneAlias,Integer userId){
         try{
             RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
-            int acount = requestParamModel.getAccount();
             String deviceId = requestParamModel.getDeviceId();
             PhoneDevice phoneDevice = new PhoneDevice();
             phoneDevice.setDeviceId(deviceId);
-            phoneDevice.setUserId(acount);
+            phoneDevice.setUserId(userId);
             phoneDevice.setPhoneAlias(phoneAlias);
             int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
             if (num > 0){
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.BUNDLING_SUCCESS);
                 return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
             }else{
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
                 return JsonResult.toString(NetworkCode.CODE_FAIL,"");
             }
         }catch (Exception e){
+            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
