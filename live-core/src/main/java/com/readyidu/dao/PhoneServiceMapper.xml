@@ -6,7 +6,8 @@
         SELECT
         t2.confUrl as confUrl,
         t2.user_id as userId,
-        t2.hash as hash
+        t2.hash as hash,
+        t2.defined_name as definedName
         FROM
         t_phone_device t1,
         t_phone_service t2

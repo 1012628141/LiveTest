@@ -46,7 +46,7 @@ public class TvSynchronizeController {
 
     /**
      * 获取二维码
-     * @param deviceId 机顶盒识别id
+     * @param
      * @return
      */
     @ResponseBody
@@ -65,7 +65,7 @@ public class TvSynchronizeController {
     /**
      * 获取绑定设备列表
      * @return 绑定的设备的信息
-     * @param  deviceId 设备Id
+     * @param
      */
     @ResponseBody
     @RequestMapping(value="/getDevices" )
