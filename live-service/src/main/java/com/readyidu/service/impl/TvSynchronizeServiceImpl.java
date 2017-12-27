@@ -95,11 +95,12 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
             cacheService.set(token + tvDeviceId, "1", CacheService.CACHE_TIMEOUT30);
             try {
                 QRCodeUtil.encode(tvDeviceContent, outputStream);
-                return null;
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
 
