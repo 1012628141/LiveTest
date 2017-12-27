@@ -17,12 +17,18 @@ import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.HttpUtil;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
+import okhttp3.*;
+import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,7 +58,7 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
                     //小益账号已绑定该机顶盒
                     code = NetworkCode.BUNDLING_REPETITION;
                     return code;
-                } else if (!deviceId_old.isEmpty()){
+                } else if (!NullUtil.isNullObject(deviceId_old)){
                     //小益账号绑定了其他机顶盒，则解绑
                     phoneDeviceMapper.delete(account);
                 }
@@ -74,10 +80,8 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
 
     @Override
     public boolean checkUserId(int userId) {
-        Map<String, String> params = new HashMap<>();
-        params.put("userId",String.valueOf(userId));
         try {
-            String result =WebHttpTool.sendPost(HTTP_POST_URL,params);
+            String result =WebHttpTool.sendPost(HTTP_POST_URL,String.valueOf(userId));
             JSONObject jsonObject = JSONObject.parseObject(result);
             String finalResult = JSONObject.parseObject(jsonObject.getString("data")).getString("result");
             if(finalResult=="true"){

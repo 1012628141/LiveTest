@@ -1,5 +1,6 @@
 package com.readyidu.tools;
 
+import okhttp3.*;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -91,5 +93,21 @@ public class WebHttpTool {
         result.deleteCharAt(0);
         result.deleteCharAt(result.length() - 1);
         return result.toString();
+    }
+
+    public static String sendPost(String url, String params) throws Exception {
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = new FormBody.Builder().add("userId", params).build();
+        Request request = new Request.Builder().url(url).post(body).build();
+        try {
+            Response response = client.newCall(request).execute();
+            if(response.isSuccessful()){
+                String string = response.body().string();
+                return string;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
