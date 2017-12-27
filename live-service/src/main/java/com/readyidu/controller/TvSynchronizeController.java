@@ -1,10 +1,17 @@
 package com.readyidu.controller;
 
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.filter.HeaderFilter;
+import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.constants.NetworkCode;
 import com.readyidu.model.PhoneDevice;
+import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.model.PhoneService;
 import com.readyidu.service.TvSourceService;
 import com.readyidu.service.TvSynchronizeService;
+import com.readyidu.service.impl.TvSynchronizeServiceImpl;
+import com.readyidu.tools.JPushTool;
+import com.readyidu.util.JsonResult;
 import com.readyidu.util.JsonResult;
 import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +33,11 @@ import java.util.List;
 
 public class TvSynchronizeController {
 
+    private static final String MASTER_SECRET = "58a7d407914ec1e6d21f9ee2";
+    private static final String APP_KEY = "392671d7ee2901353acdc13e";
 
+    private static final String MESSAGE = "绑定成功";
+    private static final String FAIL = "绑定失败";
     @Autowired
     private TvSynchronizeService tvSynchronizeService;
 
@@ -74,7 +85,35 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(){
-        return null;
+    public String bindingReq(String phoneAlias){
+        try{
+            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+            int acount = requestParamModel.getAccount();
+            String deviceId = requestParamModel.getDeviceId();
+            PhoneDevice phoneDevice = new PhoneDevice();
+            phoneDevice.setDeviceId(deviceId);
+            phoneDevice.setUserId(acount);
+            phoneDevice.setPhoneAlias(phoneAlias);
+            int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+            if (num > 0){
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+            }else{
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+                return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+            }
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
+
+    /**
+     * tv端解除绑定确认接口
+     * @return String 状态码
+     */
+    @ResponseBody
+    @RequestMapping("/unBind")
+     public String unBind(String userId){
+        return  tvSynchronizeService.removePhoneByDeviceId(userId);
+     }
 }

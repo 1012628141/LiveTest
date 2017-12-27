@@ -10,4 +10,7 @@ import org.springframework.stereotype.Component;
 public interface ConfInfoMapper {
     ConfInfo selectChannelInfo(String version);
     int updateConfinfo(ConfInfo confInfo);
+    ConfInfo selectByAcount(Integer acount);
+    void insertConf(ConfInfo confInfo);
+    void updateConfinfoByAcount(ConfInfo confInfo);
 }

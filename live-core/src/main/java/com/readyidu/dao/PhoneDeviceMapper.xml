@@ -6,7 +6,6 @@
     <select id="listByDeviceId" parameterType="java.lang.String" resultType="com.readyidu.model.PhoneDevice">
         SELECT
          id,phone_name AS phoneName,
-         phone_alias as phoneAlias,
          phone_id as phoneId,
          device_id as deviceId,
          user_id as userId
@@ -23,7 +22,7 @@
         where
         user_id = #{userId}
         and
-        t1.is_delete != 1
+        is_delete != 1
     </select>
     <update id="delete" parameterType="java.lang.Integer">
         update t_phone_device
@@ -39,6 +38,15 @@
         where
         device_id = #{deviceId}
         and
-        t1.is_delete != 1
+        is_delete != 1
     </select>
+    <insert id="insertDevice" parameterType="com.readyidu.model.PhoneDevice">
+        INSERT INTO t_phone_device (device_id,create_time,user_id,phone_alias) VALUES (#{deviceId},now(),#{userId},#{phoneAlias})
+    </insert>
+
+    <update id="deleteByUserId" parameterType="java.lang.String" >
+        UPDATE t_phone_device
+         SET is_delete=1
+         WHERE user_Id=#{userId}
+    </update>
 </mapper>

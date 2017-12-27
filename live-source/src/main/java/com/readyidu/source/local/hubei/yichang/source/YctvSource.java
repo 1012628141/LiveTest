@@ -23,10 +23,10 @@ public class YctvSource extends Source {
     @Override
     protected String source() {
         String Dom = null;
-        String cookie = "safedog-flow-item=; UM_distinctid=15fde8740f914f-0da6de937de0ca-5b4a2c1d-100200-15fde8740fa1ab; acw_tc=AQAAACnkQQ/PLg8AayRL2qQwhdflkV23; ASPSESSIONIDACARCDSQ=IFDFBAACGLEMDNKKBCOHHECP; CNZZDATA1092578=cnzz_eid%3D1207074652-1511262008-http%253A%252F%252Fwww.3xgd.com%252F%26ntime%3D1511262008; AJSTAT_ok_pages=2; AJSTAT_ok_times=1; __tins__2195998=%7B%22sid%22%3A1511266981896%2C%22vd%22%3A2%2C%22expires%22%3A1511268787473%7D; __51cke__=; __51laig__=2";
+        String cookie = "safedog-flow-item=; UM_distinctid=160687896591-0282c0f76ffd3e-16386656-1fa400-1606878965a1c6; acw_tc=AQAAAPK1mnTm8wsAayRL2qSBZBuz41PC; ASPSESSIONIDCABTDBQS=GPODJLHDDIFKHBFDOHCDILCH; CNZZDATA1092578=cnzz_eid%3D1766439046-1513580355-http%253A%252F%252Fwww.3xgd.com%252F%26ntime%3D1513580355; AJSTAT_ok_times=1; __51cke__=; AJSTAT_ok_pages=4; __tins__2195998=%7B%22sid%22%3A%201513581230027%2C%20%22vd%22%3A%204%2C%20%22expires%22%3A%201513583066867%7D; __51laig__=4";
         switch (sourceId) {
             case SourceConstants.SOURCE_HBTV_YCTV1:
-                Dom = HttpUtil.httpGet("http://live.3xgd.com/getzburl.asp?ChannelID=1","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36","http://live.3xgd.com/?ChannelID=1","safedog-flow-item=; UM_distinctid=15fde8740f914f-0da6de937de0ca-5b4a2c1d-100200-15fde8740fa1ab; acw_tc=AQAAACnkQQ/PLg8AayRL2qQwhdflkV23; ASPSESSIONIDACARCDSQ=IFDFBAACGLEMDNKKBCOHHECP; CNZZDATA1092578=cnzz_eid%3D1207074652-1511262008-http%253A%252F%252Fwww.3xgd.com%252F%26ntime%3D1511262008; AJSTAT_ok_pages=2; AJSTAT_ok_times=1; __tins__2195998=%7B%22sid%22%3A1511266981896%2C%22vd%22%3A2%2C%22expires%22%3A1511268787473%7D; __51cke__=; __51laig__=2");
+                Dom = HttpUtil.httpGet("http://live.3xgd.com/getzburl.asp?ChannelID=1","","http://live.3xgd.com/?ChannelID=1",cookie);
                 //Dom = HttpUtil.httpGet("http://live.3xgd.com/geturl.asp?ChannelID=1","", "http://live.kankanews.com/huikan/");
                 break;
             case SourceConstants.SOURCE_HBTV_YCTV2:

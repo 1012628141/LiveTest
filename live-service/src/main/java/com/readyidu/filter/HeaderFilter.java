@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class HeaderFilter extends OncePerRequestFilter {
 
-    public static  ThreadLocal<RequestParamModel> paramModel = new ThreadLocal<RequestParamModel>();
+    public static ThreadLocal<RequestParamModel> paramModel = new ThreadLocal<RequestParamModel>();
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {

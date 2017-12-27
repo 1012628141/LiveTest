@@ -3,22 +3,30 @@ package com.readyidu.service.impl;
 import com.alibaba.fastjson.JSONObject;
 
 import com.readyidu.constants.NetworkCode;
+import com.readyidu.mapper.ConfInfoMapper;
 import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.model.ConfInfo;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.BaseService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.tools.WebHttpTool;
+import com.readyidu.util.HttpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service(value = "appChannelService")
 public class AppChannelServiceImpl extends BaseService implements AppChannelService{
 
     @Autowired
     private PhoneDeviceMapper phoneDeviceMapper;
+    @Autowired
+    private ConfInfoMapper confInfoMapper;
 
     private static final String MASTER_SECRET="ae03c3cd69069d05f04a0290";
     private static final String APP_KEY="e27c9e82155e29b33d01a9e3";
@@ -66,4 +74,40 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
         }
         return false;
     }
+
+
+    @Override
+    public ConfInfo selectByAcount(Integer acount) {
+        return confInfoMapper.selectByAcount(acount);
+    }
+
+    @Transactional
+    @Override
+    public void insertConf(ConfInfo confInfo) {
+        confInfoMapper.insertConf(confInfo);
+    }
+
+    @Override
+    public List<String> getSourceList(String url) {
+        List<String> sourceList = new ArrayList<>();
+        try {
+            String html = HttpUtil.httpGet(url);
+            Pattern pattern = Pattern.compile("http://[a-zA-Z0-9./_]+m3u8");
+            Matcher matcher = pattern.matcher(html);
+            while (matcher.find()){
+                sourceList.add(matcher.group());
+            }
+            sourceList = new ArrayList(new HashSet(sourceList));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sourceList;
+    }
+    @Transactional
+    @Override
+    public void updateConfinfo(ConfInfo confInfo) {
+        confInfoMapper.updateConfinfo(confInfo);
+    }
 }
+
+
