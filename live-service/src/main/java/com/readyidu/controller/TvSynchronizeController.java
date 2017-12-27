@@ -95,24 +95,24 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(String phoneAlias){
+    public String bindingReq(String phoneAlias,Integer userId){
         try{
             RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
-            int acount = requestParamModel.getAccount();
             String deviceId = requestParamModel.getDeviceId();
             PhoneDevice phoneDevice = new PhoneDevice();
             phoneDevice.setDeviceId(deviceId);
-            phoneDevice.setUserId(acount);
+            phoneDevice.setUserId(userId);
             phoneDevice.setPhoneAlias(phoneAlias);
             int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
             if (num > 0){
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.BUNDLING_SUCCESS);
                 return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
             }else{
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
                 return JsonResult.toString(NetworkCode.CODE_FAIL,"");
             }
         }catch (Exception e){
+            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }
