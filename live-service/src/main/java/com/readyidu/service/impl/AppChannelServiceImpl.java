@@ -102,8 +102,10 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
     }
 
     @Override
-    public List<BbsChannel> getSourceList(String url) {
+    public String getSourceList(String url) {
+
         List<BbsChannel> sourceList = new ArrayList<>();
+        String resultKey = null;
         synchronized (url){
             String startStr =  "<div class=\"f14 mb10\" id=\"read_tpc\">";
             String content = HttpUtil.httpGet(url);
@@ -127,13 +129,13 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
             }
             String fileDate = JsonResult.toString(NetworkCode.CODE_SUCCESS, sourceList);
             try {
-                String resultKey = QiNiuUploadTool.byteUpdate(fileDate.getBytes("utf-8"));
+                resultKey = QiNiuUploadTool.byteUpdate(fileDate.getBytes("utf-8"));
 
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
-        return sourceList;
+        return QiNiuUploadTool.CHAINURL+resultKey;
     }
 
     @Override

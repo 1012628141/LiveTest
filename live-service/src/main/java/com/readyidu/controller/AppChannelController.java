@@ -106,7 +106,7 @@ public class AppChannelController {
     @RequestMapping("/getCustomizedList")
     public String getCustomizedList(String url){
         try {
-            List<BbsChannel> customizedList = appChannelService.getSourceList(url);
+            String customizedList = appChannelService.getSourceList(url);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,customizedList);
         } catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
