@@ -105,13 +105,14 @@ public class TvSynchronizeController {
             phoneDevice.setPhoneAlias(phoneAlias);
             int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
             if (num > 0){
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.BUNDLING_SUCCESS);
                 return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
             }else{
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
+                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
                 return JsonResult.toString(NetworkCode.CODE_FAIL,"");
             }
         }catch (Exception e){
+            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
     }

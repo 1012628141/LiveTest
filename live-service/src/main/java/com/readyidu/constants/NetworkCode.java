@@ -26,5 +26,6 @@ public class NetworkCode {
     public static final int BUNDLING_LIMIT = 13001;//机顶盒绑定数达到上限
     public static final int BUNDLING_CAN = 13002;//可以绑定
     public static final int ACCOUNT_NOT_EXIST = 13003;//账号不存在
-
+    public static final int BUNDLING_SUCCESS = 13004;//绑定成功
+    public static final int BUNDLING_FAIL = 13005;//绑定失败
 }
