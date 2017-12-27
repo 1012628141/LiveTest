@@ -5,6 +5,8 @@ import com.readyidu.model.PhoneService;
 import javax.servlet.ServletOutputStream;
 import java.util.List;
 
+import com.readyidu.model.PhoneDevice;
+
 public interface TvSynchronizeService {
 
     /*参数  deviceId：机顶盒唯一标识id*/
@@ -15,6 +17,8 @@ public interface TvSynchronizeService {
 
     /*参数deviceId 机顶盒设备ID  返回值 绑定设备的id*/
     String getDevices(String deviceId);
+
+    int insertPhoneDevice(PhoneDevice phoneDevice);
 
     String removePhoneByDeviceId(String userId);
 

@@ -4,10 +4,21 @@ package com.readyidu.model;
  * Created by 123 on 2017/12/18.
  */
 public class ConfInfo {
+    private int acount;
+    private String hash;
     private String confName;
     private String confUrl;
     private String version;
-    private String hash;
+
+    public ConfInfo(int acount, String hash, String confUrl) {
+        this.acount = acount;
+        this.hash = hash;
+        this.confUrl = confUrl;
+    }
+
+    public ConfInfo() {
+
+    }
 
     public String getConfName() {
         return confName;
@@ -39,5 +50,13 @@ public class ConfInfo {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public Integer getAcount() {
+        return acount;
+    }
+
+    public void setAcount(Integer acount) {
+        this.acount = acount;
     }
 }

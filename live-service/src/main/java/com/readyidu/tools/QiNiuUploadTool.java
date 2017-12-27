@@ -1,5 +1,7 @@
 package com.readyidu.tools;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
@@ -8,8 +10,9 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
 
-import javax.security.auth.x500.X500Principal;
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -19,18 +22,24 @@ import java.util.zip.ZipOutputStream;
  */
 public class QiNiuUploadTool {
 
-    private static String accessKey = "8qXT7YOMZ-GtjM36rtkzKMEuZSaDrtbSPetdXYIf";
-    private static String secretKey = "zbp-eUwRuMzucnYr37u_zXyNsiKkxBrTB84CmmSu";
+    public static String accessKey = "8qXT7YOMZ-GtjM36rtkzKMEuZSaDrtbSPetdXYIf";
+    public static String secretKey = "zbp-eUwRuMzucnYr37u_zXyNsiKkxBrTB84CmmSu";
     private static String bucket = "com-live";
     public static String zipPath = "/C:/Users/Administrator/Desktop/";
+    public static String CALLBACKURL = "http://218.75.36.107:11116/app/callBackUpdate";
+    public static String CALLBACKBODYTYPE = "application/x-www-form-urlencoded";
+    public static String CHAINURL = "http://p15mjwx7g.bkt.clouddn.com/";
+    public static String CALLBACKBODY = "{\"key\":\"$(key)\",\"hash\":\"$(etag)\",\"bucket\":\"$(bucket)\",\"acount\":$(x:acount)}";
     private static String key = null;
-    public static String getToken(){
+
+    public static String getToken() {
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
         System.out.println(upToken);
         return upToken;
     }
-    public static String upLoad(String localFilePath){
+
+    public static String upLoad(String localFilePath) {
         Configuration cfg = new Configuration(Zone.zone0());
         UploadManager uploadManager = new UploadManager(cfg);
         try {
@@ -51,6 +60,40 @@ public class QiNiuUploadTool {
         }
         return null;
     }
+
+    public static String upLoadWithCallBack(String localFilePath) {
+        long expireSeconds = 3600;
+        Configuration cfg = new Configuration(Zone.zone0());
+        UploadManager uploadManager = new UploadManager(cfg);
+        StringMap putPolicy = new StringMap();
+        putPolicy.put("callbackBody", CALLBACKBODY);
+        putPolicy.put("callbackUrl", CALLBACKURL);
+        putPolicy.put("callbackBodyType", CALLBACKBODYTYPE);
+        Auth auth = Auth.create(accessKey, secretKey);
+        String upToken = auth.uploadToken(bucket, null, expireSeconds, putPolicy, false);
+        try {
+            InputStream in = new FileInputStream(localFilePath);
+            StringMap params = new StringMap();
+            params.put("x:acount",123456);
+            Response response = uploadManager.put(in, key, upToken, params, null);
+            //解析上传成功的结果
+
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            return putRet.hash;
+        } catch (QiniuException ex) {
+            Response r = ex.response;
+            System.err.println(r.toString());
+            try {
+                System.err.println(r.bodyString());
+            } catch (QiniuException ex2) {
+                //ignore
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static boolean createCardImgZip(String sourcePath, String zipName) {
         boolean result = false;
         File sourceFile = new File(sourcePath);
@@ -63,7 +106,7 @@ public class QiNiuUploadTool {
             System.out.println("File catalog:" + sourcePath + "not exist!");
         } else {
             try {
-                if(!new File(zipPath).exists()){
+                if (!new File(zipPath).exists()) {
                     new File(zipPath).mkdirs();
                 }
                 File zipFile = new File(zipPath + "/" + zipName + ".zip");
@@ -72,7 +115,7 @@ public class QiNiuUploadTool {
                 }
                 zipFile.createNewFile();
                 File sourceFiles = new File(sourcePath);
-                if (null == sourceFiles ) {
+                if (null == sourceFiles) {
                     System.out.println("File Catalog:" + sourcePath + "nothing in there,don't hava to compress!");
                 } else {
                     fos = new FileOutputStream(zipFile);
@@ -108,5 +151,33 @@ public class QiNiuUploadTool {
             }
         }
         return result;
+    }
+
+    public static JSONObject parseCallBack(HttpServletRequest request) throws IOException {
+        //回调地址
+        Auth auth = Auth.create(accessKey, secretKey);
+        /**
+         * 这两个参数根据实际所使用的HTTP框架进行获取
+         */
+        String callbackAuthHeader = request.getHeader("Authorization");
+        int contentLength = request.getContentLength();
+        if (contentLength < 0) {
+            return null;
+        }
+        byte[] callbackBody = new byte[contentLength];
+        for (int i = 0; i < contentLength; ) {
+
+            int readlen = request.getInputStream().read(callbackBody, i,
+                    contentLength - i);
+            if (readlen == -1) {
+                break;
+            }
+            i += readlen;
+        }
+        return auth.isValidCallback(callbackAuthHeader
+                , CALLBACKURL
+                , callbackBody
+                , CALLBACKBODYTYPE)
+                ? JSON.parseObject(new String(callbackBody)) : null;
     }
 }
