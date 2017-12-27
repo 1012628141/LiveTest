@@ -46,7 +46,7 @@ public class TvSynchronizeController {
 
     /**
      * 获取二维码
-     * @param deviceId 机顶盒识别id
+     * @param
      * @return
      */
     @ResponseBody
@@ -65,7 +65,7 @@ public class TvSynchronizeController {
     /**
      * 获取绑定设备列表
      * @return 绑定的设备的信息
-     * @param  deviceId 设备Id
+     * @param
      */
     @ResponseBody
     @RequestMapping(value="/getDevices" )
@@ -81,17 +81,9 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping(value = "/DevicesChannels",method= RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public String DevicesChannels(HttpServletRequest request){
-        try{
-            String deviceId = request.getParameter("deviceId");
-            List<PhoneService> phoneServiceList = tvSynchronizeService.getCostomizeSourceList(deviceId);
-            if(!phoneServiceList.isEmpty()){
-                return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneServiceList);
-            }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,"");
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-        }
+    public String DevicesChannels(){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        return tvSynchronizeService.getCostomizeSourceList(requestParamModel.getDeviceId());
     }
 
     /**
