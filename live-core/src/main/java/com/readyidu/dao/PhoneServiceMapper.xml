@@ -5,7 +5,8 @@
     <select id="getConfUrlAndUserIdByDeviceId" parameterType="java.lang.Integer"  resultType="com.readyidu.model.PhoneService">
         SELECT
         t2.confUrl as confUrl,
-        t2.user_id as userId
+        t2.user_id as userId,
+        t2.hash as hash
         FROM
         t_phone_device t1,
         t_phone_service t2
