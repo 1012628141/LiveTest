@@ -76,8 +76,9 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping(value = "/DevicesChannels",method= RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public String DevicesChannels(String deviceId){
-       return tvSynchronizeService.getCostomizeSourceList(deviceId);
+    public String DevicesChannels(){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        return tvSynchronizeService.getCostomizeSourceList(requestParamModel.getDeviceId());
     }
 
     /**

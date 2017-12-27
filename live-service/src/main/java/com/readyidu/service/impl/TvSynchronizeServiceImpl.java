@@ -74,7 +74,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
             if(!phoneServiceList.isEmpty()){
                 return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneServiceList);
             }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,"");
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,new ArrayList<>());
         }catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
         }
