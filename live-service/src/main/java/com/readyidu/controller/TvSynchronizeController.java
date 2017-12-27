@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -48,16 +49,15 @@ public class TvSynchronizeController {
      * @param deviceId 机顶盒识别id
      * @return
      */
+    @ResponseBody
     @RequestMapping("/getQRCode")
-    public String getQRCode(String deviceId,String tvAlias,HttpServletResponse response){
+    public String getQRCode(String deviceId, String tvAlias, HttpServletRequest request){
         if (!NullUtil.isNullObject(deviceId)&&!NullUtil.isNullObject(tvAlias)){
-            try {
-               return tvSynchronizeService.getQRCode(deviceId,tvAlias,response.getOutputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            String contextPath = request.getSession().getServletContext().getRealPath("/");
+            return tvSynchronizeService.getQRCode(deviceId,tvAlias,contextPath);
+
         }
-        return null;
+        return JsonResult.toString(NetworkCode.CODE_FAIL,"");
     }
 
     /**
