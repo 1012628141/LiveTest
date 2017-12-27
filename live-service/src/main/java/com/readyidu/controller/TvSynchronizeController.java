@@ -74,17 +74,9 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping(value = "/DevicesChannels",method= RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public String DevicesChannels(HttpServletRequest request){
-        try{
-            String deviceId = request.getParameter("deviceId");
-            List<PhoneService> phoneServiceList = tvSynchronizeService.getCostomizeSourceList(deviceId);
-            if(!phoneServiceList.isEmpty()){
-                return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneServiceList);
-            }
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,"");
-        }catch (Exception e){
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-        }
+    public String DevicesChannels(){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        return tvSynchronizeService.getCostomizeSourceList(requestParamModel.getDeviceId());
     }
 
 //    /**
