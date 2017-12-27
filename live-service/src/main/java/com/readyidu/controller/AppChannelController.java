@@ -87,16 +87,16 @@ public class AppChannelController {
      */
     @ResponseBody
     @RequestMapping("/bundling")
-    public String bundling(String token,String TvDeviceId){
+    public String bundling(String token,String tvDeviceId){
         try {
             RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
             int account = requestParamModel.getAccount();
             if(!appChannelService.checkUserId(account)){
                 return JsonResult.toString(NetworkCode.ACCOUNT_NOT_EXIST,"");
             }
-            String cache = cacheService.get(token+TvDeviceId);
+            String cache = cacheService.get(token+tvDeviceId);
             if(!NullUtil.isNullObject(cache)){
-                int code = appChannelService.checkBinding(account,TvDeviceId);
+                int code = appChannelService.checkBinding(account,tvDeviceId);
                 return JsonResult.toString(code,"");
             }
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
@@ -131,11 +131,14 @@ public class AppChannelController {
 
     @ResponseBody
     @RequestMapping("/checkByUserId")
-    public String checkByUserId(int userId) {
-        if (!NullUtil.isNullObject(userId)) {
-            return appChannelService.checkByUserId(userId);
+    public String checkByUserId() {
+        try {
+            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+            int account = requestParamModel.getAccount();
+            return appChannelService.checkByUserId(account);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
-        return JsonResult.toString(NetworkCode.CODE_FAIL, "");
     }
     @RequestMapping("/updateDefinedName")
     public String updateDefinedName(String definedName){
