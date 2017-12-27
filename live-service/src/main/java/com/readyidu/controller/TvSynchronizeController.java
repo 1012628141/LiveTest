@@ -38,10 +38,10 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/getQRCode")
-    public void getQRCode(String deviceId,String tvAlias,HttpServletResponse response){
+    public String getQRCode(String deviceId,String tvAlias,HttpServletResponse response){
         if (!NullUtil.isNullObject(deviceId)&&!NullUtil.isNullObject(tvAlias)){
             try {
-                tvSynchronizeService.getQRCode(deviceId,tvAlias,response.getOutputStream());
+               return tvSynchronizeService.getQRCode(deviceId,tvAlias,response.getOutputStream());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -79,7 +79,7 @@ public class TvSynchronizeController {
     }
 
     /**
-     * tv端绑定确认接口
+     * tv端绑定确认接口-
      * @return
      */
     @RequestMapping("/bindingReq")

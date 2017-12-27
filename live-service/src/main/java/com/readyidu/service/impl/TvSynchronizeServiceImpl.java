@@ -73,7 +73,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
 
     /*获取二维码*/
     @Override
-    public void getQRCode(String tvDeviceId,String tvAlias,ServletOutputStream outputStream) {
+    public String getQRCode(String tvDeviceId,String tvAlias,ServletOutputStream outputStream) {
        /*1.业务要求：判断数据库是否存在该机顶盒数据  如果没有新增*/
         TvDevice tvDevice=tvDeviceMapper.getByDeviceId(tvDeviceId);
 
@@ -95,6 +95,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
             cacheService.set(token + tvDeviceId, "1", CacheService.CACHE_TIMEOUT30);
             try {
                 QRCodeUtil.encode(tvDeviceContent, outputStream);
+                return null;
             } catch (Exception e) {
                 e.printStackTrace();
             }
