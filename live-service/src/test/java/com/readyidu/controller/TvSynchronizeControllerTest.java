@@ -6,6 +6,7 @@ import com.readyidu.service.TvSynchronizeService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.tools.TestBaseConfig;
 import com.readyidu.util.JsonResult;
+import com.readyidu.util.NullUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,6 +16,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+
+import static junit.framework.TestCase.assertTrue;
 
 public class TvSynchronizeControllerTest extends TestBaseConfig {
     private static final String MASTER_SECRET = "ef9f38dadd725270fea9e65b";
@@ -49,10 +52,20 @@ public class TvSynchronizeControllerTest extends TestBaseConfig {
    public void testbindingReq(){
        int acount = 123456;
        String deviceId = "abc";
+       String phoneAlias = "1234";
        PhoneDevice phoneDevice = new PhoneDevice();
        phoneDevice.setDeviceId(deviceId);
        phoneDevice.setUserId(acount);
-       int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+       phoneDevice.setPhoneAlias(phoneAlias);
+       int num = 0 ;
+       try {
+           num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+
+       System.out.println(num);
+       assertTrue(num>0);
        if (num > 0){
            JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
        }else{

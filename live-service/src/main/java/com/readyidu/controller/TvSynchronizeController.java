@@ -94,7 +94,7 @@ public class TvSynchronizeController {
      * @return
      */
     @RequestMapping("/bindingReq")
-    public String bindingReq(){
+    public String bindingReq(String phoneAlias){
         try{
             RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
             int acount = requestParamModel.getAccount();
@@ -102,6 +102,7 @@ public class TvSynchronizeController {
             PhoneDevice phoneDevice = new PhoneDevice();
             phoneDevice.setDeviceId(deviceId);
             phoneDevice.setUserId(acount);
+            phoneDevice.setPhoneAlias(phoneAlias);
             int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
             if (num > 0){
                 JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
