@@ -51,7 +51,9 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping("/getQRCode")
-    public String getQRCode(String deviceId, String tvAlias, HttpServletRequest request){
+    public String getQRCode(String tvAlias, HttpServletRequest request){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        String deviceId = requestParamModel.getDeviceId();
         if (!NullUtil.isNullObject(deviceId)&&!NullUtil.isNullObject(tvAlias)){
             String contextPath = request.getSession().getServletContext().getRealPath("/");
             return tvSynchronizeService.getQRCode(deviceId,tvAlias,contextPath);
@@ -67,7 +69,9 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping(value="/getDevices" )
-    public String getDevices(String deviceId){
+    public String getDevices(){
+        RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+        String deviceId = requestParamModel.getDeviceId();
         return tvSynchronizeService.getDevices(deviceId);
     }
 

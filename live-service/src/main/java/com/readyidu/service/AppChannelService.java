@@ -14,4 +14,7 @@ public interface AppChannelService {
     int checkBinding(int account,String deviceId,String tvAlias,String appAlias);
     boolean checkUserId(int userId);
     List<String> getSourceList(String url);
+
+    /*判定用户是否绑定  如果绑定获取自定义源*/
+    String checkByUserId(int userId);
 }

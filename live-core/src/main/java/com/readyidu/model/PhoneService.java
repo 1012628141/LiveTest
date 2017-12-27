@@ -10,6 +10,15 @@ public class PhoneService {
     private String version;
     private String hash;
     private String userId;
+    private String definedName;
+
+    public String getDefineName() {
+        return definedName;
+    }
+
+    public void setDefineName(String defineName) {
+        this.definedName = defineName;
+    }
 
     public Integer getId() {
         return id;
