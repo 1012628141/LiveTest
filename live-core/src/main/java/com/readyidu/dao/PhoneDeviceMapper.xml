@@ -11,6 +11,7 @@
          user_id as userId
          FROM t_phone_device
          WHERE device_id = #{deviceId}
+         AND is_delete != 1
     </select>
 
 
