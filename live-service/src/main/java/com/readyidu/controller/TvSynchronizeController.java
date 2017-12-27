@@ -90,32 +90,32 @@ public class TvSynchronizeController {
         }
     }
 
-    /**
-     * tv端绑定确认接口-
-     * @return
-     */
-    @RequestMapping("/bindingReq")
-    public String bindingReq(String phoneAlias,Integer userId){
-        try{
-            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
-            String deviceId = requestParamModel.getDeviceId();
-            PhoneDevice phoneDevice = new PhoneDevice();
-            phoneDevice.setDeviceId(deviceId);
-            phoneDevice.setUserId(userId);
-            phoneDevice.setPhoneAlias(phoneAlias);
-            int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
-            if (num > 0){
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.BUNDLING_SUCCESS);
-                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
-            }else{
-                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
-                return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-            }
-        }catch (Exception e){
-            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
-        }
-    }
+//    /**
+//     * tv端绑定确认接口-
+//     * @return
+//     */
+//    @RequestMapping("/bindingReq")
+//    public String bindingReq(String phoneAlias,Integer userId){
+//        try{
+//            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+//            String deviceId = requestParamModel.getDeviceId();
+//            PhoneDevice phoneDevice = new PhoneDevice();
+//            phoneDevice.setDeviceId(deviceId);
+//            phoneDevice.setUserId(userId);
+//            phoneDevice.setPhoneAlias(phoneAlias);
+//            int num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+//            if (num > 0){
+//                JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.BUNDLING_SUCCESS);
+//                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
+//            }else{
+//                JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
+//                return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+//            }
+//        }catch (Exception e){
+//            JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.BUNDLING_FAIL);
+//            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+//        }
+//    }
 
     /**
      * tv端解除绑定确认接口
