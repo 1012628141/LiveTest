@@ -48,12 +48,12 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
     public String getDevices(String deviceId) {
         /*如果传参为空 返回请求成功代码 空数据*/
         if (NullUtil.isNullObject(deviceId)){
-            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, "");
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,new ArrayList<>());
         }
         List<PhoneDevice> phoneDevices = phoneDeviceMapper.listByDeviceId(deviceId);
         System.out.println(phoneDevices);
         if (phoneDevices.isEmpty()){
-           return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, "");
+           return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL, new ArrayList<>());
         }
         return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneDevices);
     }

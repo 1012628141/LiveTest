@@ -17,4 +17,14 @@
         AND t1.is_delete != 1
     </select>
 
+    <select id="selectByUserId" parameterType="java.lang.Integer" resultType="com.readyidu.model.PhoneService">
+        SELECT
+         confUrl AS confUrl,
+         defined_name AS definedName
+         FROM
+           t_phone_service
+        WHERE
+         user_id=#{userId}
+    </select>
+
 </mapper>

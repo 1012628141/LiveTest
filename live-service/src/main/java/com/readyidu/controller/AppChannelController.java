@@ -129,4 +129,13 @@ public class AppChannelController {
             return Integer.valueOf(accessTimes) + 1;
         return 0;
     }
+
+    @ResponseBody
+    @RequestMapping("/checkByUserId")
+    public String checkByUserId(int userId) {
+        if (!NullUtil.isNullObject(userId)) {
+            return appChannelService.checkByUserId(userId);
+        }
+        return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+    }
 }

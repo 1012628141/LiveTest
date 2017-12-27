@@ -5,12 +5,16 @@ import com.alibaba.fastjson.JSONObject;
 import com.readyidu.constants.NetworkCode;
 import com.readyidu.mapper.ConfInfoMapper;
 import com.readyidu.mapper.PhoneDeviceMapper;
+import com.readyidu.mapper.PhoneServiceMapper;
 import com.readyidu.model.ConfInfo;
+import com.readyidu.model.PhoneService;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.BaseService;
 import com.readyidu.tools.JPushTool;
 import com.readyidu.tools.WebHttpTool;
 import com.readyidu.util.HttpUtil;
+import com.readyidu.util.JsonResult;
+import com.readyidu.util.NullUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +29,10 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
 
     @Autowired
     private PhoneDeviceMapper phoneDeviceMapper;
+
+    @Autowired
+    private PhoneServiceMapper phoneServiceMapper;
+
     @Autowired
     private ConfInfoMapper confInfoMapper;
 
@@ -103,6 +111,36 @@ public class AppChannelServiceImpl extends BaseService implements AppChannelServ
         }
         return sourceList;
     }
+
+    @Override
+    public String checkByUserId(int userId) {
+        Map<String,String> map=new HashMap<>();
+        String s = phoneDeviceMapper.selectDeviceIdByUserId(userId);
+        if (NullUtil.isNullObject(s)){
+            /*用户没有绑定 此处直接返回 return  */
+            map.put("isBindling","false");
+            map.put("isDefine","false");
+            map.put("confUrl","");
+            map.put("defineName","");
+            return  JsonResult.toString(NetworkCode.CODE_SUCCESS,map);
+        }
+        /*用户有自定义源*/
+        PhoneService phoneService=phoneServiceMapper.selectByUserId(userId);
+        if (!NullUtil.isNullObject(phoneService)){
+            map.put("isBindling","true");
+            map.put("isDefine","true");
+            map.put("confUrl",phoneService.getConfUrl());
+            map.put("defineName",phoneService.getDefineName());
+            return  JsonResult.toString(NetworkCode.CODE_SUCCESS,map);
+
+        }
+        map.put("isBindling","true");
+        map.put("isDefine","false");
+        map.put("confUrl","");
+        map.put("defineName","");
+        return  JsonResult.toString(NetworkCode.CODE_SUCCESS,map);
+    }
+
     @Transactional
     @Override
     public void updateConfinfo(ConfInfo confInfo) {

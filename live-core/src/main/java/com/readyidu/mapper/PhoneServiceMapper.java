@@ -12,4 +12,5 @@ import java.util.List;
 public interface PhoneServiceMapper {
     List<PhoneService> getConfUrlAndUserIdByDeviceId(String deviceId);
 
+    PhoneService selectByUserId(int userId);
 }
