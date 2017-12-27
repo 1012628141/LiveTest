@@ -39,7 +39,7 @@ public class TvSynchronizeControllerTest extends TestBaseConfig {
 
     @Test
     public void unBindTest(){
-        String s = tvSynchronizeController.unBind("11");
+        String s = tvSynchronizeController.unBind(11);
         System.out.println(s);
 
     }
@@ -57,27 +57,20 @@ public class TvSynchronizeControllerTest extends TestBaseConfig {
     }*/
    @Test
    public void testbindingReq(){
-       int acount = 123456;
-       String deviceId = "abc";
-       String phoneAlias = "1234";
-       PhoneDevice phoneDevice = new PhoneDevice();
-       phoneDevice.setDeviceId(deviceId);
-       phoneDevice.setUserId(acount);
-       phoneDevice.setPhoneAlias(phoneAlias);
-       int num = 0 ;
-       try {
-           num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
-       }catch (Exception e){
-           e.printStackTrace();
-       }
-
-       System.out.println(num);
-       assertTrue(num>0);
-       if (num > 0){
-           JPushTool.sendPush(MASTER_SECRET, APP_KEY, MESSAGE, NetworkCode.TYPE_CHANGE);
-       }else{
-           JPushTool.sendPush(MASTER_SECRET, APP_KEY, FAIL, NetworkCode.TYPE_CHANGE);
-       }
+//       int acount = 123456;
+//       String deviceId = "abc";
+//       PhoneDevice phoneDevice = new PhoneDevice();
+//       phoneDevice.setDeviceId(deviceId);
+//       phoneDevice.setUserId(acount);
+//       int num = 0 ;
+//       try {
+//           num = tvSynchronizeService.insertPhoneDevice(phoneDevice);
+//       }catch (Exception e){
+//           e.printStackTrace();
+//       }
+//
+//       System.out.println(num);
+//       assertTrue(num>0);
    }
 
 }

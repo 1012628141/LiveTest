@@ -34,11 +34,6 @@ import java.util.List;
 
 public class TvSynchronizeController {
 
-    private static final String MASTER_SECRET = "58a7d407914ec1e6d21f9ee2";
-    private static final String APP_KEY = "392671d7ee2901353acdc13e";
-
-    private static final String MESSAGE = "绑定成功";
-    private static final String FAIL = "绑定失败";
     @Autowired
     private TvSynchronizeService tvSynchronizeService;
 
@@ -46,7 +41,6 @@ public class TvSynchronizeController {
 
     /**
      * 获取二维码
-     * @param deviceId 机顶盒识别id
      * @return
      */
     @ResponseBody
@@ -65,7 +59,6 @@ public class TvSynchronizeController {
     /**
      * 获取绑定设备列表
      * @return 绑定的设备的信息
-     * @param  deviceId 设备Id
      */
     @ResponseBody
     @RequestMapping(value="/getDevices" )
@@ -127,7 +120,7 @@ public class TvSynchronizeController {
      */
     @ResponseBody
     @RequestMapping("/unBind")
-     public String unBind(String userId){
+     public String unBind(int userId){
         return  tvSynchronizeService.removePhoneByDeviceId(userId);
      }
 }

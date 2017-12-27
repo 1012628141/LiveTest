@@ -24,4 +24,13 @@
          user_id=#{userId}
     </select>
 
+    <update id="updateDefinedName" parameterType="com.readyidu.model.PhoneService">
+        UPDATE
+        t_phone_service
+        SET
+        defined_name = #{definedName}
+        WHERE
+        user_id = #{userId}
+    </update>
+
 </mapper>

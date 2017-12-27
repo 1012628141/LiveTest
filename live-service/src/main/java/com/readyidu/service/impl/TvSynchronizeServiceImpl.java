@@ -59,7 +59,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
     /*通过穿过来的小益账号 解绑机顶盒*/
     @Transactional
     @Override
-    public String removePhoneByDeviceId(String userId) {
+    public String removePhoneByDeviceId(int userId) {
         int i= phoneDeviceMapper.deleteByUserId(userId);
         if (i==0){
           return   JsonResult.toString(NetworkCode.CODE_FAIL,"");
@@ -128,9 +128,9 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         return tvDeviceMapper.insertTvDevice(tvDevice);
     }
 
-    @Transactional
-    @Override
-    public int insertPhoneDevice(PhoneDevice phoneDevice) {
-        return phoneDeviceMapper.insertDevice(phoneDevice);
-    }
+//    @Transactional
+//    @Override
+//    public int insertPhoneDevice(PhoneDevice phoneDevice) {
+//        return phoneDeviceMapper.insertDevice(phoneDevice);
+//    }
 }
