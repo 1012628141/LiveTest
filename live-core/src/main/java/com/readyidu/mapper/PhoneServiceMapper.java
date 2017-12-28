@@ -13,4 +13,5 @@ public interface PhoneServiceMapper {
     List<PhoneService> getConfUrlAndUserIdByDeviceId(String deviceId);
 
     PhoneService selectByUserId(int userId);
+    int updateDefinedName(PhoneService phoneService);
 }

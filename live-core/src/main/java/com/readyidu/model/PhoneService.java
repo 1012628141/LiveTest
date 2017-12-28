@@ -9,7 +9,7 @@ public class PhoneService {
     private String confUrl;
     private String version;
     private String hash;
-    private String userId;
+    private Integer userId;
     private String definedName;
 
     public String getDefineName() {
@@ -60,11 +60,11 @@ public class PhoneService {
         this.hash = hash;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 }

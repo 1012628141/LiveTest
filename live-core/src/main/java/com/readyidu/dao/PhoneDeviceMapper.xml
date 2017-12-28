@@ -11,6 +11,7 @@
          user_id as userId
          FROM t_phone_device
          WHERE device_id = #{deviceId}
+         AND is_delete != 1
     </select>
 
 
@@ -28,7 +29,7 @@
         update t_phone_device
         set
         is_delete = 1
-        where userId = #{userId}
+        where user_id = #{userId}
     </update>
     <select id="getCountByDeviceId" parameterType="java.lang.String" resultType="java.lang.Integer">
         select
@@ -41,12 +42,12 @@
         is_delete != 1
     </select>
     <insert id="insertDevice" parameterType="com.readyidu.model.PhoneDevice">
-        INSERT INTO t_phone_device (device_id,create_time,user_id,phone_alias) VALUES (#{deviceId},now(),#{userId},#{phoneAlias})
+        INSERT INTO t_phone_device (device_id,create_time,user_id) VALUES (#{deviceId},now(),#{userId})
     </insert>
 
-    <update id="deleteByUserId" parameterType="java.lang.String" >
+    <update id="deleteByUserId" parameterType="java.lang.Integer" >
         UPDATE t_phone_device
          SET is_delete=1
-         WHERE user_Id=#{userId}
+         WHERE user_id=#{userId}
     </update>
 </mapper>

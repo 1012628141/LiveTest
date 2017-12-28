@@ -5,13 +5,16 @@
     <select id="getConfUrlAndUserIdByDeviceId" parameterType="java.lang.Integer"  resultType="com.readyidu.model.PhoneService">
         SELECT
         t2.confUrl as confUrl,
-        t2.user_id as userId
+        t2.user_id as userId,
+        t2.hash as hash,
+        t2.defined_name as definedName
         FROM
         t_phone_device t1,
         t_phone_service t2
         WHERE
         t1.user_id = t2.user_id
         AND t1.device_id = #{deviceId}
+        AND t1.is_delete != 1
     </select>
 
     <select id="selectByUserId" parameterType="java.lang.Integer" resultType="com.readyidu.model.PhoneService">
@@ -23,5 +26,14 @@
         WHERE
          user_id=#{userId}
     </select>
+
+    <update id="updateDefinedName" parameterType="com.readyidu.model.PhoneService">
+        UPDATE
+        t_phone_service
+        SET
+        defined_name = #{definedName}
+        WHERE
+        user_id = #{userId}
+    </update>
 
 </mapper>

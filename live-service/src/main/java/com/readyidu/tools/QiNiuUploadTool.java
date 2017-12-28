@@ -107,6 +107,29 @@ public class QiNiuUploadTool {
         }
         return null;
     }
+    public static String byteUpdate(byte[] uploadBytes) {
+        Configuration cfg = new Configuration(Zone.zone0());
+        UploadManager uploadManager = new UploadManager(cfg);
+        Auth auth = Auth.create(accessKey, secretKey);
+        String upToken = auth.uploadToken(bucket);
+        try {
+            Response response = uploadManager.put(uploadBytes, key, upToken);
+            //解析上传成功的结果
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            System.out.println(putRet.key);
+            System.out.println(putRet.hash);
+            return putRet.key;
+        } catch (QiniuException ex) {
+            Response r = ex.response;
+            System.err.println(r.toString());
+            try {
+                System.err.println(r.bodyString());
+            } catch (QiniuException ex2) {
+                //ignore
+            }
+            return "error";
+        }
+    }
 
     public static String upLoadWithCallBack(String localFilePath) {
         long expireSeconds = 3600;

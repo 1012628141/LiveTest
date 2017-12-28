@@ -8,6 +8,7 @@ import com.readyidu.constants.NetworkCode;
 import com.readyidu.filter.HeaderFilter;
 import com.readyidu.mapper.ConfInfoMapper;
 import com.readyidu.model.ConfInfo;
+import com.readyidu.pojo.BbsChannel;
 import com.readyidu.pojo.RequestParamModel;
 import com.readyidu.service.AppChannelService;
 import com.readyidu.service.CacheService;
@@ -37,6 +38,7 @@ public class AppChannelController {
     private AppChannelService appChannelService;
 
 
+    @ResponseBody
     @RequestMapping("/getQiniuToken")
     public String getQiNiuToken(){
         RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
@@ -47,32 +49,23 @@ public class AppChannelController {
 
     /**
      * 同步文件上传回调接口
+     *
      * @return
      */
     @ResponseBody
-    @RequestMapping("/callBackUpdate")
-    public String callBackUpdate(HttpServletRequest request){
-        JSONObject callBackObj = null;
-        try {
-            callBackObj = QiNiuUploadTool.parseCallBack(request);
-            if(!NullUtil.isNullObject(callBackObj)){
-                int acount = callBackObj.getInteger("acount");
-                String hash = callBackObj.getString("hash");
-                String confUrl = QiNiuUploadTool.CHAINURL + hash ;
-                ConfInfo confInfo = new ConfInfo(acount,hash,confUrl);
-                if(NullUtil.isNullObject(appChannelService.selectByAcount(acount))){
-                    appChannelService.insertConf(confInfo);
-                }else {
-                    appChannelService.updateConfinfo(confInfo);
-                }
-                return JsonResult.toString(NetworkCode.CODE_SUCCESS,"");
-            }else {
-                return JsonResult.toString(NetworkCode.ERROR_CODE_400,"");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+    @RequestMapping(value = "/callBackUpdate", produces = "application/json; charset=utf-8")
+    public String callBackUpdate(int account, String key, String token) {
+        String hasToken = cacheService.get(token);
+        if (NullUtil.isNullObject(hasToken))
+            return JsonResult.toString(NetworkCode.CODE_NOTOKEN, "");
+        String confUrl = QiNiuUploadTool.CHAINURL + key;
+        ConfInfo confInfo = new ConfInfo(account, key, confUrl);
+        if (NullUtil.isNullObject(appChannelService.selectByAcount(account))) {
+            appChannelService.insertConf(confInfo);
+        } else {
+            appChannelService.updateConfinfo(confInfo);
         }
+        return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
     }
     @ResponseBody
     @RequestMapping("/updatetest")
@@ -87,17 +80,16 @@ public class AppChannelController {
      */
     @ResponseBody
     @RequestMapping("/bundling")
-    public String bundling(String token,String appAlias,String tvAlias){
+    public String bundling(String token,String tvDeviceId){
         try {
             RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
             int account = requestParamModel.getAccount();
             if(!appChannelService.checkUserId(account)){
                 return JsonResult.toString(NetworkCode.ACCOUNT_NOT_EXIST,"");
             }
-            String deviceId = requestParamModel.getDeviceId();
-            String cache = cacheService.get(token+deviceId);
+            String cache = cacheService.get(token+tvDeviceId);
             if(!NullUtil.isNullObject(cache)){
-                int code = appChannelService.checkBinding(account,deviceId,tvAlias,appAlias);
+                int code = appChannelService.checkBinding(account,tvDeviceId);
                 return JsonResult.toString(code,"");
             }
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
@@ -114,7 +106,7 @@ public class AppChannelController {
     @RequestMapping("/getCustomizedList")
     public String getCustomizedList(String url){
         try {
-            List<String> customizedList = appChannelService.getSourceList(url);
+            String customizedList = appChannelService.getSourceList(url);
             return JsonResult.toString(NetworkCode.CODE_SUCCESS,customizedList);
         } catch (Exception e){
             return JsonResult.toString(NetworkCode.CODE_FAIL,"");
@@ -132,10 +124,24 @@ public class AppChannelController {
 
     @ResponseBody
     @RequestMapping("/checkByUserId")
-    public String checkByUserId(int userId) {
-        if (!NullUtil.isNullObject(userId)) {
-            return appChannelService.checkByUserId(userId);
+    public String checkByUserId() {
+        try {
+            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+            int account = requestParamModel.getAccount();
+            return appChannelService.checkByUserId(account);
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
         }
-        return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+    }
+    @RequestMapping("/updateDefinedName")
+    public String updateDefinedName(String definedName){
+        try {
+            RequestParamModel requestParamModel = HeaderFilter.paramModel.get();
+            int account = requestParamModel.getAccount();
+            appChannelService.updateDefinedName(account,definedName);
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS, "");
+        } catch (Exception e) {
+            return JsonResult.toString(NetworkCode.CODE_FAIL, "");
+        }
     }
 }

@@ -23,6 +23,8 @@ import javax.servlet.ServletOutputStream;
 import java.io.File;
 import java.util.*;
 
+import static com.readyidu.service.BaseService.SERVICE_RBK;
+
 
 @Service(value = "tvSynchronizeService")
 public class TvSynchronizeServiceImpl implements TvSynchronizeService{
@@ -59,7 +61,7 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
     /*通过穿过来的小益账号 解绑机顶盒*/
     @Transactional
     @Override
-    public String removePhoneByDeviceId(String userId) {
+    public String removePhoneByDeviceId(int userId) {
         int i= phoneDeviceMapper.deleteByUserId(userId);
         if (i==0){
           return   JsonResult.toString(NetworkCode.CODE_FAIL,"");
@@ -69,8 +71,16 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
 
     /*获得自定义源*/
     @Override
-    public List<PhoneService> getCostomizeSourceList(String deviceId) {
-        return phoneServiceMapper.getConfUrlAndUserIdByDeviceId(deviceId);
+    public String getCostomizeSourceList(String deviceId) {
+        try{
+            List<PhoneService> phoneServiceList = phoneServiceMapper.getConfUrlAndUserIdByDeviceId(deviceId);
+            if(!phoneServiceList.isEmpty()){
+                return JsonResult.toString(NetworkCode.CODE_SUCCESS,phoneServiceList);
+            }
+            return JsonResult.toString(NetworkCode.CODE_SUCCESS_NULL,new ArrayList<>());
+        }catch (Exception e){
+            return JsonResult.toString(NetworkCode.CODE_FAIL,"");
+        }
     }
 
 
@@ -128,9 +138,9 @@ public class TvSynchronizeServiceImpl implements TvSynchronizeService{
         return tvDeviceMapper.insertTvDevice(tvDevice);
     }
 
-    @Transactional
-    @Override
-    public int insertPhoneDevice(PhoneDevice phoneDevice) {
-        return phoneDeviceMapper.insertDevice(phoneDevice);
-    }
+//    @Transactional
+//    @Override
+//    public int insertPhoneDevice(PhoneDevice phoneDevice) {
+//        return phoneDeviceMapper.insertDevice(phoneDevice);
+//    }
 }

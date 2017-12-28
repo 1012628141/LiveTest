@@ -18,10 +18,11 @@ public interface TvSynchronizeService {
     /*参数deviceId 机顶盒设备ID  返回值 绑定设备的id*/
     String getDevices(String deviceId);
 
-    int insertPhoneDevice(PhoneDevice phoneDevice);
+//    int insertPhoneDevice(PhoneDevice phoneDevice);
 
-    String removePhoneByDeviceId(String userId);
+    String removePhoneByDeviceId(int userId);
 
     /*参数deviceId机顶盒设备ID 返回值 绑定设备下不同账号的自定义源*/
-    List<PhoneService> getCostomizeSourceList(String deviceId);
+    String getCostomizeSourceList(String deviceId);
+
 }
